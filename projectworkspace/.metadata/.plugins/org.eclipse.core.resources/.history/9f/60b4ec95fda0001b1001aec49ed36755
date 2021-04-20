@@ -1,0 +1,5 @@
+package com.sumbab.project.model;
+
+public class WarningReview {
+
+}

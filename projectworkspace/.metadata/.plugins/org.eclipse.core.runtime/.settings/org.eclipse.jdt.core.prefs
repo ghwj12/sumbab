@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=
+org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=*.ucls
 org.eclipse.jdt.core.classpathVariable.ASPECTJRT_LIB=C\:/study/eclipse/plugins/org.aspectj.runtime_1.9.6.202012111622.jar
 org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=C\:/study/eclipse/
 org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Program Files/Java/jre1.8.0_271/lib/rt.jar
