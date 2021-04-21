@@ -12,8 +12,8 @@
 
 
 	<form:form method="post" action="store/registerStep2" commandName="storeDao">
-		<input type="radio" name="classify" value="rest">음식점 등록
-		<input type="radio" name="classify" value="cafe">카페 등록
+		<input type="radio" name="classify" value="음식점">음식점 등록
+		<input type="radio" name="classify" value="카페">카페 등록
 		<table>
 			<tr>
 				<td>가게명:</td>
