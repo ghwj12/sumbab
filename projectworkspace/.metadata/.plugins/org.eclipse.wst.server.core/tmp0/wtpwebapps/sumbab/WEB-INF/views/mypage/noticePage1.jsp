@@ -19,10 +19,13 @@
 		<c:forEach var="notice" items="${noticeList}" varStatus="loop">
 			<tr>
 				<td>${loop.count}</td>
-				<td><a href="<c:url value="#" />">${notice.title}</a></td>
+				<td><a href="<c:url value="/mypage/noticeDetail/${notice.notice_num}" />">${notice.title}</a></td>
 				<td><fmt:formatDate value="${notice.regdate}" pattern="yyyy.MM.dd" /></td>
 			</tr>
 		</c:forEach>
 	</table>
+	<c:if test="${classify == 3}">
+		<input type="button" value="공지 올리기" onclick="#"/>
+	</c:if>
 </body>
 </html>

@@ -5,15 +5,19 @@
 <mapper namespace="noticeDao">
 
         <select id="selectClassify" parameterType="String" resultType="Integer">
-                select classify from MEMBER where id=#{id}
+        	select classify from MEMBER where id=#{id}
         </select> 
         
         <select id="selectNotice" parameterType="String" resultType="notice">
-        		select * from NOTICE where AUTHORITY=#{id} or AUTHORITY='all'
+        	select * from NOTICE where AUTHORITY=#{id} or AUTHORITY='all' order by regdate desc
         </select> 
         
         <select id="allNotice" resultType="notice">
-        		select * from NOTICE
+        	select * from NOTICE order by regdate desc
         </select> 
+        
+        <select id="noticeDetail" parameterType="int" resultType="notice">
+        	select * from NOTICE where notice_num=#{seq}
+        </select>
      
 </mapper>

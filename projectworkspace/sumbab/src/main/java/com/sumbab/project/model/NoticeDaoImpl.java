@@ -13,7 +13,7 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public int selectCalssify(String id) {
+	public int selectClassify(String id) {
 		return sqlSessionTemplate.selectOne("selectClassify", id);
 	}
 
@@ -25,6 +25,11 @@ public class NoticeDaoImpl implements NoticeDao{
 	@Override
 	public List<Notice> allNotice() {
 		return sqlSessionTemplate.selectList("allNotice");
+	}
+
+	@Override
+	public Notice noticeDetail(int seq) {
+		return (Notice)sqlSessionTemplate.selectOne("noticeDetail",seq);
 	}
 	
 	
