@@ -6,43 +6,46 @@
 
 <mapper namespace="storeDao">
 
-	<select id="list" resultType="member">
+	<insert id="insert" parameterType="store">
+		INSERT INTO STORE (STORE_NUM, id, classify, name, address, phone, menu, time, reserving, etc, pwd, count, picture)
+		VALUES (STORE_SEQ.nextval, 'deliciousman', #{classify}, #{name}, #{address}, #{phone},
+				#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, NULL)
+	</insert>
+	
+	<update id="update" parameterType="store">
+		UPDATE STORE SET classify=#{classify}, name= #{name}, address=#{address}, phone=#{phone},
+						menu=#{menu}, time={time}, reserving=#{reserving}, etc=#{etc}
+		WHERE pwd=#{pwd}
+	</update>
+	
+	<select id="list" resultType="store">
 		SELECT * FROM STORE ORDER BY id
 	</select>
 	
-	<select id="selectByEmail" parameterType="String" resultType="member">
+	<select id="selectByEmail" parameterType="String" resultType="store">
 		SELECT * FROM STORE WHERE email=#{email}
 	</select>
 	
-	<insert id="insert" parameterType="member">
-		INSERT INTO STORE (email, name, password, id, regDate)
-		VALUES (#{email}, #{name}, #{password}, STORE_SEQ.nextval, #{regDate})
-		<selectKey keyProperty="id" resultType="Long">
-			SELECT NVL(MAX(id),0) FROM member
-		</selectKey>
-	</insert>
-	<update id="update" parameterType="member">
-		UPDATE STORE SET name= #{name}, password=#{password}
-		WHERE email = #{email}
-	</update>
 	
-	<delete id="delete" parameterType="member">
+	
+	<delete id="delete" parameterType="store">
 		DELETE FROM STORE WHERE email=#{email} AND password=#{password}
 	</delete>
 	<delete id="deleteAll">
 		DELETE FROM STORE
 	</delete>
 	
-	<select id="count" resultType="Integer">
-		SELECT COUNT(*) FROM STORE;
-	</select>
+	<update id="upReadCount" parameterType="store">
+		UPDATE STORE SET count = count+1
+		WHERE name=#{name}
+	</update>
 	
-	<select id="selectByRegdate" parameterType="HashMap" resultType="member">
+	<select id="selectByRegdate" parameterType="HashMap" resultType="store">
 		SELECT * FROM STORE WHERE regDate BETWEEN #{from} AND #{to}
 		ORDER BY regDate DESC
 	</select>
 	
-	<select id="selectById" parameterType="Long" resultType="member">
+	<select id="selectById" parameterType="Long" resultType="store">
 		SELECT * FROM STORE WHERE id=#{id}
 	</select>
 	
