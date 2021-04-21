@@ -7,12 +7,11 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
@@ -24,7 +23,53 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="configLocation"
+			value="classpath:config/mybatis-config.xml" />
+		<!-- mybatis-config.xml : 마이바티스 동작 규칙이 지정된 설정파일 지정 -->
+		<beans:property name="mapperLocations">
+			<beans:list>
+				<beans:value>classpath:config/sqlmap-store.xml</beans:value>
+				<!-- sql query method와 mapping된 sql 구문을 정의한 파일 지정 -->
+			</beans:list>
+		</beans:property>
+	</beans:bean>
 	
+	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<beans:constructor-arg ref="sqlSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<beans:property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+		<beans:property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<beans:property name="user" value="sumbab" />
+		<beans:property name="password" value="0613" />
+		<beans:property name="maxPoolSize" value="100" />
+		<beans:property name="maxIdleTime" value="600" />
+		<beans:property name="idleConnectionTestPeriod" value="300" />
+	</beans:bean>
+	
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+
+	
+	<!-- 어노테이션 패키지 선언할 것! bean 선언하지 않아도 됨 -->
 	<context:component-scan base-package="com.sumbab.project" />
+	<context:component-scan base-package="store" />
 	
-</beans:beans>
+	<beans:bean id="storeDao" class="store.StoreDaoImpl">
+		<beans:constructor-arg ref="sqlSessionTemplate"/>
+	</beans:bean>
+
+	<beans:bean id="storeRegSvc" class="store.StoreRegisterService">
+		<beans:constructor-arg ref="storeDao"/>
+	</beans:bean>
+	
+	</beans:beans>
