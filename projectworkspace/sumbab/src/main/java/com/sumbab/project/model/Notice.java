@@ -12,6 +12,20 @@ public class Notice {
 	private String writer;
 	private Date regdate;
 	
+	public Notice() {}
+	
+	public Notice(int notice_num, int review_num, String title, String content, String authority, String writer,
+			Date regdate) {
+		super();
+		this.notice_num = notice_num;
+		this.review_num = review_num;
+		this.title = title;
+		this.content = content;
+		this.authority = authority;
+		this.writer = writer;
+		this.regdate = regdate;
+	}
+	
 	public int getNotice_num() {
 		return notice_num;
 	}

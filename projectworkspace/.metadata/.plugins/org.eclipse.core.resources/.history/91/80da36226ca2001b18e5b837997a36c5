@@ -1,0 +1,22 @@
+package com.sumbab.project.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class NoticeService {
+	private MemberDaoImpl memberDao;
+
+	@Autowired
+	public void setMemberDao(MemberDaoImpl memberDao) {
+		this.memberDao = memberDao;
+	}
+	
+	public List<Notice> bringBoard(String id) {
+		int classify = memberDao.selectCalssify(id);
+		if(classify == 3) {
+			return memberDao.allNotice();
+		} else {
+			return memberDao.selectNotice(id);
+		}
+	}
+
+}

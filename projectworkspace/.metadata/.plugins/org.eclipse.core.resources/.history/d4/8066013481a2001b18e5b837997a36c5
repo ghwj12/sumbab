@@ -1,0 +1,25 @@
+package com.sumbab.project.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sumbab.project.model.NoticeService;
+
+@Controller
+public class NoticeController {
+
+	private NoticeService noticeService;
+
+	public void setNoticeService(NoticeService noticeService) {
+		this.noticeService = noticeService;
+	}
+
+	@RequestMapping("/mypage/noticePage1")
+	public String firstPage(Model model/*,@PathVariable String id*/) {
+		model.addAttribute("noticeList", noticeService.bringNotice("admin1"));
+		return "mypage/noticePage1";
+		
+	}
+}
