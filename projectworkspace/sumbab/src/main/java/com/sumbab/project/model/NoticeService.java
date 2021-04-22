@@ -42,8 +42,8 @@ public class NoticeService {
 		noticeDao.update(notice);
 	}
 
-	public void delete(Notice notice) {
-		noticeDao.delete(notice);
+	public void delete(int noticeNum) {
+		noticeDao.delete(noticeNum);
 	}
 	
 }

@@ -45,8 +45,8 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public void delete(Notice notice) {
-		sqlSessionTemplate.update("delete", notice);
+	public void delete(int noticeNum) {
+		sqlSessionTemplate.update("delete", noticeNum);
 	}
 	
 

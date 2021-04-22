@@ -10,7 +10,8 @@
 </head>
 <body>
 	<form:form method="POST">
-	해당 공지를 삭제 하시겠습니까?
+	해당 공지를 삭제 하시겠습니까?<br><br>
+	<input type="hidden" id="deleteNum" value="${noticeVo.noticeNum}">
 	<input type="submit" value="삭제">
 	<input type="button" value="취소" onclick="javascript:self.close()">
 	</form:form>

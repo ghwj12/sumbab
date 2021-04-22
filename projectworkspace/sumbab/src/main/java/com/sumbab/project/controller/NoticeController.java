@@ -60,10 +60,15 @@ public class NoticeController {
 		return "redirect:/mypage/noticeDetail/"+noticeNum;
 	}
 	
-	@RequestMapping(value="/mypage/deleteNotice/{noticeNum}", method=RequestMethod.GET)
-	public String delete(@PathVariable int noticeNum, Model model) {
-		model.addAttribute("noticeNum", noticeNum);
+	@RequestMapping(value="/mypage/deleteNotice", method=RequestMethod.GET)
+	public String delete() {
 		return "mypage/deleteNotice";
+	}
+	
+	@RequestMapping(value="/mypage/deleteNotice", method=RequestMethod.POST)
+	public String delete(int noticeNum) {
+		noticeService.delete(noticeNum);
+		return "redirect:/mypage/noticePage";
 	}
 	
 }

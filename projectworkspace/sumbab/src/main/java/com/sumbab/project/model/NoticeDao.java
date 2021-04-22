@@ -23,6 +23,6 @@ public interface NoticeDao {
 	public void update(Notice notice);
 	
 	//공지 삭제
-	public void delete(Notice notice);
+	public void delete(int noticeNum);
 
 }
