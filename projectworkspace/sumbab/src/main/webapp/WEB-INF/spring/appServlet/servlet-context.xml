@@ -33,6 +33,8 @@
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<beans:value>classpath:config/sqlmap-store.xml</beans:value>
+				<beans:value>classpath:config/sqlmap-restCat.xml</beans:value>
+				<beans:value>classpath:config/sqlmap-cafeCat.xml</beans:value>
 				<!-- sql query method와 mapping된 sql 구문을 정의한 파일 지정 -->
 			</beans:list>
 		</beans:property>
