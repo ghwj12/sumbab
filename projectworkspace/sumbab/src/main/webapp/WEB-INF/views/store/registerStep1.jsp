@@ -11,7 +11,7 @@
 	<h1>가게 등록 및 가게 정보 수정</h1>
 
 
-	<form:form method="post" action="registerStep2" commandName="storeDao">
+	<form:form method="post" action="registerStep1-2" commandName="storeDao">
 		<input type="radio" name="classify" value="음식점">음식점 등록
 		<input type="radio" name="classify" value="카페">카페 등록
 		<table>
