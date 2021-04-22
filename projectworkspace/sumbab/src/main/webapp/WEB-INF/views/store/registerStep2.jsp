@@ -5,22 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-function select(){
-	
-	var frm = documentinputfrm;
-	frm.select[0].checked = true; //체크박스 선택
-	ret = Array(frm.select.length);
-	
-	for(i=0; i<frm.selectlength; i++){
-		if(frm.select[i].checked == true){
-			ret[i]=1;
-		}else{
-			ret[i]=0;
-		}
-	}
-}
-</script>
+
 <meta charset="UTF-8">
 <title>가게 등록하기-2단계</title>
 </head>
@@ -32,6 +17,7 @@ function select(){
 	</div>
 	
 	<form:form action="completeRegister" method="post" commandName="restCatData">
+	<!-- value는 1,0으로 모두 값이 들어감 -->
 		<div>
 			<p>어떤 상황일 때 가면 좋은가요? (중복 선택 가능)</p>
 		</div>
