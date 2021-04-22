@@ -3,31 +3,47 @@ package com.sumbab.project.model;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class NoticeService {
-	private NoticeDaoImpl memberDao;
+	@Autowired
+	private NoticeDaoImpl noticeDao;
 	private int classify;
 
+	/*
 	@Autowired
-	public void setMemberDao(NoticeDaoImpl memberDao) {
-		this.memberDao = memberDao;
+	public void setnoticeDao(NoticeDaoImpl noticeDao) {
+		this.noticeDao = noticeDao;
 	}
-	
+	*/
 	public int classify(String id) {
-		classify = memberDao.selectClassify(id);
+		classify = noticeDao.selectClassify(id);
 		return classify;
 	}
 	
 	public List<Notice> bringNotice(String id) {
 		if(classify == 3) {
-			return memberDao.allNotice();
+			return noticeDao.allNotice();
 		} else {
-			return memberDao.selectNotice(id);
+			return noticeDao.selectNotice(id);
 		}
 	}
 	
 	public Notice noticeDetail(int noticeNum) {
-		return memberDao.noticeDetail(noticeNum);
+		return noticeDao.noticeDetail(noticeNum);
+	}
+	
+	public void write(Notice notice) {
+		noticeDao.insert(notice);
+	}
+	
+	public void edit(Notice notice) {
+		noticeDao.update(notice);
 	}
 
+	public void delete(Notice notice) {
+		noticeDao.delete(notice);
+	}
+	
 }

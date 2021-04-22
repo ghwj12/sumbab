@@ -15,5 +15,14 @@ public interface NoticeDao {
 	
 	//공지 상세보기
 	public Notice noticeDetail(int noticeNum);
+	
+	//공지 올리기
+	public void insert(Notice notice);
+	
+	//공지 수정
+	public void update(Notice notice);
+	
+	//공지 삭제
+	public void delete(Notice notice);
 
 }

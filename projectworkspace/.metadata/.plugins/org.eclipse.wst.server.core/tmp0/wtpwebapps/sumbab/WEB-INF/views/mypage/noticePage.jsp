@@ -25,7 +25,7 @@
 		</c:forEach>
 	</table>
 	<c:if test="${classify == 3}">
-		<input type="button" value="공지 올리기" onclick="#"/>
+		<input type="button" value="공지 올리기" onclick="location.href='writeNotice'"/>
 	</c:if>
 </body>
 </html>

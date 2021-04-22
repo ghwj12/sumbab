@@ -34,7 +34,7 @@
 		</tr>
 	</table>
 	<c:if test="${classify == 3}">
-		<input type="button" value="공지 수정" onclick="#"/>
+		<input type="button" value="공지 수정" onclick="location.href='editNotice'"/>
 		<input type="button" value="공지 삭제" onclick="#"/>
 	</c:if>
 </body>

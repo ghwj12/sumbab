@@ -25,6 +25,38 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<beans:property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+		<beans:property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<beans:property name="user" value="sumbab" />
+		<beans:property name="password" value="1234" />
+		<beans:property name="maxPoolSize" value="100" />
+		<beans:property name="maxIdleTime" value="600" />
+		<beans:property name="idleConnectionTestPeriod" value="300" />
+	</beans:bean>
+	
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean>
+	
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="configLocation" value="classpath:config/mybatis-config.xml" />
+		<beans:property name="mapperLocations">
+			<beans:list>
+				<beans:value>classpath:config/sql-notice.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<beans:constructor-arg ref="sqlSessionFactory" />
+	</beans:bean>
+	
 	<context:component-scan base-package="com.sumbab.project" />
 	
 </beans:beans>

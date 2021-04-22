@@ -3,7 +3,9 @@ package com.sumbab.project.model;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class NoticeDaoImpl implements NoticeDao{
 	
 	private SqlSessionTemplate sqlSessionTemplate;
@@ -31,7 +33,21 @@ public class NoticeDaoImpl implements NoticeDao{
 	public Notice noticeDetail(int noticeNum) {
 		return (Notice)sqlSessionTemplate.selectOne("noticeDetail", noticeNum);
 	}
-	
+
+	@Override
+	public void insert(Notice notice) {
+		sqlSessionTemplate.insert("insert", notice);
+	}
+
+	@Override
+	public void update(Notice notice) {
+		sqlSessionTemplate.update("update", notice);	
+	}
+
+	@Override
+	public void delete(Notice notice) {
+		sqlSessionTemplate.update("delete", notice);
+	}
 	
 
 }
