@@ -21,8 +21,17 @@
         </select>
         
         <insert id="insert" parameterType="notice">
-        	insert into NOTICE (notice_num, review_num, title, content, authority, writer, regdate)
-        		values(notice_seq.nextval, #{reviewNum}, #{title}, #{content}, #{authority}, 'admin1', sysdate)
+        	insert into NOTICE (notice_num, title, content, authority, writer, regdate)
+        		values(notice_seq.nextval, #{title}, #{content}, #{authority}, 'admin1', sysdate)
         </insert>
+        
+        <update id="update" parameterType="notice">
+        	update NOTICE set title=#{title}, authority=#{authority}, content=#{content}, writer='admin1'
+        		where notice_num=#{noticeNum}
+        </update>
+        
+        <delete id="delete" parameterType="notice">
+        	delete from NOTICE where notice_num=#{noticeNum}
+        </delete>
      
 </mapper>

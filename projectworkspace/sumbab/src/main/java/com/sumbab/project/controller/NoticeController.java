@@ -45,19 +45,25 @@ public class NoticeController {
 	@RequestMapping(value="/mypage/writeNotice", method=RequestMethod.POST)
 	public String write(Notice notice) {
 		noticeService.write(notice);
-		return "redirect:mypage/noticePage";
+		return "redirect:/mypage/noticePage";
 	}
 	
 	@RequestMapping(value="/mypage/editNotice/{noticeNum}", method=RequestMethod.GET)
 	public String edit(@PathVariable int noticeNum, Model model) {
-		model.addAttribute("noticeVo", noticeService.noticeDetail(noticeNum));
+		model.addAttribute("notice", noticeService.noticeDetail(noticeNum));
 		return "mypage/editNotice";
 	}
 	
 	@RequestMapping(value="/mypage/editNotice/{noticeNum}", method=RequestMethod.POST)
 	public String edit(@PathVariable int noticeNum, Notice notice) {
 		noticeService.edit(notice);
-		return "mypage/editNotice";
+		return "redirect:/mypage/noticeDetail/"+noticeNum;
+	}
+	
+	@RequestMapping(value="/mypage/deleteNotice/{noticeNum}", method=RequestMethod.GET)
+	public String delete(@PathVariable int noticeNum, Model model) {
+		model.addAttribute("noticeNum", noticeNum);
+		return "mypage/deleteNotice";
 	}
 	
 }

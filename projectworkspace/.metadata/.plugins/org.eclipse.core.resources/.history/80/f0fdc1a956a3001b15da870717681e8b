@@ -1,0 +1,5 @@
+funtion deleteNotice(){
+	var popWidth=300;
+	var popHeight=200;
+	
+}
