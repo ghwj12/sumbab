@@ -1,5 +1,7 @@
 package com.sumbab.project.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,17 +20,17 @@ public class NoticeController {
 		this.noticeService = noticeService;
 	}
 
-	@RequestMapping("/mypage/noticePage1")
-	public String firstPage(Model model/*,@PathVariable String id*/) {
+	@RequestMapping("/mypage/noticePage")
+	public String firstPage(Model model, HttpSession session/*,@PathVariable String id*/) {
 		String id="admin1";
-		model.addAttribute("classify", noticeService.classify(id));
+		session.setAttribute("classify", noticeService.classify(id));
 		model.addAttribute("noticeList", noticeService.bringNotice(id));
-		return "mypage/noticePage1";
+		return "mypage/noticePage";
 	}
 	
-	@RequestMapping("/mypage/noticeDetail/{seq}")
-	public String noticeDetail(Model model, @PathVariable int seq) {
-		model.addAttribute("noticeVo", noticeService.noticeDetail(seq));
+	@RequestMapping("/mypage/noticeDetail/{noticeNum}")
+	public String noticeDetail(Model model, @PathVariable int noticeNum) {
+		model.addAttribute("noticeVo", noticeService.noticeDetail(noticeNum));
 		return "mypage/noticeDetail";
 	}
 }

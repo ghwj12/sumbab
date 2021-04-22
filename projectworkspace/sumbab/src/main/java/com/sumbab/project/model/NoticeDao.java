@@ -14,6 +14,6 @@ public interface NoticeDao {
 	public List<Notice> allNotice();
 	
 	//공지 상세보기
-	public Notice noticeDetail(int seq);
+	public Notice noticeDetail(int noticeNum);
 
 }

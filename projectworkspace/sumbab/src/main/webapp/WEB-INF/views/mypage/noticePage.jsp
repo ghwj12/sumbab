@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>공지 사항</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 		<c:forEach var="notice" items="${noticeList}" varStatus="loop">
 			<tr>
 				<td>${loop.count}</td>
-				<td><a href="<c:url value="/mypage/noticeDetail/${notice.notice_num}" />">${notice.title}</a></td>
+				<td><a href="<c:url value="/mypage/noticeDetail/${notice.noticeNum}" />">${notice.title}</a></td>
 				<td><fmt:formatDate value="${notice.regdate}" pattern="yyyy.MM.dd" /></td>
 			</tr>
 		</c:forEach>

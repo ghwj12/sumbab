@@ -16,8 +16,8 @@
         	select * from NOTICE order by regdate desc
         </select> 
         
-        <select id="noticeDetail" parameterType="int" resultType="notice">
-        	select * from NOTICE where notice_num=#{seq}
+        <select id="noticeDetail" parameterType="Integer" resultType="notice">
+        	select * from NOTICE where notice_num=#{noticeNum}
         </select>
      
 </mapper>

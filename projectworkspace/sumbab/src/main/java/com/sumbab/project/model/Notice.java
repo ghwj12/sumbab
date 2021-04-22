@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Notice {
 
-	private int notice_num;
-	private int review_num;
+	private int noticeNum;
+	private int reviewNum;
 	private String title;
 	private String content;
 	private String authority;
@@ -14,11 +14,11 @@ public class Notice {
 	
 	public Notice() {}
 	
-	public Notice(int notice_num, int review_num, String title, String content, String authority, String writer,
+	public Notice(int noticeNum, int reviewNum, String title, String content, String authority, String writer,
 			Date regdate) {
 		super();
-		this.notice_num = notice_num;
-		this.review_num = review_num;
+		this.noticeNum = noticeNum;
+		this.reviewNum = reviewNum;
 		this.title = title;
 		this.content = content;
 		this.authority = authority;
@@ -26,17 +26,17 @@ public class Notice {
 		this.regdate = regdate;
 	}
 	
-	public int getNotice_num() {
-		return notice_num;
+	public int getNoticeNum() {
+		return noticeNum;
 	}
-	public void setNotice_num(int notice_num) {
-		this.notice_num = notice_num;
+	public void setNoticeNum(int noticeNum) {
+		this.noticeNum = noticeNum;
 	}
-	public int getReview_num() {
-		return review_num;
+	public int getReviewNum() {
+		return reviewNum;
 	}
-	public void setReview_num(int review_num) {
-		this.review_num = review_num;
+	public void setReviewNum(int reviewNum) {
+		this.reviewNum = reviewNum;
 	}
 	public String getTitle() {
 		return title;

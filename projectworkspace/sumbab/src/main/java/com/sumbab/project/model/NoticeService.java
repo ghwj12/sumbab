@@ -26,8 +26,8 @@ public class NoticeService {
 		}
 	}
 	
-	public Notice noticeDetail(int seq) {
-		return memberDao.noticeDetail(seq);
+	public Notice noticeDetail(int noticeNum) {
+		return memberDao.noticeDetail(noticeNum);
 	}
 
 }

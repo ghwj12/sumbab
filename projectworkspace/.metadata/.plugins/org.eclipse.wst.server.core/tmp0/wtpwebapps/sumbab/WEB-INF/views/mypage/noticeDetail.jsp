@@ -26,10 +26,11 @@
 		</c:if>
 		<tr>
 			<th>내용</th>
-			<td>${noticeVo.content}<br></td>
-			<c:if test="${noticeVo.review_num != ''}">
+			<td>${noticeVo.content}<br>
+			<c:if test="${noticeVo.reviewNum != ''}">
 				<a href="<c:url value="#" />">해당 리뷰 보기</a>
 			</c:if>
+			</td>
 		</tr>
 	</table>
 	<c:if test="${classify == 3}">

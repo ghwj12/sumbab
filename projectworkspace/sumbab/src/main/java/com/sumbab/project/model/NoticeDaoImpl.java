@@ -28,8 +28,8 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public Notice noticeDetail(int seq) {
-		return (Notice)sqlSessionTemplate.selectOne("noticeDetail",seq);
+	public Notice noticeDetail(int noticeNum) {
+		return (Notice)sqlSessionTemplate.selectOne("noticeDetail", noticeNum);
 	}
 	
 	
