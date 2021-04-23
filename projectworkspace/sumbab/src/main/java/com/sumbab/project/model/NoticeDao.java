@@ -24,5 +24,8 @@ public interface NoticeDao {
 	
 	//공지 삭제
 	public void delete(int noticeNum);
+	
+	//해당 리뷰 가져오기
+	public ReviewVo selectReview(int reviewNum);
 
 }

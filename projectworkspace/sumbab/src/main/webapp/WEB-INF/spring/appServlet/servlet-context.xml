@@ -51,6 +51,7 @@
 				<beans:value>classpath:config/sql-notice.xml</beans:value>
 			</beans:list>
 		</beans:property>
+		<beans:property name="typeAliasesPackage" value="com.sumbab.project.model" />
 	</beans:bean>
 	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">

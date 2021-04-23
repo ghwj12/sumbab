@@ -48,6 +48,12 @@ public class NoticeDaoImpl implements NoticeDao{
 	public void delete(int noticeNum) {
 		sqlSessionTemplate.update("delete", noticeNum);
 	}
+
+	@Override
+	public ReviewVo selectReview(int reviewNum) {
+		return sqlSessionTemplate.selectOne("selectReview", reviewNum);
+	}
+	
 	
 
 }

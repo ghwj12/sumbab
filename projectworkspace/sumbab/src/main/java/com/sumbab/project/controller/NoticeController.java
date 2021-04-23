@@ -66,10 +66,16 @@ public class NoticeController {
 		return "mypage/deleteProcess";
 	}
 	
-	@RequestMapping(value="/mypage/deleteProcess/{deleteNum}", method=RequestMethod.POST)
-	public String delete(@PathVariable int deleteNum) {
-		noticeService.delete(deleteNum);
+	@RequestMapping(value="/mypage/deleteProcess/{noticeNum}", method=RequestMethod.POST)
+	public String delete(@PathVariable int noticeNum) {
+		noticeService.delete(noticeNum);
 		return "mypage/deleteNotice";
+	}
+	
+	@RequestMapping(value="/mypage/showReview/{reviewNum}", method=RequestMethod.GET)
+	public String showReview(@PathVariable int reviewNum, Model model) {
+		model.addAttribute("reviewVo", noticeService.selectReview(reviewNum));
+		return "mypage/showReview";
 	}
 	
 }

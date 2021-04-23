@@ -47,7 +47,6 @@ INDEX VERSION 1.131+C:\study\sumbab\projectworkspace\.metadata\.plugins\org.ecli
 2501499223.index
 1573544197.index
 2429171238.index
-3080912019.index
 3815508686.index
 3758723417.index
 1026287560.index

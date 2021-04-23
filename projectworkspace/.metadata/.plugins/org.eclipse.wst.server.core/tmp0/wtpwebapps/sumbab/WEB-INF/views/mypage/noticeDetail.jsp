@@ -23,12 +23,13 @@
 			<tr>
 				<th>볼 권한이 있는 아이디</th>
 				<td>${noticeVo.authority}</td>
+			</tr>
 		</c:if>
 		<tr>
 			<th>내용</th>
 			<td>${noticeVo.content}<br>
 			<c:if test="${noticeVo.reviewNum != ''}">
-				<a href="<c:url value="#" />">해당 리뷰 보기</a>
+				<a href="javascript:openReview();">해당 리뷰 보기</a>
 			</c:if>
 			</td>
 		</tr>
@@ -38,6 +39,19 @@
 		<input type="button" value="공지 삭제" onclick="openDelete()"/>
 	</c:if>
 	<script type="text/javascript">
+		function openReview(){
+			var popWidth = 600;
+			var popHeight = 400;
+			var winHeight = document.body.clientHeight;
+			var winWidth = document.body.clientWidth;
+			var winX = window.screenLeft;
+			var winY = window.screenTop;
+			var popX = winX + (winWidth - popWidth)/2;
+			var popY = winY + (winHeight - popHeight)/2;
+			url="../showReview/"+${noticeVo.reviewNum};
+			var openWin = window.open(url, "showReview", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
+		}
+	
 		function openDelete(){
 			var popWidth = 300;
 			var popHeight = 200;

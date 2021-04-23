@@ -46,4 +46,8 @@ public class NoticeService {
 		noticeDao.delete(noticeNum);
 	}
 	
+	public ReviewVo selectReview(int reviewNum) {
+		return noticeDao.selectReview(reviewNum);
+	}
+	
 }
