@@ -10,6 +10,6 @@
 가게 등록이 완료되었습니다!<br>
 등록한 가게 정보는 마이페이지-등록한 가게 에서 보실 수 있습니다.
 <br>
-		<input type="button" value="메인으로">
+		<input type="button" value="메인으로" onclick="location.href='/sumbab'"/>
 </body>
 </html>
