@@ -36,9 +36,8 @@
 	<c:if test="${classify == 3}">
 		<input type="button" value="공지 수정" onclick="location.href='/project/mypage/editNotice/${noticeVo.noticeNum}'"/>
 		<input type="button" value="공지 삭제" onclick="openDelete()"/>
-		<input type="hidden" id="noticeNum" value="${noticeVo.noticeNum}">
 	</c:if>
-	<script>
+	<script type="text/javascript">
 		function openDelete(){
 			var popWidth = 300;
 			var popHeight = 200;
@@ -48,9 +47,8 @@
 			var winY = window.screenTop;
 			var popX = winX + (winWidth - popWidth)/2;
 			var popY = winY + (winHeight - popHeight)/2;
-			url="../deleteNotice";
-			var openWin = window.open(url, "get", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
-			openWin.document.getElementById("deleteNum").value = document.getElementById("noticeNum").value;
+			url="../deleteProcess/"+${noticeVo.noticeNum};
+			var openWin = window.open(url, "deleteProcess", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 		}
 	</script>
 </body>
