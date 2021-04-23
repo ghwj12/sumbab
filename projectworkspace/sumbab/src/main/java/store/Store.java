@@ -10,7 +10,7 @@ public class Store {
 	private String phone;
 	private String menu;
 	private String time;
-	private char reserving;
+	private boolean reserving;
 	private String etc;
 	private String pwd;
 	private int count;
@@ -18,11 +18,10 @@ public class Store {
 
 	public Store() {}
 
-	public Store(int storeNum, String id, String classify, String name, String address, String phone,
-			String menu, String time, char reserving, String etc, String pwd, int count, String picture) {
+
+	public Store(String classify, String name, String address, String phone, String menu, String time,
+			boolean reserving, String etc, String pwd) {
 		super();
-		this.storeNum = storeNum;
-		this.id = id;
 		this.classify = classify;
 		this.name = name;
 		this.address = address;
@@ -32,9 +31,8 @@ public class Store {
 		this.reserving = reserving;
 		this.etc = etc;
 		this.pwd = pwd;
-		this.count = count;
-		this.picture = picture;
 	}
+
 
 	public int getStoreNum() {
 		return storeNum;
@@ -100,11 +98,11 @@ public class Store {
 		this.time = time;
 	}
 
-	public char getReserving() {
+	public boolean getReserving() {
 		return reserving;
 	}
 
-	public void setReserving(char reserving) {
+	public void setReserving(boolean reserving) {
 		this.reserving = reserving;
 	}
 
