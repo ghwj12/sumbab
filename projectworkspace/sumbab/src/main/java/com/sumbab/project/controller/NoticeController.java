@@ -15,12 +15,8 @@ import com.sumbab.project.model.NoticeService;
 @Controller
 public class NoticeController {
 
-	private NoticeService noticeService;
-
 	@Autowired
-	public void setNoticeService(NoticeService noticeService) {
-		this.noticeService = noticeService;
-	}
+	private NoticeService noticeService;
 
 	@RequestMapping("/mypage/noticePage")
 	public String firstPage(Model model, HttpSession session) {

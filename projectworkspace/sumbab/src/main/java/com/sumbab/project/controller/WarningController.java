@@ -1,21 +1,22 @@
 package com.sumbab.project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sumbab.project.model.WarningReview;
+import com.sumbab.project.model.WarningService;
 
-//@Controller
+@Controller
 public class WarningController {
+	
+	@Autowired
+	private WarningService warningService;
 
-	@RequestMapping("/{review_num}")
-	public String warningStep1(/*리뷰 번호*/){
-		return "신고 팝업창 뜨는 페이지";
+	@RequestMapping("/mypage/reportPage")
+	public String reportPage(Model model) {
+		model.addAttribute("reportList", warningService.bringWarning());
+		return "mypage/reportPage";
 	}
 	
-	@RequestMapping("/{review_num}")
-	public String warningStep2(@ModelAttribute WarningReview warningRev) {
-		return "신고 저장 후 페이지";
-	}
 }

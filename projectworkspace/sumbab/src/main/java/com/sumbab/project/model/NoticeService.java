@@ -11,12 +11,6 @@ public class NoticeService {
 	private NoticeDaoImpl noticeDao;
 	private int classify;
 
-	/*
-	@Autowired
-	public void setnoticeDao(NoticeDaoImpl noticeDao) {
-		this.noticeDao = noticeDao;
-	}
-	*/
 	public int classify(String id) {
 		classify = noticeDao.selectClassify(id);
 		return classify;
