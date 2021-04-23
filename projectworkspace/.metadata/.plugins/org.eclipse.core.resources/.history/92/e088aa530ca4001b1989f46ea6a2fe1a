@@ -2,9 +2,6 @@ package com.sumbab.project.model;
 
 import java.util.Date;
 
-import org.apache.ibatis.type.Alias;
-
-@Alias("notice")
 public class Notice {
 
 	private int noticeNum;
