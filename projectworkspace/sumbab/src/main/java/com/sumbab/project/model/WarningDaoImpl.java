@@ -13,8 +13,13 @@ public class WarningDaoImpl implements WarningDao{
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
-	public List<Warning> selectWarning() {
-		return sqlSessionTemplate.selectList("selectWarning");
+	public List<Warning> allReport() {
+		return sqlSessionTemplate.selectList("allWarning");
+	}
+
+	@Override
+	public WarningVo reportDetail(int warningNum) {
+		return sqlSessionTemplate.selectOne("selectWarning", warningNum);
 	}
 
 }

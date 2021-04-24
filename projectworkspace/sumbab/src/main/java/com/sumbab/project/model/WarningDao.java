@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface WarningDao {
 
-	public List<Warning> selectWarning();
+	public List<Warning> allReport();
 	
-	
+	public WarningVo reportDetail(int warningNum);
 }

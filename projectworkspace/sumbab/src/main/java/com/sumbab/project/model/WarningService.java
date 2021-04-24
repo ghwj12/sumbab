@@ -12,6 +12,10 @@ public class WarningService {
 	private WarningDaoImpl warningDao;
 
 	public List<Warning> bringWarning(){
-		return warningDao.selectWarning();
+		return warningDao.allReport();
+	}
+	
+	public WarningVo reportDetail(int warningNum) {
+		return warningDao.reportDetail(warningNum);
 	}
 }
