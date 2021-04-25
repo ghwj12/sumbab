@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta charset="UTF-8">
-<title>가게 등록하기-2단계</title>
+<title>가게 등록하기-2단계:${storeVO.name}</title>
 </head>
 
-<body onload="select()">
+<body>
 	<h1>카테고리 설정</h1>
 	<div>숨밥 카테고리 기반 추천에 가게를 추천하려면, 아래 항목을 선택해주세요.<br>
 		선택하지 않을 경우, 카테고리 추천에 나타나지 않을 수 있습니다.<br>
