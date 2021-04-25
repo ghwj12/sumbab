@@ -36,4 +36,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	//main.search 검색 바 컨트롤러
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String search() {
+		
+		return "/main.search/searchBar";
+	}
+	
 }
