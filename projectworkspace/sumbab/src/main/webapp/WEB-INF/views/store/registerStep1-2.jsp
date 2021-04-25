@@ -11,14 +11,14 @@
 </head>
 <body>
 	<h1>가게 등록 및 가게 정보 수정</h1>
-	<c:set var="classify" scope="page" value="${storeDao.classify}" />
+	<c:set var="classify" value="${storeVO.classify}" />
 	<c:choose>
-		<c:when test="${storeDao.classify eq '음식점'}">
+		<c:when test="${storeVO.classify eq '음식점'}">
 			<form:form method="post" action="registerStep2_res">
 			</form:form>
 		</c:when>
 		
-		<c:when test="${storeDao.classify eq '카페'}">
+		<c:when test="${storeVO.classify eq '카페'}">
 			<form:form method="post" action="registerStep2_cafe">
 			</form:form>
 		</c:when>
