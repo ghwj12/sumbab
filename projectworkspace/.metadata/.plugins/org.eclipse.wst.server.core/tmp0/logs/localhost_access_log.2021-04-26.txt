@@ -22,3 +22,4 @@
 0:0:0:0:0:0:0:1 - - [26/Apr/2021:17:16:13 +0900] "GET /project/mypage/reportDetail/3 HTTP/1.1" 200 2063
 0:0:0:0:0:0:0:1 - - [26/Apr/2021:17:16:22 +0900] "GET /project/mypage/reportDetail/9 HTTP/1.1" 200 1486
 0:0:0:0:0:0:0:1 - - [26/Apr/2021:17:21:20 +0900] "GET /project/mypage/reportDetail/5 HTTP/1.1" 200 2065
+0:0:0:0:0:0:0:1 - - [26/Apr/2021:17:26:24 +0900] "GET /project/mypage/reportDetail/4 HTTP/1.1" 200 1485
