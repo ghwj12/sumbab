@@ -11,7 +11,7 @@
         
         <select id="selectWarning" parameterType="Integer" resultType="warningVo">
         	select W.reporter, W.regdate, W.reason, R.id, R.content from WARNING W, REVIEW R
-				where W.review_num=R.review_num and W.warning_num=#{warningNum}
+				where W.review_num=R.review_num and R.review_num=#{reviewNum}
         </select>
         
         
