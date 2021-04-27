@@ -18,4 +18,9 @@ public class WarningService {
 	public WarningVo reportDetail(int warningNum) {
 		return warningDao.reportDetail(warningNum);
 	}
+	
+	public void changeClassify(ChangeClassifyDto classifyDto) {
+		warningDao.changeClassify(classifyDto);
+	}
+	
 }

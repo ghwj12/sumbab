@@ -22,4 +22,10 @@ public class WarningDaoImpl implements WarningDao{
 		return sqlSessionTemplate.selectOne("selectWarning", warningNum);
 	}
 
+	@Override
+	public void changeClassify(ChangeClassifyDto classifyDto) {
+		sqlSessionTemplate.update("changeClassify", classifyDto);
+	}
+
+	
 }
