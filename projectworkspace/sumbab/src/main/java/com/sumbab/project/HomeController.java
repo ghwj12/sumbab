@@ -43,4 +43,11 @@ public class HomeController {
 		return "/main.search/searchBar";
 	}
 	
+	//main--->마이페이지 클릭시 마이페이지 첫 화면 출력
+	@RequestMapping(value="/mypage/mypageMain", method=RequestMethod.GET)
+	public String goMypage(){
+		
+		return "/mypage/mypageMain";
+	}
+	
 }
