@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import store.Store;
+
 @Repository
 public class ReserveDaoImpl implements ReserveDao {
 
@@ -20,9 +22,17 @@ public class ReserveDaoImpl implements ReserveDao {
 	
 	//예약내역 리스트 가져오기
 	@Override
-	public List<Reserve> list(String memberId) {
-		List<Reserve> results = sqlSessionTemplate.selectList("listReserve", memberId);
-return results;
+	public List<Reserve> listFuture(String memberID) {
+		List<Reserve> results = sqlSessionTemplate.selectList("listFuture", memberID);
+		
+		return results;
+	}
+	//예약내역 리스트 가져오기
+	@Override
+	public List<Reserve> listPast(String memberID) {
+		List<Reserve> results = sqlSessionTemplate.selectList("listPast", memberID);
+		
+		return results;
 	}
 
 	//예약내역 삭제하기(취소하기) 현재 시간 기준으로 취소 가능 여부 결정
@@ -34,6 +44,11 @@ return results;
 	@Override
 	public void insert(Reserve reserve) {
 		sqlSessionTemplate.insert("insertReserve", reserve);
+	}
+
+	@Override
+	public List<Store> getStoreName(String memberID) {
+		return sqlSessionTemplate.selectList("getStoreName", memberID);
 	}
 
 }
