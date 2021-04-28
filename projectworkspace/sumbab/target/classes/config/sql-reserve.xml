@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reserve">
+
+	<!-- id = ${member.id} / STORE_NUM = ${storeVO.storeNum}으로 나중에 변경 -->
+	<insert id="insertReserve" parameterType="reserve">
+		insert into RESERVE (STORE_NUM, ID, RESERVE_NAME, RES_DATE, PHONE)
+		values ('104', 'deliciousman', #{reserveName}, TO_DATE(#{resDate}, 'YYYY-MM-DD HH24:MI:SS'), #{phone})
+	</insert>
+
+	<!-- 나의 예약 리스트 모두 조회 : 미래/과거는 뷰에서 c:choose로 출력 -->
+	<select id="listReserve" parameterType="String" resultType="reserve">
+		select * from RESERVE where ID=#{member.id}
+	</select>
+	
+	<!-- 예약 취소(삭제) : my page에서 예약내역 보기==>
+	해당 페이지 세션에 있는 reserveVO와 memberVO에서 값 가져오기-->
+	<delete id="deleteReserve" parameterType="Date">
+		delete from RESERVE where STORE_NUM = ${reserve.storeNum}
+		and ID=${member.id} 
+	</delete>
+
+
+</mapper>
