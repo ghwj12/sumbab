@@ -108,9 +108,7 @@ input {
 
 
 	<script src="<%=request.getContextPath()%>/resources/js/hashtags.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/popup.js">
-		
-	</script>
+	<script src="<%=request.getContextPath()%>/resources/js/popup.js"> </script>
 </body>
 
 </html>
