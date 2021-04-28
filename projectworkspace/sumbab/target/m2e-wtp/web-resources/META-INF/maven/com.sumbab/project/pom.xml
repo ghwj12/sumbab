@@ -172,23 +172,29 @@
 		<version>${security.version}</version>
 	</dependency>
 
-
-		<!-- 마이바티스 -->
-		<!-- MyBatis 모듈 -->
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
-		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis</artifactId>
-		    <version>3.4.6</version>
-		</dependency>
-		
-		<!-- MyBatis-Spring 모듈(접착제 역할) -->
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
-		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis-spring</artifactId>
-		    <version>1.3.2</version>
-		</dependency>
+	<!-- 마이바티스 -->
+	<!-- MyBatis 모듈 -->
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.4.6</version>
+	</dependency>
+	
+	<!-- MyBatis-Spring 모듈(접착제 역할) -->
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis-spring</artifactId>
+	    <version>1.3.2</version>
+	</dependency>
+	
+	<!-- Ajax 사용할 때 json 형식으로 값을 보내기 위ㅐ 필요한 jackson 라이브러리 -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.9.5</version>
+	</dependency>
 
 	</dependencies>
     <build>

@@ -34,29 +34,35 @@
 		</tr>
 	</table>
 	<p>
-	<form:form id="handleWarning" commandName="classifyDto" method="POST">
-		<form:select path="classifyNum">
-			<form:option value="4">피신고자 리뷰 작성 기능 정지</form:option>
-			<form:option value="5">신고자 신고 기능 정지</form:option>
-		</form:select>
-		<c:choose>
-			<c:when test="$(#classifyNum option:selected).val() == 4"><form:hidden path="id" value="${reportVo.id}"/></c:when>
-			<c:otherwise><form:hidden path="id" value="${reportVo.reporter}"/></c:otherwise>
-		</c:choose>
-		<input type="submit" value="신고 처리" />
-	</form:form>
+		<select id="classifyNum">
+			<option value="4">피신고자 리뷰 작성 기능 정지</option>
+			<option value="5">신고자 신고 기능 정지</option>
+		</select>
+		<input type="button" id="changeClassify" value="신고 처리" />
 	</p>
 	<script src="https://code.jquery.com/jquery-2.2.4.js">
-	$("#handleWarning").submit(function(){
-		var id;
-		if($("#classifyNum option:selected").val() == 4){
-			id=${reportVo.reporter}
-			alert("피신고자의 리뷰 작성 기능이 정지 되었습니다.");
+	$("#changeClassify").on('click', function(){
+		var classifyDto = {};
+		classifyDto.classifyNum = $("#classifyNum option:selected").val();
+		if(classifyDto.classifyNum == 4){
+			classifyDto.id = ${reportVo.id};
+		} else{
+			classifyDto.id = ${reportVo.reporter};
 		}
-		else{
-			alert("신고자의 신고 기능이 정지 되었습니다.");
-		}
-			
+		$.ajax({
+			type:"POST",
+			url:"../changeClassify",
+			dataType:"json",
+			data:JSON.stringify(classifyDto),
+			contentType:"application/json; charset=utf-8",
+			success:function(){
+				if(classifyDto.classifyNum == 4){
+					alert("피신고자의 리뷰 작성 기능이 정지 되었습니다.");
+				} else{
+					alert("신고자의 신고 기능이 정지 되었습니다.");
+				}
+			}
+		})
 	})
 	</script>
 	<input type="text" placeholder="아이디를 입력해주세요." name="id">에게 &nbsp;&nbsp;<input type="submit" value="공지 올리기" />

@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sumbab.project.model.ChangeClassifyDto;
 import com.sumbab.project.model.WarningService;
@@ -29,11 +31,12 @@ public class WarningController {
 		return "mypage/reportDetail";
 	}
 	
-	@RequestMapping(value="/mypage/reportDetail/{warningNum}", method=RequestMethod.POST)
-	public String changeClassify(ChangeClassifyDto classifyDto, Model model) {
+	@RequestMapping(value="/mypage/changeClassify", method=RequestMethod.POST)
+	@ResponseBody
+	public void changeClassify(@RequestBody ChangeClassifyDto classifyDto, Model model) {
 		warningService.changeClassify(classifyDto);
-		model.addAttribute("classifyDto", classifyDto);
-		return "mypage/reportDetail";
+		//model.addAttribute("classifyDto", classifyDto);
+		//return "mypage/reportDetail";
 	}
 	
 }
