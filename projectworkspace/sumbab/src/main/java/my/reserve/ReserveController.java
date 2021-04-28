@@ -21,8 +21,12 @@ public class ReserveController {
 	}
 
 	//마이페이지-->나의 예약한 음식점 리스트 보기:리스트 출력
-	@RequestMapping(value="/reserveList", method=RequestMethod.GET)
-	public String reserveList() {
+	@RequestMapping(value="/reserve/reserveList")
+	public String reserveList(Model model, String memberID) {
+		
+		model.addAttribute("listFuture", reserveService.getListF(memberID));
+		model.addAttribute("listPast", reserveService.getListP(memberID));
+		model.addAttribute("storeName", reserveService.getStoreName(memberID));
 		
 		return "reserve/reserveList";
 	}
@@ -34,9 +38,10 @@ public class ReserveController {
 		return "reserve/reserveForm";
 	}
 	
-	@RequestMapping(value="reserve/completeReserve", method=RequestMethod.POST)
-	public String alignValue(@ModelAttribute("reserveDTO")Reserve reserve, ReserveRegitReq resReq, String datepicker, String timepicker) {
-		reserveService.alignValue(resReq, datepicker, timepicker);
+	@RequestMapping(value="/reserve/completeReserve", method=RequestMethod.POST)
+	public String alignValue(@ModelAttribute("reserveDTO")Reserve reserve,
+				ReserveRegitReq resReq, String datepicker, String timepicker) {
+		reserveService.regit(resReq, datepicker, timepicker);
 		
 		return "reserve/completeReserve";
 	}
