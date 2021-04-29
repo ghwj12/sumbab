@@ -1,6 +1,5 @@
 package my.reserve;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -37,8 +36,8 @@ public class ReserveDaoImpl implements ReserveDao {
 
 	//예약내역 삭제하기(취소하기) 현재 시간 기준으로 취소 가능 여부 결정
 	@Override
-	public void delete(Date sysdate) {
-		sqlSessionTemplate.delete("deleteReserve", sysdate);
+	public void delete(int reserveSeq) {
+		sqlSessionTemplate.delete("deleteReserve", reserveSeq);
 	}
 
 	@Override
@@ -49,6 +48,12 @@ public class ReserveDaoImpl implements ReserveDao {
 	@Override
 	public List<Store> getStoreName(String memberID) {
 		return sqlSessionTemplate.selectList("getStoreName", memberID);
+	}
+
+	@Override
+	public String getID(Reserve reserve) {
+			
+		return sqlSessionTemplate.selectOne("getID", reserve);
 	}
 
 }
