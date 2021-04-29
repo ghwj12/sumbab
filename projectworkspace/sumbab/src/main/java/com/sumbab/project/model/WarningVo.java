@@ -12,7 +12,14 @@ public class WarningVo {
 	private Date regdate;
 	private String reason;
 	private String content;
+	private int reviewNum;
 	
+	public int getReviewNum() {
+		return reviewNum;
+	}
+	public void setReviewNum(int reviewNum) {
+		this.reviewNum = reviewNum;
+	}
 	public String getReporter() {
 		return reporter;
 	}

@@ -40,30 +40,33 @@
 		</select>
 		<input type="button" id="changeClassify" value="신고 처리" />
 	</p>
-	<script src="https://code.jquery.com/jquery-2.2.4.js">
-	$("#changeClassify").on('click', function(){
-		var classifyDto = {};
-		classifyDto.classifyNum = $("#classifyNum option:selected").val();
-		if(classifyDto.classifyNum == 4){
-			classifyDto.id = ${reportVo.id};
-		} else{
-			classifyDto.id = ${reportVo.reporter};
-		}
-		$.ajax({
-			type:"POST",
-			url:"../changeClassify",
-			dataType:"json",
-			data:JSON.stringify(classifyDto),
-			contentType:"application/json; charset=utf-8",
-			success:function(){
-				if(classifyDto.classifyNum == 4){
-					alert("피신고자의 리뷰 작성 기능이 정지 되었습니다.");
-				} else{
-					alert("신고자의 신고 기능이 정지 되었습니다.");
-				}
+	<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+
+	<script>	
+		$("#changeClassify").on('click', function(){
+			console.log("??");
+			var classifyDto = {};
+			classifyDto.classifyNum = $("#classifyNum option:selected").val();
+			if(classifyDto.classifyNum == 4){
+				classifyDto.id = '${reportVo.id}';
+			} else{
+				classifyDto.id = '${reportVo.reporter}';
 			}
+			$.ajax({
+				type:"POST",
+				url:"../changeClassify",
+				dataType:"json",
+				data:JSON.stringify(classifyDto),
+				contentType:"application/json; charset=utf-8",
+				success:function(){
+					if(classifyDto.classifyNum == 4){
+						alert("피신고자의 리뷰 작성 기능이 정지 되었습니다.");
+					} else{
+						alert("신고자의 신고 기능이 정지 되었습니다.");
+					}
+				}
+			})
 		})
-	})
 	</script>
 	<input type="text" placeholder="아이디를 입력해주세요." name="id">에게 &nbsp;&nbsp;<input type="submit" value="공지 올리기" />
 

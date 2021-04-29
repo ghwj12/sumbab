@@ -35,8 +35,13 @@ public class WarningController {
 	@ResponseBody
 	public void changeClassify(@RequestBody ChangeClassifyDto classifyDto, Model model) {
 		warningService.changeClassify(classifyDto);
-		//model.addAttribute("classifyDto", classifyDto);
-		//return "mypage/reportDetail";
+	}
+	
+	@RequestMapping(value="/mypage/reportDetail/{warningNum}", method=RequestMethod.POST)
+	public String toNotice(Model model, @PathVariable int warningNum) {
+		model.addAttribute("reportVo", warningService.reportDetail(warningNum));
+		model.addAttribute("classifyDto", new ChangeClassifyDto());
+		return "mypage/writeNotice";
 	}
 	
 }
