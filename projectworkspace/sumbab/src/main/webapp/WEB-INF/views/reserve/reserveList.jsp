@@ -1,24 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>마이 페이지-예약 내역 보기</title>
 </head>
 <body>
 
-	<fmt:formatDate var="currentTime" value="${now}" pattern="yyyy-MM-dd hh:mm" />
-		
 	<h1>예약 내역 보기</h1>
 	<br>
 	<h2>예약 내역</h2>
 	<table border="1">
-	
-		<c:forEach var="reserveF" items="${listFuture}" varStatus="status">
+		<c:forEach var="reserveF" items="${listFuture}" varStatus="loop">
 			<tr>
 				<th>음식점명:</th>
 				<td>
@@ -42,7 +39,10 @@
 				<td>${reserveF.phone}</td>
 			</tr>
 			<tr>
-				<td colspan="2">=====</td>
+				<td colspan="2">
+				<input type="hidden" id="reserveSeq" name="reserveSeq" value="${reserveF.reserveSeq}">
+				<input type="button" value="취소" onclick="popupForCancel(${reserveF.reserveSeq});">
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -79,6 +79,8 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+<script src="<%=request.getContextPath()%>/resources/js/popup.js"> </script>
 
 </body>
 </html>
