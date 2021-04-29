@@ -41,4 +41,9 @@ public class ReserveService {
 	public List<Store> getStoreName(String memberID){
 		return reserveDao.getStoreName(memberID);
 	}
+	
+	public void delete(int reserveSeq) {
+		reserveDao.delete(reserveSeq);
+	}
+	
 }
