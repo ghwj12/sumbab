@@ -62,7 +62,6 @@
 	<script>
 		function f_check() {
 			if (document.reserveDTO.usingID.checked == true) {
-				//document.reserveDTO.resName.disabled = true;
 				document.reserveDTO.reserveName.value = "deliciousman"; //"${memberVO.id}"
 			} else if (document.reserveDTO.usingID.checked == false) {
 				document.reserveDTO.reserveName.disabled = false;
