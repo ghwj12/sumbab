@@ -2,6 +2,7 @@ package my.reserve;
 
 public class Reserve {
 
+	private int reserveSeq;
 	private int storeNum;
 	private String id;
 	private String reserveName;
@@ -15,6 +16,15 @@ public class Reserve {
 		this.reserveName = reserveName;
 		this.resDate = resDate;
 		this.phone = phone;
+	}
+
+	
+	public int getReserveSeq() {
+		return reserveSeq;
+	}
+
+	public void setReserveSeq(int reserveSeq) {
+		this.reserveSeq = reserveSeq;
 	}
 
 	public int getStoreNum() {
