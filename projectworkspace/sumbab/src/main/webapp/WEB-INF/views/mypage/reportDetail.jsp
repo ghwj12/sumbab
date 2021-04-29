@@ -58,6 +58,7 @@
 				dataType:"json",
 				data:JSON.stringify(classifyDto),
 				contentType:"application/json; charset=utf-8",
+				async: false,
 				success:function(){
 					if(classifyDto.classifyNum == 4){
 						alert("피신고자의 리뷰 작성 기능이 정지 되었습니다.");
