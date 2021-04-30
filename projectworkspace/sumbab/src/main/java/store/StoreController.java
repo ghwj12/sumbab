@@ -15,12 +15,12 @@ import store.restCat.RestCatRegitService;
 
 @Controller
 @RequestMapping("/store/*")
-@SessionAttributes("storeVO")
+@SessionAttributes("storeDTO")
 public class StoreController {
 
 	@RequestMapping(value = "/registerStep1", method = RequestMethod.GET)
 	public String regitStore1(Model model) {
-		model.addAttribute("storeVO", new Store());
+		model.addAttribute("storeDTO", new Store());
 		return "store/registerStep1";
 	}
 	@Autowired
@@ -32,9 +32,10 @@ public class StoreController {
 	}
 
 	@RequestMapping(value = "/registerStep1-2", method = RequestMethod.POST) 
-	public String regitStore2(@ModelAttribute("storeVO")Store store, StoreRegisterRequest regReq) {
+	public String regitStore2(@ModelAttribute("storeDTO")Store store, 
+			StoreRegisterRequest regReq, String fullAddress, String extrAddress) {
 		
-		storeRegisterService.regist(regReq);
+		storeRegisterService.regist(regReq, fullAddress, extrAddress);
 		
 		if(regReq.getClassify().equals("음식점")) {
 			return "store/registerStep2_res";
