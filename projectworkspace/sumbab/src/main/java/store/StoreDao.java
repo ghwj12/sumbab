@@ -8,8 +8,6 @@ public interface StoreDao {
 	public void update(Store store);
 	public void delete(Store store);
 	
-	public List<Store> selectByKeyword(String keyword); //일반 검색
-	public List<Store> selectByTag(String tag);  //해시태그 검색
 	public List<Store> selectByRestCat(String category);
 	public List<Store> selectByCafeCat(String category);
 	//public List<Store> selectNearby(Store store); //현재위치값 들어있는 cords
