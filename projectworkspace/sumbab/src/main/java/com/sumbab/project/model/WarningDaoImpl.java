@@ -13,7 +13,7 @@ public class WarningDaoImpl implements WarningDao{
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
-	public List<Warning> allReport() {
+	public List<WarningVo> allReport() {
 		return sqlSessionTemplate.selectList("allWarning");
 	}
 
@@ -30,6 +30,11 @@ public class WarningDaoImpl implements WarningDao{
 	@Override
 	public void delete(int warningNum) {
 		sqlSessionTemplate.delete("delete", warningNum);
+	}
+
+	@Override
+	public void insert(WarningDto warningDto) {
+		sqlSessionTemplate.insert("insert", warningDto);
 	}
 
 	

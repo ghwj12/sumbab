@@ -7,13 +7,20 @@ import org.apache.ibatis.type.Alias;
 @Alias("warningVo")
 public class WarningVo {
 
+	private int WarningNum;
+	private int reviewNum;
 	private String reporter;
 	private String id;
 	private Date regdate;
 	private String reason;
 	private String content;
-	private int reviewNum;
 	
+	public int getWarningNum() {
+		return WarningNum;
+	}
+	public void setWarningNum(int warningNum) {
+		WarningNum = warningNum;
+	}
 	public int getReviewNum() {
 		return reviewNum;
 	}

@@ -11,7 +11,7 @@ public class WarningService {
 	@Autowired
 	private WarningDaoImpl warningDao;
 
-	public List<Warning> bringWarning(){
+	public List<WarningVo> bringWarning(){
 		return warningDao.allReport();
 	}
 	
@@ -25,6 +25,12 @@ public class WarningService {
 	
 	public void delete(int warningNum) {
 		warningDao.delete(warningNum);
+	}
+	
+	public void insert(WarningDto warningDto, int reviewNum, String id) {
+		warningDto.setReviewNum(reviewNum);
+		warningDto.setReporter(id);
+		warningDao.insert(warningDto);
 	}
 	
 }

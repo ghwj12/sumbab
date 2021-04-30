@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sumbab.project.model.ChangeClassifyDto;
 import com.sumbab.project.model.Notice;
+import com.sumbab.project.model.WarningDto;
 import com.sumbab.project.model.WarningService;
 
 @Controller
@@ -59,6 +60,29 @@ public class WarningController {
 	public String delete(@PathVariable int warningNum) {
 		warningService.delete(warningNum);
 		return "mypage/deleteWarning";
+	}
+	
+	//여기서부터는 회원이 신고할 때 동작
+	@RequestMapping("/storeWarning/mergeWarning")	//merge하면 컨트롤러 삭제
+	public String mergeWarning() {
+		return "storeWarning/mergeWarning";
+	}
+	
+	@RequestMapping(value="/storeWarning/warningProcess", method=RequestMethod.GET)	//merge하면 {reviewNum} 추가
+	public String warningProcess(Model model) {		
+		int classify =	1; 							//session에 있는 classify 사용
+		if(classify != 4) {
+			model.addAttribute("warning", new WarningDto());
+		}
+		return "storeWarning/warningProcess";
+	}
+	
+	@RequestMapping(value="/storeWarning/warningProcess", method=RequestMethod.POST)	//merge하면 {reviewNum} 추가
+	public String insert(WarningDto warning) {		
+		int reviewNum = 11;							//@PathVariable 사용
+		String id = "suumbabR";						//session에 있는 id 사용
+		warningService.insert(warning, reviewNum, id);
+		return "storeWarning/warningAccept";
 	}
 	
 }

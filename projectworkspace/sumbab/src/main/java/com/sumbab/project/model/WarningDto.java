@@ -4,8 +4,8 @@ import java.util.Date;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("warning")
-public class Warning {
+@Alias("warningDto")
+public class WarningDto {
 
 	private int warningNum;
 	private int reviewNum;

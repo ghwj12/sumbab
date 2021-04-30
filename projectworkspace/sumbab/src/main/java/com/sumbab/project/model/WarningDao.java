@@ -5,7 +5,7 @@ import java.util.List;
 public interface WarningDao {
 
 	//신고 내역
-	public List<Warning> allReport();
+	public List<WarningVo> allReport();
 	
 	//신고 상세보기
 	public WarningVo reportDetail(int warningNum);
@@ -15,5 +15,8 @@ public interface WarningDao {
 	
 	//신고 삭제
 	public void delete(int warningNum);
+	
+	//신고 접수
+	public void insert(WarningDto warningDto);
 	
 }
