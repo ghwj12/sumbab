@@ -8,7 +8,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>가게 등록하기-2단계:${storeVO.name}</title>
+<title>가게 등록하기-2단계:${storeDTO.name}</title>
 </head>
 
 <body>
