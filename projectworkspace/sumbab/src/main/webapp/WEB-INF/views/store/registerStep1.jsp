@@ -8,10 +8,11 @@
 <title>가게 등록하기-1단계</title>
 </head>
 <body>
+
 	<h1>가게 등록 및 가게 정보 수정</h1>
 
 
-	<form:form method="post" action="registerStep1-2" commandName="storeVO">
+	<form:form method="post" action="registerStep1-2" commandName="storeDTO">
 		<input type="radio" name="classify" value="음식점">음식점 등록
 		<input type="radio" name="classify" value="카페">카페 등록
 		<table>
@@ -21,7 +22,12 @@
 			</tr>
 			<tr>
 				<td>위치:</td>
-				<td><input type="text" placeholder="시/군/구 도로명 주소로 입력해주세요." name="address" id="address" required></td>
+				<td>
+				<input type="text" id="postcode" placeholder="우편번호">
+				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+				<input type="text" id="fullAddress" name="fullAddress" placeholder="주소"><br>
+				<input type="text" id="extrAddress" name="extrAddress" placeholder="상세주소" required>
+				</td>
 			</tr>
 			<tr>
 				<td>전화번호:</td>
@@ -51,5 +57,32 @@
 
 		<input type="submit" value="다음">
 		</form:form>
+
+
+<%---카카오 주소 api---%>		
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                if (data.userSelectedType === 'R') { //도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { //지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("fullAddress").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("extrAddress").focus();
+            }
+        }).open();
+    }
+</script>
+
 </body>
 </html>
