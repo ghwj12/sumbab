@@ -27,5 +27,10 @@ public class WarningDaoImpl implements WarningDao{
 		sqlSessionTemplate.update("changeClassify", classifyDto);
 	}
 
+	@Override
+	public void delete(int warningNum) {
+		sqlSessionTemplate.delete("delete", warningNum);
+	}
+
 	
 }

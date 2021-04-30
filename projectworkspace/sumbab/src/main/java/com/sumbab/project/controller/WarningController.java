@@ -30,6 +30,7 @@ public class WarningController {
 		model.addAttribute("reportVo", warningService.reportDetail(warningNum));
 		model.addAttribute("classifyDto", new ChangeClassifyDto());
 		model.addAttribute("notice", new Notice());
+		model.addAttribute("warningNum", warningNum);
 		return "mypage/reportDetail";
 	}
 	
@@ -46,6 +47,18 @@ public class WarningController {
 		model.addAttribute("receiveNotice", notice);
 		model.addAttribute("notice", new Notice());
 		return "mypage/writeNotice";
+	}
+	
+	@RequestMapping(value="/mypage/deleteWarningProcess/{warningNum}", method=RequestMethod.GET)
+	public String deleteProcess(@PathVariable int warningNum, Model model) {
+		model.addAttribute("warningNum", warningNum);
+		return "mypage/deleteWarningProcess";
+	}
+	
+	@RequestMapping(value="/mypage/deleteWarningProcess/{warningNum}", method=RequestMethod.POST)
+	public String delete(@PathVariable int warningNum) {
+		warningService.delete(warningNum);
+		return "mypage/deleteWarning";
 	}
 	
 }

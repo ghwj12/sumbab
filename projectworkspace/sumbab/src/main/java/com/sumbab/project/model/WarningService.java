@@ -23,4 +23,8 @@ public class WarningService {
 		warningDao.changeClassify(classifyDto);
 	}
 	
+	public void delete(int warningNum) {
+		warningDao.delete(warningNum);
+	}
+	
 }

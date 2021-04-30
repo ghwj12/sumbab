@@ -13,4 +13,7 @@ public interface WarningDao {
 	//classify 변경
 	public void changeClassify(ChangeClassifyDto classifyDto);
 	
+	//신고 삭제
+	public void delete(int warningNum);
+	
 }

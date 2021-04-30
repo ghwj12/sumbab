@@ -73,5 +73,20 @@
 	<form:hidden path="reviewNumByRD" value="${reportVo.reviewNum}" />
 	<input type="text" placeholder="아이디를 입력해주세요." name="authorityByRD">에게 &nbsp;&nbsp;<input type="submit" value="공지 올리기" />
 	</form:form>
+	<input type="button" value="신고 삭제" onclick="openDelect()" />
+	<script type="text/javascript">
+		function openDelete(){
+			var popWidth = 300;
+			var popHeight = 200;
+			var winHeight = document.body.clientHeight;
+			var winWidth = document.body.clientWidth;
+			var winX = window.screenLeft;
+			var winY = window.screenTop;
+			var popX = winX + (winWidth - popWidth)/2;
+			var popY = winY + (winHeight - popHeight)/2;
+			url="../deleteWarningProcess/"+${warningNum};
+			var openWin = window.open(url, "deleteProcess", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
+		}
+	</script>
 </body>
 </html>
