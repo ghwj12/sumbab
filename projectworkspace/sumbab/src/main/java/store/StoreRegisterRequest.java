@@ -4,6 +4,8 @@ public class StoreRegisterRequest {
 
 	private String classify;
 	private String name;
+	private String cityCode;
+	private String districtCode;
 	private String address;
 	private String phone;
 	private String menu;
@@ -26,6 +28,22 @@ public class StoreRegisterRequest {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCityCode() {
+		return cityCode;
+	}
+
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode;
+	}
+
+	public String getDistrictCode() {
+		return districtCode;
+	}
+
+	public void setDistrictCode(String districtCode) {
+		this.districtCode = districtCode;
 	}
 
 	public String getAddress() {
