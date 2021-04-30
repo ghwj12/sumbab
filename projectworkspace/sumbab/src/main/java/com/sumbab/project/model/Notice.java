@@ -14,7 +14,35 @@ public class Notice {
 	private String authority;
 	private String writer;
 	private Date regdate;
+	//신고 내역에서 공지 올리기로 넘어갈 때 필요한 변수들..(공지 페이지에서 공지 올리기로 갈 때와 신고 내역에서 갈 때의 커맨드 객체를 동일하게 하기 위해)
+	private int classifyNum; //리뷰 번호를 넘길 지에 대해 판별하기 위해
+	private int reviewNumByRD; //RD:ReportDetail
+	private String authorityByRD;
 	
+	public int getReviewNumByRD() {
+		return reviewNumByRD;
+	}
+
+	public int getClassifyNum() {
+		return classifyNum;
+	}
+
+	public void setClassifyNum(int classifyNum) {
+		this.classifyNum = classifyNum;
+	}
+
+	public void setReviewNumByRD(int reviewNumByRD) {
+		this.reviewNumByRD = reviewNumByRD;
+	}
+
+	public String getAuthorityByRD() {
+		return authorityByRD;
+	}
+
+	public void setAuthorityByRD(String authorityByRD) {
+		this.authorityByRD = authorityByRD;
+	}
+
 	public Notice() {}
 	
 	public Notice(int noticeNum, int reviewNum, String title, String content, String authority, String writer,

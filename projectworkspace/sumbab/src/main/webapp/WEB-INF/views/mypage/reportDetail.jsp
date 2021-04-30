@@ -11,6 +11,7 @@
 </head>
 <body>
 <h2>신고 내역</h2>
+	<form:form commandName="notice" method="POST">
 	<table border="1">
 		<tr>
 			<th>신고자</th>
@@ -34,14 +35,14 @@
 		</tr>
 	</table>
 	<p>
-		<select id="classifyNum">
-			<option value="4">피신고자 리뷰 작성 기능 정지</option>
-			<option value="5">신고자 신고 기능 정지</option>
-		</select>
+		<form:select path="classifyNum">
+			<form:option value="4">피신고자 리뷰 작성 기능 정지</form:option>
+			<form:option value="5">신고자 신고 기능 정지</form:option>
+		</form:select>
 		<input type="button" id="changeClassify" value="신고 처리" />
 	</p>
-	<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
-
+	<script src="https://code.jquery.com/jquery-2.2.4.js"></script> 
+	<!-- src 사용하면 script 태그 따로 사용해야 됨 -->
 	<script>	
 		$("#changeClassify").on('click', function(){
 			console.log("??");
@@ -69,7 +70,8 @@
 			})
 		})
 	</script>
-	<input type="text" placeholder="아이디를 입력해주세요." name="id">에게 &nbsp;&nbsp;<input type="submit" value="공지 올리기" />
-
+	<form:hidden path="reviewNumByRD" value="${reportVo.reviewNum}" />
+	<input type="text" placeholder="아이디를 입력해주세요." name="authorityByRD">에게 &nbsp;&nbsp;<input type="submit" value="공지 올리기" />
+	</form:form>
 </body>
 </html>

@@ -19,6 +19,9 @@ public interface NoticeDao {
 	//공지 올리기
 	public void insert(Notice notice);
 	
+	//신고 내역에서 리뷰 번호 받아서 공지 올리기
+	public void fromWarning(Notice notice);
+	
 	//공지 수정
 	public void update(Notice notice);
 	

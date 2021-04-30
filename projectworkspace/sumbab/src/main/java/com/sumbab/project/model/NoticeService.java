@@ -29,7 +29,10 @@ public class NoticeService {
 	}
 	
 	public void write(Notice notice) {
-		noticeDao.insert(notice);
+		if(notice.getReviewNum() != 0)
+			noticeDao.fromWarning(notice);	
+		else
+			noticeDao.insert(notice);
 	}
 	
 	public void edit(Notice notice) {

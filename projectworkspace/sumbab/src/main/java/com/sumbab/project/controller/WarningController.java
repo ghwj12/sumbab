@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sumbab.project.model.ChangeClassifyDto;
+import com.sumbab.project.model.Notice;
 import com.sumbab.project.model.WarningService;
 
 @Controller
@@ -25,9 +26,10 @@ public class WarningController {
 	}
 	
 	@RequestMapping(value="/mypage/reportDetail/{warningNum}", method=RequestMethod.GET)
-	public String noticeDetail(Model model, @PathVariable int warningNum) {
+	public String reportDetail(Model model, @PathVariable int warningNum) {
 		model.addAttribute("reportVo", warningService.reportDetail(warningNum));
 		model.addAttribute("classifyDto", new ChangeClassifyDto());
+		model.addAttribute("notice", new Notice());
 		return "mypage/reportDetail";
 	}
 	
@@ -40,9 +42,9 @@ public class WarningController {
 	}
 	
 	@RequestMapping(value="/mypage/reportDetail/{warningNum}", method=RequestMethod.POST)
-	public String toNotice(Model model, @PathVariable int warningNum) {
-		model.addAttribute("reportVo", warningService.reportDetail(warningNum));
-		model.addAttribute("classifyDto", new ChangeClassifyDto());
+	public String toNotice(Notice notice, Model model) {
+		model.addAttribute("receiveNotice", notice);
+		model.addAttribute("notice", new Notice());
 		return "mypage/writeNotice";
 	}
 	

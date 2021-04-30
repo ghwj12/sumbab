@@ -36,6 +36,11 @@ public class NoticeDaoImpl implements NoticeDao{
 	public void insert(Notice notice) {
 		sqlSessionTemplate.insert("insert", notice);
 	}
+	
+	@Override
+	public void fromWarning(Notice notice) {
+		sqlSessionTemplate.insert("insertWithRN", notice);	//RN:ReviewNum
+	}
 
 	@Override
 	public void update(Notice notice) {

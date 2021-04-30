@@ -25,6 +25,11 @@
         		values(notice_seq.nextval, #{title}, #{content}, #{authority}, 'admin1', sysdate)
         </insert>
         
+        <insert id="insertWithRN" parameterType="notice">
+        	insert into NOTICE (notice_num, title, content, authority, writer, regdate, review_num)
+        		values(notice_seq.nextval, #{title}, #{content}, #{authority}, 'admin1', sysdate, #{reviewNum})
+        </insert>
+        
         <update id="update" parameterType="notice">
         	update NOTICE set title=#{title}, authority=#{authority}, content=#{content}, writer='admin1'
         		where notice_num=#{noticeNum}
