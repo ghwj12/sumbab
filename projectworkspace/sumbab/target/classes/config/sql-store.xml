@@ -5,16 +5,16 @@
 <mapper namespace="store">
 
 	<!-- id = ${member.id}로 나중에 변경 -->
-	<insert id="insert" parameterType="store">
+	<insert id="insertStore" parameterType="store">
 		INSERT INTO STORE (STORE_NUM,
 		id, classify, name, address, phone, menu, time, reserving, etc, pwd,
-		count, picture)
+		count, picture, CITYCODE, DISTRICTCODE)
 		VALUES (STORE_SEQ.nextval, 'deliciousman', #{classify},
 		#{name}, #{address}, #{phone},
-		#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, NULL)
+		#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, NULL, #{cityCode}, #{districtCode})
 	</insert>
 
-	<update id="update" parameterType="store">
+	<update id="updateStore" parameterType="store">
 		UPDATE STORE SET
 		classify=#{classify}, name= #{name}, address=#{address},
 		phone=#{phone},
@@ -22,7 +22,7 @@
 		WHERE pwd=#{pwd}
 	</update>
 
-	<delete id="delete" parameterType="store">
+	<delete id="deleteStore" parameterType="store">
 		DELETE FROM STORE WHERE
 		pwd=#{pwd}
 	</delete>
@@ -37,7 +37,7 @@
 	<!-- ============검색 관련 기능=============== -->
 
 	<!-- 내가 등록한 가게 보기 -->
-	<select id="list" resultType="store">
+	<select id="listStore" resultType="store">
 		SELECT * FROM STORE WHERE ID=${ID}
 		ORDER BY STORE_NUM
 	</select>
