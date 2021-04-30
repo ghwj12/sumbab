@@ -6,6 +6,8 @@ public class Store {
 	private String id;
 	private String classify;
 	private String name;
+	private String cityCode;
+	private String districtCode;
 	private String address;
 	private String phone;
 	private String menu;
@@ -19,11 +21,13 @@ public class Store {
 	public Store() {}
 
 
-	public Store(String classify, String name, String address, String phone, String menu, String time,
+	public Store(String classify, String name, String cityCode, String districtCode, String address, String phone, String menu, String time,
 			boolean reserving, String etc, String pwd) {
 		super();
 		this.classify = classify;
 		this.name = name;
+		this.cityCode = cityCode;
+		this.districtCode = districtCode;
 		this.address = address;
 		this.phone = phone;
 		this.menu = menu;
@@ -65,6 +69,26 @@ public class Store {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getCityCode() {
+		return cityCode;
+	}
+
+
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode;
+	}
+
+
+	public String getDistrictCode() {
+		return districtCode;
+	}
+
+
+	public void setDistrictCode(String districtCode) {
+		this.districtCode = districtCode;
+	}
+
 
 	public String getAddress() {
 		return address;
