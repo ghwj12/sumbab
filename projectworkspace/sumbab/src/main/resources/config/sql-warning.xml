@@ -18,7 +18,7 @@
         	update MEMBER set classify=#{classifyNum} where id=#{id}
         </update>
         
-        <delete id="delete" parameterType="Integer">
+        <delete id="deleteWarning" parameterType="Integer">
         	delete from WARNING where warning_num=#{warningNum}
         </delete>
         

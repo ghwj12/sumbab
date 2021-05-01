@@ -20,7 +20,7 @@
         	select * from NOTICE where notice_num=#{noticeNum}
         </select>
         
-        <insert id="insert" parameterType="notice">
+        <insert id="insertNotice" parameterType="notice">
         	insert into NOTICE (notice_num, title, content, authority, writer, regdate)
         		values(notice_seq.nextval, #{title}, #{content}, #{authority}, 'admin1', sysdate)
         </insert>
@@ -30,12 +30,12 @@
         		values(notice_seq.nextval, #{title}, #{content}, #{authority}, 'admin1', sysdate, #{reviewNum})
         </insert>
         
-        <update id="update" parameterType="notice">
+        <update id="updateNotice" parameterType="notice">
         	update NOTICE set title=#{title}, authority=#{authority}, content=#{content}, writer='admin1'
         		where notice_num=#{noticeNum}
         </update>
         
-        <delete id="delete" parameterType="notice">
+        <delete id="deleteNotice" parameterType="notice">
         	delete from NOTICE where notice_num=#{noticeNum}
         </delete>
         

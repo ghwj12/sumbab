@@ -29,7 +29,7 @@ public class WarningDaoImpl implements WarningDao{
 
 	@Override
 	public void delete(int warningNum) {
-		sqlSessionTemplate.delete("delete", warningNum);
+		sqlSessionTemplate.delete("deleteWarning", warningNum);
 	}
 
 	@Override

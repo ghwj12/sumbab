@@ -34,7 +34,7 @@ public class NoticeDaoImpl implements NoticeDao{
 
 	@Override
 	public void insert(Notice notice) {
-		sqlSessionTemplate.insert("insert", notice);
+		sqlSessionTemplate.insert("insertNotice", notice);
 	}
 	
 	@Override
@@ -44,12 +44,12 @@ public class NoticeDaoImpl implements NoticeDao{
 
 	@Override
 	public void update(Notice notice) {
-		sqlSessionTemplate.update("update", notice);	
+		sqlSessionTemplate.update("updateNotice", notice);	
 	}
 
 	@Override
 	public void delete(int noticeNum) {
-		sqlSessionTemplate.update("delete", noticeNum);
+		sqlSessionTemplate.update("deleteNotice", noticeNum);
 	}
 
 	@Override
