@@ -27,10 +27,9 @@
 		pwd=#{pwd}
 	</delete>
 
-	<update id="upReadCount" parameterType="store">
-		UPDATE STORE SET count =
-		count+1
-		WHERE name=#{name}
+	<update id="upReadCount" parameterType="Integer">
+		UPDATE STORE SET count = count+1
+		WHERE STORE_NUM=#{storeNum}
 	</update>
 
 	<!-- <delete id="deleteAll"> DELETE FROM STORE </delete> -->
@@ -41,17 +40,10 @@
 		SELECT * FROM STORE WHERE ID=${ID}
 		ORDER BY STORE_NUM
 	</select>
-
-	<select id="selectByKeyword" parameterType="String"	resultType="store">
-		select * from STORE where (NAME like '%#{keyword}%' or ADDRESS like
-		'%#{keyword}%' or MENU like '%#{keyword}')
-		ORDER BY STORE_NUM DESC
+	
+	<!-- 가게 상세보기 -->
+	<select id="storeView" parameterType="Integer" resultType="store">
+		select * from STORE where STORE_NUM=#{storeNum}
 	</select>
-
-	<select id="selectByTag" parameterType="String"	resultType="store">
-		select * from STORE where STORE_NUM IN
-		(select STORE_NUM from STORE_TAG where TAG_ID=(select TAG_ID from TAG where
-		TAG_NAME=#{keyword}));
-	</select>
-
+	
 </mapper>
