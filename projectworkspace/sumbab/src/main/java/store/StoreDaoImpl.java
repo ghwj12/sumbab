@@ -44,4 +44,15 @@ public class StoreDaoImpl implements StoreDao {
 		List<Store> results = sqlSessionTemplate.selectList("selectByCafeCat", category);
 		return results;
 	}
+
+	@Override //가게 리스트 --->가게 상세보기 (storeNum)으로 select
+	public Store selectOne(int storeNum) {
+		
+		return sqlSessionTemplate.selectOne("storeView", storeNum);
+	}
+
+	@Override
+	public void upReadCount(int storeNum) {
+		sqlSessionTemplate.update("upReadCount", storeNum);
+	}
 }
