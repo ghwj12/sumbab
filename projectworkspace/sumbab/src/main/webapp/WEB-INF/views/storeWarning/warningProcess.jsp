@@ -16,7 +16,7 @@
 		<input type="button" value="확인" onclick="javascript:self.close()">
 	</c:if>
 	<c:if test="${!empty warning}">
-		<form:form CommandName="warning" method="POST">
+		<form:form commandName="warning" method="POST">
 			해당 리뷰를 신고하는 이유를 선택 해주세요.<br>
 			(*사이트 운영자의 판단하에 신고 기능이 정지될 수 있습니다.)<br><br>
 			<form:select path="reason">

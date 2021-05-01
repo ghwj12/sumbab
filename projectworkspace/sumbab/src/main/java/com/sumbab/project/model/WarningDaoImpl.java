@@ -34,7 +34,7 @@ public class WarningDaoImpl implements WarningDao{
 
 	@Override
 	public void insert(WarningDto warningDto) {
-		sqlSessionTemplate.insert("insert", warningDto);
+		sqlSessionTemplate.insert("insertWarning", warningDto);
 	}
 
 	
