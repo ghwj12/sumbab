@@ -39,9 +39,10 @@ public class ReserveController {
 	}
 	
 	//식당 상세보기-->예약하기 요청
-	@RequestMapping(value="/reserve/reserveForm", method=RequestMethod.GET)//나중에 post로 변경
-	public String reserve(Model model) {
+	@RequestMapping(value="/reserve/reserveForm/{storeNum}", method=RequestMethod.GET)
+	public String reserve(@PathVariable int storeNum, Model model) {
 		model.addAttribute("reserveDTO", new Reserve());
+		
 		return "reserve/reserveForm";
 	}
 	
