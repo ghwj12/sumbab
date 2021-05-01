@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -12,6 +13,7 @@ import store.cafeCat.CafeCatRegistReq;
 import store.cafeCat.CafeCatRegitService;
 import store.restCat.RestCatRegistReq;
 import store.restCat.RestCatRegitService;
+import store.review.ReviewService;
 
 @Controller
 @RequestMapping("/store/*")
@@ -23,19 +25,20 @@ public class StoreController {
 		model.addAttribute("storeDTO", new Store());
 		return "store/registerStep1";
 	}
+	
 	@Autowired
-	private StoreRegisterService storeRegisterService;
+	private StoreService storeService;
 
 	@Autowired
-	public void setStoreRegisterService(StoreRegisterService storeRegisterService) {
-		this.storeRegisterService = storeRegisterService;
+	public void setStoreService(StoreService storeService) {
+		this.storeService = storeService;
 	}
 
 	@RequestMapping(value = "/registerStep1-2", method = RequestMethod.POST) 
 	public String regitStore2(@ModelAttribute("storeDTO")Store store, 
 			StoreRegisterRequest regReq, String fullAddress, String extrAddress) {
 		
-		storeRegisterService.regist(regReq, fullAddress, extrAddress);
+		storeService.regist(regReq, fullAddress, extrAddress);
 		
 		if(regReq.getClassify().equals("음식점")) {
 			return "store/registerStep2_res";
@@ -74,5 +77,24 @@ public class StoreController {
 		
 		cafeCatRegitService.resgist(cafeCatRegitReq);
 		return "store/completeRegister";
+	}
+	
+	@Autowired
+	private ReviewService reviewService;
+	@Autowired
+	public void setReviewService(ReviewService reviewService) {
+		this.reviewService = reviewService;
+	}
+	
+	//테스트용 : 가게 상세보기 페이지 (from 정민님 github)
+	@RequestMapping(value="/StoreView/{storeNum}", method=RequestMethod.GET)
+	public String detailView(@PathVariable int storeNum, Model model) {
+		
+		storeService.upReadCount(storeNum);
+		model.addAttribute("storeVO", storeService.storeView(storeNum));
+		model.addAttribute("countReview", reviewService.getReivewCount(storeNum));
+		model.addAttribute("Reviewlist", storeService.get)
+		
+		return "store/StoreView";
 	}
 }
