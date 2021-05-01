@@ -42,6 +42,8 @@
 				<beans:value>classpath:config/sql-cafeCat.xml</beans:value>
 				<beans:value>classpath:config/sql-reserve.xml</beans:value>
 				<beans:value>classpath:config/sql-search.xml</beans:value>
+				<beans:value>classpath:config/sql-review.xml</beans:value>
+				<beans:value>classpath:config/sql-tag.xml</beans:value>
 				<!-- sql query method와 mapping된 sql 구문을 정의한 파일 지정 -->
 			</beans:list>
 		</beans:property>
