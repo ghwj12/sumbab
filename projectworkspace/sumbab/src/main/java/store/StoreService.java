@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StoreRegisterService {
+public class StoreService {
 
-	public StoreRegisterService() {} //기본 생성자
+	public StoreService() {} //기본 생성자
 	
 	private StoreDaoImpl storeDao;
 	
 	@Autowired
-	public StoreRegisterService(StoreDaoImpl storeDao) {
+	public StoreService(StoreDaoImpl storeDao) {
 		this.storeDao = storeDao;
 	}
 	
@@ -38,5 +38,13 @@ public class StoreRegisterService {
 				req.getPwd());
 		
 		storeDao.insert(newStore);
+	}
+	
+	public Store storeView(int storeNum) {
+		return storeDao.selectOne(storeNum);
+	}
+	
+	public void upReadCount(int storeNum) {
+		storeDao.upReadCount(storeNum);
 	}
 }
