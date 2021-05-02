@@ -15,7 +15,7 @@
         </select>
         
         <update id="changeClassify" parameterType="classifyDto">
-        	update MEMBER set classify=#{classifyNum} where id=#{id}
+        	update MEMBER set classify=#{classify} where id=#{id}
         </update>
         
         <delete id="deleteWarning" parameterType="Integer">

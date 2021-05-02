@@ -20,7 +20,7 @@ public interface WarningDao {
 	public void insert(WarningDto warningDto);
 	
 	//정지 계정 가져오기
-	public List<MemberClassify> selectMember();
+	public List<MemberClassifyVo> selectMember();
 	
 	//정지 해제
 	public void updateMemberClassify(String id);

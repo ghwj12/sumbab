@@ -5,7 +5,7 @@ import org.apache.ibatis.type.Alias;
 @Alias("classifyDto")
 public class ChangeClassifyDto {
 	private String id;
-	private int classifyNum;
+	private int classify;
 	
 	public String getId() {
 		return id;
@@ -13,11 +13,11 @@ public class ChangeClassifyDto {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getClassifyNum() {
-		return classifyNum;
+	public int getClassify() {
+		return classify;
 	}
-	public void setClassifyNum(int classifyNum) {
-		this.classifyNum = classifyNum;
+	public void setClassify(int classify) {
+		this.classify = classify;
 	}
 	
 	

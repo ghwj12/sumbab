@@ -5,7 +5,7 @@ import java.util.Date;
 import org.apache.ibatis.type.Alias;
 
 @Alias("memberClassify")
-public class MemberClassify {
+public class MemberClassifyVo {
 
 	private String id;
 	private int classify;
