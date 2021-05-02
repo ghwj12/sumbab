@@ -92,8 +92,8 @@ public class StoreController {
 		
 		storeService.upReadCount(storeNum);
 		model.addAttribute("storeVO", storeService.storeView(storeNum));
-		model.addAttribute("countReview", reviewService.getReivewCount(storeNum));
-		model.addAttribute("Reviewlist", storeService.get)
+		model.addAttribute("countReview", reviewService.getReviewCount(storeNum));
+		model.addAttribute("Reviewlist", reviewService.getList(storeNum));
 		
 		return "store/StoreView";
 	}
