@@ -78,10 +78,9 @@ body {
 	</table>
 	<%-- =============================================================================================================================================== 
 		추후에 보관함 예약 마무리되서 들어오면 action말고 href로 링크로넘기거나 submit하거나 상황에따라 변경될예정--%>
-	<input type="button" action="#" value="보관함에담기">
+	<input type="button" onclick="#" value="보관함에담기">
 	<c:set var="reserving" value="${storeVO.reserving}" />
 	<c:choose>
-	
 	<%--reserving 값에 따라 예약하기/예약불가 버튼 출력--%>
 	<c:when test="${reserving eq true}">
 		<input type="button" value="예약하기" onclick="location.href='/sumbab/reserve/reserveForm/${storeVO.storeNum}'" >
@@ -91,9 +90,10 @@ body {
 	</c:otherwise>
 	</c:choose>
 	<!-- ================================================================================================================================================== -->
-	<h1>
-		리뷰목록<br>
-	</h1>
+	<div id="reviewTitle">
+	<h2>리뷰 | ${countReview}</h2>
+		<input type="button" value="리뷰 작성" onclick="location.href='/sumbab/review/writeReview/${storeVO.storeNum}'">
+	</div>
 	<div id="reviewList">
 		<c:forEach items="${Reviewlist}" var="Reviewlist">
 			<table class="reviewInfo">
@@ -108,7 +108,7 @@ body {
 				</tr>
 				<tr>
 					<th>작성일:</th>
-					<td width="500" style="word-break: break-all">&nbsp;${Reviewlist.regdate}</td>
+					<td width="500" style="word-break: break-all">&nbsp;${Reviewlist.regDate}</td>
 				</tr>
 				<tr>
 					<th>리뷰내용:</th>
