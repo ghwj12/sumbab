@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reviewDao">
+
+
+	<!-- id = ${memberVO.id}로 나중에 변경 -->
+	<insert id="insertReview" parameterType="review">
+		insert into REVIEW (REVIEW_NUM, STORE_NUM, ID, MENU, STAR, CONTENT, REVISIT, REGDATE, PICTURE)
+		values (REVIEW_SEQ.nextval, #{storeVO.storeNum}, #{memberID}, #{menu}, #{star}, #{content}, #{revisit}, sysdate, NULL)
+	</insert>
+
+	<update id="updateReview" parameterType="Integer">
+		update REVIEW set MENU=#{menu}, STAR=#{star}, CONTENT=#{content}, REVISIT=#{revisit}, PICTURE=#{picture}
+		where REVIEW_NUM = #{reviewNum}
+	</update>
+
+	<delete id="deleteReview" parameterType="Integer">
+		delete from REVIEW where REVIEW_NUM=#{reviewNum}
+	</delete>
+
+	<select id="getReviewCount" parameterType="Integer" resultType="Integer">
+		select count(*) from REVIEW where STORE_NUM=#{storeNum}
+	</select>
+	
+	<select id="getAvgStar" parameterType="Integer" resultType="Float">
+		select avg(STAR) from REVIEW where STORE_NUM=#{storeNum}
+	</select>
+	
+	<select id="getReviewList" parameterType="Integer" resultType="review">
+		select * from REVIEW where STORE_NUM=#{storeNum}
+	</select>
+	
+</mapper>
