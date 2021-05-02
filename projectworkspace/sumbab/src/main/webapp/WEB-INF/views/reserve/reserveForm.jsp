@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,12 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<!-- timepicker -->
 
-<link rel="stylesheet"
-	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- timepicker -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <style>
 /*datepicer 버튼 롤오버 시 손가락 모양 표시*/
 .ui-datepicker-trigger {
@@ -28,13 +25,14 @@
 }
 </style>
 
-<title>${storeVO.name}예약하기</title>
+<title>${storeName} 예약하기</title>
 </head>
 <body>
-<!-- 가게 상세보기 view에서 storeVO.reserving=false 인 곳은 예약하기 버튼 비활성화 -->
+<!-- 가게 상세보기 view에서 storeVO.reserving==false 인 곳은 예약하기 버튼 비활성화 -->
 
-	<h1>${storeVO.name}storeVO.name 예약하기</h1>
-	<form:form id="reserveDTO" name="reserveDTO" method="POST" action="completeReserve" commandName="reserveDTO">
+	<h1>${storeName} 예약하기</h1>
+	
+	<form:form id="reserveDTO" name="reserveDTO" method="POST" action="/sumbab/reserve/completeReserve" commandName="reserveDTO">
 		<table border="1">
 			<tr>
 				<th>이름:</th>
@@ -53,7 +51,9 @@
 			<tr>
 				<th>전화번호:</th>
 				<td><input type="text" name="phone"
-					placeholder="예약 하시는 분의 전화번호를 입력해 주세요. " required></td>
+					placeholder="예약 하시는 분의 전화번호를 입력해 주세요. " required>
+					<input type="hidden" id="storeNum" name="storeNum" value="${storeNum}">
+					</td>
 			</tr>
 		</table>
 		<input type="submit" value="예약하기">
