@@ -46,8 +46,8 @@
 	<script>	
 		$("#changeClassify").on('click', function(){
 			var classifyDto = {};
-			classifyDto.classifyNum = $("#classifyNum option:selected").val();
-			if(classifyDto.classifyNum == 4){
+			classifyDto.classify = $("#classifyNum option:selected").val();
+			if(classifyDto.classify == 4){
 				classifyDto.id = '${reportVo.id}';
 			} else{
 				classifyDto.id = '${reportVo.reporter}';
@@ -60,7 +60,7 @@
 				contentType:"application/json; charset=utf-8",
 				async: false,
 				success:function(){
-					if(classifyDto.classifyNum == 4){
+					if(classifyDto.classify == 4){
 						alert("피신고자의 리뷰 작성 기능이 정지 되었습니다.");
 					} else{
 						alert("신고자의 신고 기능이 정지 되었습니다.");
