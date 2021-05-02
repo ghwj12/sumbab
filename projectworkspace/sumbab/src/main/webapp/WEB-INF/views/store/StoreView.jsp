@@ -50,7 +50,7 @@ body {
 
 	<h1>${storeVO.name}<br>
 	</h1>
-	조회수:${storeVO.count}
+	조회수: ${storeVO.count} &nbsp; 평균별점: ${avgStar} &nbsp; 재방문의사: ${avgRevisit}%
 	<br>
 
 	<table id="storeInfo">
