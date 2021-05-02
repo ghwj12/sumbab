@@ -16,6 +16,8 @@
 		<typeAlias alias="restCat" type="store.restCat.RestCat"/>
 		<typeAlias alias="cafeCat" type="store.cafeCat.CafeCat"/>
 		<typeAlias alias="reserve" type="my.reserve.Reserve"/>
+		<typeAlias alias="review" type="store.review.Review"/>
+		<typeAlias alias="tag" type="store.review.tag.Tag"/>
 	</typeAliases> 
 	
 </configuration>
