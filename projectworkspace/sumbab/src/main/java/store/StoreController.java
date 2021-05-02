@@ -94,6 +94,8 @@ public class StoreController {
 		model.addAttribute("storeVO", storeService.storeView(storeNum));
 		model.addAttribute("countReview", reviewService.getReviewCount(storeNum));
 		model.addAttribute("Reviewlist", reviewService.getList(storeNum));
+		model.addAttribute("avgStar", reviewService.getAvgStar(storeNum));
+		model.addAttribute("avgRevisit", (reviewService.getAvgRevisit(storeNum))*100);
 		
 		return "store/StoreView";
 	}
