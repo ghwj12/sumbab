@@ -12,7 +12,7 @@
 
 <!-- 마이페이지 controller에 requestMapping 할 것 -->
 <input type="button" value="예약내역 보기" onclick="location.href='/sumbab/mypage/mypageMain'"> 
-<input type="button" value="가게 페이지로 " onclick="#">
+<input type="button" value="가게 페이지로 " onclick="location.href='/sumbab/store/StoreView/${storeNum}'">
 
 </body>
 </html>
