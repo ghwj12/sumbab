@@ -8,11 +8,13 @@ public class Reserve {
 	private String reserveName;
 	private String resDate;
 	private String phone;
-	
+
 	public Reserve() {}
 	
-	public Reserve(String reserveName, String resDate, String phone) {
+	public Reserve(int storeNum, String id, String reserveName, String resDate, String phone) {
 		super();
+		this.storeNum = storeNum;
+		this.id = id;
 		this.reserveName = reserveName;
 		this.resDate = resDate;
 		this.phone = phone;
@@ -66,5 +68,5 @@ public class Reserve {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	
 }
