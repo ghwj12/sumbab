@@ -33,4 +33,8 @@ public class WarningService {
 		warningDao.insert(warningDto);
 	}
 	
+	public List<MemberClassify> selectMember() {
+		return warningDao.selectMember();
+	}
+	
 }

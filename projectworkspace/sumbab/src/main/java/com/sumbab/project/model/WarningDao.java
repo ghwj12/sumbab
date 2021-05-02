@@ -19,4 +19,7 @@ public interface WarningDao {
 	//신고 접수
 	public void insert(WarningDto warningDto);
 	
+	//정지 계정 가져오기
+	public List<MemberClassify> selectMember();
+	
 }

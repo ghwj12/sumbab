@@ -62,7 +62,7 @@ public class WarningController {
 		return "mypage/deleteWarning";
 	}
 	
-	//여기서부터는 회원이 신고할 때 동작
+	//여기서부터 회원이 신고할 때 동작
 	@RequestMapping("/storeWarning/mergeWarning")	//merge하면 컨트롤러 삭제
 	public String mergeWarning() {
 		return "storeWarning/mergeWarning";
@@ -83,6 +83,13 @@ public class WarningController {
 		String id = "suumbabR";						//session에 있는 id 사용
 		warningService.insert(warning, reviewNum, id);
 		return "storeWarning/warningAccept";
+	}
+	
+	//정지 계정 관리
+	@RequestMapping("/mypage/classifyAdmin")
+	public String classifyAdmin(Model model) {
+		model.addAttribute("memberList", warningService.selectMember());
+		return "mypage/classifyAdmin";
 	}
 	
 }
