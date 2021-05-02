@@ -37,4 +37,7 @@ public class WarningService {
 		return warningDao.selectMember();
 	}
 	
+	public void returnClassify(String id) {
+		warningDao.updateMemberClassify(id);
+	}
 }

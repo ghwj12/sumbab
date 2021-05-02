@@ -34,10 +34,12 @@
 			</td>
 		</tr>
 	</table>
+	<p>
 	<c:if test="${classify == 3}">
 		<input type="button" value="공지 수정" onclick="location.href='/project/mypage/editNotice/${noticeVo.noticeNum}'"/>
 		<input type="button" value="공지 삭제" onclick="openDelete()"/>
 	</c:if>
+	</p>
 	<script type="text/javascript">
 		function openReview(){
 			var popWidth = 600;

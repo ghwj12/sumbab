@@ -22,4 +22,7 @@ public interface WarningDao {
 	//정지 계정 가져오기
 	public List<MemberClassify> selectMember();
 	
+	//정지 해제
+	public void updateMemberClassify(String id);
+	
 }

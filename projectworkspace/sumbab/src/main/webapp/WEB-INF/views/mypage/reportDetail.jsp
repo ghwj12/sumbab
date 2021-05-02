@@ -45,7 +45,6 @@
 	<!-- src 사용하면 script 태그 따로 사용해야 됨 -->
 	<script>	
 		$("#changeClassify").on('click', function(){
-			console.log("??");
 			var classifyDto = {};
 			classifyDto.classifyNum = $("#classifyNum option:selected").val();
 			if(classifyDto.classifyNum == 4){
@@ -73,7 +72,8 @@
 	<form:hidden path="reviewNumByRD" value="${reportVo.reviewNum}" />
 	<input type="text" placeholder="아이디를 입력해주세요." name="authorityByRD">에게 &nbsp;&nbsp;<input type="submit" value="공지 올리기" />
 	</form:form>
-	<input type="button" value="신고 삭제" onclick="openDelect()" />
+	<br><br>
+	<input type="button" value="신고 삭제" onclick="openDelete()" />
 	<script type="text/javascript">
 		function openDelete(){
 			var popWidth = 300;

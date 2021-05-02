@@ -42,5 +42,10 @@ public class WarningDaoImpl implements WarningDao{
 		return sqlSessionTemplate.selectList("selectMember");
 	}
 
+	@Override
+	public void updateMemberClassify(String id) {
+		sqlSessionTemplate.update("returnClassify", id);
+	}
+
 	
 }

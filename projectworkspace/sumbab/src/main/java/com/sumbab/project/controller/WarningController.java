@@ -62,7 +62,7 @@ public class WarningController {
 		return "mypage/deleteWarning";
 	}
 	
-	//여기서부터 회원이 신고할 때 동작
+	//여기서부터는 회원이 신고할 때 동작
 	@RequestMapping("/storeWarning/mergeWarning")	//merge하면 컨트롤러 삭제
 	public String mergeWarning() {
 		return "storeWarning/mergeWarning";
@@ -85,11 +85,24 @@ public class WarningController {
 		return "storeWarning/warningAccept";
 	}
 	
-	//정지 계정 관리
+	//여기서부터는 정지 계정 관리
 	@RequestMapping("/mypage/classifyAdmin")
 	public String classifyAdmin(Model model) {
 		model.addAttribute("memberList", warningService.selectMember());
 		return "mypage/classifyAdmin";
+	}
+	
+	@RequestMapping(value="/mypage/returnClassifyProcess/{id}/{classify}", method=RequestMethod.GET)
+	public String returnClassifyProcess(@PathVariable String id, @PathVariable int classify, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("classify", classify);
+		return "mypage/returnClassifyProcess";
+	}
+	
+	@RequestMapping(value="/mypage/returnClassifyProcess/{id}/{classify}", method=RequestMethod.POST)
+	public String returnClassify(@PathVariable String id) {
+		warningService.returnClassify(id);
+		return "mypage/returnClassify";
 	}
 	
 }

@@ -31,5 +31,9 @@
         	<![CDATA[select M.id, M.classify, N.regdate from MEMBER M, NOTICE N
 				where M.id=N.authority and M.classify > 3]]>
         </select>
+        
+        <update id="returnClassify" parameterType="String">
+        	update MEMBER set classify=1 where id=#{id}
+        </update>
      
 </mapper>
