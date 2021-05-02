@@ -28,7 +28,6 @@ public class ReserveController {
 	public String reserveList(Model model, HttpSession session) {
 		
 		String memberID="deliciousman";
-		
 		session.getAttribute(memberID);
 		
 		model.addAttribute("listFuture", reserveService.getListF(memberID));
@@ -41,16 +40,16 @@ public class ReserveController {
 	//식당 상세보기-->예약하기 요청
 	@RequestMapping(value="/reserve/reserveForm/{storeNum}", method=RequestMethod.GET)
 	public String reserve(@PathVariable int storeNum, Model model) {
-		model.addAttribute("reserveDTO", new Reserve());
 		
+		model.addAttribute("reserveDTO", new Reserve());
 		return "reserve/reserveForm";
 	}
 	
 	@RequestMapping(value="/reserve/completeReserve", method=RequestMethod.POST)
-	public String alignValue(@ModelAttribute("reserveDTO")Reserve reserve,
-				ReserveRegitReq resReq, String datepicker, String timepicker) {
-		reserveService.regit(resReq, datepicker, timepicker);
+	public String alignValue(@ModelAttribute("reserveDTO")Reserve reserve, ReserveRegitReq resReq, 
+			String datepicker, String timepicker, Model model, HttpSession session, @ModelAttribute("storeNum")int storeNum) {
 		
+		reserveService.regit(resReq, datepicker, timepicker, session, storeNum);
 		return "reserve/completeReserve";
 	}
 	
