@@ -7,7 +7,7 @@
 	<!-- ID = ${memberVO.id} / STORE_NUM = ${storeVO.storeNum}으로 나중에 변경 -->
 	<insert id="insertReserve" parameterType="reserve">
 		insert into RESERVE (STORE_NUM, ID, RESERVE_NAME, RES_DATE, PHONE, RESERVE_SEQ)
-		values ('92', 'deliciousman', #{reserveName}, TO_DATE(#{resDate}, 'YYYY-MM-DD HH24:MI'), #{phone}, RESERVE_SEQ.nextval)
+		values (#{storeNum}, #{id}, #{reserveName}, TO_DATE(#{resDate}, 'YYYY-MM-DD HH24:MI'), #{phone}, RESERVE_SEQ.nextval)
 	</insert>
 
 
