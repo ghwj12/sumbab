@@ -2,6 +2,8 @@ package my.reserve;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,14 +21,20 @@ public class ReserveService {
 		this.reserveDao = reserveDao;
 	}
 	
-	public void regit(ReserveRegitReq resReq, String datepicker, String timepicker) {
+	public void regit(ReserveRegitReq resReq, String datepicker, String timepicker, HttpSession session, int storeNum) {
 		String resDate = datepicker+" "+timepicker;
+		//세션 memberVO.id 값 임시 지정
+		String id = "deliciousman";
+		session.setAttribute("id", session.getAttribute(id));
 		
 		Reserve newReserve = new Reserve(
+				storeNum,
+				id,
 				resReq.getReserveName(),
 				resDate,
 				resReq.getPhone()
 				);
+		
 		reserveDao.insert(newReserve);
 	}
 	
