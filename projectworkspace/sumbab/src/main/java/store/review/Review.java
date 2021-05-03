@@ -1,7 +1,5 @@
 package store.review;
 
-import java.sql.Date;
-
 public class Review {
 
 	private int reviewNum;
@@ -9,18 +7,20 @@ public class Review {
 	private String id;
 	private String menu;
 	private float star;
+	private String content;
 	private boolean revisit;
-	private Date regDate;
+	private String regDate;
 	private String picture;
 	
 	public Review() {}
 
-	public Review(String menu, float star, boolean revisit, Date regDate, String picture) {
-		super();
+	public Review(int storeNum, String id, String menu, float star, String content, boolean revisit, String picture) {
+		this.storeNum = storeNum;
+		this.id = id;
 		this.menu = menu;
 		this.star = star;
+		this.content = content;
 		this.revisit = revisit;
-		this.regDate = regDate;
 		this.picture = picture;
 	}
 
@@ -63,6 +63,14 @@ public class Review {
 	public void setStar(float star) {
 		this.star = star;
 	}
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public boolean isRevisit() {
 		return revisit;
@@ -72,11 +80,11 @@ public class Review {
 		this.revisit = revisit;
 	}
 
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 
