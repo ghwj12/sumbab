@@ -11,5 +11,6 @@ public interface ReviewDao {
 	public int getReviewCount(int storeNum);
 	public float getAvgStar(int storeNum);
 	public List<Review> getReviewList(int storeNum);
+	public float getAvgRevisit(int storeNum);
 	
 }
