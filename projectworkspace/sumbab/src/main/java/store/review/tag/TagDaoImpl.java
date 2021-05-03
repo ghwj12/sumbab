@@ -23,8 +23,8 @@ public class TagDaoImpl implements TagDao {
 	}
 
 	@Override
-	public void update(String tagId) {
-		sqlSessionTemplate.update("updateTagCount", tagId);
+	public void update(String tagName) {
+		sqlSessionTemplate.update("upTagCount", tagName);
 	}
 	
 	@Override
@@ -32,6 +32,11 @@ public class TagDaoImpl implements TagDao {
 		// TODO Auto-generated method stub
 		//아직 어떻게 해야할지 모르겠음. review 수정할 때 모두 리셋 하면 tag count가 날아가기 때문에
 		//리뷰수정-태그 수정할 때 review_tag에서만 삭제하는 걸로?
+	}
+	
+	@Override
+	public int check(String tagName) {
+		return sqlSessionTemplate.selectOne("checkExistTag", tagName);
 	}
 
 	@Override
@@ -53,6 +58,7 @@ public class TagDaoImpl implements TagDao {
 	public void insertStore_Tag(int storeNum) {
 		sqlSessionTemplate.insert("insertStore_Tag", storeNum);
 	}
+
 
 	
 
