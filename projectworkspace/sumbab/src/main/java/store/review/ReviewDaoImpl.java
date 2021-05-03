@@ -47,4 +47,9 @@ public class ReviewDaoImpl implements ReviewDao {
 		return sqlSessionTemplate.selectList("getReviewList",storeNum);
 	}
 
+	@Override
+	public float getAvgRevisit(int storeNum) {
+		return sqlSessionTemplate.selectOne("getAvgRevisit", storeNum);
+	}
+
 }
