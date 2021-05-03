@@ -1,6 +1,7 @@
 package store.review.tag;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TagDao {
 	
@@ -9,6 +10,8 @@ public interface TagDao {
 	public void update(String tagName);
 	public void delete(int reviewNum);
 	public int check(String tagName);
+	public int getTagIDbyName(String tagName);
+	
 	//작성된 태그는 수정(update)이 없다.
 	//리뷰에 작성된 태그 수정--> 태그를 삭제 하거나 새로운 태그를 추가하는 개념이기 때문.
 	
@@ -18,5 +21,8 @@ public interface TagDao {
 	//중간테이블 insert Dao
 	public void insertReview_Tag();
 	public void insertStore_Tag(int storeNum);
+	
+	public void insertReview_Tags(int tagId);
+	public void insertStore_Tags(Map<String, Integer> sequences);
 	
 }
