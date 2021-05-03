@@ -8,7 +8,7 @@
 	<!-- id = ${memberVO.id}로 나중에 변경 -->
 	<insert id="insertReview" parameterType="review">
 		insert into REVIEW (REVIEW_NUM, STORE_NUM, ID, MENU, STAR, CONTENT, REVISIT, REGDATE, PICTURE)
-		values (REVIEW_SEQ.nextval, #{storeVO.storeNum}, #{memberID}, #{menu}, #{star}, #{content}, #{revisit}, sysdate, NULL)
+		values (REVIEW_SEQ.nextval, #{storeNum}, #{id}, #{menu}, #{star}, #{content}, #{revisit}, sysdate, NULL)
 	</insert>
 
 	<update id="updateReview" parameterType="Integer">
@@ -33,9 +33,11 @@
 	</select>
 	
 	<select id="getAvgRevisit" parameterType="Integer" resultType="float">
-		select
+		select round
+		((select
 		(select count(*) from REVIEW where STORE_NUM=#{storeNum} and REVISIT='1')/ 
 		(select count(*) from REVIEW where STORE_NUM=#{storeNum})
+		from dual),2)
 		from dual
 	</select>
 </mapper>
