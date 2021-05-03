@@ -8,11 +8,8 @@ public class Tag {
 	
 	public Tag() {}
 
-	public Tag(int tagId, String tagName, int count) {
-		super();
-		this.tagId = tagId;
+	public Tag(String tagName) {
 		this.tagName = tagName;
-		this.count = count;
 	}
 
 	public int getTagId() {
