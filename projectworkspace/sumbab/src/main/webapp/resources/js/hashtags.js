@@ -19,9 +19,9 @@ $(document).ready(function () {
         }
     
         // 서버에 넘기기
-        $("#tagForm").on("submit", function (e) {
+        $("#reviewDTO").on("submit", function (e) {
             var value = marginTag(); // return array
-            $("#rdTag").val(value); 
+            $("#tags").val(value); 
 
             $(this).submit();
         });
