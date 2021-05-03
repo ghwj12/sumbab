@@ -39,6 +39,11 @@
 		where REVIEW_TAG.REVIEW_NUM = #{reviewNum}
 	</select>
 	
+	<!-- 중복된 tag 입력했을 경우, tagid를 찾아야 한다. -->
+	<select id="getTagIDbyName" parameterType="String" resultType="Integer">
+		select TAG_ID from TAG where TAG_NAME=#{tagName}
+	</select>
+	
 	<!-- ===========중간테이블 update query : insertReview와 insertTag가 끝난 뒤에 실행한다============ -->
 	
 	<!-- REVIEW_TAG insert -->
@@ -51,5 +56,19 @@
 	<insert id="insertStore_Tag" parameterType="Integer">
 		insert into STORE_TAG (STORE_NUM, TAG_ID)
 		values (#{storeNum}, TAG_SEQ.currval)
+	</insert>
+	
+	<!-- ======기존에 있던 태그를 입력했을 때====== -->
+	<!-- REVIEW_TAG insert -->
+	<insert id="insertReview_Tags" parameterType="Integer">
+		insert into REVIEW_TAG (REVIEW_NUM, TAG_ID)
+		values (REVIEW_SEQ.currval, #{tagId})
+	</insert>
+	
+	<!-- ======기존에 있던 태그를 입력했을 때====== -->
+	<!-- STORE_TAG insert -->
+	<insert id="insertStore_Tags" parameterType="hashmap">
+		insert into STORE_TAG (STORE_NUM, TAG_ID)
+		values (#{storeNum}, #{tagId})
 	</insert>
 </mapper>
