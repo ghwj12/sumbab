@@ -9,7 +9,7 @@
 </head>
 <body>
 <c:if test="${reClassify == '음식점'}">
-	<select onchange="categoryChange(this)">
+	<select id="category1" onchange="categoryChange(this)">
 		<option>카테고리 선택</option>
 		<option value="situation">상황별</option>
 		<option value="timeslot">시간별</option>
@@ -21,7 +21,7 @@
 	</select>
 </c:if>
 <c:if test="${reClassify == '카페'}">
-	<select onchange="categoryChange(this)">
+	<select id="category1" onchange="categoryChange(this)">
 		<option>카테고리 선택</option>
 		<option value="situation">상황별</option>
 		<option value="timeslot">영업 시간별</option>
@@ -33,7 +33,9 @@
 		<option>카테고리를 먼저 선택해주세요</option>
 	</select>
 </c:if>
-<input type="button" value="추천 받기" onclick="#">
+<input type="hidden" name="category1" value="#category1 option:selected.val()">
+<input type="hidden" name="category2" value="#category2 option:selected.val()">
+<input type="button" value="추천 받기" onclick="location.href='/project/recommendPage/recommend/${reClassify}'">
 
 <script>
 	function categoryChange(select){
@@ -85,15 +87,14 @@
 			}
 		}
 		
-		target.options.length = 0;
+		target.options.length = 0;		//카테고리 선택 후 변경 시 다음 select의 option이 누적되어 나오는 것을 방지함
 		
 		for (x in val){
 			var opt = document.createElement("option");
 			opt.value = val[x];
 			opt.innerHTML = text[x];
 			target.appendChild(opt);
-		}
-		
+		}	
 	}
 </script>
 </body>

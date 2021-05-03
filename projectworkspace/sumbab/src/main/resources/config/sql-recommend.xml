@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="recommendDao">
+
+        
+        <select id="selectRest" parameterType="String" resultType="storeVo">
+        	select store_num, name, citycode, districtcode, address, menu, time, count from STORE where store_num in
+        		(select store_num from REST_CAT where #{category}=1)
+        </select> 
+        
+        <select id="selectCafe1" parameterType="String" resultType="storeVo">
+        	select store_num, name, citycode, districtcode, address, menu, time, count from STORE where store_num in
+        		(select store_num from CAFE_CAT where #{category}=1)
+        </select>
+        
+        <select id="selectCafe2" parameterType="String" resultType="storeVo">
+        	select store_num, name, citycode, districtcode, address, menu, time, count from STORE where store_num in
+        		(select store_num from CAFE_CAT where #{category}=0)
+        </select>
+        
+     
+</mapper>
