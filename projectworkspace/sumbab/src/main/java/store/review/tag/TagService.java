@@ -1,5 +1,8 @@
 package store.review.tag;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,11 +31,29 @@ public class TagService {
 		}
 	}
 	
-	public void insertReview_Tag() {
-		tagDao.insertReview_Tag();
+	public void insertReview_Tag(String tagName) {
+		int check = tagDao.check(tagName);
+		
+		if(check==0) {
+			tagDao.insertReview_Tag();
+		}else {
+			int tagId = tagDao.getTagIDbyName(tagName);
+			tagDao.insertReview_Tags(tagId);
+		}
 	}
 	
-	public void insertStore_Tag(int storeNum) {
-		tagDao.insertStore_Tag(storeNum);
+	public void insertStore_Tag(int storeNum, String tagName) {
+		int check = tagDao.check(tagName);
+		
+		if(check==0) {
+			tagDao.insertStore_Tag(storeNum);
+		}else {
+			Map<String, Integer> sequences = new HashMap<>();
+			sequences.put("storeNum", storeNum);
+			int tagId = tagDao.getTagIDbyName(tagName);
+			sequences.put("tagId", tagId);
+			
+			tagDao.insertStore_Tags(sequences);
+		}
 	}
 }
