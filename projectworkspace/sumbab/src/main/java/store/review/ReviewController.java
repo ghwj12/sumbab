@@ -65,8 +65,8 @@ public class ReviewController {
 		
 		for (int i = 0; i < tag.size(); i++) {
 			tagService.regist(tag.get(i));
-			tagService.insertReview_Tag();
-			tagService.insertStore_Tag(storeNum);
+			tagService.insertReview_Tag(tag.get(i));
+			tagService.insertStore_Tag(storeNum, tag.get(i));
 		}
 		
 		return "/review/completeWrReview";
