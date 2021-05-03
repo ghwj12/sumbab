@@ -1,6 +1,7 @@
 package store.review.tag;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,11 @@ public class TagDaoImpl implements TagDao {
 	public int check(String tagName) {
 		return sqlSessionTemplate.selectOne("checkExistTag", tagName);
 	}
+	
+	@Override
+	public int getTagIDbyName(String tagName) {
+		return sqlSessionTemplate.selectOne("getTagIDbyName", tagName);
+	}
 
 	@Override
 	public List<Tag> selectTagByStore(int storeNum) {
@@ -58,8 +64,15 @@ public class TagDaoImpl implements TagDao {
 	public void insertStore_Tag(int storeNum) {
 		sqlSessionTemplate.insert("insertStore_Tag", storeNum);
 	}
-
-
 	
+	@Override
+	public void insertReview_Tags(int tagId) {
+		sqlSessionTemplate.insert("insertReview_Tags", tagId);
+	}
+	
+	@Override
+	public void insertStore_Tags(Map<String, Integer> sequences) {
+		sqlSessionTemplate.insert("insertStore_Tags", sequences);
+	}
 
 }
