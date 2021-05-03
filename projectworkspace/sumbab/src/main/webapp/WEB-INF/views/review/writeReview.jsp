@@ -77,12 +77,13 @@
 				<td><textarea id="content" name="content" cols="50" rows="10"
 						required></textarea></td>
 			</tr>
+			
 			<tr>
 			<!-- 해시태그 입력 form -->
 				<th>태그 입력<br>(선택사항)</th>
 				<td>
 				<div class="tagForm">
-		            <input type="hidden" value="" name="tag" id="rdTag" />
+		            <input type="hidden" value="" name="tag" id="tags" />
 	      		<div>
             		<input type="text" id="tag" placeholder="태그입력 (최대 5개)" />
        			</div>
@@ -92,6 +93,7 @@
 		   	 </div>
 				</td>
 			</tr>
+			
 			<tr>
 				<td colspan="2"><input type="checkbox" name="revisit"
 					id="revisit">재방문 하고싶어요!</td>
