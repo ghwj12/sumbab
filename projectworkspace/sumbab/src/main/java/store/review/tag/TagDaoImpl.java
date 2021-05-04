@@ -51,10 +51,16 @@ public class TagDaoImpl implements TagDao {
 	}
 
 	@Override
-	public List<Tag> selectTagByReview(int reviewNum) {
+	public List<String> selectTagByReview(int reviewNum) {
 		return sqlSessionTemplate.selectList("selectTagByReview", reviewNum);
 	}
 
+	@Override
+	public List<Integer> selectReviewNumList(int storeNum) {
+		return sqlSessionTemplate.selectList("selectReviewNumList", storeNum);
+	}
+	
+	
 	@Override
 	public void insertReview_Tag() {
 		sqlSessionTemplate.insert("insertReview_Tag");
@@ -74,5 +80,6 @@ public class TagDaoImpl implements TagDao {
 	public void insertStore_Tags(Map<String, Integer> sequences) {
 		sqlSessionTemplate.insert("insertStore_Tags", sequences);
 	}
+
 
 }
