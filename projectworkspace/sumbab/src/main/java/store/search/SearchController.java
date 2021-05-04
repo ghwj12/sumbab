@@ -24,12 +24,23 @@ public class SearchController {
 		return "/search/searchBar";
 	}
 
-	@RequestMapping(value = "/selectByKeyword", method = RequestMethod.POST)
+	@RequestMapping(value = "/selectByInput", method = RequestMethod.POST)
 	public String selectListByInput(@ModelAttribute("input") String input, Model model) {
-
-		//검색어를 통하여 select된 list 반환
-		model.addAttribute("storeList", searchService.selectList(input));
 		
-		return "/search/selectByKeyword";
+		if(input.contains("#")) {
+			String inputT = input.substring(1);
+			System.out.println(inputT);
+			model.addAttribute("storeList", searchService.selectByTag(inputT));
+		}else {
+			model.addAttribute("storeList", searchService.selectByKeyword(input));
+		}
+		
+		return "/search/selectByInput";
+	}
+	
+	//카카오맵 테스트 : 위치기반 추천
+	@RequestMapping(value="/search/GPSlocation", method=RequestMethod.GET)
+	public String rcmdStoreByLocation() {
+		return "/search/GPSlocation";
 	}
 }
