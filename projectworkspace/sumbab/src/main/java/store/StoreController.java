@@ -14,6 +14,7 @@ import store.cafeCat.CafeCatRegitService;
 import store.restCat.RestCatRegistReq;
 import store.restCat.RestCatRegitService;
 import store.review.ReviewService;
+import store.review.tag.TagService;
 
 @Controller
 @RequestMapping("/store/*")
@@ -85,6 +86,12 @@ public class StoreController {
 	public void setReviewService(ReviewService reviewService) {
 		this.reviewService = reviewService;
 	}
+	@Autowired
+	private TagService tagService;
+	@Autowired
+	public void setTagService(TagService tagService) {
+		this.tagService = tagService;
+	}
 	
 	//테스트용 : 가게 상세보기 페이지 (from 정민님 github)
 	@RequestMapping(value="/StoreView/{storeNum}", method=RequestMethod.GET)
@@ -93,9 +100,18 @@ public class StoreController {
 		storeService.upReadCount(storeNum);
 		model.addAttribute("storeVO", storeService.storeView(storeNum));
 		model.addAttribute("countReview", reviewService.getReviewCount(storeNum));
-		model.addAttribute("Reviewlist", reviewService.getList(storeNum));
-		model.addAttribute("avgStar", reviewService.getAvgStar(storeNum));
-		model.addAttribute("avgRevisit", (reviewService.getAvgRevisit(storeNum))*100);
+		
+		if(reviewService.getReviewCount(storeNum)!= 0) {
+			model.addAttribute("Reviewlist", reviewService.getList(storeNum));
+			model.addAttribute("avgStar", reviewService.getAvgStar(storeNum));
+			model.addAttribute("avgRevisit", reviewService.getAvgRevisit(storeNum));
+			model.addAttribute("tagList", tagService.selectTagEachReview(storeNum));
+			model.addAttribute("allTags", tagService.selectTagByStore(storeNum));
+		
+		} else if(reviewService.getReviewCount(storeNum)==0) {
+			model.addAttribute("avgStar", 0);
+			model.addAttribute("avgRevisit", 0);
+		}
 		
 		return "store/StoreView";
 	}
