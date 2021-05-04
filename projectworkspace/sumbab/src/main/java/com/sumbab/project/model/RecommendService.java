@@ -13,9 +13,6 @@ public class RecommendService {
 	public List<StoreVo> categoryRecommend(String classify, SelectedCategory selectedCategory) {
 		if(classify.equals("음식점")) {
 			String category = selectedCategory.getCategory1() + selectedCategory.getCategory2();
-			System.out.println("category!!!!!!"+category);
-			List<StoreVo> list = recommendDao.selectRest(category);
-			System.out.println("list!!!"+list.size());
 			return recommendDao.selectRest(category);
 		}else {
 			if(selectedCategory.getCategory1().equals("timeslot")) {

@@ -9,7 +9,6 @@
 </head>
 <body>
 <h2>카테고리 추천</h2>
-	<c:if test="${empty recommendList}">없음</c:if>
 	<c:forEach var="recommend" items="${recommendList}" varStatus="loop">
 	<div>
 		<h3>${loop.count}. <a href="<c:url value="#"/>">${recommend.name}</a></h3>
