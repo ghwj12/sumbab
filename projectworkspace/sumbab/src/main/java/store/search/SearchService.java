@@ -19,8 +19,11 @@ public class SearchService {
 		this.searchDao = searchDao;
 	}
 	
-	public List<Store> selectList(String input) {
-		
-		return searchDao.search(input);
+	public List<Store> selectByKeyword(String input) {
+		return searchDao.selectByKeyword(input);
+	}
+	
+	public List<Store> selectByTag(String inputT){
+		return searchDao.selectByTag(inputT);
 	}
 }
