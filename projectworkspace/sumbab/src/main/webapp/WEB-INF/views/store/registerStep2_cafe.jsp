@@ -28,7 +28,7 @@
 		<input type="checkbox" id="situation3" name="situation3" >공부할 때<br>
 
 		<div>
-			<p>24시간 운영하는 곳인가요?(코로나 2단계 미만 정상 영업일 때 ;/))</p>
+			<p>24시간 운영하는 곳인가요?(코로나 2단계 미만 정상 영업 시))</p>
 		</div>
 		<input type="checkbox" id="timeslot" name="timeslot">24시간 운영
 		<br>
