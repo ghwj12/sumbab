@@ -33,11 +33,9 @@
 	</select>
 	
 	<select id="getAvgRevisit" parameterType="Integer" resultType="float">
-		select round
-		((select
-		(select count(*) from REVIEW where STORE_NUM=#{storeNum} and REVISIT='1')/ 
-		(select count(*) from REVIEW where STORE_NUM=#{storeNum})
-		from dual),2)
+		select
+		((select count(*) from REVIEW where STORE_NUM=#{storeNum} and REVISIT='1')/ 
+		(select count(*) from REVIEW where STORE_NUM=#{storeNum}))
 		from dual
 	</select>
 </mapper>
