@@ -16,7 +16,8 @@ public interface TagDao {
 	//리뷰에 작성된 태그 수정--> 태그를 삭제 하거나 새로운 태그를 추가하는 개념이기 때문.
 	
 	public List<Tag> selectTagByStore(int storeNum);
-	public List<Tag> selectTagByReview(int reviewNum);
+	public List<String> selectTagByReview(int reviewNum);
+	public List<Integer> selectReviewNumList(int storeNum);
 	
 	//중간테이블 insert Dao
 	public void insertReview_Tag();
