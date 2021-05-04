@@ -33,7 +33,7 @@ public class RecommendController {
 	//카테고리 추천 
 	@RequestMapping(value="/recommendPage/recommend/{classify}", method=RequestMethod.POST)
 	public String categoryRecommend(Model model, @PathVariable String classify, SelectedCategory selectedCategory) {
-		model.addAttribute("recommend", recommendService.categoryRecommend(classify, selectedCategory));
+		model.addAttribute("recommendList", recommendService.categoryRecommend(classify, selectedCategory));
 		return "recommendPage/recommend";
 	}
 	

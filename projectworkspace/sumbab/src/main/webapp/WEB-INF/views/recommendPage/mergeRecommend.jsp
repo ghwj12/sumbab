@@ -109,13 +109,16 @@
 		var selectedCategory = {};
 		selectedCategory.category1 = $("#category1 option:selected").val();
 		selectedCategory.category2 = $("#category2 option:selected").val();
-		if(selectedCategory.category1 == "x" || selectedCategory.category2 == "x")
+		if(selectedCategory.category1 == "x" || selectedCategory.category2 == "x"){
 			alert("항목을 골라주세요.");
-		$("#selected").attr({
-			"method" : "post",
-			"action" : "../recommend/${reClassify}"
-		})
-		$("#selected").submit();
+			history.go(0);
+		}else{
+			$("#selected").attr({
+				"method" : "post",
+				"action" : "../recommend/${reClassify}"
+			})
+			$("#selected").submit();
+		}
 	})
 </script>
 

@@ -9,12 +9,14 @@
 </head>
 <body>
 <h2>카테고리 추천</h2>
-	<c:forEach var="recommend" items="${recommend}" varStatus="loop">
+	<c:if test="${empty recommendList}">없음</c:if>
+	<c:forEach var="recommend" items="${recommendList}" varStatus="loop">
 	<div>
-		<h3>${loop.count}.<a href="<c:url value="#"/>">${recommend.name}</a>&nbsp;조회수${recommend.count}<br></h3>
-		${recommend.citycode} ${recommend.districtcode} ${address}<br><br>
+		<h3>${loop.count}. <a href="<c:url value="#"/>">${recommend.name}</a></h3>
+		${recommend.citycode} ${recommend.districtcode} ${recommend.address}<br><br>
 		${recommend.time}<br>
 		${recommend.menu}<br>
+		조회수 : ${recommend.count}
 	</div>
 	</c:forEach>
 	
