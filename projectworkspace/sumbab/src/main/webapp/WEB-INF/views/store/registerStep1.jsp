@@ -50,8 +50,7 @@
 				<td><input type="password" placeholder="등록하신 가게 관리를 위한 비밀번호를 입력하세요. " name="pwd" id="pwd" required></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="checkbox" name="reserving" id="reserving">예약
-					가능</td>
+				<td colspan="2"><input type="checkbox" name="reserving" id="reserving">예약 가능</td>
 			</tr>
 		</table>
 
@@ -63,12 +62,12 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function execDaumPostcode() {
+    	
         new daum.Postcode({
             oncomplete: function(data) {
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var addr = ''; // 주소 변수
                 var extraAddr = ''; // 참고항목 변수
-
                 if (data.userSelectedType === 'R') { //도로명 주소를 선택했을 경우
                     addr = data.roadAddress;
                 } else { //지번 주소를 선택했을 경우(J)
