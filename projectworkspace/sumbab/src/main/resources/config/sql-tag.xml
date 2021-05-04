@@ -26,30 +26,55 @@
 	</delete>
 
 	<select id="selectTagByStore" parameterType="Integer" resultType="tag">
-		select TAG.TAG_NAME
+		select TAG.*
 		from TAG
 		join STORE_TAG on TAG.TAG_ID = STORE_TAG.TAG_ID
 		where STORE_TAG.STORE_NUM = #{storeNum}
 	</select>
 	
-	<select id="selectTagByReview" parameterType="Integer" resultType="tag">
+	<select id="selectTagByReview" parameterType="Integer" resultType="String">
 		select TAG.TAG_NAME
 		from TAG
-		join REVIEW_TAG on TAG.TAG_ID = REVIEW.TAG_ID
+		join REVIEW_TAG on TAG.TAG_ID = REVIEW_TAG.TAG_ID
 		where REVIEW_TAG.REVIEW_NUM = #{reviewNum}
 	</select>
 	
-	<!-- ===========중간테이블 update query : insertReview와 insertTag가 끝난 뒤에 실행한다============ -->
+	<select id="selectReviewNumList" parameterType="Integer" resultType="Integer">
+		select REVIEW_TAG.REVIEW_NUM
+		from REVIEW_TAG
+		join REVIEW on REVIEW.REVIEW_NUM = REVIEW_TAG.REVIEW_NUM
+		where REVIEW.STORE_NUM = #{storeNum}
+	</select>
 	
+	<!-- 중복된 tag 입력했을 경우, tagid를 찾아야 한다. -->
+	<select id="getTagIDbyName" parameterType="String" resultType="Integer">
+		select TAG_ID from TAG where TAG_NAME=#{tagName}
+	</select>
+	
+	<!-- ===========중간테이블 update query : insertReview와 insertTag가 끝난 뒤에 실행한다============ -->
 	<!-- REVIEW_TAG insert -->
 	<insert id="insertReview_Tag">
 		insert into REVIEW_TAG (REVIEW_NUM, TAG_ID)
-		values (REVIEW_SEQ.currval, TAG_SEQ.currval)
+		values ((select MAX(REVIEW_NUM) from REVIEW), TAG_SEQ.currval)
 	</insert>
 	
 	<!-- STORE_TAG insert -->
 	<insert id="insertStore_Tag" parameterType="Integer">
 		insert into STORE_TAG (STORE_NUM, TAG_ID)
 		values (#{storeNum}, TAG_SEQ.currval)
+	</insert>
+	
+	<!-- ======기존에 있던 태그를 입력했을 때====== -->
+	<!-- REVIEW_TAG insert -->
+	<insert id="insertReview_Tags" parameterType="Integer">
+		insert into REVIEW_TAG (REVIEW_NUM, TAG_ID)
+		values ((select MAX(REVIEW_NUM) from REVIEW), #{tagId})
+	</insert>
+	
+	<!-- ======기존에 있던 태그를 입력했을 때====== -->
+	<!-- STORE_TAG insert -->
+	<insert id="insertStore_Tags" parameterType="hashmap">
+		insert into STORE_TAG (STORE_NUM, TAG_ID)
+		values (#{storeNum}, #{tagId})
 	</insert>
 </mapper>
