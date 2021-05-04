@@ -36,13 +36,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	//main.search 검색 바 컨트롤러
-	@RequestMapping(value="/search", method=RequestMethod.GET)
-	public String search() {
-		
-		return "/main.search/searchBar";
-	}
-	
 	//main--->마이페이지 클릭시 마이페이지 첫 화면 출력
 	@RequestMapping(value="/mypage/mypageMain", method=RequestMethod.GET)
 	public String goMypage(){
