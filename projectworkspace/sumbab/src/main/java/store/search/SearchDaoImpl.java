@@ -20,20 +20,13 @@ public class SearchDaoImpl implements SearchDao {
 	}
 
 	@Override
-	public List<Store> search(String input) {
+	public List<Store> selectByKeyword(String input) {
 		return sqlSessionTemplate.selectList("selectByKeyword", input);
 	}
 
-/*	// ========검색 관련 기능 ====================
-	@Override // 일반검색
-	public List<Store> selectByKeyword(String input) {
-		List<Store> results = sqlSessionTemplate.selectList("selectByKeyword", input);
-		return results;
+	@Override
+	public List<Store> selectByTag(String inputT) {
+		return sqlSessionTemplate.selectList("selectByTag", inputT);
 	}
-
-	@Override // 특정 해시태그 가진 식당 검색
-	public List<Store> selectByTag(String tag) {
-		List<Store> results = sqlSessionTemplate.selectList("selectByTag", tag);
-		return results;
-	}*/
+	
 }
