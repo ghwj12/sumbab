@@ -15,7 +15,7 @@
 	가게이름, 메뉴, 지역, 해시태그 등을 검색해 보세요!
 	<br> 해시태그 검색은 앞에 #를 붙여서 검색하세요.
 	<br>
-	<form:form method="post" action="selectByKeyword">
+	<form:form commandName="inputForm" method="post" action="selectByInput">
 		<input type="text" id="input" name="input" placeholder="키워드를 입력하세요.">
 		<input type="submit" value="검색">
 	</form:form>
