@@ -23,8 +23,8 @@ public class RecommendDaoImpl implements RecommendDao{
 	}
 
 	@Override
-	public List<StoreVo> selectCafe2(String category1) {
-		return sqlSessionTemplate.selectList("selectCafe2", category1);
+	public List<StoreVo> selectCafe2(String category) {
+		return sqlSessionTemplate.selectList("selectCafe2", category);
 	}
 
 }

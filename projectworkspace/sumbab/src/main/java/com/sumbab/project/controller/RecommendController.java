@@ -1,16 +1,14 @@
 package com.sumbab.project.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sumbab.project.model.RecommendService;
+import com.sumbab.project.model.SelectedCategory;
 
 @Controller
 public class RecommendController {
@@ -24,17 +22,18 @@ public class RecommendController {
 		return "recommendPage/mergeFirstPage";
 	}
 	
+	//merge하면 경로 수정
 	@RequestMapping("/recommendPage/mergeRecommend/{classify}")
-	public String recommend(HttpSession session, @PathVariable String classify) {
-		session.setAttribute("reClassify", classify);
+	public String recommend(Model model, @PathVariable String classify) {
+		model.addAttribute("reClassify", classify);
+		model.addAttribute("selectedCategory", new SelectedCategory());
 		return "recommendPage/mergeRecommend";
 	}
 	
-	//카테고리 선택 후 추천받을 때 Ajax 사용
-	@ResponseBody
-	@RequestMapping("/recommendPage/recommend/{classify}")
-	public String categoryRecommend(Model model, @PathVariable String classify, @RequestParam("category1") String category1, @RequestParam("category2") int category2) {
-		model.addAttribute("recommend", recommendService.categoryRecommend(classify, category1, category2));
+	//카테고리 추천 
+	@RequestMapping(value="/recommendPage/recommend/{classify}", method=RequestMethod.POST)
+	public String categoryRecommend(Model model, @PathVariable String classify, SelectedCategory selectedCategory) {
+		model.addAttribute("recommend", recommendService.categoryRecommend(classify, selectedCategory));
 		return "recommendPage/recommend";
 	}
 	

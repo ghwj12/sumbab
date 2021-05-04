@@ -10,18 +10,20 @@ public class RecommendService {
 	@Autowired
 	private RecommendDaoImpl RecommendDao;
 	
-	public List<StoreVo> categoryRecommend(String classify, String category1, int category2) {
+	public List<StoreVo> categoryRecommend(String classify, SelectedCategory selectedCategory) {
 		if(classify.equals("음식점")) {
-			String category = category1 + category2;
+			String category = selectedCategory.getCategory1() + selectedCategory.getCategory2();
+			System.out.println("category!!!!!!"+category);
 			return RecommendDao.selectRest(category);
 		}else {
-			if(category1.equals("timeslot")) {
-				if(category2 == 0)
-					return RecommendDao.selectCafe2(category1);
+			if(selectedCategory.getCategory1().equals("timeslot")) {
+				String category = selectedCategory.getCategory1();
+				if(selectedCategory.getCategory2().equals("0"))
+					return RecommendDao.selectCafe2(category);
 				else
-					return RecommendDao.selectCafe1(category1);
+					return RecommendDao.selectCafe1(category);
 			}
-			String category = category1 + category2;
+			String category = selectedCategory.getCategory1() + selectedCategory.getCategory2();
 			return RecommendDao.selectCafe1(category);
 		}
 	}
