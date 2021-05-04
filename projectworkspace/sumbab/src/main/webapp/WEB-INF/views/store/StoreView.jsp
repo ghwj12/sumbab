@@ -79,19 +79,23 @@ body {
 			<td style="word-break: break-all">&nbsp;${storeVO.etc}</td>
 		</tr>
 		
-		<%--해시태그 value가 있으면서 && count가 n 이상일 때만 출력하고 싶은데 모르겠다 --%>
-		<c:if test="${hashtag.value != null}">
 		<tr>
 			<th>연관태그:</th>
 			<td style="word-break: break-all">&nbsp;
-				<c:forEach var="hashtag" items="${allTags}">
-					<c:if test="${hashtag.count > 0}">
+				<c:choose>
+				<c:when test="${fn:length(allTags) == 0}">
+					아직 작성된 태그가 없어요!
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="hashtag" items="${allTags}">
+						<c:if test="${hashtag.count > 0 }">
 						#${hashtag.tagName}
-					</c:if>
-				</c:forEach>
+						</c:if>
+					</c:forEach>
+				</c:otherwise>
+				</c:choose>
 			</td>
 		</tr>
-		</c:if>
 	</table>
 	<%-- =============================================================================================================================================== 
 		추후에 보관함 예약 마무리되서 들어오면 action말고 href로 링크로넘기거나 submit하거나 상황에따라 변경될예정--%>
