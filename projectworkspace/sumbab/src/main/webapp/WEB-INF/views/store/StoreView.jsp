@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
 	pageContext.setAttribute("br", "<br/>");
@@ -50,7 +51,9 @@ body {
 
 	<h1>${storeVO.name}<br>
 	</h1>
-	조회수: ${storeVO.count} &nbsp; 평균별점: ${avgStar} &nbsp; 재방문의사: ${avgRevisit}%
+	조회수: ${storeVO.count} &nbsp; 
+	평균별점: <b><fmt:formatNumber value="${avgStar}" type="pattern" pattern="0.00" /></b> &nbsp; 
+	재방문의사: <b><fmt:formatNumber value="${avgRevisit}" type="pattern" pattern="0.0%" /></b>
 	<br>
 
 	<table id="storeInfo">
@@ -75,10 +78,24 @@ body {
 			<th>특이사항:</th>
 			<td style="word-break: break-all">&nbsp;${storeVO.etc}</td>
 		</tr>
+		
+		<%--해시태그 value가 있으면서 && count가 n 이상일 때만 출력하고 싶은데 모르겠다 --%>
+		<c:if test="${hashtag.value != null}">
+		<tr>
+			<th>연관태그:</th>
+			<td style="word-break: break-all">&nbsp;
+				<c:forEach var="hashtag" items="${allTags}">
+					<c:if test="${hashtag.count > 0}">
+						#${hashtag.tagName}
+					</c:if>
+				</c:forEach>
+			</td>
+		</tr>
+		</c:if>
 	</table>
 	<%-- =============================================================================================================================================== 
 		추후에 보관함 예약 마무리되서 들어오면 action말고 href로 링크로넘기거나 submit하거나 상황에따라 변경될예정--%>
-	<input type="button" onclick="#" value="보관함에담기">
+	<input type="button" onclick="" value="보관함에 담기">
 	<c:set var="reserving" value="${storeVO.reserving}" />
 	<c:choose>
 	<%--reserving 값에 따라 예약하기/예약불가 버튼 출력--%>
@@ -114,14 +131,20 @@ body {
 					<th>리뷰내용:</th>
 					<td width="500" style="word-break: break-all"><img
 						src="‪C:\storeimages\defaultimiage.PNG"><br>
-						${Reviewlist.content}</td>
+						${fn:replace(Reviewlist.content, cn, br)}<br>
+						<c:forEach items="${tagList}" var="tagList" >
+							<c:if test="${Reviewlist.reviewNum eq tagList.key}">
+								<c:out value="${tagList.value}"/>
+							</c:if>
+						</c:forEach>
+						</td>
 				</tr>
 			</table>
 		</c:forEach>
 	</div>
 
 	<c:forEach var="cnt" begin="1" end="${totalCount}" step="1">
-		<a href="javascript:goPaging(${storeNum}, ${cnt });">${cnt }</a>
+		<a href="javascript:goPaging(${storeNum}, ${cnt});">${cnt}</a>
 	</c:forEach>
 
 
@@ -183,8 +206,7 @@ body {
 	
 	<!-- 팀장님과 쇼부친결과 근처지역 맛집추천 및 카페 추천 부분은 페이징없이 화면출력도 가게이름과 위치만나오고 가게이름을 누르면 해당 스토어 상세보기로 넘어가도록
 	매우 간결하게 흘러감 -->
-	<div id="nbsCafeList"
-		class="bottomright">
+	<div id="nbsCafeList" class="bottomright">
 		<h2>
 			${storeVO.name} 주변 카페<br>
 		</h2>
@@ -226,12 +248,12 @@ body {
 			<table class="nbsInfo">
 				<tr>
 					<th>가게이름:</th>
-					<td style="word-break: break-all"><a href="<c:url value = "/StoreView/${nbsRestaurant.store_num}" />">&nbsp;${nbsRestaurant.name}</a></td>
+					<td style="word-break: break-all"><a href="<c:url value = "/StoreView/${nbsRestaurant.storeNum}" />">&nbsp;${nbsRestaurant.name}</a></td>
 				</tr>
 				<tr>
 					<th>위치:</th>
-					<td style="word-break: break-all">&nbsp;${nbsRestaurant.citycode}&nbsp;
-					${nbsRestaurant.districtcode}&nbsp;${nbsRestaurant.address}</td>
+					<td style="word-break: break-all">&nbsp;${nbsRestaurant.cityCode}&nbsp;
+					${nbsRestaurant.districtCode}&nbsp;${nbsRestaurant.address}</td>
 				</tr>
 				<!-- 
 				<tr>
@@ -255,7 +277,7 @@ body {
 	<div id="map" class="topcorner"
 		style="width: 30%; height: 250px; float: left;"></div>
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c771ec3c7832fcdda8a8784dd25a4cb4&libraries=services"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07bd206de0b20792cb3f4735d8aeb250&libraries=services"></script>
 	<script>
 		var address = "${storeVO.address}";
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
