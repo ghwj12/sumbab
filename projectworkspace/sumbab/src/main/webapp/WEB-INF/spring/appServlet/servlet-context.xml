@@ -21,8 +21,9 @@
 	<resources mapping="/js/**" location="/resources/js/"/>
 	<resources mapping="/css/**" location="/resources/css/"/>
 	<resources mapping="/img/**" location="/resources/img/"/>
-
-
+	
+	<resources mapping="/upload_02review/**" location="file:///C:/02review/" />
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -77,7 +78,7 @@
         <!-- max size of file in memory (in bytes) -->
         <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
     </beans:bean>
-
+    
 	<!-- 어노테이션 패키지 선언할 것! bean 선언하지 않아도 됨 -->
 	<context:component-scan base-package="com.sumbab.project" />
 	<context:component-scan base-package="store" />
