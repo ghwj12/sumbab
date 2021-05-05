@@ -90,6 +90,7 @@ body {
 					<c:forEach var="hashtag" items="${allTags}">
 						<c:if test="${hashtag.count > 0 }">
 						<a href="/sumbab/selectByTag/${hashtag.tagName}">#${hashtag.tagName}</a>
+						
 						</c:if>
 					</c:forEach>
 				</c:otherwise>
