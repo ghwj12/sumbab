@@ -18,11 +18,11 @@ public class ReviewService {
 		this.reviewDao = reviewDao;
 	}
 	
-	public void regit(ReviewRegitReq req, HttpSession session, int storeNum) {
+	public void regit(ReviewRegitReq req, HttpSession session, int storeNum, String picture) {
 		
 		//세션 memberVO.id 값 임시 지정
-				String id = "deliciousman";
-				session.setAttribute("id", session.getAttribute(id));
+		String id = "deliciousman";
+		session.setAttribute("id", session.getAttribute(id));
 		
 		Review newReview = new Review(
 				storeNum,
@@ -31,9 +31,9 @@ public class ReviewService {
 				req.getStar(),
 				req.getContent(),
 				req.isRevisit(),
-				req.getPicture()
+				picture
 				);
-		
+		System.out.println(newReview.getPicture());
 		reviewDao.insert(newReview);
 	}
 	
