@@ -1,7 +1,10 @@
 package store.review;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import store.Store;
 import store.StoreService;
@@ -35,13 +40,6 @@ public class ReviewController {
 		return "/review/writeReview";
 	}
 	
-	//사진첨부 popup url
-	@RequestMapping(value="/review/addPhoto", method=RequestMethod.GET)
-	public String popupForAddPhoto() {
-		
-		return "/review/addPhoto";
-	}
-	
 	@Autowired
 	private ReviewService reviewService;
 	
@@ -59,9 +57,27 @@ public class ReviewController {
 	@RequestMapping(value="/review/completeWrReview", method=RequestMethod.POST)
 	public String completeWriteReview(@ModelAttribute("reviewDTO")Review review, ReviewRegitReq reqR,
 			@ModelAttribute("tag")ArrayList<String> tag, Model model, 
-			@ModelAttribute("storeNum")int storeNum, HttpSession session) {
+			@ModelAttribute("storeNum")int storeNum, HttpSession session, HttpServletRequest request,
+			MultipartHttpServletRequest mtpReq) {
 		
-		reviewService.regit(reqR, session, storeNum);
+		//사진첨부 관련 method
+		MultipartFile mf = mtpReq.getFile("attached");
+		
+		String path = "C:/02review/"; //파일 저장되는 실제 경로
+		String originFileName = mf.getOriginalFilename();
+
+		//파일 이름 겹치지 않게 등록한 시간을 string으로 입력
+		String picture = System.currentTimeMillis() + originFileName;
+			
+			try {
+				mf.transferTo(new File(path+picture));
+			}catch (IllegalStateException e) {
+				e.printStackTrace();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		reviewService.regit(reqR, session, storeNum, picture);
+		
 		
 		for (int i = 0; i < tag.size(); i++) {
 			tagService.regist(tag.get(i));
