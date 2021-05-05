@@ -26,7 +26,7 @@
 	</delete>
 
 	<select id="selectTagByStore" parameterType="Integer" resultType="tag">
-		select TAG.*
+		select distinct TAG.*
 		from TAG
 		join STORE_TAG on TAG.TAG_ID = STORE_TAG.TAG_ID
 		where STORE_TAG.STORE_NUM = #{storeNum}
