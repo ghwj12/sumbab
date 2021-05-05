@@ -56,5 +56,5 @@ public class ReviewRegitReq {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-
+	
 }
