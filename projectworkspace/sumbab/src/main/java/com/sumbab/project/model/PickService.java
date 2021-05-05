@@ -11,7 +11,7 @@ public class PickService {
 	@Autowired
 	private PickDaoImpl pickDao;
 	
-	public int bringPick(String id, int storeNum){
+	public int addPick(String id, int storeNum){
 		List<Integer> picked = pickDao.bringPick(id);
 		for(int i=0; i<picked.size(); i++) {
 			if(picked.get(i) == storeNum) {
@@ -25,4 +25,8 @@ public class PickService {
 		return 0;
 	}
 
+	public List<Integer> bringPick(String id){
+		return pickDao.bringPick(id);
+	}
+	
 }

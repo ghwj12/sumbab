@@ -37,7 +37,7 @@
 			var winY = window.screenTop;
 			var popX = winX + (winWidth - popWidth)/2;
 			var popY = winY + (winHeight - popHeight)/2;
-			url="pickProcess/11";						//merge하면 아마 ../pickProcess/${reviewNum}으로 변경
+			url="pickProcess/13";						//merge하면 아마 ../pickProcess/${reviewNum}으로 변경
 			var openWin = window.open(url, "openPick", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 		}
 	</script>
