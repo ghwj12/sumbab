@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sumbab.project.model.PickService;
 
@@ -21,13 +21,14 @@ public class PickController {
 	@Autowired
 	private PickService pickService;
 	
-	//보관함에 담기 버튼 클릭(Ajax 사용)
+	//보관함에 담기 버튼 클릭
 	//반환값이 1:이미 보관함에 해당 가게가 담겨 있을 경우, 0:보관함에 해당 가게 추가
-	@RequestMapping(value="/storeWarning/pick/{storeNum}", method=RequestMethod.POST)
-	public int memberPick(@PathVariable int storeNum, HttpServletResponse response, HttpServletRequest request) {
+	@RequestMapping("/storeMerge/pick/{storeNum}")
+	public String memberPick(@PathVariable int storeNum, HttpServletResponse response, HttpServletRequest request, Model model) {
 		String id="hello";			//merge하면 session에 있는 id 사용
+		int result;
 		if(!id.equals(null)) {		//로그인 했을 경우
-			return pickService.bringPick(id, storeNum);
+			result = pickService.bringPick(id, storeNum);
 		}
 		//비회원일 경우
 		List<String> list = new ArrayList<>(); 		//쿠키에 담을 가게번호들 넣는 객체
@@ -48,11 +49,13 @@ public class PickController {
 			cookie.setMaxAge(60*60*24);
 			cookie.setPath("/");
 			response.addCookie(cookie);
-			return 0;
+			result = 0;
 		} else {
 			for(int i=0; i<picked.length; i++) {
-				if(picked[i].equals(Integer.toString(storeNum)))	//보관함에 추가할 가게번호가 이미 있을 경우
-					return 1;
+				if(picked[i].equals(Integer.toString(storeNum))) {	//보관함에 추가할 가게번호가 이미 있을 경우
+					result = 1;
+					break;
+				}
 			}
 			//보관함에 추가할 가게번호가 없을 경우
 			for(int i=0; i<picked.length; i++)		
@@ -65,7 +68,9 @@ public class PickController {
 			cookie.setMaxAge(60*60*24);
 			cookie.setPath("/");
 			response.addCookie(cookie);
-			return 0;
-		}			
+			result = 0;
+		}
+		model.addAttribute("result", result);
+		return "";
 	}
 }

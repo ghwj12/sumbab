@@ -63,26 +63,26 @@ public class WarningController {
 	}
 	
 	//여기서부터는 회원이 신고할 때 동작
-	@RequestMapping("/storeWarning/mergeWarning")	//merge하면 컨트롤러 삭제
+	@RequestMapping("/storeMerge/mergeWarning")	//merge하면 컨트롤러 삭제
 	public String mergeWarning() {
-		return "storeWarning/mergeWarning";
+		return "storeMerge/mergeWarning";
 	}
 	
-	@RequestMapping(value="/storeWarning/warningProcess", method=RequestMethod.GET)	//merge하면 {reviewNum} 추가
+	@RequestMapping(value="/storeMerge/warningProcess", method=RequestMethod.GET)	//merge하면 {reviewNum} 추가
 	public String warningProcess(Model model) {		
 		int classify =	1; 							//session에 있는 classify 사용
 		if(classify != 4) {
 			model.addAttribute("warning", new WarningDto());
 		}
-		return "storeWarning/warningProcess";
+		return "storeMerge/warningProcess";
 	}
 	
-	@RequestMapping(value="/storeWarning/warningProcess", method=RequestMethod.POST)	//merge하면 {reviewNum} 추가
+	@RequestMapping(value="/storeMerge/warningProcess", method=RequestMethod.POST)	//merge하면 {reviewNum} 추가
 	public String insert(WarningDto warning) {		
 		int reviewNum = 11;							//@PathVariable 사용
 		String id = "suumbabR";						//session에 있는 id 사용
 		warningService.insert(warning, reviewNum, id);
-		return "storeWarning/warningAccept";
+		return "storeMerge/warningAccept";
 	}
 	
 	//여기서부터는 정지 계정 관리
