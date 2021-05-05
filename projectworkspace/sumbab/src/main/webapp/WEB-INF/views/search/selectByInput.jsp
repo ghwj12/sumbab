@@ -10,7 +10,14 @@
 </head>
 <body>
 	<%--keyword검색, hashtag 검색 모두 여기로 출력된다. --%>
-	<h1>"${input}" 검색 결과:</h1>
+	<c:choose>
+		<c:when test="${input != null}">
+		<h1>"${input}" 검색 결과:</h1>
+		</c:when>
+		<c:when test="${tagName != null}">
+		<h1>"${tagName}" 검색 결과:</h1>
+		</c:when>
+	</c:choose>
 	
 	<c:set var="i" value="0" />
 	<c:set var="j" value="4" />

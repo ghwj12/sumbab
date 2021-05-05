@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,6 +35,13 @@ public class SearchController {
 		}else {
 			model.addAttribute("storeList", searchService.selectByKeyword(input));
 		}
+		
+		return "/search/selectByInput";
+	}
+	
+	@RequestMapping(value="/selectByTag/{tagName}", method = RequestMethod.GET)
+	public String clickHashtag(@PathVariable @ModelAttribute("input")String tagName, Model model) {
+		model.addAttribute("storeList", searchService.selectByTag(tagName));
 		
 		return "/search/selectByInput";
 	}
