@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 <%
 	pageContext.setAttribute("br", "<br/>");
 	pageContext.setAttribute("cn", "\n");
@@ -133,8 +133,9 @@ body {
 				</tr>
 				<tr>
 					<th>리뷰내용:</th>
-					<td width="500" style="word-break: break-all"><img
-						src="‪C:\storeimages\defaultimiage.PNG"><br>
+					<td width="500" style="word-break: break-all">
+					<img width="250px" src="<c:url value="/upload_02review/${Reviewlist.picture}"/>"/>
+
 						${fn:replace(Reviewlist.content, cn, br)}<br>
 						<c:forEach items="${tagList}" var="tagList" >
 							<c:if test="${Reviewlist.reviewNum eq tagList.key}">
@@ -169,7 +170,7 @@ body {
 			dataType:"json",
 			success:function(data){
 				console.log(data);
-				var keys = ["id", "star", "regdate", "content"];
+				var keys = ["id", "star", "regDate", "content"];
 				var datas = ["작성자", "별점", "작성일", "리뷰내용"];
 				var table = $("<table>", {"class":"reviewInfo"});
 				$(data).each(function(i, elem){
