@@ -22,6 +22,7 @@
 	<resources mapping="/css/**" location="/resources/css/"/>
 	<resources mapping="/img/**" location="/resources/img/"/>
 	
+	<resources mapping="/upload_01store/**" location="file:///C:/01store/" />
 	<resources mapping="/upload_02review/**" location="file:///C:/02review/" />
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
