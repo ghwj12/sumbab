@@ -15,7 +15,7 @@
 		<h1>"${input}" 검색 결과:</h1>
 		</c:when>
 		<c:when test="${tagName != null}">
-		<h1>"${tagName}" 검색 결과:</h1>
+		<h1>"${tagName}" 태그가 포함된 가게는?</h1>
 		</c:when>
 	</c:choose>
 	
