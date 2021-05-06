@@ -1,4 +1,4 @@
-회원/MEMBER===============================================================================a
+회원/MEMBER===============================================================================
 insert into MEMBER (ID, PWD, EMAIL, CLASSIFY, REGDATE) 
 values ('hello', '1234', 'test1@naver.com', 1, sysdate);
 insert into MEMBER (ID, PWD, EMAIL, CLASSIFY, REGDATE) 
