@@ -11,7 +11,7 @@
 		count, picture, CITYCODE, DISTRICTCODE)
 		VALUES (STORE_SEQ.nextval, 'deliciousman', #{classify},
 		#{name}, #{address}, #{phone},
-			#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, NULL, #{cityCode}, #{districtCode})
+			#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, #{picture}, #{cityCode}, #{districtCode})
 	</insert>
 
 	<update id="updateStore" parameterType="store">
