@@ -65,9 +65,13 @@ public class ReviewController {
 		
 		String path = "C:/02review/"; //파일 저장되는 실제 경로
 		String originFileName = mf.getOriginalFilename();
-
+		String picture = "";
+		
 		//파일 이름 겹치지 않게 등록한 시간을 string으로 입력
-		String picture = System.currentTimeMillis() + originFileName;
+		if(originFileName == "") {
+			picture = ""; // attached 없으면 파일등록 x
+		}else {
+			picture = System.currentTimeMillis() + originFileName;
 			
 			try {
 				mf.transferTo(new File(path+picture));
@@ -76,6 +80,7 @@ public class ReviewController {
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
+		}
 		reviewService.regit(reqR, session, storeNum, picture);
 		
 		
