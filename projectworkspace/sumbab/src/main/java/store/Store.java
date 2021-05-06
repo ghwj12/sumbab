@@ -22,7 +22,7 @@ public class Store {
 
 
 	public Store(String classify, String name, String cityCode, String districtCode, String address, String phone, String menu, String time,
-			boolean reserving, String etc, String pwd) {
+			boolean reserving, String etc, String pwd, String picture) {
 		super();
 		this.classify = classify;
 		this.name = name;
@@ -35,6 +35,7 @@ public class Store {
 		this.reserving = reserving;
 		this.etc = etc;
 		this.pwd = pwd;
+		this.picture = picture;
 	}
 
 
