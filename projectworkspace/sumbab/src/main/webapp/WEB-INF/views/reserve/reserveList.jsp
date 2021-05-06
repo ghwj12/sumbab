@@ -75,7 +75,7 @@
 				<td>${reserveP.phone}</td>
 			</tr>
 			<tr>
-				<td colspan="2">=====</td>
+				<td colspan="2">&nbsp;</td>
 			</tr>
 		</c:forEach>
 	</table>
