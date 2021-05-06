@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 각 패키지 별 sql query 정리하여 입력할 것 -->
+
+<mapper namespace="storeDao">
+
+	<select id="list" resultType="member">
+		SELECT * FROM STORE ORDER BY id
+	</select>
+	
+	<select id="selectByEmail" parameterType="String" resultType="member">
+		SELECT * FROM STORE WHERE email=#{email}
+	</select>
+	
+	<insert id="insert" parameterType="member">
+		INSERT INTO STORE (email, name, password, id, regDate)
+		VALUES (#{email}, #{name}, #{password}, STORE_SEQ.nextval, #{regDate})
+		<selectKey keyProperty="id" resultType="Long">
+			SELECT NVL(MAX(id),0) FROM member
+		</selectKey>
+	</insert>
+	<update id="update" parameterType="member">
+		UPDATE STORE SET name= #{name}, password=#{password}
+		WHERE email = #{email}
+	</update>
+	
+	<delete id="delete" parameterType="member">
+		DELETE FROM STORE WHERE email=#{email} AND password=#{password}
+	</delete>
+	<delete id="deleteAll">
+		DELETE FROM STORE
+	</delete>
+	
+	<select id="count" resultType="Integer">
+		SELECT COUNT(*) FROM STORE;
+	</select>
+	
+	<select id="selectByRegdate" parameterType="HashMap" resultType="member">
+		SELECT * FROM STORE WHERE regDate BETWEEN #{from} AND #{to}
+		ORDER BY regDate DESC
+	</select>
+	
+	<select id="selectById" parameterType="Long" resultType="member">
+		SELECT * FROM STORE WHERE id=#{id}
+	</select>
+	
+</mapper>
