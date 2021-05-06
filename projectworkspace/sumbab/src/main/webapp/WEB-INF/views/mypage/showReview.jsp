@@ -40,15 +40,13 @@
 			<th>작성일</th>
 			<td><fmt:formatDate value="${reviewVo.regdate}" pattern="yyyy.MM.dd" /></td>
 		</tr>
-		<tr>
-			<th>사진</th>
-			<td>
-				<c:choose>
-					<c:when test="${reviewVo.picture != ''}">사진 불러오기</c:when>
-					<c:otherwise>없음</c:otherwise>
-				</c:choose>
-			</td>
-		</tr>
+		<c:if test="${reviewVo.picture != ''}">
+			<tr>
+				<th>사진</th>
+				<td><img src="<c:url value="/upload_02review/${reviewVo.picture}"/>" style="width:250px; height:250px;"/>
+				</td>
+			</tr>
+		</c:if>
 	</table>
 	<input type="button" value="확인" onclick="javascript:self.close()">
 </body>
