@@ -46,9 +46,15 @@ body {
 </style>
 </head>
 <body>
-	<img src="${storeVO.picture}"
-		style="width: 70%; height: 250px; float: center;">
-
+	<c:choose>
+		<c:when test="${storeVO.picture != null}">
+			<img src="<c:url value="/upload_01store/${storeVO.picture}"/>"
+			style="width: 70%; height: 250px; float: center;" />
+		</c:when>
+		<c:otherwise>
+			<img src="/sumbab/resources/img/defaultimg.png"/>
+		</c:otherwise>
+	</c:choose>
 	<h1>${storeVO.name}<br>
 	</h1>
 	조회수: ${storeVO.count} &nbsp; 
