@@ -12,16 +12,16 @@
 	<h1>가게 등록 및 가게 정보 수정</h1>
 
 
-	<form:form method="post" action="registerStep1-2" commandName="storeDTO">
+	<form:form method="post" action="registerStep1-2" commandName="storeDTO" enctype="multipart/form-data">
 		<input type="radio" name="classify" value="음식점">음식점 등록
 		<input type="radio" name="classify" value="카페">카페 등록
 		<table>
 			<tr>
-				<td>가게명:</td>
+				<th>가게명:</th>
 				<td><input type="text" placeholder="가게명을 입력해주세요." name="name" id="name" required></td>
 			</tr>
 			<tr>
-				<td>위치:</td>
+				<th>위치:</th>
 				<td>
 				<input type="text" id="postcode" placeholder="우편번호">
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
@@ -30,23 +30,30 @@
 				</td>
 			</tr>
 			<tr>
-				<td>전화번호:</td>
+				<th>전화번호:</th>
 				<td><input type="text" placeholder="전화번호를 입력해 주세요." name="phone" id="phone" required></td>
 			</tr>
 			<tr>
-				<td>메뉴:</td>
+				<th>메뉴:</th>
 				<td><textarea placeholder="메뉴-가격 순으로 입력해 주세요." name="menu" id="menu" required></textarea></td>
 			</tr>
 			<tr>
-				<td>영업시간:</td>
+				<th>영업시간:</th>
 				<td><input type="text" placeholder="영업시간을 입력해 주세요." name="time" id="time" required></td>
 			</tr>
 			<tr>
-				<td>기타:</td>
+				<th>기타:</th>
 				<td><textarea placeholder="주차 가능 여부, 배달 가능 여부, 반려동물 동반 등의 특이사항을 적어주세요." name="etc" id="etc" required></textarea></td>
 			</tr>
 			<tr>
-				<td>비밀번호:</td>
+				<th>대표 이미지:</th>
+				<td>
+					<input type="file" name="attached" id="attached">
+					<input type="hidden" name="picture" id="picture">
+				</td>
+			</tr>
+			<tr>
+				<th>비밀번호:</th>
 				<td><input type="password" placeholder="등록하신 가게 관리를 위한 비밀번호를 입력하세요. " name="pwd" id="pwd" required></td>
 			</tr>
 			<tr>
