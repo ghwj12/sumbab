@@ -101,7 +101,7 @@
 			<tr>
 				<td colspan="2"><input type="text" placeholder="(*.jpg,*.png...)">
 				<input type="button" value="사진 첨부하기" name="addPhoto" id="addPhoto" onclick="popup();" />
-				<input type="hidden" id="storeNum" name="storeNum" value="${storelist.store_num}">
+				<input type="hidden" id="storeNum" name="storeNum" value="${storelist.storeNum}">
 				</td>
 			</tr>
 			<tr>

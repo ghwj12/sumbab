@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/sumbab/project/controller/StoreViewController.java=UTF-8
+encoding//src/main/java/com/sumbab/project/model/StoreViewDao.java=UTF-8
+encoding//src/main/java/com/sumbab/project/model/StoreViewDaoImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/Gps/GPSlocation.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/Store/StoreView.jsp=UTF-8

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sumbab.project.review.ReviewVo;
-import com.sumbab.project.stroreview.StoreViewDao;
-import com.sumbab.project.stroreview.StoreVo;
-import com.sumbab.project.stroreviewservice.StoreViewService;
+import com.sumbab.project.model.ReviewVo;
+import com.sumbab.project.model.StoreViewDao;
+import com.sumbab.project.model.StoreViewService;
+import com.sumbab.project.model.StoreVo;
 import com.sumbab.project.tag.TagService;
 
 @Controller
@@ -35,7 +35,6 @@ public class StoreViewController {
 		this.myStoreDao = mytestDao;
 	}
 
-	// list jsp에서는 번호와 이름만꺼낼거임 테스트용도
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
 		List<StoreVo> list = myStoreViewService.list();
@@ -44,38 +43,37 @@ public class StoreViewController {
 		return "list";
 	}
 
-	@RequestMapping(value = "/Store/StoreView/{store_num}", method = RequestMethod.GET)
-	public String boardController(Model model, @PathVariable int store_num) {
-		StoreVo storelist = myStoreViewService.readStore(store_num);
-		List<Map<String, Object>> nbsCafe = myStoreDao.nearbyCafe(store_num);
-		List<Map<String, Object>> nbsRestaurant = myStoreDao.nearbyRestaurant(store_num);
+	@RequestMapping(value = "/Store/StoreView/{storeNum}", method = RequestMethod.GET)
+	public String boardController(Model model, @PathVariable int storeNum) {
+		StoreVo storelist = myStoreViewService.readStore(storeNum);
+		List<Map<String, Object>> nbsCafe = myStoreDao.nearbyCafe(storeNum);
+		List<Map<String, Object>> nbsRestaurant = myStoreDao.nearbyRestaurant(storeNum);
 		// =======================================================================================
-		int totalCount = myStoreDao.getReviewCount(store_num);
+		int totalCount = myStoreDao.getReviewCount(storeNum);
 		model.addAttribute("storelist", storelist);
 		model.addAttribute("nbsCafe", nbsCafe);
 		model.addAttribute("nbsRestaurant", nbsRestaurant);
 		// ==========================================================================
-		List<Map<String, Object>> Reviewlist = myStoreDao.selectReviews(store_num, 1);
+		List<Map<String, Object>> Reviewlist = myStoreDao.selectReviews(storeNum, 1);
 		model.addAttribute("Reviewlist", Reviewlist);
 		System.out.println(Reviewlist);
 		// ===========================================================================
 		List<StoreVo> list = myStoreViewService.list();
 		model.addAttribute("list", list);
-		model.addAttribute("storeNum", store_num);
+		model.addAttribute("storeNum", storeNum);
 		model.addAttribute("totalCount", totalCount / 3 + 1); //
 		System.out.println(list);
 //=========================================================================================
-		//5/5추가부분
-		//해당게시물 조회수 증가
-		myStoreDao.upReadCount(store_num);
-		model.addAttribute("ReviewtotalCount", totalCount);
-		if (myStoreDao.getReviewCount(store_num) != 0) {
-			model.addAttribute("avgStar", myStoreDao.getAvgStar(store_num));
-			model.addAttribute("avgRevisit", myStoreDao.getAvgRevisit(store_num));
-			model.addAttribute("tagList", tagService.selectTagEachReview(store_num));
-			model.addAttribute("allTags", tagService.selectTagByStore(store_num));
 
-		} else if (myStoreDao.getReviewCount(store_num) == 0) {
+		myStoreDao.upReadCount(storeNum);
+		model.addAttribute("ReviewtotalCount", totalCount);
+		if (myStoreDao.getReviewCount(storeNum) != 0) {
+			model.addAttribute("avgStar", myStoreDao.getAvgStar(storeNum));
+			model.addAttribute("avgRevisit", myStoreDao.getAvgRevisit(storeNum));
+			model.addAttribute("tagList", tagService.selectTagEachReview(storeNum));
+			model.addAttribute("allTags", tagService.selectTagByStore(storeNum));
+
+		} else if (myStoreDao.getReviewCount(storeNum) == 0) {
 			model.addAttribute("avgStar", 0);
 			model.addAttribute("avgRevisit", 0);
 		}
@@ -84,13 +82,12 @@ public class StoreViewController {
 	}
 //===========================================================================================================================
 
-	@RequestMapping(value = "/Store/StoreView2/{store_num}/{page_num}", method = RequestMethod.GET)
-	public @ResponseBody List<Map<String, String>> boardPaging(@PathVariable int store_num,
+	@RequestMapping(value = "/Store/StoreView2/{storeNum}/{page_num}", method = RequestMethod.GET)
+	public @ResponseBody List<Map<String, String>> boardPaging(@PathVariable int storeNum,
 			@PathVariable int page_num) {
 
-		List<Map<String, Object>> reviewList = myStoreDao.selectReviewsPaging(store_num, page_num);
-		System.out.println(page_num + "입니다");
-		int totalCount = myStoreDao.getReviewCount(store_num);
+		List<Map<String, Object>> reviewList = myStoreDao.selectReviewsPaging(storeNum, page_num);
+		int totalCount = myStoreDao.getReviewCount(storeNum);
 
 		System.out.println("totalCount = " + totalCount);
 		System.out.println(reviewList);
@@ -112,8 +109,7 @@ public class StoreViewController {
 		return list;
 	}
 
-//깔끔히 끝나면좋겠다...4/28
-	// 완벽....5/5
+
 	@RequestMapping(value = "/Gps/GPSlocation")
 	public String GPSlocationController(Model model) {
 		List<StoreVo> Addresslist = myStoreDao.selectAllAddress();
