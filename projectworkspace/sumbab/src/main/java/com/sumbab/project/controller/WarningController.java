@@ -64,7 +64,7 @@ public class WarningController {
 	
 
 	
-	@RequestMapping(value="Store/StoreView/Warning/warningProcess/{reviewNum}", method=RequestMethod.GET)
+	@RequestMapping(value="store/StoreView/Warning/warningProcess/{reviewNum}", method=RequestMethod.GET)
 	public String warningProcess(Model model) {		
 		int classify =	1; 							//session�� �ִ� classify ���
 		if(classify != 4) {
@@ -73,7 +73,7 @@ public class WarningController {
 		return "Warning/warningProcess";
 	}
 	
-	@RequestMapping(value="Store/StoreView/Warning/warningProcess/{reviewNum}", method=RequestMethod.POST)
+	@RequestMapping(value="store/StoreView/Warning/warningProcess/{reviewNum}", method=RequestMethod.POST)
 	public String insert(WarningDto warning) {		
 		int reviewNum = 11;							//@PathVariable ���
 		String id = "suumbabR";						//session�� �ִ� id ���

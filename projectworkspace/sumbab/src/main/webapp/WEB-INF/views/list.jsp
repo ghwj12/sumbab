@@ -20,7 +20,7 @@
 		<c:forEach var="list" items="${list}">
 		
 		${list.storeNum} <a
-				href="<c:url value = "Store/StoreView/${list.storeNum}" />">${list.name}<br></a>
+				href="<c:url value = "store/StoreView/${list.storeNum}" />">${list.name}<br></a>
 
 		</c:forEach>
 

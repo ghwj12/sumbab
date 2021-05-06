@@ -43,7 +43,7 @@ public class StoreViewController {
 		return "list";
 	}
 
-	@RequestMapping(value = "/Store/StoreView/{storeNum}", method = RequestMethod.GET)
+	@RequestMapping(value = "/store/StoreView/{storeNum}", method = RequestMethod.GET)
 	public String boardController(Model model, @PathVariable int storeNum) {
 		StoreVo storelist = myStoreViewService.readStore(storeNum);
 		List<Map<String, Object>> nbsCafe = myStoreDao.nearbyCafe(storeNum);
@@ -78,11 +78,11 @@ public class StoreViewController {
 			model.addAttribute("avgRevisit", 0);
 		}
 
-		return "Store/StoreView";
+		return "store/StoreView";
 	}
 //===========================================================================================================================
 
-	@RequestMapping(value = "/Store/StoreView2/{storeNum}/{page_num}", method = RequestMethod.GET)
+	@RequestMapping(value = "/store/StoreView2/{storeNum}/{page_num}", method = RequestMethod.GET)
 	public @ResponseBody List<Map<String, String>> boardPaging(@PathVariable int storeNum,
 			@PathVariable int page_num) {
 

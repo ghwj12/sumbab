@@ -186,7 +186,7 @@ body {
 	});
 	function goPaging(storeNum, pageNo) {
 		$.ajax({
-			url:"/sumbab/Store/StoreView2/" + storeNum + "/" + pageNo,
+			url:"/sumbab/store/StoreView2/" + storeNum + "/" + pageNo,
 			type:"get",
 			dataType:"json",
 			success:function(data){
