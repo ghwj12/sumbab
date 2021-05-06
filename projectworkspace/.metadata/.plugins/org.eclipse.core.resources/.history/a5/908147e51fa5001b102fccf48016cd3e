@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="warningDao">
+
+        
+        <select id="allWarning" resultType="warning">
+        	select * from WARNING order by regdate desc
+        </select> 
+        
+        <select id="selectWarning" parameterType="Integer" resultType="WarningVo">
+        	select W.reporter, W.regdate, W.reason, R.id, R.content from WARNING W, REVIEW R
+				where W.review_num=R.review_num and R.review_num=#{reviewNum}
+        </select>
+        
+        
+     
+</mapper>

@@ -1,0 +1,10 @@
+package com.sumbab.project.model;
+
+import java.util.List;
+
+public interface WarningDao {
+
+	public List<Warning> allReport();
+	
+	public Warning reportDetail(int warningNum);
+}
