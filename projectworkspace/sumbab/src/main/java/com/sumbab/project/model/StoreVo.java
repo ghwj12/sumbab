@@ -12,6 +12,10 @@ public class StoreVo {
 	private String address;
 	private String menu;
 	private String time;
+	private String picture;
+	private String phone;
+	private String etc;
+	private int reserving;
 	private int count;
 	
 	public int getStoreNum() {
@@ -61,6 +65,30 @@ public class StoreVo {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEtc() {
+		return etc;
+	}
+	public void setEtc(String etc) {
+		this.etc = etc;
+	}
+	public int getReserving() {
+		return reserving;
+	}
+	public void setReserving(int reserving) {
+		this.reserving = reserving;
 	}
 	
 	

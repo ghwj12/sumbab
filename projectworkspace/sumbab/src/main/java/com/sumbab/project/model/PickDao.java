@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface PickDao {
 	
-	//ë³´ê´€í•¨ì—  ìˆëŠ” ê°€ê²Œë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
+	//ë³´ê??•¨?—  ?ˆ?Š” ê°?ê²Œë²ˆ?˜¸ ê°?? ¸?˜¤ê¸?
 	public List<Integer> bringPick(String id);
 	
-	//ë³´ê´€í•¨ì— ê°€ê²Œë²ˆí˜¸ ì¶”ê°€
+	//ë³´ê??•¨?— ê°?ê²Œë²ˆ?˜¸ ì¶”ê?
 	public void addPick(Pick pick);
 
 }

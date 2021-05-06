@@ -4,25 +4,25 @@ import java.util.List;
 
 public interface WarningDao {
 
-	//ì‹ ê³  ë‚´ì—­
+	//?‹ ê³? ?‚´?—­
 	public List<WarningVo> allReport();
 	
-	//ì‹ ê³  ìƒì„¸ë³´ê¸°
+	//?‹ ê³? ?ƒ?„¸ë³´ê¸°
 	public WarningVo reportDetail(int warningNum);
 	
-	//classify ë³€ê²½
+	//classify ë³?ê²?
 	public void changeClassify(ChangeClassifyDto classifyDto);
 	
-	//ì‹ ê³  ì‚­ì œ
+	//?‹ ê³? ?‚­? œ
 	public void delete(int warningNum);
 	
-	//ì‹ ê³  ì ‘ìˆ˜
+	//?‹ ê³? ? ‘?ˆ˜
 	public void insert(WarningDto warningDto);
 	
-	//ì •ì§€ ê³„ì • ê°€ì ¸ì˜¤ê¸°
+	//? •ì§? ê³„ì • ê°?? ¸?˜¤ê¸?
 	public List<MemberClassifyVo> selectMember();
 	
-	//ì •ì§€ í•´ì œ
+	//? •ì§? ?•´? œ
 	public void updateMemberClassify(String id);
 	
 }

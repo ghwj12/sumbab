@@ -56,6 +56,7 @@
 				<beans:value>classpath:config/sql-warning.xml</beans:value>
 				<beans:value>classpath:config/sql-recommend.xml</beans:value>
 				<beans:value>classpath:config/sql-pick.xml</beans:value>
+				<beans:value>classpath:config/sqlStoreView.xml</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="typeAliasesPackage" value="com.sumbab.project.model" />

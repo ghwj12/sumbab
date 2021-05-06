@@ -7,9 +7,11 @@ import org.apache.ibatis.type.Alias;
 @Alias("reviewVo")
 public class ReviewVo {
 
+	private String reviewNum;
+	private String id;
 	private String name;
 	private String menu;
-	private double star;
+	private String star;
 	private String content;
 	private boolean revisit;
 	private Date regdate;
@@ -27,10 +29,10 @@ public class ReviewVo {
 	public void setMenu(String menu) {
 		this.menu = menu;
 	}
-	public double getStar() {
+	public String getStar() {
 		return star;
 	}
-	public void setStar(double star) {
+	public void setStar(String star) {
 		this.star = star;
 	}
 	public String getContent() {
@@ -56,6 +58,18 @@ public class ReviewVo {
 	}
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+	public String getReviewNum() {
+		return reviewNum;
+	}
+	public void setReviewNum(String reviewNum) {
+		this.reviewNum = reviewNum;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

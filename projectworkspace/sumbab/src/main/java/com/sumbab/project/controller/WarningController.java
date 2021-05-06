@@ -35,12 +35,12 @@ public class WarningController {
 		return "mypage/reportDetail";
 	}
 	
-	//신고처리 Ajax 사용
+	//�Ű�ó�� Ajax ���
 	@ResponseBody
 	@RequestMapping(value="/mypage/changeClassify", method=RequestMethod.POST)
 	public int changeClassify(@RequestBody ChangeClassifyDto classifyDto, Model model) {
 		warningService.changeClassify(classifyDto);
-		return 1; //Ajax에서 반환값이 없으면 success 부분이 동작하지 않으므로 형식에만 맞게 아무거나 return
+		return 1; //Ajax���� ��ȯ���� ������ success �κ��� �������� �����Ƿ� ���Ŀ��� �°� �ƹ��ų� return
 	}
 	
 	@RequestMapping(value="/mypage/reportDetail/{warningNum}", method=RequestMethod.POST)
@@ -62,30 +62,26 @@ public class WarningController {
 		return "mypage/deleteWarning";
 	}
 	
-	//여기서부터는 회원이 신고할 때 동작
-	@RequestMapping("/storeMerge/mergeWarning")	//merge하면 컨트롤러 삭제
-	public String mergeWarning() {
-		return "storeMerge/mergeWarning";
-	}
+
 	
-	@RequestMapping(value="/storeMerge/warningProcess", method=RequestMethod.GET)	//merge하면 {reviewNum} 추가
+	@RequestMapping(value="Store/StoreView/Warning/warningProcess/{reviewNum}", method=RequestMethod.GET)
 	public String warningProcess(Model model) {		
-		int classify =	1; 							//session에 있는 classify 사용
+		int classify =	1; 							//session�� �ִ� classify ���
 		if(classify != 4) {
 			model.addAttribute("warning", new WarningDto());
 		}
-		return "storeMerge/warningProcess";
+		return "Warning/warningProcess";
 	}
 	
-	@RequestMapping(value="/storeMerge/warningProcess", method=RequestMethod.POST)	//merge하면 {reviewNum} 추가
+	@RequestMapping(value="Store/StoreView/Warning/warningProcess/{reviewNum}", method=RequestMethod.POST)
 	public String insert(WarningDto warning) {		
-		int reviewNum = 11;							//@PathVariable 사용
-		String id = "suumbabR";						//session에 있는 id 사용
+		int reviewNum = 11;							//@PathVariable ���
+		String id = "suumbabR";						//session�� �ִ� id ���
 		warningService.insert(warning, reviewNum, id);
-		return "storeMerge/warningAccept";
+		return "Warning/warningAccept";
 	}
 	
-	//여기서부터는 정지 계정 관리
+	//���⼭���ʹ� ���� ���� ����
 	@RequestMapping("/mypage/classifyAdmin")
 	public String classifyAdmin(Model model) {
 		model.addAttribute("memberList", warningService.selectMember());

@@ -11,7 +11,7 @@ public class RecommendService {
 	private RecommendDaoImpl recommendDao;
 	
 	public List<StoreVo> categoryRecommend(String classify, SelectedCategory selectedCategory) {
-		if(classify.equals("ìŒì‹ì ")) {
+		if(classify.equals("?Œ?‹? ")) {
 			String category = selectedCategory.getCategory1() + selectedCategory.getCategory2();
 			return recommendDao.selectRest(category);
 		}else {
