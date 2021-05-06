@@ -15,7 +15,8 @@ public class StoreService {
 		this.storeDao = storeDao;
 	}
 	
-	public void regist(StoreRegisterRequest req, String fullAddress, String extrAddress) {
+	public void regist(StoreRegisterRequest req,
+				String fullAddress, String extrAddress, String picture) {
 		
 		int space = fullAddress.indexOf(" ");
 		int secspace = fullAddress.indexOf(" ",space+1);
@@ -35,8 +36,9 @@ public class StoreService {
 				req.getTime(),
 				req.getReserving(),
 				req.getEtc(),
-				req.getPwd());
-		
+				req.getPwd(),
+				picture);
+		System.out.println("이름을 알려줘" + newStore.getPicture());
 		storeDao.insert(newStore);
 	}
 	
