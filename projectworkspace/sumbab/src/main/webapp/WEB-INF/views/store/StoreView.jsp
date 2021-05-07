@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<<<<<<< HEAD
+=======
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
+
+>>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 <%
 	pageContext.setAttribute("br", "<br/>");
 	pageContext.setAttribute("cn", "\n");
@@ -12,11 +17,18 @@
 <head>
 <meta charset="UTF-8">
 <title>상세화면페이지</title>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 <!-- 하단 제이쿼리를 위해.. -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <%@ include file="/WEB-INF/views/shareHead.jsp"%>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 
 <style type="text/css">
 .topcorner {
@@ -24,22 +36,37 @@
 	top: 0;
 	right: 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 .bottomright {
 	position: absolute;
 	bottom: 100;
 	right: 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 table, th, td {
 	border-collapse: collapse;
 	border: 1px solid black;
 }
+<<<<<<< HEAD
 
 th, td {
 	padding: 5px
 }
 
+=======
+th, td {
+	padding: 5px
+}
+th, td {
+	padding: 5px
+}
+>>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 body {
 	margin: 0px;
 	padding: 0px;
