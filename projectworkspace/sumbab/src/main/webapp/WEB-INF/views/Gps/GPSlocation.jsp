@@ -6,6 +6,107 @@
 <head>
 <meta charset="utf-8">
 <title>내 위치 주변 맛집과 카페</title>
+<style>
+.wrap {
+	position: absolute;
+	left: 0;
+	bottom: 40px;
+	width: 288px;
+	height: 132px;
+	margin-left: -144px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	line-height: 1.5;
+}
+
+.wrap * {
+	padding: 0;
+	margin: 0;
+}
+
+.wrap .info {
+	width: 286px;
+	height: 120px;
+	border-radius: 5px;
+	border-bottom: 2px solid #ccc;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+	padding: 5px 0 0 10px;
+	height: 30px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.info .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.info .body {
+	position: relative;
+	overflow: hidden;
+}
+
+.info .desc {
+	position: relative;
+	margin: 13px 0 0 90px;
+	height: 75px;
+}
+
+.desc .ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.desc .jibun {
+	font-size: 11px;
+	color: #888;
+	margin-top: -2px;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 22px;
+	height: 12px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+	color: #5085BB;
+}
+</style>
+
+
+
 <!-- 
 1.컨트롤러에서 전달된 모델값을 스크립트에서 받기 
 2.마커생성 함수 부분에서 for문돌려 마커여럿생성
@@ -21,6 +122,7 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 </head>
 <body>
 	<h1>내위치근방에 맛집/카페 보기</h1>
+	<h4>(*고객님 위치 근방에 마커를 클릭하면 상세보기가 나옵니다!*)</h4>
 
 	<!-- 아래 api를 사용할려면 카카오 개발자 센터에서 키값을 할당받아 등록해야함 -->
 	<div id="map" style="width: 70%; height: 500px;"></div>
@@ -105,11 +207,27 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 			//마커를 생성할텐데 이전에는 항상 고정관념마냥 컨트롤러에서 전달받은 모델값은 스크립트단 외부에 jsp에서 jstl forEach태그를 통해 
 			//전달받고 그다음 스크립트단으로 넣을려고했는데 그냥 스크립트단에서 바로 forEach태그를 때려도 스크립트단에 전달이 된더라!
 			//그것을 담을 var addressArray[]를 먼저 생성하고 .push()함수를 통해 값을 넣어준다.
+			var storeNumArray = [];
+			
+			var classifyArray = [];
+			
+			var cityArray = [];
+
+			var districtArray = [];
+
 			var addressArray = [];
 
 			var nameArray = [];
 
 			<c:forEach items="${GPS}" var="GPS">
+			
+			storeNumArray.push("${GPS.storeNum}")
+			
+			classifyArray.push("${GPS.classify}")
+
+			cityArray.push("${GPS.citycode}")
+
+			districtArray.push("${GPS.districtcode}")
 
 			addressArray.push("${GPS.address}");
 
@@ -145,15 +263,28 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 										marker.setMap(map);
 
 										//=====================================================================================================================================
-										var content =             
-										'<div style="font-size:20px;font-weight:bold;">' + 
-												nameArray[i] + 
-												'<br>'+
-												addressArray[i] +
-										'</div>';
-							            				
-														
-							           
+										var content = '<div class="wrap">'
+												+ '    <div class="info">'
+												+ '        <div class="title">'
+												+ nameArray[i]
+												+ '            <div class="close" onclick="closeOverlay()" title="닫기"></div>'
+												+ '        </div>'
+												+ '        <div class="body">'
+												+ '            <div class="desc">'
+												+ '                <div class="ellipsis">'
+												+ classifyArray[i]
+												+ '					<br>'				
+												+ cityArray[i]
+												+ districtArray[i]
+												+ addressArray[i]
+												+ '				 </div>'
+											    + '				<div><a href="http://localhost:8090/sumbab/store/StoreView/' 
+											    +storeNumArray[i]+ '" target="_blank" class="link">가게상세보기페이지로이동하기</a></div>' 
+												+ '           </div>'
+												+ '        </div>'
+												+ '    </div>' 
+												+ '</div>';
+
 										console.log(content);
 										console.log(nameArray[i]);
 										// 커스텀 오버레이를 생성합니다
@@ -162,10 +293,12 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 													position : coords,
 													content : content
 												});
+										daum.maps.event.addListener(marker,
+												'click', function() {
+													customOverlay.setMap(map);
+												});
 
-										// 커스텀 오버레이를 지도에 표시합니다
-										customOverlay.setMap(map);
-
+										
 									}
 								});
 			}
@@ -177,7 +310,7 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 			var imageSrc = 'https://ifh.cc/g/slv1L0.png', imageSize = new daum.maps.Size(
 					32, 38), // 마커이미지의 크기입니다
 			imageOption = {
-				offset : new daum.maps.Point(16, 40)
+				offset : new daum.maps.Point(20, 40)
 			}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 			var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize,

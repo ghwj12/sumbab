@@ -118,7 +118,7 @@
 
 	<select id="selectAllAddress"
 		resultType="store">
-		SELECT name, address FROM STORE
+		SELECT store_num, name, classify, citycode, districtcode, address FROM STORE
 	</select>
 
 	<!-- ======================================================================================================================================== -->
