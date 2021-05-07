@@ -3,7 +3,6 @@ package com.sumbab.sumbab.model.classify;
 import java.util.Date;
 
 import org.apache.ibatis.type.Alias;
-
 @Alias("memberClassify")
 public class MemberClassifyVo {
 

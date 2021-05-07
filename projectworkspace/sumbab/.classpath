@@ -36,6 +36,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Win10/Desktop/ojdbc6-11.2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Win10/Desktop/sumbab-storeView+GPS/sumbab/projectworkspace/sumbab/ojdbc6-11.2.0.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
