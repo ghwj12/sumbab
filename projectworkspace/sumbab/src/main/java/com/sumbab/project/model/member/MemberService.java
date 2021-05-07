@@ -1,29 +1,9 @@
-package com.sumbab.member.service;
-
-
-
-import com.sumbab.member.domain.MemberVO;
-
-
+package com.sumbab.project.model.member;
 
 public interface MemberService {
 
 	public void memberJoinProcess(MemberVO memberVO);
 
-	
 	public int idCheck(String id);
-	
-	
-	
-	
+
 }
-
-
-
-
-
-
-
-
-
-
