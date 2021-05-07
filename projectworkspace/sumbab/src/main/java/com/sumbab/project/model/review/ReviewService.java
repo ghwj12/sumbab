@@ -8,6 +8,8 @@ import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sumbab.project.model.StoreVo;
+
 @Service
 public class ReviewService {
 	
@@ -58,7 +60,7 @@ public class ReviewService {
 		return reviewDao.getMyReviewList(id);
 	}
 	
-	public List<Store> getStoreName(String id){
+	public List<StoreVo> getStoreName(String id){
 		return reviewDao.getStoreName(id);
 	}
 	

@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Win10
 Build-Jdk: 1.8.0_271
-=======
-Built-By: JUDITH VERi1iTAS
-Build-Jdk: 1.8.0_281
->>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 Created-By: Maven Integration for Eclipse
 

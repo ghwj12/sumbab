@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.catalina.Store;
 
+import com.sumbab.project.model.StoreVo;
+
 public interface ReserveDao {
 
 	public void insert(Reserve reserve);//예약하기
@@ -12,7 +14,7 @@ public interface ReserveDao {
 	public List<Reserve> listFuture(String memberID); //memberVO.id로 예약리스트 가져오기
 	public List<Reserve> listPast(String memberID); //memberVO.id로 예약리스트 가져오기
 	
-	public List<Store> getStoreName(String memberID);
+	public List<StoreVo> getStoreName(String memberID);
 	
 	public String getID(Reserve reserve);
 }

@@ -59,7 +59,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 	//리뷰에서 사용되는 store list라서 review dao에 넣음
 	@Override
-	public List<Store> getStoreName(String id){
+	public List<StoreVo> getStoreName(String id){
 		return sqlSessionTemplate.selectList("getStoreNameforReview", id);
 	}
 

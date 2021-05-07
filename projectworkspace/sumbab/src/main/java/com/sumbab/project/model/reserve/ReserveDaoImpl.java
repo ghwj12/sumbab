@@ -2,10 +2,12 @@ package com.sumbab.project.model.reserve;
 
 import java.util.List;
 
-import org.apache.catalina.Store;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.sumbab.project.model.StoreVo;
 
 @Repository
 public class ReserveDaoImpl implements ReserveDao {
@@ -45,7 +47,7 @@ public class ReserveDaoImpl implements ReserveDao {
 	}
 
 	@Override
-	public List<Store> getStoreName(String memberID) {
+	public List<StoreVo> getStoreName(String memberID) {
 		return sqlSessionTemplate.selectList("getStoreName", memberID);
 	}
 
