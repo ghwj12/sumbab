@@ -47,8 +47,15 @@ body {
 </style>
 </head>
 <body>
-	<img src="${storelist.picture}"
-		style="width: 70%; height: 250px; float: center;">
+	<c:choose>
+		<c:when test="${storeVO.picture != null}">
+			<img src="<c:url value="/upload_01store/${storeVO.picture}"/>"
+			style="width: 70%; height: 250px; float: center;" />
+		</c:when>
+		<c:otherwise>
+			<img src="/sumbab/resources/img/defaultimg.png"/>
+		</c:otherwise>
+	</c:choose>
 
 	<h1>${storelist.name}<br>
 	</h1>
@@ -154,7 +161,7 @@ body {
 				<tr>
 					<th>리뷰내용:</th>
 					<td width="500" style="word-break: break-all"><img
-						src="‪C:\storeimages\defaultimiage.PNG"><br>
+						src="/upload_02review/${Reviewlist.picture}"><br>
 						${Reviewlist.content}</td>
 				</tr>
 			</table>
