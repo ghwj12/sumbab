@@ -27,10 +27,10 @@
 		pwd=#{pwd}
 	</delete>
 
-	<update id="upReadCount" parameterType="Integer">
+<!-- 	<update id="upReadCount" parameterType="Integer">
 		UPDATE STORE SET count = count+1
 		WHERE STORE_NUM=#{storeNum}
-	</update>
+	</update> -->
 
 	<!-- <delete id="deleteAll"> DELETE FROM STORE </delete> -->
 	<!-- ============검색 관련 기능=============== -->

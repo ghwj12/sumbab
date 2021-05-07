@@ -116,7 +116,7 @@ body {
 	<!-- =============================================================================================================================================== -->
 
 	<script type="text/javascript">
-	function openPick(store_num){
+	function openPick(storeNum){
 		var popWidth = 600;
 		var popHeight = 400;
 		var winHeight = document.body.clientHeight;
@@ -125,18 +125,18 @@ body {
 		var winY = window.screenTop;
 		var popX = winX + (winWidth - popWidth)/2;
 		var popY = winY + (winHeight - popHeight)/2;
-		url="Pick/PickProcess/" + store_num;						//merge하면 아마 ../pickProcess/${reviewNum}으로 변경
+		url="Pick/PickProcess/" + storeNum;						//merge하면 아마 ../pickProcess/${reviewNum}으로 변경
 		var openWin = window.open(url, "openPick", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 	}
 	</script>
 	
 	
-	<input type="button" onclick= "openPick(${storelist.store_num})" value="보관함에담기">
+	<input type="button" onclick= "openPick(${storelist.storeNum})" value="보관함에담기">
 	<c:set var="reserving" value="${storelist.reserving}" />
 	<c:choose>
 	<%--reserving 값에 따라 예약하기/예약불가 버튼 출력--%>
 	<c:when test="${reserving != null}">
-		<input type="button" value="예약하기" onclick="location.href='/project/reserve/reserveForm/${storelist.store_num}'" >
+		<input type="button" value="예약하기" onclick="location.href='/project/reserve/reserveForm/${storelist.storeNum}'" >
 	</c:when>
 	<c:otherwise>
 		<input type="button" value="예약불가">
@@ -145,7 +145,7 @@ body {
 	<!-- ================================================================================================================================================== -->
 	<div id="reviewTitle">
 	<h2>리뷰 | ${ReviewtotalCount}</h2>
-		<input type="button" value="리뷰 작성" onclick="location.href='/project/review/writeReview/${storelist.store_num}'">
+		<input type="button" value="리뷰 작성" onclick="location.href='/project/review/writeReview/${storelist.storeNum}'">
 	</div>
 	
 	<div id="reviewList">
@@ -177,7 +177,7 @@ body {
 	</div>
 
 	<c:forEach var="cnt" begin="1" end="${totalCount}" step="1">
-		<a href="javascript:goPaging(${store_num}, ${cnt });">${cnt }</a>
+		<a href="javascript:goPaging(${storeNum}, ${cnt });">${cnt }</a>
 	</c:forEach>
 
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -199,9 +199,9 @@ body {
 				+ ",top=" + popY + ",width=" + popWidth + ",height="
 				+ popHeight);
 	});
-	function goPaging(store_num, pageNo) {
+	function goPaging(storeNum, pageNo) {
 		$.ajax({
-			url:"/project/Store/StoreView2/" + store_num + "/" + pageNo,
+			url:"/project/Store/StoreView2/" + storeNum + "/" + pageNo,
 			type:"get",
 			dataType:"json",
 			success:function(data){
@@ -244,7 +244,7 @@ body {
 				<tr>
 					<th>가게이름:</th>
 					<td style="word-break: break-all"><a
-						href="<c:url value = "${nbsCafe.store_num}" />">&nbsp;${nbsCafe.name}</a></td>
+						href="<c:url value = "${nbsCafe.storeNum}" />">&nbsp;${nbsCafe.name}</a></td>
 				</tr>
 				<tr>
 					<th>위치:</th>
@@ -264,7 +264,7 @@ body {
 				<tr>
 					<th>가게이름:</th>
 					<td style="word-break: break-all"><a
-						href="<c:url value = "${nbsRestaurant.store_num}" />">&nbsp;${nbsRestaurant.name}</a></td>
+						href="<c:url value = "${nbsRestaurant.storeNum}" />">&nbsp;${nbsRestaurant.name}</a></td>
 				</tr>
 				<tr>
 					<th>위치:</th>

@@ -2,8 +2,6 @@ package com.sumbab.project.model.reserve;
 
 import java.util.List;
 
-import org.apache.catalina.Store;
-
 import com.sumbab.project.model.StoreVo;
 
 public interface ReserveDao {

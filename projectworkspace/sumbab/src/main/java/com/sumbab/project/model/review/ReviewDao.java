@@ -2,8 +2,6 @@ package com.sumbab.project.model.review;
 
 import java.util.List;
 
-import org.apache.catalina.Store;
-
 import com.sumbab.project.model.StoreVo;
 
 public interface ReviewDao {

@@ -7,8 +7,8 @@ public class Store {
 	private String classify;
 	private String name;
 	private String phone;
-	private String cityCode;
-	private String districtCode;
+	private String citycode;
+	private String districtcode;
 	private String address;
 	private String menu;
 	private String time;
@@ -20,13 +20,13 @@ public class Store {
 
 	public Store() {}
 
-	public Store(String classify, String name, String cityCode, String districtCode, String address, String phone, String menu, String time,
+	public Store(String classify, String name, String citycode, String districtcode, String address, String phone, String menu, String time,
 			boolean reserving, String etc, String pwd, String picture) {
 		super();
 		this.classify = classify;
 		this.name = name;
-		this.cityCode = cityCode;
-		this.districtCode = districtCode;
+		this.citycode = citycode;
+		this.districtcode = districtcode;
 		this.address = address;
 		this.phone = phone;
 		this.menu = menu;
@@ -77,20 +77,20 @@ public class Store {
 		this.phone = phone;
 	}
 
-	public String getCityCode() {
-		return cityCode;
+	public String getcitycode() {
+		return citycode;
 	}
 
-	public void setCityCode(String cityCode) {
-		this.cityCode = cityCode;
+	public void setcitycode(String citycode) {
+		this.citycode = citycode;
 	}
 
-	public String getDistrictCode() {
-		return districtCode;
+	public String getDistrictcode() {
+		return districtcode;
 	}
 
-	public void setDistrictCode(String districtCode) {
-		this.districtCode = districtCode;
+	public void setDistrictcode(String districtcode) {
+		this.districtcode = districtcode;
 	}
 
 	public String getAddress() {

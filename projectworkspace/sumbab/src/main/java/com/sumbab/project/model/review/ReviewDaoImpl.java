@@ -2,7 +2,6 @@ package com.sumbab.project.model.review;
 
 import java.util.List;
 
-import org.apache.catalina.Store;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
