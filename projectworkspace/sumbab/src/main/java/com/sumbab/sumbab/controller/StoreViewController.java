@@ -27,7 +27,7 @@ public class StoreViewController {
 	private StoreViewService myStoreViewService;
 	@Autowired
 	private StoreViewDao myStoreDao;
-	//==========================================================
+	
 	//영주님 소스에서 끌고온것들
 	@Autowired
 	private TagService tagService;
