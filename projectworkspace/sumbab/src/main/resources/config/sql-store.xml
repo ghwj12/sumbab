@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="store">
+
+	<!-- id = ${member.id}로 나중에 변경 -->
+	<insert id="insertStore" parameterType="store">
+		INSERT INTO STORE (STORE_NUM,
+		id, classify, name, address, phone, menu, time, reserving, etc, pwd,
+		count, picture, CITYCODE, DISTRICTCODE)
+		VALUES (STORE_SEQ.nextval, 'deliciousman', #{classify},
+		#{name}, #{address}, #{phone},
+			#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, #{picture}, #{cityCode}, #{districtCode})
+	</insert>
+
+	<update id="updateStore" parameterType="store">
+		UPDATE STORE SET
+		classify=#{classify}, name= #{name}, address=#{address},
+		phone=#{phone},
+		menu=#{menu}, time={time}, reserving=#{reserving}, etc=#{etc}, CITYCODE=#{cityCode}, DISTRICTCODE=#{districtCode}
+		WHERE pwd=#{pwd}
+	</update>
+
+	<delete id="deleteStore" parameterType="store">
+		DELETE FROM STORE WHERE
+		pwd=#{pwd}
+	</delete>
+
+	<update id="upReadCount" parameterType="Integer">
+		UPDATE STORE SET count = count+1
+		WHERE STORE_NUM=#{storeNum}
+	</update>
+
+	<!-- <delete id="deleteAll"> DELETE FROM STORE </delete> -->
+	<!-- ============검색 관련 기능=============== -->
+
+	<!-- 내가 등록한 가게 보기 -->
+	<select id="listStore" resultType="store">
+		SELECT * FROM STORE WHERE ID=${ID}
+		ORDER BY STORE_NUM
+	</select>
+	
+	<!-- 가게 상세보기 -->
+	<select id="storeView" parameterType="Integer" resultType="store">
+		select * from STORE where STORE_NUM=#{storeNum}
+	</select>
+	
+</mapper>
