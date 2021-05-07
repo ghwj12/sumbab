@@ -22,7 +22,7 @@
         	delete from WARNING where warning_num=#{warningNum}
         </delete>
         
-        <insert id="insertWarning" parameterType="warningDto">
+        <insert id="insertWarning" parameterType="warningVo">
         	insert into WARNING (warning_num, review_num, reason, reporter, regdate)
         		values(warning_seq.nextval, #{reviewNum}, #{reason}, #{reporter}, sysdate)
         </insert>

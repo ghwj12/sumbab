@@ -57,6 +57,4 @@ public class WarningVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
 }

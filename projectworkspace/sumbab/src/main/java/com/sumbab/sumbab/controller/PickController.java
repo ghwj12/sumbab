@@ -26,7 +26,7 @@ public class PickController {
 	
 	//�����Կ� ��� ��ư Ŭ��
 	//��ȯ���� 1:�̹� �����Կ� �ش� ���԰� ��� ���� ���, 0:�����Կ� �ش� ���� �߰�
-	@RequestMapping("/Pick/PickProcess/{storeNum}")
+	@RequestMapping("store/StoreView/Pick/PickProcess/{storeNum}")
 	public String memberPick(@PathVariable int storeNum, HttpServletResponse response, HttpServletRequest request, Model model) {
 		String id="";			//merge�ϸ� session�� �ִ� id ���
 		int result=0;
