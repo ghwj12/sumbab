@@ -38,4 +38,19 @@
 		(select count(*) from REVIEW where STORE_NUM=#{storeNum}))
 		from dual
 	</select>
+	
+	<select id="getMyReviewList" parameterType="String" resultType="review">
+		select * from REVIEW where ID=#{id} order by REGDATE desc
+	</select>
+	
+	<select id="getStoreNameforReview" parameterType="String" resultType="store">
+		select distinct STORE.* from STORE
+		join REVIEW on STORE.STORE_NUM = REVIEW.STORE_NUM
+		where REVIEW.STORE_NUM in (select STORE_NUM from REVIEW where ID=#{id})
+	</select>
+	
+	<select id="reviewDetail" parameterType="Integer" resultType="review">
+		select * from REVIEW where REVIEW_NUM=#{reviewNum}
+	</select>
+	
 </mapper>
