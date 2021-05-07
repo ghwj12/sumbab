@@ -24,7 +24,7 @@ public class ReserveController {
 	}
 
 	//마이페이지-->나의 예약한 음식점 리스트 보기:리스트 출력
-	@RequestMapping(value="/reserve/reserveList")
+	@RequestMapping(value="/reserve/reserveList", method=RequestMethod.GET)
 	public String reserveList(Model model, HttpSession session) {
 		
 		String memberID="deliciousman";
