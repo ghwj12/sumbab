@@ -25,12 +25,20 @@
 }
 </style>
 
+<<<<<<< HEAD
 <title>${storelist.name} 예약하기</title>
+=======
+<title>${storeName} 예약하기</title>
+>>>>>>> STORE
 </head>
 <body>
 <!-- 가게 상세보기 view에서 storeVO.reserving==false 인 곳은 예약하기 버튼 비활성화 -->
 
+<<<<<<< HEAD
 	<h1>${storelist.name} 예약하기</h1>
+=======
+	<h1>${storeName} 예약하기</h1>
+>>>>>>> STORE
 	
 	<form:form id="reserveDTO" name="reserveDTO" method="POST" action="/sumbab/reserve/completeReserve" commandName="reserveDTO">
 		<table border="1">

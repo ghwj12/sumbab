@@ -8,7 +8,12 @@
 <head>
 <link href="/sumbab/resources/css/star.css" rel="stylesheet" type="text/css">
 <link href="/sumbab/resources/css/hashtag.css" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
 <meta charset="UTF-8">
+=======
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+>>>>>>> STORE
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>리뷰 작성하기</title>
@@ -17,8 +22,13 @@
 <body>
 	<h1>리뷰 작성하기</h1>
 
+<<<<<<< HEAD
 	<h2>${storelist.name}에대한 리뷰를 남겨주세요!</h2>
 	<form method="post" id="reviewDTO" name="reviewDTO" action="/project/review/completeWrReview">
+=======
+	<h2>${storeVO.name}에대한 리뷰를 남겨주세요!</h2>
+	<form method="post" id="reviewDTO" name="reviewDTO" action="/sumbab/review/completeWrReview" enctype="multipart/form-data">
+>>>>>>> STORE
 		<table border="1">
 			<tr>
 				<th>먹은 메뉴</th>
@@ -74,8 +84,20 @@
 			</tr>
 			<tr>
 				<th>리뷰 작성</th>
+<<<<<<< HEAD
 				<td><textarea id="content" name="content" cols="50" rows="10"
 						required></textarea></td>
+=======
+				<td><textarea id="content" name="content" cols="50" rows="10" required></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<input type="file" name="attached" id="attached">
+				<input type="hidden" name="picture" id="picture">
+				
+				<input type="hidden" id="storeNum" name="storeNum" value="${storeVO.storeNum}">
+				</td>
+>>>>>>> STORE
 			</tr>
 			
 			<tr>
@@ -93,11 +115,15 @@
 		   	 </div>
 				</td>
 			</tr>
+<<<<<<< HEAD
 			
+=======
+>>>>>>> STORE
 			<tr>
 				<td colspan="2"><input type="checkbox" name="revisit"
 					id="revisit">재방문 하고싶어요!</td>
 			</tr>
+<<<<<<< HEAD
 			<tr>
 				<td colspan="2"><input type="text" placeholder="(*.jpg,*.png...)">
 				<input type="button" value="사진 첨부하기" name="addPhoto" id="addPhoto" onclick="popup();" />
@@ -115,13 +141,18 @@
 					</c:otherwise>
 				</c:choose>
 			</tr>
+=======
+>>>>>>> STORE
 		</table>
 	<input type="submit" value="작성">
 	<input type="button" value="뒤로가기" onclick="history.back();">
 	</form>
 
 	<script src="/sumbab/resources/js/hashtags.js"></script>
+<<<<<<< HEAD
 	<script src="<%=request.getContextPath()%>/resources/js/popup.js"></script>
+=======
+>>>>>>> STORE
 
 </body>
 </html>
