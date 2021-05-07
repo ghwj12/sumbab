@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sumbab.sumbab.model.classify.ChangeClassifyDto;
-import com.sumbab.sumbab.model.classify.MemberClassifyVo;
+import com.sumbab.sumbab.model.classify.MemberClassify;
 
 @Repository
 public class WarningDaoImpl implements WarningDao{
@@ -41,7 +41,7 @@ public class WarningDaoImpl implements WarningDao{
 	}
 
 	@Override
-	public List<MemberClassifyVo> selectMember() {
+	public List<MemberClassify> selectMember() {
 		return sqlSessionTemplate.selectList("selectMember");
 	}
 

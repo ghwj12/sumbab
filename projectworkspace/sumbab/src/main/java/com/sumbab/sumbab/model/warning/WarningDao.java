@@ -3,7 +3,7 @@ package com.sumbab.sumbab.model.warning;
 import java.util.List;
 
 import com.sumbab.sumbab.model.classify.ChangeClassifyDto;
-import com.sumbab.sumbab.model.classify.MemberClassifyVo;
+import com.sumbab.sumbab.model.classify.MemberClassify;
 
 public interface WarningDao {
 
@@ -23,7 +23,7 @@ public interface WarningDao {
 	public void insert(WarningDto warningDto);
 	
 	//?���? 계정 �??��?���?
-	public List<MemberClassifyVo> selectMember();
+	public List<MemberClassify> selectMember();
 	
 	//?���? ?��?��
 	public void updateMemberClassify(String id);

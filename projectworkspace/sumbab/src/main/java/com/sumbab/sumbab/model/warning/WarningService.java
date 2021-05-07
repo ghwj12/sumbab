@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sumbab.sumbab.model.classify.ChangeClassifyDto;
-import com.sumbab.sumbab.model.classify.MemberClassifyVo;
+import com.sumbab.sumbab.model.classify.MemberClassify;
 
 @Service
 public class WarningService {
@@ -36,7 +36,7 @@ public class WarningService {
 		warningDao.insert(warningDto);
 	}
 	
-	public List<MemberClassifyVo> selectMember() {
+	public List<MemberClassify> selectMember() {
 		return warningDao.selectMember();
 	}
 	

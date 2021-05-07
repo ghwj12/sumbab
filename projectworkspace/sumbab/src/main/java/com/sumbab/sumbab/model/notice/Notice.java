@@ -2,7 +2,6 @@ package com.sumbab.sumbab.model.notice;
 
 import java.util.Date;
 
-import org.apache.ibatis.type.Alias;
 
 //@Alias("notice")
 public class Notice {
