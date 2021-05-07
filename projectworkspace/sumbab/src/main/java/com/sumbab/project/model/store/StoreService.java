@@ -25,7 +25,7 @@ public class StoreService {
 		String districtcode = fullAddress.substring(space+1,secspace);
 		String address = fullAddress.substring(secspace+1)+" "+extrAddress;
 		
-		Store newStore = new Store(
+		StoreVo newStore = new StoreVo(
 				req.getClassify(),
 				req.getName(),
 				citycode,
@@ -41,7 +41,7 @@ public class StoreService {
 		storeDao.insert(newStore);
 	}
 	
-	public Store storeView(int storeNum) {
+	public StoreVo storeView(int storeNum) {
 		return storeDao.selectOne(storeNum);
 	}
 	
