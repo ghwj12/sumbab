@@ -3,6 +3,7 @@ package store.review;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,11 +43,11 @@ public class ReviewController {
 	
 	@Autowired
 	private ReviewService reviewService;
-	
 	@Autowired
 	public void setReviewService(ReviewService reviewService) {
 		this.reviewService = reviewService;
 	}
+	
 	@Autowired
 	private TagService tagService;
 	@Autowired
@@ -93,4 +94,21 @@ public class ReviewController {
 		return "/review/completeWrReview";
 	}
 	
+	@RequestMapping(value="/review/myReviewList", method = RequestMethod.GET)
+	public String myReviewList(Model model, HttpSession session) {
+		
+		String id = "deliciousman";
+		session.setAttribute("id", session.getAttribute(id));
+		model.addAttribute("reviewList", reviewService.getMyReviewList(id));
+		model.addAttribute("storeList", reviewService.getStoreName(id));
+		return "/review/myReviewList";
+	}
+	
+	@RequestMapping(value="/review/reviewDetail/{reviewNum}", method = RequestMethod.GET)
+	public String reviewDetail(Model model, @PathVariable int reviewNum) {
+		
+		model.addAttribute("reviewVO", reviewService.getReviewDetail(reviewNum));
+		
+		return "/review/reviewDetail";
+	}
 }
