@@ -45,10 +45,4 @@ public class SearchController {
 		
 		return "/search/selectByInput";
 	}
-	
-	//카카오맵 테스트 : 위치기반 추천
-	@RequestMapping(value="/search/GPSlocation", method=RequestMethod.GET)
-	public String rcmdStoreByLocation() {
-		return "/search/GPSlocation";
-	}
 }

@@ -30,7 +30,7 @@
 			<td>사진<br>
 			<a href="<c:url value="/store/StoreView/${storeVO.storeNum}"/>">
 			<h3>${storeVO.name}</h3></a>
-			${storeVO.cityCode} ${storeVO.districtCode}<br>
+			${storeVO.citycode} ${storeVO.districtcode}<br>
 			</td>
 			<c:if test="${i%j==j-1}">
 		</tr>
