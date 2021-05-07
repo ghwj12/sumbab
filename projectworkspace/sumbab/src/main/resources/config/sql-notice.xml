@@ -39,7 +39,7 @@
         	delete from NOTICE where notice_num=#{noticeNum}
         </delete>
         
-        <select id="selectReview" parameterType="Integer" resultType="reviewVo">
+        <select id="selectReview" parameterType="Integer" resultType="Review">
         	select S.name, R.menu, R.star, R.content, R.revisit, R.regdate, R.picture
 				from STORE S, REVIEW R where S.storeNum=R.storeNum and R.review_num=#{reviewNum}
         </select>

@@ -13,37 +13,37 @@
 	<table border="1">
 		<tr>
 			<th>가게명</th>
-			<td>${reviewVo.name}</td>
+			<td>${Review.name}</td>
 		</tr>
 		<tr>
 			<th>먹은 메뉴</th>
-			<td>${reviewVo.menu}</td>
+			<td>${Review.menu}</td>
 		</tr>
 		<tr>
 			<th>별점</th>
-			<td>${reviewVo.star}</td>
+			<td>${Review.star}</td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td>${reviewVo.content}</td>
+			<td>${Review.content}</td>
 		</tr>
 		<tr>
 			<th>재방문 유무</th>
 			<td>
 				<c:choose>
-					<c:when test="${reviewVo.revisit}">있음</c:when>
+					<c:when test="${Review.revisit}">있음</c:when>
 					<c:otherwise>없음</c:otherwise>
 				</c:choose>
 			</td>
 		</tr>
 		<tr>
 			<th>작성일</th>
-			<td><fmt:formatDate value="${reviewVo.regdate}" pattern="yyyy.MM.dd" /></td>
+			<td><fmt:formatDate value="${Review.regdate}" pattern="yyyy.MM.dd" /></td>
 		</tr>
-		<c:if test="${reviewVo.picture != ''}">
+		<c:if test="${Review.picture != ''}">
 			<tr>
 				<th>사진</th>
-				<td><img src="<c:url value="/upload_02review/${reviewVo.picture}"/>" style="width:250px; height:250px;"/>
+				<td><img src="<c:url value="/upload_02review/${Review.picture}"/>" style="width:250px; height:250px;"/>
 				</td>
 			</tr>
 		</c:if>
