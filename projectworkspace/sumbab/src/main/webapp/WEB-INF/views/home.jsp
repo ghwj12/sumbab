@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<h1>Hello world!</h1>
+	<h1>S U M B A B</h1>
 
 	<P>The time on the server is ${serverTime}.</P>
 </body>
