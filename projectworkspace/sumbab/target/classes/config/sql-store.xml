@@ -11,14 +11,14 @@
 		count, picture, CITYCODE, DISTRICTCODE)
 		VALUES (STORE_SEQ.nextval, 'deliciousman', #{classify},
 		#{name}, #{address}, #{phone},
-			#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, #{picture}, #{cityCode}, #{districtCode})
+			#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, #{picture}, #{citycode}, #{districtcode})
 	</insert>
 
 	<update id="updateStore" parameterType="store">
 		UPDATE STORE SET
 		classify=#{classify}, name= #{name}, address=#{address},
 		phone=#{phone},
-		menu=#{menu}, time={time}, reserving=#{reserving}, etc=#{etc}, CITYCODE=#{cityCode}, DISTRICTCODE=#{districtCode}
+		menu=#{menu}, time={time}, reserving=#{reserving}, etc=#{etc}, CITYCODE=#{citycode}, DISTRICTCODE=#{districtcode}
 		WHERE pwd=#{pwd}
 	</update>
 
