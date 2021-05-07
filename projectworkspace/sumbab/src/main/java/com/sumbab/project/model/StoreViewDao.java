@@ -3,6 +3,8 @@ package com.sumbab.project.model;
 import java.util.List;
 import java.util.Map;
 
+import com.sumbab.project.model.store.StoreVo;
+
 public interface StoreViewDao {
 
 

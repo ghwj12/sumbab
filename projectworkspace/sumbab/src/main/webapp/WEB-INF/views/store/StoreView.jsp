@@ -135,7 +135,7 @@ body {
 	<c:set var="reserving" value="${storelist.reserving}" />
 	<c:choose>
 	<%--reserving 값에 따라 예약하기/예약불가 버튼 출력--%>
-	<c:when test="${reserving != null}">
+	<c:when test="${reserving eq true}">
 		<input type="button" value="예약하기" onclick="location.href='/project/reserve/reserveForm/${storelist.store_num}'" >
 	</c:when>
 	<c:otherwise>

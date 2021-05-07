@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sumbab.project.model.ReviewVo;
 import com.sumbab.project.model.StoreViewDao;
 import com.sumbab.project.model.StoreViewService;
-import com.sumbab.project.model.StoreVo;
 import com.sumbab.project.model.review.ReviewService;
+import com.sumbab.project.model.store.StoreVo;
 import com.sumbab.project.model.tag.TagService;
 
 

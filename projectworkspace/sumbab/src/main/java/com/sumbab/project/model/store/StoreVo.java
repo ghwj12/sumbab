@@ -1,6 +1,6 @@
 package com.sumbab.project.model.store;
 
-public class Store {
+public class StoreVo {
 
 	private int storeNum;
 	private String id;
@@ -18,9 +18,9 @@ public class Store {
 	private int count;
 	private String picture;
 
-	public Store() {}
+	public StoreVo() {}
 
-	public Store(String classify, String name, String cityCode, String districtCode, String address, String phone, String menu, String time,
+	public StoreVo(String classify, String name, String cityCode, String districtCode, String address, String phone, String menu, String time,
 			boolean reserving, String etc, String pwd, String picture) {
 		super();
 		this.classify = classify;

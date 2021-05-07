@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.catalina.Store;
 
-import com.sumbab.project.model.StoreVo;
+import com.sumbab.project.model.store.StoreVo;
+
+
 
 public interface ReviewDao {
 
