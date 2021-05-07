@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 각 패키지 별 sql query 정리하여 입력할 것 -->
+
+<mapper namespace="restCat">
+
+	<insert id="insertRestCat" parameterType="restCat">
+		insert into REST_CAT (STORE_NUM, SITUATION1, SITUATION2, SITUATION3, TIMESLOT1, TIMESLOT2, TIMESLOT3, TIMESLOT4, TYPE1, TYPE2, TYPE3, TYPE4)
+		VALUES (STORE_SEQ.currval,#{situation1},#{situation2},#{situation3},#{timeslot1},#{timeslot2},#{timeslot3},#{timeslot4},#{type1},#{type2},#{type3},#{type4})
+	</insert>
+	
+	<update id="updateRestCat" parameterType="restCat">
+		UPDATE STORE SET SITUATION1=#{situation1},SITUATION1=#{situation2},SITUATION1=#{situation3},
+				TIMESLOT1=#{timeslot1},TIMESLOT2=#{timeslot2},TIMESLOT3=#{timeslot3},TIMESLOT4=#{timeslot4},
+				TYPE1=#{type1},TYPE2=#{type2},TYPE3=#{type3},TYPE4=#{type4}
+		WHERE STORE_NUM=${storeNum}
+	</update>
+	
+	<select id="selectByRestCat" parameterType="String" resultType="store">
+		select * from STORE where STORE_NUM IN
+		(select STORE_NUM from REST_CAT where #{category}=1)
+	</select>
+	
+	<!-- category table은 delete 기능이 없다. STORE TABLE에  on delete cascade 설정-->
+	
+</mapper>

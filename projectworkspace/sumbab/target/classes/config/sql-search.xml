@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="searchDao">
+
+	<!-- ============검색 관련 기능=============== -->
+	<!-- 아쉽지만 일반 검색의 경우, 띄어쓰기 값은 찾지를 못한다. 띄어쓰기 작업 하려면 반복문 돌려야 함 -->
+	<select id="selectByKeyword" parameterType="String"	resultType="store">
+		select * from STORE where MENU like '%${value}%' or DISTRICTCODE like '%${value}%' or NAME like '%${value}%' order by STORE_NUM desc
+	</select>
+
+	<select id="selectByTag" parameterType="String"	resultType="store">
+		select * from STORE where STORE_NUM IN
+		(select STORE_NUM from STORE_TAG where TAG_ID=(select TAG_ID from TAG where TAG_NAME='${value}'))
+	</select>
+
+</mapper>
