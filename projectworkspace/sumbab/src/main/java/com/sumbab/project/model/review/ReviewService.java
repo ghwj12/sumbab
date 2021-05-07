@@ -1,13 +1,12 @@
-package store.review;
+package com.sumbab.project.model.review;
 
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import store.Store;
 
 @Service
 public class ReviewService {

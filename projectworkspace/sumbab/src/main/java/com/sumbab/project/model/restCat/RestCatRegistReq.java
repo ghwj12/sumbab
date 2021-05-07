@@ -1,4 +1,4 @@
-package store.restCat;
+package com.sumbab.project.model.restCat;
 
 public class RestCatRegistReq {
 

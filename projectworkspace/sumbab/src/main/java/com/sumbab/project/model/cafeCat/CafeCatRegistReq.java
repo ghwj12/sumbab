@@ -1,4 +1,4 @@
-package store.cafeCat;
+package com.sumbab.project.model.cafeCat;
 
 public class CafeCatRegistReq {
 	

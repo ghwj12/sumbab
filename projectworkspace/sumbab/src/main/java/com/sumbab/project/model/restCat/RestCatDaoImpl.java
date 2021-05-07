@@ -1,4 +1,4 @@
-package store.restCat;
+package com.sumbab.project.model.restCat;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

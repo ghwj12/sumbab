@@ -1,4 +1,4 @@
-package store.review;
+package com.sumbab.project.model.review;
 
 public class ReviewRegitReq {
 

@@ -1,4 +1,4 @@
-package store.search;
+package com.sumbab.project.model.search;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
