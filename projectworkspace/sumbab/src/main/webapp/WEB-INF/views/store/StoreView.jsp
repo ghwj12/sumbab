@@ -135,7 +135,7 @@ body {
 	<!-- ================================================================================================================================================== -->
 	<div id="reviewTitle">
 	<h2>리뷰 | ${ReviewtotalCount}</h2>
-		<input type="button" value="리뷰 작성" onclick="location.href='/project/review/writeReview/${storelist.storeNum}'">
+		<input type="button" value="리뷰 작성" onclick="location.href='/sumbab/review/writeReview/${storelist.storeNum}'">
 	</div>
 	
 	<div id="reviewList">

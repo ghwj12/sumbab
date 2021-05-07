@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.sumbab.sumbab.model.reserve.Reserve;
 import com.sumbab.sumbab.model.reserve.ReserveRegitReq;
 import com.sumbab.sumbab.model.reserve.ReserveService;
+import com.sumbab.sumbab.model.store.StoreService;
 
 @Controller
 @SessionAttributes("reserveDTO")
@@ -25,6 +26,12 @@ public class ReserveController {
 	@Autowired
 	public void setReserveService(ReserveService reserveService) {
 		this.reserveService = reserveService;
+	}
+	@Autowired
+	private StoreService storeService;
+	@Autowired
+	public void setStoreService(StoreService storeService) {
+		this.storeService = storeService;
 	}
 
 	//마이페이지-->나의 예약한 음식점 리스트 보기:리스트 출력
@@ -46,6 +53,7 @@ public class ReserveController {
 	public String reserve(@PathVariable int storeNum, Model model) {
 		
 		model.addAttribute("reserveDTO", new Reserve());
+		model.addAttribute("storelist", storeService.storeView(storeNum));
 		return "reserve/reserveForm";
 	}
 	

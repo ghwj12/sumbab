@@ -105,23 +105,6 @@
 				<td colspan="2"><input type="checkbox" name="revisit"
 					id="revisit">재방문 하고싶어요!</td>
 			</tr>
-			<tr>
-				<td colspan="2"><input type="text" placeholder="(*.jpg,*.png...)">
-				<input type="button" value="사진 첨부하기" name="addPhoto" id="addPhoto" onclick="popup();" />
-				<input type="hidden" id="storeNum" name="storeNum" value="${storelist.storeNum}">
-				</td>
-			</tr>
-			<tr>
-				<c:choose>
-					<c:when test="${reviewDTO.picture == null}">
-					</c:when>
-					<c:otherwise>
-						<td colspan="2">
-							사진 들어가는 곳<img src="/사진저장경로/${reviewDTO.picture} 이름 가져오기">
-						</td>
-					</c:otherwise>
-				</c:choose>
-			</tr>
 		</table>
 	<input type="submit" value="작성">
 	<input type="button" value="뒤로가기" onclick="history.back();">
