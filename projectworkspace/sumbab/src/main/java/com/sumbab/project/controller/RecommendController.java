@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sumbab.project.model.RecommendService;
-import com.sumbab.project.model.SelectedCategory;
+import com.sumbab.project.model.category.SelectedCategory;
+import com.sumbab.project.model.recommend.RecommendService;
 
 @Controller
 public class RecommendController {

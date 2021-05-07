@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sumbab.project.model.Notice;
-import com.sumbab.project.model.NoticeService;
+import com.sumbab.project.model.notice.Notice;
+import com.sumbab.project.model.notice.NoticeService;
 
 @Controller
 public class NoticeController {

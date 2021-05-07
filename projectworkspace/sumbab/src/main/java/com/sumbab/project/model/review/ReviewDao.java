@@ -2,7 +2,7 @@ package com.sumbab.project.model.review;
 
 import java.util.List;
 
-import com.sumbab.project.model.StoreVo;
+import com.sumbab.project.model.category.category.StoreVo;
 
 public interface ReviewDao {
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.sumbab.project.model.store.StoreVo;
+import com.sumbab.project.model.store.Store;
 
 @Service
 public class SearchService {
@@ -18,11 +18,11 @@ public class SearchService {
 		this.searchDao = searchDao;
 	}
 	
-	public List<StoreVo> selectByKeyword(String input) {
+	public List<Store> selectByKeyword(String input) {
 		return searchDao.selectByKeyword(input);
 	}
 	
-	public List<StoreVo> selectByTag(String inputT){
+	public List<Store> selectByTag(String inputT){
 		return searchDao.selectByTag(inputT);
 	}
 }

@@ -19,34 +19,34 @@ public class StoreDaoImpl implements StoreDao {
 
 	// =========기본 CRUD 기능================
 	@Override
-	public void insert(StoreVo store) {
+	public void insert(Store store) {
 		sqlSessionTemplate.insert("insertStore", store);
 	}
 
 	@Override
-	public void update(StoreVo store) {
+	public void update(Store store) {
 		sqlSessionTemplate.update("updateStore", store);
 	}
 
 	@Override
-	public void delete(StoreVo store) {
+	public void delete(Store store) {
 		sqlSessionTemplate.delete("deleteStore", store);
 	}
 
 	@Override // 숨밥 시작하기 : 카테고리 검색-식당
-	public List<StoreVo> selectByRestCat(String category) {
-		List<StoreVo> results = sqlSessionTemplate.selectList("selectByRestCat", category);
+	public List<Store> selectByRestCat(String category) {
+		List<Store> results = sqlSessionTemplate.selectList("selectByRestCat", category);
 		return results;
 	}
 
 	@Override // 숨밥 시작하기 : 카테고리 검색-식당
-	public List<StoreVo> selectByCafeCat(String category) {
-		List<StoreVo> results = sqlSessionTemplate.selectList("selectByCafeCat", category);
+	public List<Store> selectByCafeCat(String category) {
+		List<Store> results = sqlSessionTemplate.selectList("selectByCafeCat", category);
 		return results;
 	}
 
 	@Override //가게 리스트 --->가게 상세보기 (storeNum)으로 select
-	public StoreVo selectOne(int storeNum) {
+	public Store selectOne(int storeNum) {
 		
 		return sqlSessionTemplate.selectOne("storeView", storeNum);
 	}

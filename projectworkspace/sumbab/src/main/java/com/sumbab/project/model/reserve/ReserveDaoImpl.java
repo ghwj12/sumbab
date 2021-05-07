@@ -7,7 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sumbab.project.model.StoreVo;
+import com.sumbab.project.model.store.Store;
+
+
 
 @Repository
 public class ReserveDaoImpl implements ReserveDao {
@@ -47,7 +49,7 @@ public class ReserveDaoImpl implements ReserveDao {
 	}
 
 	@Override
-	public List<StoreVo> getStoreName(String memberID) {
+	public List<Store> getStoreName(String memberID) {
 		return sqlSessionTemplate.selectList("getStoreName", memberID);
 	}
 

@@ -2,7 +2,7 @@ package com.sumbab.project.model.reserve;
 
 import java.util.List;
 
-import com.sumbab.project.model.StoreVo;
+import com.sumbab.project.model.store.Store;
 
 public interface ReserveDao {
 
@@ -12,7 +12,7 @@ public interface ReserveDao {
 	public List<Reserve> listFuture(String memberID); //memberVO.id로 예약리스트 가져오기
 	public List<Reserve> listPast(String memberID); //memberVO.id로 예약리스트 가져오기
 	
-	public List<StoreVo> getStoreName(String memberID);
+	public List<Store> getStoreName(String memberID);
 	
 	public String getID(Reserve reserve);
 }

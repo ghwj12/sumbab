@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sumbab.project.model.ReviewVo;
-import com.sumbab.project.model.StoreViewDao;
-import com.sumbab.project.model.StoreViewService;
+
+import com.sumbab.project.model.storeview.ReviewForStoreView;
 import com.sumbab.project.model.review.ReviewService;
-import com.sumbab.project.model.store.StoreVo;
+import com.sumbab.project.model.store.Store;
+import com.sumbab.project.model.storeview.StoreViewDao;
+import com.sumbab.project.model.storeview.StoreViewService;
 import com.sumbab.project.model.tag.TagService;
 
 
@@ -42,7 +43,7 @@ public class StoreViewController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
-		List<StoreVo> list = myStoreViewService.list();
+		List<Store> list = myStoreViewService.list();
 		System.out.println(list);
 		model.addAttribute("list", list);
 		return "list";
@@ -50,7 +51,7 @@ public class StoreViewController {
 
 	@RequestMapping(value = "/store/StoreView/{storeNum}", method = RequestMethod.GET)
 	public String boardController(Model model, @PathVariable int storeNum) {
-		StoreVo storelist = myStoreViewService.readStore(storeNum);
+		Store storelist = myStoreViewService.readStore(storeNum);
 		List<Map<String, Object>> nbsCafe = myStoreDao.nearbyCafe(storeNum);
 		List<Map<String, Object>> nbsRestaurant = myStoreDao.nearbyRestaurant(storeNum);
 		// =======================================================================================
@@ -63,7 +64,7 @@ public class StoreViewController {
 		model.addAttribute("Reviewlist", Reviewlist);
 		System.out.println(Reviewlist);
 		// ===========================================================================
-		List<StoreVo> list = myStoreViewService.list();
+		List<Store> list = myStoreViewService.list();
 		model.addAttribute("list", list);
 		model.addAttribute("storeNum", storeNum);
 		model.addAttribute("totalCount", totalCount / 3 + 1); //
@@ -99,10 +100,10 @@ public class StoreViewController {
 
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		Map<String, String> map = null;
-		ReviewVo vo = null;
+		ReviewForStoreView vo = null;
 		for (int i = 0; i < reviewList.size(); i++) {
 			map = new HashMap<>();
-			vo = (ReviewVo) reviewList.get(i);
+			vo = (ReviewForStoreView) reviewList.get(i);
 			map.put("reviewNum", vo.getReviewNum());
 			map.put("id", vo.getId());
 			map.put("star", vo.getStar());
@@ -117,7 +118,7 @@ public class StoreViewController {
 
 	@RequestMapping(value = "/Gps/GPSlocation")
 	public String GPSlocationController(Model model) {
-		List<StoreVo> Addresslist = myStoreDao.selectAllAddress();
+		List<Store> Addresslist = myStoreDao.selectAllAddress();
 		System.out.println(Addresslist);
 		model.addAttribute("GPS", Addresslist);
 		return "Gps/GPSlocation";

@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sumbab.project.model.PickService;
+import com.sumbab.project.model.pick.PickService;
 
 
 

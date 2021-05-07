@@ -1,17 +1,19 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.recommend;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class RecommendService {
 	@Autowired
 	private RecommendDaoImpl recommendDao;
 	
-	public List<StoreVo> categoryRecommend(String classify, SelectedCategory selectedCategory) {
-		if(classify.equals("?ùå?ãù?†ê")) {
+	public List<Store> categoryRecommend(String classify, SelectedCategory selectedCategory) {
+		if(classify.equals("?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩ")) {
 			String category = selectedCategory.getCategory1() + selectedCategory.getCategory2();
 			return recommendDao.selectRest(category);
 		}else {

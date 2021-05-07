@@ -1,11 +1,15 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.classify;
+
+import java.util.Date;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("classifyDto")
-public class ChangeClassifyDto {
+@Alias("memberClassify")
+public class MemberClassifyVo {
+
 	private String id;
 	private int classify;
+	private Date regdate;
 	
 	public String getId() {
 		return id;
@@ -19,6 +23,11 @@ public class ChangeClassifyDto {
 	public void setClassify(int classify) {
 		this.classify = classify;
 	}
-	
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	
 }

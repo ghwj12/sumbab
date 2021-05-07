@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sumbab.project.model.store.StoreVo;
+import com.sumbab.project.model.store.Store;
 
 
 
@@ -61,7 +61,7 @@ public class ReviewService {
 		return reviewDao.getMyReviewList(id);
 	}
 	
-	public List<StoreVo> getStoreName(String id){
+	public List<Store> getStoreName(String id){
 		return reviewDao.getStoreName(id);
 	}
 	

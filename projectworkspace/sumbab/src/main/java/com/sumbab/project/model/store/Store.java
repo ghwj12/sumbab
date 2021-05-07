@@ -1,5 +1,7 @@
 package com.sumbab.project.model.store;
 
+
+//storeView와 공유
 public class Store {
 
 	private int storeNum;

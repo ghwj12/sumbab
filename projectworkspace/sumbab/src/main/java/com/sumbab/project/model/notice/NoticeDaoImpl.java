@@ -1,10 +1,12 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.notice;
 
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.sumbab.project.model.category.category.ReviewVo;
 
 @Repository
 public class NoticeDaoImpl implements NoticeDao{

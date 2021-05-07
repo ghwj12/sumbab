@@ -28,7 +28,7 @@ public class StoreController {
 
 	@RequestMapping(value = "/registerStep1", method = RequestMethod.GET)
 	public String regitStore1(Model model) {
-		model.addAttribute("storeDTO", new StoreVo());
+		model.addAttribute("storeDTO", new Store());
 		return "store/registerStep1";
 	}
 
@@ -41,7 +41,7 @@ public class StoreController {
 	}
 
 	@RequestMapping(value = "/registerStep1-2", method = RequestMethod.POST)
-	public String regitStore2(@ModelAttribute("storeDTO") StoreVo store, StoreRegisterRequest regReq, String fullAddress,
+	public String regitStore2(@ModelAttribute("storeDTO") Store store, StoreRegisterRequest regReq, String fullAddress,
 			String extrAddress, MultipartHttpServletRequest mtpReq) {
 
 		MultipartFile mf = mtpReq.getFile("attached");

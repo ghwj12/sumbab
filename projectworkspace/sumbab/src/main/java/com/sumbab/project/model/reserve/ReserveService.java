@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sumbab.project.model.StoreVo;
+import com.sumbab.project.model.store.Store;
+
+
 
 @Service
 public class ReserveService {
@@ -46,7 +48,7 @@ public class ReserveService {
 		return reserveDao.listPast(memberID);
 	}
 	
-	public List<StoreVo> getStoreName(String memberID){
+	public List<Store> getStoreName(String memberID){
 		return reserveDao.getStoreName(memberID);
 	}
 	

@@ -1,28 +1,31 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.warning;
 
 import java.util.List;
 
+import com.sumbab.project.model.classify.ChangeClassifyDto;
+import com.sumbab.project.model.classify.MemberClassifyVo;
+
 public interface WarningDao {
 
-	//?‹ ê³? ?‚´?—­
+	//?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½
 	public List<WarningVo> allReport();
 	
-	//?‹ ê³? ?ƒ?„¸ë³´ê¸°
+	//?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ë³´ê¸°
 	public WarningVo reportDetail(int warningNum);
 	
-	//classify ë³?ê²?
+	//classify ï¿½?ï¿½?
 	public void changeClassify(ChangeClassifyDto classifyDto);
 	
-	//?‹ ê³? ?‚­? œ
+	//?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½
 	public void delete(int warningNum);
 	
-	//?‹ ê³? ? ‘?ˆ˜
+	//?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½
 	public void insert(WarningDto warningDto);
 	
-	//? •ì§? ê³„ì • ê°?? ¸?˜¤ê¸?
+	//?ï¿½ï¿½ï¿½? ê³„ì • ï¿½??ï¿½ï¿½?ï¿½ï¿½ï¿½?
 	public List<MemberClassifyVo> selectMember();
 	
-	//? •ì§? ?•´? œ
+	//?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½
 	public void updateMemberClassify(String id);
 	
 }

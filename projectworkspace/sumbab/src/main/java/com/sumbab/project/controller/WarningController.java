@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sumbab.project.model.ChangeClassifyDto;
-import com.sumbab.project.model.Notice;
-import com.sumbab.project.model.WarningDto;
-import com.sumbab.project.model.WarningService;
+import com.sumbab.project.model.category.WarningDto;
+import com.sumbab.project.model.category.WarningService;
+import com.sumbab.project.model.classify.ChangeClassifyDto;
+import com.sumbab.project.model.notice.Notice;
 
 @Controller
 public class WarningController {

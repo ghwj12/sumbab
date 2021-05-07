@@ -1,4 +1,4 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.category;
 
 import org.apache.ibatis.type.Alias;
 

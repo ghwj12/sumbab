@@ -1,5 +1,8 @@
 package com.sumbab.project.model.review;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("reviewVo")
 public class Review {
 
 	private int reviewNum;

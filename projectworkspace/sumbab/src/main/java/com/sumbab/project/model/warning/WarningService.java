@@ -1,9 +1,12 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.warning;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.sumbab.project.model.classify.ChangeClassifyDto;
+import com.sumbab.project.model.classify.MemberClassifyVo;
 
 @Service
 public class WarningService {

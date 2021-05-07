@@ -1,16 +1,16 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.storeview;
 
 import java.util.List;
 import java.util.Map;
 
-import com.sumbab.project.model.store.StoreVo;
+import com.sumbab.project.model.store.Store;
 
 public interface StoreViewDao {
 
 
-	public List<StoreVo> selectAll();
+	public List<Store> selectAll();
 
-	public StoreVo selectOne(int storeNum);
+	public Store selectOne(int storeNum);
 
 	public List<Map<String, Object>> nearbyCafe(int storeNum);
 
@@ -26,7 +26,7 @@ public interface StoreViewDao {
 
 	// ==================================================================================================================
 
-	public List<StoreVo> selectAllAddress();
+	public List<Store> selectAllAddress();
 	
 	//=================================================
 	//조회수 증가 얘는 살려두기

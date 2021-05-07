@@ -1,11 +1,11 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.storeview;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sumbab.project.model.store.StoreVo;
+import com.sumbab.project.model.store.Store;
 
 
 @Service
@@ -17,13 +17,13 @@ public class StoreViewServiceImpl implements StoreViewService {
 		this.myTestDao = myTestDao;
 	}
 
-	public List<StoreVo> list() {
+	public List<Store> list() {
 		System.out.println("과욘?");
 		return myTestDao.selectAll();
 	}
 
 	@Override
-	public StoreVo readStore(int storeNum) {
+	public Store readStore(int storeNum) {
 		return myTestDao.selectOne(storeNum);
 	}
 

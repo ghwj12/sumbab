@@ -1,4 +1,4 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.pick;
 
 import org.apache.ibatis.type.Alias;
 

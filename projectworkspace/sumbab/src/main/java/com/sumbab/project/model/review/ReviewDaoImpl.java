@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sumbab.project.model.store.StoreVo;
+import com.sumbab.project.model.store.Store;
 
 
 @Repository
@@ -61,7 +61,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 	//리뷰에서 사용되는 store list라서 review dao에 넣음
 	@Override
-	public List<StoreVo> getStoreName(String id){
+	public List<Store> getStoreName(String id){
 		return sqlSessionTemplate.selectList("getStoreNameforReview", id);
 	}
 
