@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import store.Store;
+
 @Repository
 public class ReviewDaoImpl implements ReviewDao {
 
@@ -46,10 +48,24 @@ public class ReviewDaoImpl implements ReviewDao {
 	public List<Review> getReviewList(int storeNum) {
 		return sqlSessionTemplate.selectList("getReviewList",storeNum);
 	}
+	
+	@Override
+	public List<Review> getMyReviewList(String id) {
+		return sqlSessionTemplate.selectList("getMyReviewList", id);
+	}
 
 	@Override
 	public float getAvgRevisit(int storeNum) {
 		return sqlSessionTemplate.selectOne("getAvgRevisit", storeNum);
 	}
+	//리뷰에서 사용되는 store list라서 review dao에 넣음
+	@Override
+	public List<Store> getStoreName(String id){
+		return sqlSessionTemplate.selectList("getStoreNameforReview", id);
+	}
 
+	@Override
+	public Review reviewDetail(int reviewNum) {
+		return sqlSessionTemplate.selectOne("reviewDetail", reviewNum);
+	}
 }
