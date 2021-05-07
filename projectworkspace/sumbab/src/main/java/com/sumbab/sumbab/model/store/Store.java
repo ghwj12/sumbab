@@ -1,7 +1,9 @@
 package com.sumbab.sumbab.model.store;
 
+import org.apache.ibatis.type.Alias;
 
 //storeView와 공유
+@Alias("store")
 public class Store {
 
 	private int storeNum;

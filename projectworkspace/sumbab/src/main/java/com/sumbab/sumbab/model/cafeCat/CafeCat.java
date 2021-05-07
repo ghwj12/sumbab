@@ -1,5 +1,8 @@
 package com.sumbab.sumbab.model.cafeCat;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("cafeCat")
 public class CafeCat {
 	
 	private int storeNum;

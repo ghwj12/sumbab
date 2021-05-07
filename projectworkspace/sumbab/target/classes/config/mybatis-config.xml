@@ -10,13 +10,4 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
-	<typeAliases>
-		<typeAlias alias="store" type="com.sumbab.project.model.store.Store"/>
-		<typeAlias alias="cafeCat" type="com.sumbab.project.model.cafeCat.CafeCat"/>
-		<typeAlias alias="restCat" type="com.sumbab.project.model.restCat.RestCat"/>
-		<typeAlias alias="reserve" type="com.sumbab.project.model.reserve.Reserve"/>
-		<typeAlias alias="review" type="com.sumbab.project.model.review.Review"/>
-		<typeAlias alias="tag" type="com.sumbab.project.model.tag.Tag"/>
-	</typeAliases> 
-	
 </configuration>

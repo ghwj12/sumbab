@@ -1,5 +1,8 @@
 package com.sumbab.sumbab.model.restCat;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("restCat")
 public class RestCat {
 	
 	private int storeNum;

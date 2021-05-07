@@ -1,5 +1,8 @@
 package com.sumbab.sumbab.model.tag;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("tag")
 public class Tag {
 
 	private int tagId;

@@ -1,5 +1,8 @@
 package com.sumbab.sumbab.model.reserve;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("reserve")
 public class Reserve {
 
 	private int reserveSeq;

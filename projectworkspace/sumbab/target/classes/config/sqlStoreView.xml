@@ -45,8 +45,7 @@
 	<!-- 리뷰 테이블 부분 -->
 
 
-	<resultMap type="com.sumbab.project.model.review.Review"
-		id="ReviewMap">
+	<resultMap type="Review" id="ReviewMap">
 		<id column="review_num" property="reviewNum" />
 		<id column="id" property="id" />
 		<id column="star" property="star" />
@@ -55,8 +54,7 @@
 		<id column="picture" property="picture" />
 	</resultMap>
 
-	<select id="selectReviews" parameterType="map"
-		resultMap="ReviewMap">
+	<select id="selectReviews" parameterType="map" resultMap="ReviewMap">
 		SELECT *
 		FROM (SELECT ROW_NUMBER() OVER(PARTITION BY
 		store_num
