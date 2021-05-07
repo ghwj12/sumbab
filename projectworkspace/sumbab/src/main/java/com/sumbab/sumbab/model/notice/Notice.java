@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("notice")
+//@Alias("notice")
 public class Notice {
 
 	private int noticeNum;

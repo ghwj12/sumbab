@@ -8,38 +8,38 @@
         	select classify from MEMBER where id=#{id}
         </select> 
         
-        <select id="selectNotice" parameterType="String" resultType="notice">
+        <select id="selectNotice" parameterType="String" resultType="com.sumbab.sumbab.model.notice.Notice">
         	select * from NOTICE where AUTHORITY=#{id} or AUTHORITY='all' order by regdate desc
         </select> 
         
-        <select id="allNotice" resultType="notice">
+        <select id="allNotice" resultType="com.sumbab.sumbab.model.notice.Notice">
         	select * from NOTICE order by regdate desc
         </select> 
         
-        <select id="noticeDetail" parameterType="Integer" resultType="notice">
+        <select id="noticeDetail" parameterType="Integer" resultType="com.sumbab.sumbab.model.notice.Notice">
         	select * from NOTICE where notice_num=#{noticeNum}
         </select>
         
-        <insert id="insertNotice" parameterType="notice">
+        <insert id="insertNotice" parameterType="com.sumbab.sumbab.model.notice.Notice">
         	insert into NOTICE (notice_num, title, content, authority, writer, regdate)
         		values(notice_seq.nextval, #{title}, #{content}, #{authority}, 'admin1', sysdate)
         </insert>
         
-        <insert id="insertWithRN" parameterType="notice">
+        <insert id="insertWithRN" parameterType="com.sumbab.sumbab.model.notice.Notice">
         	insert into NOTICE (notice_num, title, content, authority, writer, regdate, review_num)
         		values(notice_seq.nextval, #{title}, #{content}, #{authority}, 'admin1', sysdate, #{reviewNum})
         </insert>
         
-        <update id="updateNotice" parameterType="notice">
+        <update id="updateNotice" parameterType="com.sumbab.sumbab.model.notice.Notice">
         	update NOTICE set title=#{title}, authority=#{authority}, content=#{content}, writer='admin1'
         		where notice_num=#{noticeNum}
         </update>
         
-        <delete id="deleteNotice" parameterType="notice">
+        <delete id="deleteNotice" parameterType="com.sumbab.sumbab.model.notice.Notice">
         	delete from NOTICE where notice_num=#{noticeNum}
         </delete>
         
-        <select id="selectReview" parameterType="Integer" resultType="Review">
+        <select id="selectReview" parameterType="Integer" resultType="com.sumbab.sumbab.model.review.Review">
         	select S.name, R.menu, R.star, R.content, R.revisit, R.regdate, R.picture
 				from STORE S, REVIEW R where S.storeNum=R.storeNum and R.review_num=#{reviewNum}
         </select>
