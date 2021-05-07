@@ -1,8 +1,8 @@
-package my.reserve;
+package com.sumbab.project.model.reserve;
 
 import java.util.List;
 
-import store.Store;
+import org.apache.catalina.Store;
 
 public interface ReserveDao {
 

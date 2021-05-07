@@ -1,4 +1,4 @@
-package store;
+package com.sumbab.project.model.store;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import store.cafeCat.CafeCatRegistReq;
-import store.cafeCat.CafeCatRegitService;
-import store.restCat.RestCatRegistReq;
-import store.restCat.RestCatRegitService;
-import store.review.ReviewService;
-import store.review.tag.TagService;
+import com.sumbab.project.model.cafeCat.CafeCatRegistReq;
+import com.sumbab.project.model.cafeCat.CafeCatRegitService;
+import com.sumbab.project.model.restCat.RestCatRegistReq;
+import com.sumbab.project.model.restCat.RestCatRegitService;
+import com.sumbab.project.model.review.ReviewService;
+import com.sumbab.project.model.tag.TagService;
 
 @Controller
 @RequestMapping("/store/*")

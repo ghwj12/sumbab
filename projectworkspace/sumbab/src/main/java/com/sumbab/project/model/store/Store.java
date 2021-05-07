@@ -1,39 +1,39 @@
-package com.sumbab.project.model;
+package com.sumbab.project.model.store;
 
-import org.apache.ibatis.type.Alias;
-
-@Alias("storeVo")
-public class StoreVo {
+public class Store {
 
 	private int storeNum;
+	private String id;
 	private String classify;
 	private String name;
-	private String citycode;
-	private String districtcode;
+	private String phone;
+	private String cityCode;
+	private String districtCode;
 	private String address;
 	private String menu;
 	private String time;
-	private String phone;
-	private int reserving;
+	private boolean reserving;
 	private String etc;
+	private String pwd;
 	private int count;
 	private String picture;
 
-	public StoreVo() {}
+	public Store() {}
 
-	public StoreVo(String classify, String name, String citycode, String districtcode, String address, String phone, String menu, String time,
-			int reserving, String etc, String picture) {
+	public Store(String classify, String name, String cityCode, String districtCode, String address, String phone, String menu, String time,
+			boolean reserving, String etc, String pwd, String picture) {
 		super();
 		this.classify = classify;
 		this.name = name;
-		this.citycode = citycode;
-		this.districtcode = districtcode;
+		this.cityCode = cityCode;
+		this.districtCode = districtCode;
 		this.address = address;
 		this.phone = phone;
 		this.menu = menu;
 		this.time = time;
 		this.reserving = reserving;
 		this.etc = etc;
+		this.pwd = pwd;
 		this.picture = picture;
 	}
 
@@ -43,6 +43,14 @@ public class StoreVo {
 
 	public void setStoreNum(int storeNum) {
 		this.storeNum = storeNum;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getClassify() {
@@ -61,20 +69,28 @@ public class StoreVo {
 		this.name = name;
 	}
 
-	public String getCitycode() {
-		return citycode;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setCitycode(String citycode) {
-		this.citycode = citycode;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getDistrictcode() {
-		return districtcode;
+	public String getCityCode() {
+		return cityCode;
 	}
 
-	public void setDistrictcode(String districtcode) {
-		this.districtcode = districtcode;
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode;
+	}
+
+	public String getDistrictCode() {
+		return districtCode;
+	}
+
+	public void setDistrictCode(String districtCode) {
+		this.districtCode = districtCode;
 	}
 
 	public String getAddress() {
@@ -101,19 +117,11 @@ public class StoreVo {
 		this.time = time;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public int getReserving() {
+	public boolean isReserving() {
 		return reserving;
 	}
 
-	public void setReserving(int reserving) {
+	public void setReserving(boolean reserving) {
 		this.reserving = reserving;
 	}
 
@@ -123,6 +131,14 @@ public class StoreVo {
 
 	public void setEtc(String etc) {
 		this.etc = etc;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public int getCount() {
@@ -140,5 +156,5 @@ public class StoreVo {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-
+	
 }

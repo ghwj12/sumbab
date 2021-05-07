@@ -1,8 +1,8 @@
-package store.search;
+package com.sumbab.project.model.search;
 
 import java.util.List;
 
-import store.Store;
+import com.sumbab.project.model.store.Store;
 
 public interface SearchDao {
 

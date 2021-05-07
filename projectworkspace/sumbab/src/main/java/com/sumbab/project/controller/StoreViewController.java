@@ -17,7 +17,7 @@ import com.sumbab.project.model.ReviewVo;
 import com.sumbab.project.model.StoreViewDao;
 import com.sumbab.project.model.StoreViewService;
 import com.sumbab.project.model.StoreVo;
-import com.sumbab.project.tag.TagService;
+import com.sumbab.project.model.tag.TagService;
 
 @Controller
 public class StoreViewController {

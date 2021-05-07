@@ -1,4 +1,4 @@
-package store;
+package com.sumbab.project.model.store;
 
 public class StoreRegisterRequest {
 

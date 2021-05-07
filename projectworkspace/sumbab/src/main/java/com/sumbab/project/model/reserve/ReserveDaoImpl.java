@@ -1,12 +1,11 @@
-package my.reserve;
+package com.sumbab.project.model.reserve;
 
 import java.util.List;
 
+import org.apache.catalina.Store;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import store.Store;
 
 @Repository
 public class ReserveDaoImpl implements ReserveDao {

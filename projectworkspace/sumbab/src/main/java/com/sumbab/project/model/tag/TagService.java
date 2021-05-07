@@ -1,4 +1,4 @@
-package com.sumbab.project.tag;
+package com.sumbab.project.model.tag;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,12 +19,29 @@ public class TagService {
 		this.tagDao = tagDao;
 	}
 	
+	public void regist(String tagName) {
+		
+		int check = tagDao.check(tagName);
+		Tag newTag = new Tag();
+		
+		if(check==0) {
+		newTag.setTagName(tagName);
+		tagDao.insert(newTag);
+		}else {
+			tagDao.update(tagName);
+		}
+	}
+	
 	public List<Tag> selectTagByStore(int storeNum){
 		return tagDao.selectTagByStore(storeNum);
 	}
-		
+	
 	public List<String> selectTagByReview(int reviewNum){
 		return tagDao.selectTagByReview(reviewNum);
+	}
+	
+	public List<Integer> selectReviewNumList(int storeNum){
+		return tagDao.selectReviewNumList(storeNum);
 	}
 	
 	public Map<Integer, List<String>> selectTagEachReview(int storeNum){
@@ -37,5 +54,31 @@ public class TagService {
 		}
 		return eachTagList;
 	}
-
+	
+	//중간테이블 insert Dao
+	public void insertReview_Tag(String tagName) {
+		int check = tagDao.check(tagName);
+		
+		if(check==0) {
+			tagDao.insertReview_Tag();
+		}else {
+			int tagId = tagDao.getTagIDbyName(tagName);
+			tagDao.insertReview_Tags(tagId);
+		}
+	}
+	
+	public void insertStore_Tag(int storeNum, String tagName) {
+		int check = tagDao.check(tagName);
+		
+		if(check==0) {
+			tagDao.insertStore_Tag(storeNum);
+		}else {
+			Map<String, Integer> sequences = new HashMap<>();
+			sequences.put("storeNum", storeNum);
+			int tagId = tagDao.getTagIDbyName(tagName);
+			sequences.put("tagId", tagId);
+			
+			tagDao.insertStore_Tags(sequences);
+		}
+	}
 }

@@ -3,36 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<<<<<<< HEAD
-=======
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
->>>>>>> STORE
+
 <%
 	pageContext.setAttribute("br", "<br/>");
 	pageContext.setAttribute("cn", "\n");
 %>
-<<<<<<< HEAD
-=======
-
->>>>>>> STORE
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>상세화면페이지</title>
-<<<<<<< HEAD
+
 <!-- 하단 제이쿼리를 위해.. -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <%@ include file="/WEB-INF/views/shareHead.jsp"%>
-=======
-
-<!-- 하단 제이쿼리를 위해.. -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
-<%@ include file="/WEB-INF/views/shareHead.jsp" %>
->>>>>>> STORE
-
 
 <style type="text/css">
 .topcorner {
@@ -40,34 +26,21 @@
 	top: 0;
 	right: 0;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> STORE
 .bottomright {
 	position: absolute;
 	bottom: 100;
 	right: 0;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> STORE
 table, th, td {
 	border-collapse: collapse;
 	border: 1px solid black;
 }
-<<<<<<< HEAD
-
 th, td {
 	padding: 5px
 }
-
-=======
 th, td {
 	padding: 5px
 }
->>>>>>> STORE
 body {
 	margin: 0px;
 	padding: 0px;

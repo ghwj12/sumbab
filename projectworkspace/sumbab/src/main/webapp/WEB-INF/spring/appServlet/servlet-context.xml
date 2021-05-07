@@ -18,27 +18,14 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	
-<<<<<<< HEAD
 	<resources mapping="/js/**" location="/resources/js/"/>
 	<resources mapping="/css/**" location="/resources/css/"/>
 	<resources mapping="/img/**" location="/resources/img/"/>
 	
-=======
-<<<<<<< HEAD
->>>>>>> 8c133a8cb351229be9aa7aa6aa50e3f072c20b9c
 	<!-- 사진 경로 매핑 -->
 	<resources mapping="/upload_01store/**" location="file:///C:/01store/" />
 	<resources mapping="/upload_02review/**" location="file:///C:/02review/" />
 
-=======
-	<resources mapping="/js/**" location="/resources/js/"/>
-	<resources mapping="/css/**" location="/resources/css/"/>
-	<resources mapping="/img/**" location="/resources/img/"/>
-	
-	<resources mapping="/upload_01store/**" location="file:///C:/01store/" />
-	<resources mapping="/upload_02review/**" location="file:///C:/02review/" />
-	
->>>>>>> STORE
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -48,12 +35,16 @@
 
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="configLocation"
-			value="classpath:config/mybatis-config.xml" />
+		<beans:property name="configLocation" value="classpath:config/mybatis-config.xml" />
 		<!-- mybatis-config.xml : 마이바티스 동작 규칙이 지정된 설정파일 지정 -->
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<!-- sql query method와 mapping된 sql 구문을 정의한 파일 지정 -->
+				<beans:value>classpath:config/sql-notice.xml</beans:value>
+				<beans:value>classpath:config/sql-warning.xml</beans:value>
+				<beans:value>classpath:config/sql-recommend.xml</beans:value>
+				<beans:value>classpath:config/sql-pick.xml</beans:value>
+				<beans:value>classpath:config/sqlStoreView.xml</beans:value>
 				<beans:value>classpath:config/sql-store.xml</beans:value>
 				<beans:value>classpath:config/sql-restCat.xml</beans:value>
 				<beans:value>classpath:config/sql-cafeCat.xml</beans:value>
@@ -63,28 +54,22 @@
 				<beans:value>classpath:config/sql-tag.xml</beans:value>
 			</beans:list>
 		</beans:property>
-	</beans:bean>
+		<beans:property name="typeAliasesPackage" value="com.sumbab.project.model" />
+		</beans:bean>
 	
 	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
 		<beans:constructor-arg ref="sqlSessionFactory" />
 	</beans:bean>
 	
-<<<<<<< HEAD
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-=======
->>>>>>> STORE
 	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<beans:property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<beans:property name="user" value="sumbab" />
-<<<<<<< HEAD
 		<beans:property name="password" value="1234" />
-=======
-		<beans:property name="password" value="0613" />
->>>>>>> STORE
 		<beans:property name="maxPoolSize" value="100" />
 		<beans:property name="maxIdleTime" value="600" />
 		<beans:property name="idleConnectionTestPeriod" value="300" />
@@ -92,36 +77,9 @@
 	
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-<<<<<<< HEAD
 		<beans:property name="dataSource" ref="dataSource"/>
 	</beans:bean>
 	
-	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="configLocation" value="classpath:config/mybatis-config.xml" />
-		<beans:property name="mapperLocations">
-			<beans:list>
-				<beans:value>classpath:config/sql-notice.xml</beans:value>
-				<beans:value>classpath:config/sql-warning.xml</beans:value>
-				<beans:value>classpath:config/sql-recommend.xml</beans:value>
-				<beans:value>classpath:config/sql-pick.xml</beans:value>
-				<beans:value>classpath:config/sqlStoreView.xml</beans:value>
-			</beans:list>
-		</beans:property>
-		<beans:property name="typeAliasesPackage" value="com.sumbab.project.model" />
-	</beans:bean>
-	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
-		destroy-method="clearCache">
-		<beans:constructor-arg ref="sqlSessionFactory" />
-	</beans:bean>
-	
-<<<<<<< HEAD
-=======
-=======
-		<beans:property name="dataSource" ref="dataSource" />
-	</beans:bean>
-	
->>>>>>> 8c133a8cb351229be9aa7aa6aa50e3f072c20b9c
 	<!-- ==============file Upload==================== -->
     <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- max upload size in bytes -->
@@ -129,16 +87,9 @@
         <!-- max size of file in memory (in bytes) -->
         <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
     </beans:bean>
-<<<<<<< HEAD
 	
-=======
-    
 	<!-- 어노테이션 패키지 선언할 것! bean 선언하지 않아도 됨 -->
->>>>>>> STORE
->>>>>>> 8c133a8cb351229be9aa7aa6aa50e3f072c20b9c
 	<context:component-scan base-package="com.sumbab.project" />
-	<context:component-scan base-package="store" />
-	<context:component-scan base-package="my" />
 
 	<beans:bean id="storeDao" class="store.StoreDaoImpl">
 		<beans:constructor-arg ref="sqlSessionTemplate"/>

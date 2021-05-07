@@ -1,4 +1,4 @@
-package store.review.tag;
+package com.sumbab.project.model.tag;
 
 import java.util.List;
 import java.util.Map;

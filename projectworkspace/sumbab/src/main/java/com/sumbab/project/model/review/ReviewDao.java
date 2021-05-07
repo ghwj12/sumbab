@@ -1,8 +1,8 @@
-package store.review;
+package com.sumbab.project.model.review;
 
 import java.util.List;
 
-import store.Store;
+import org.apache.catalina.Store;
 
 public interface ReviewDao {
 

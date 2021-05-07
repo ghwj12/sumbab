@@ -1,4 +1,4 @@
-package com.sumbab.project.tag;
+package com.sumbab.project.model.tag;
 
 public class Tag {
 

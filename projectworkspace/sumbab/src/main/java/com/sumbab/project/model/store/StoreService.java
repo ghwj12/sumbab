@@ -1,4 +1,4 @@
-package store;
+package com.sumbab.project.model.store;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,15 +21,15 @@ public class StoreService {
 		int space = fullAddress.indexOf(" ");
 		int secspace = fullAddress.indexOf(" ",space+1);
 		
-		String cityCode = fullAddress.substring(0,space);
-		String districtCode = fullAddress.substring(space+1,secspace);
+		String citycode = fullAddress.substring(0,space);
+		String districtcode = fullAddress.substring(space+1,secspace);
 		String address = fullAddress.substring(secspace+1)+" "+extrAddress;
 		
 		Store newStore = new Store(
 				req.getClassify(),
 				req.getName(),
-				cityCode,
-				districtCode,
+				citycode,
+				districtcode,
 				address,
 				req.getPhone(),
 				req.getMenu(),

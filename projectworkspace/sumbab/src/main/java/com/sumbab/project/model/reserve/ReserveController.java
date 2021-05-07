@@ -1,4 +1,4 @@
-package my.reserve;
+package com.sumbab.project.model.reserve;
 
 import javax.servlet.http.HttpSession;
 

@@ -1,4 +1,4 @@
-package store.cafeCat;
+package com.sumbab.project.model.cafeCat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
