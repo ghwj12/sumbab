@@ -38,7 +38,6 @@ public class StoreService {
 				req.getEtc(),
 				req.getPwd(),
 				picture);
-		System.out.println("이름을 알려줘" + newStore.getPicture());
 		storeDao.insert(newStore);
 	}
 	
