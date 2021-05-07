@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper">
+
+	
+
+
+        <insert id="insert" parameterType="memberVo">
+                insert into MEMBER
+                (ID, PWD, EMAIL, CLASSIFY, REGDATE)
+                values
+                (#{id}, #{pwd}, #{email}, #{classify}, sysdate)
+        </insert> 
+        
+        <select id="login" parameterType="memberVo" resultType="String">
+        		select ID, PWD from MEMBER
+        		where ID = #{id} and PWD = #{pwd}
+        </select>
+        
+        <select id="login2" parameterType="memberVo" resultType="memberVo">
+        		select ID,
+        		PWD, 
+        		EMAIL, 
+        		CLASSIFY, 
+        		REGDATE  
+        		from MEMBER
+        		where ID = #{id} and PWD = #{pwd}
+        </select>
+        
+        <select id="idFind" parameterType="memberVo" resultType="memberVo">
+        		select ID from MEMBER
+        		where EMAIL = #{email} 
+        </select>
+        
+        <select id="pwdFind" parameterType="memberVo" resultType="memberVo">
+        		select PWD from MEMBER
+        		where ID = #{id} 
+        </select>
+      
+      	<insert id="kaLoginInsert" parameterType="memberVo">
+      			insert into MEMBER
+                (ID, PWD, EMAIL, CLASSIFY, REGDATE)
+                values
+                (#{kname}, '0000', #{kemail}, '2', sysdate)
+      	</insert>
+      	
+      	<select id="kaLoginSelect" parameterType="String" resultType="memberVo">
+      			select ID, EMAIL from Member
+      			where ID = #{kname} and EMAIL = #{kemail}
+      	</select>
+      	
+      	<select id="kaLoginSelect2" parameterType="String" resultType="memberVo">
+      			select ID,
+        		PWD, 
+        		EMAIL, 
+        		CLASSIFY, 
+        		REGDATE  
+        		from MEMBER
+      			where ID = #{kname} and EMAIL = #{kemail}
+      	</select>
+     
+     
+     
+           
+        <select id="myPickSelect" parameterType="memberVO" resultType="memberVo">
+        select STORE_NUM from PICK
+  		where id = #{vo.id}
+  		      
+        </select> 
+        
+        <update id="myPickCount" parameterType="int">
+        	update STORE set COUNT = COUNT + 1 where store_num = #{STORE_NUM} 
+        
+        </update>
+        
+             	
+             	
+</mapper>
+       
+   
+     <!--     <select id="select" parameterType="int" resultType="spBoardVo">
+        		select * from SPBOARD where SEQ = #{seq}
+        </select> 
+        
+        
+       
+        <insert id="insert" parameterType="spBoardVo">
+                insert into SPBOARD
+                (SEQ, TITLE, CONTENT, WRITER, PASSWORD, REGDATE, CNT)
+                values 
+                (SPBOARD_SEQ.nextval, #{title}, #{content}, #{writer}, #{password}
+                ,SYSDATE, 0)
+                <selectKey keyProperty="seq" resultType="Integer">
+                        select NVL(MAX(seq), 0) from SPBOARD
+                </selectKey>
+        </insert> 
+        
+        
+       
+        <update id="update" parameterType="spBoardVo">
+        		update SPMEMBER set TITLE = #{title},
+        		CONTENT = #{content},
+        		WRITER = #{writer} 
+        		where SEQ = #{seq} and PASSWORD = #{password}
+        </update> 
+       
+       <update id="updateCount" parameterType="int">
+       			update SPBOARD	set CNT = CNT + 1 where SEQ = #{seq}
+       </update>
+       
+       <delete id="delete" parameterType="spBoardVo">
+       			delete from SPBOARD where SEQ = #{seq}
+       			and PASSWORD = #{password}
+       </delete>
+       
+       <delete id="deleteAll" >
+       			delete from SPBOARD
+       </delete>
+       -->
+       
