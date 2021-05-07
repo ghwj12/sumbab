@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sumbab.sumbab.model.review.Review;
 import com.sumbab.sumbab.model.review.ReviewService;
 import com.sumbab.sumbab.model.store.Store;
-import com.sumbab.sumbab.model.storeview.ReviewForStoreView;
 import com.sumbab.sumbab.model.storeview.StoreViewDao;
 import com.sumbab.sumbab.model.storeview.StoreViewService;
 import com.sumbab.sumbab.model.tag.TagService;
@@ -99,20 +99,22 @@ public class StoreViewController {
 
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		Map<String, String> map = null;
-		ReviewForStoreView vo = null;
+		Review vo = null;
 		for (int i = 0; i < reviewList.size(); i++) {
 			map = new HashMap<>();
-			vo = (ReviewForStoreView) reviewList.get(i);
-			map.put("reviewNum", vo.getReviewNum());
+			vo = (Review) reviewList.get(i);
+			map.put("reviewNum", Integer.toString(vo.getReviewNum()));
 			map.put("id", vo.getId());
-			map.put("star", vo.getStar());
+			map.put("star", Float.toString(vo.getStar()));
 			map.put("content", vo.getContent());
-			map.put("regdate", vo.getRegdate().toString());
+			map.put("regdate", vo.getRegdate());
 			map.put("picture", vo.getPicture());
 			list.add(map);
 		}
 		return list;
 	}
+
+
 
 
 	@RequestMapping(value = "/Gps/GPSlocation")
