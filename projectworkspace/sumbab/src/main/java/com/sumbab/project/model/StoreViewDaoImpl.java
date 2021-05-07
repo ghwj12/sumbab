@@ -86,15 +86,5 @@ public class StoreViewDaoImpl implements StoreViewDao {
 		
 	}
 
-	@Override
-	public float getAvgStar(int storeNum) {
-		return 	sqlSession.selectOne("getAvgStar", storeNum);
-	}
-
-	@Override
-	public float getAvgRevisit(int storeNum) {
-		return sqlSession.selectOne("getAvgRevisit", storeNum);
-	}
-
 
 }

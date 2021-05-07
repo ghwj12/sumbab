@@ -142,60 +142,7 @@
 		WHERE store_num=#{storeNum}
 	</update>
 
-	<!-- ========================================================================================================================== -->
-	<select id="getAvgStar" parameterType="Integer"
-		resultType="Float">
-		select avg(STAR) from REVIEW where store_num=#{storeNum}
-	</select>
-
-	<select id="getAvgRevisit" parameterType="Integer"
-		resultType="float">
-		select
-		((select count(*) from REVIEW where
-		store_num=#{storeNum} and REVISIT='1')/
-		(select count(*) from REVIEW
-		where store_num=#{storeNum}))
-		from dual
-	</select>
-	<!-- ========================================================================================================================== -->
-	<select id="selectTagByStore" parameterType="Integer"
-		resultType="com.sumbab.project.tag.Tag">
-		select distinct TAG.*
-		from TAG
-		join STORE_TAG on TAG.TAG_ID =
-		STORE_TAG.TAG_ID
-		where STORE_TAG.store_num = #{storeNum}
-	</select>
-
-	<select id="selectTagByReview" parameterType="Integer"
-		resultType="String">
-		select TAG.TAG_NAME
-		from TAG
-		join REVIEW_TAG on TAG.TAG_ID =
-		REVIEW_TAG.TAG_ID
-		where REVIEW_TAG.REVIEW_NUM = #{reviewNum}
-	</select>
-
-	<select id="selectReviewNumList" parameterType="Integer"
-		resultType="Integer">
-		select REVIEW_TAG.REVIEW_NUM
-		from REVIEW_TAG
-		join REVIEW on
-		REVIEW.REVIEW_NUM = REVIEW_TAG.REVIEW_NUM
-		where REVIEW.store_num =
-		#{storeNum}
-	</select>
-	<!-- ========================================================================================================== -->
-	<select id="bringPick" parameterType="String"
-		resultType="Integer">
-		select store_num from PICK where id=#{id}
-	</select>
-
-	<insert id="addPick"
-		parameterType="com.sumbab.project.model.Pick">
-		insert into PICK (id, store_num) values(#{id},
-		#{storeNum})
-	</insert>
-
+	
+	
 
 </mapper>

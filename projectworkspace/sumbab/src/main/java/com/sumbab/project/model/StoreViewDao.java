@@ -27,10 +27,7 @@ public interface StoreViewDao {
 	public List<StoreVo> selectAllAddress();
 	
 	//=================================================
-
+	//조회수 증가 얘는 살려두기
 	public void upReadCount(int storeNum);
-	
-	public float getAvgStar(int storeNum);
-	
-	public float getAvgRevisit(int storeNum);
+
 }
