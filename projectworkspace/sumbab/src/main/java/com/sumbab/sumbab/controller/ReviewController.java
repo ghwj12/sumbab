@@ -35,10 +35,10 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="/review/writeReview/{storeNum}", method=RequestMethod.GET)
-	public String writeReview(@PathVariable int storeNum, Model model, @ModelAttribute("storeVO")Store store) {
+	public String writeReview(@PathVariable int storeNum, Model model, @ModelAttribute("storelist")Store store) {
 		
 		model.addAttribute("reviewDTO", new Review());
-		model.addAttribute("storeVO", storeService.storeView(storeNum));//selectOne
+		model.addAttribute("storelist", storeService.storeView(storeNum));//selectOne
 		
 		return "/review/writeReview";
 	}
