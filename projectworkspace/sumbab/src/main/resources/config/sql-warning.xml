@@ -27,7 +27,7 @@
         		values(warning_seq.nextval, #{reviewNum}, #{reason}, #{reporter}, sysdate)
         </insert>
         
-        <select id="selectMember" resultType="com.sumbab.sumbab.model.classify.memberClassify">
+        <select id="selectMember" resultType="memberClassify">
         	<![CDATA[select M.id, M.classify, N.regdate from MEMBER M, NOTICE N
 				where M.id=N.authority and M.classify > 3]]>
         </select>

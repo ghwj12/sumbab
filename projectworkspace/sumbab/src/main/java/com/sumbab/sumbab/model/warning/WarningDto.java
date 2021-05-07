@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.apache.ibatis.type.Alias;
 
+
 @Alias("warningDto")
 public class WarningDto {
 

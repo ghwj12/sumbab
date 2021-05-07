@@ -1,6 +1,8 @@
 package com.sumbab.sumbab.model.classify;
 
+import org.apache.ibatis.type.Alias;
 
+@Alias("classifyDto")
 public class ChangeClassifyDto {
 	private String id;
 	private int classify;

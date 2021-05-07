@@ -125,7 +125,7 @@
 
 
 	<insert id="insertWarning"
-		parameterType="com.sumbab.project.model.WarningDto">
+		parameterType="com.sumbab.sumbab.model.warning.WarningDto">
 		insert into WARNING (warning_num, review_num, reason,
 		reporter, regdate)
 		values(warning_seq.nextval, #{reviewNum}, #{reason},
