@@ -1,5 +1,6 @@
 package com.sumbab.project.model.store;
 
+Alias("storevo")
 public class StoreVo {
 
 	private int storeNum;

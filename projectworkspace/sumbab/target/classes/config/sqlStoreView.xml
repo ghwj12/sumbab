@@ -4,12 +4,12 @@
 <mapper namespace="com.sumbab.project">
 
 	<select id="selectAll"
-		resultType="com.sumbab.project.store.model.StoreVo">
+		resultType="store">
 		SELECT * FROM STORE
 	</select>
 
 	<select id="selectOne" parameterType="Integer"
-		resultType="com.sumbab.project.model/store.StoreVo">
+		resultType="store">
 		SELECT count(*) over() as totalcount, store_num, name,
 		address,
 		citycode, districtcode, phone,
@@ -21,7 +21,7 @@
 	</select>
 
 	<select id="nearbycafe" parameterType="Integer"
-		resultType="com.sumbab.project.model.store.StoreVo">
+		resultType="store">
 		SELECT * FROM store
 		WHERE districtcode
 		=(SELECT districtcode
@@ -31,7 +31,7 @@
 	</select>
 
 	<select id="nearbyrestaurant" parameterType="Integer"
-		resultType="com.sumbab.project.model.store.StoreVo">
+		resultType="store">
 		SELECT * FROM store
 		WHERE districtcode
 		=(SELECT districtcode
@@ -111,7 +111,7 @@
 		#{startNum} AND #{endNum}
 	</select>
 
-	<resultMap type="com.sumbab.project.model.store.StoreVo"
+	<resultMap type="store"
 		id="StoreMap">
 		<id column="address" property="address" />
 		<id column="name" property="name" />
@@ -119,7 +119,7 @@
 
 
 	<select id="selectAllAddress"
-		resultType="com.sumbab.project.model.store.StoreVo">
+		resultType="store">
 		SELECT name, address FROM STORE
 	</select>
 
