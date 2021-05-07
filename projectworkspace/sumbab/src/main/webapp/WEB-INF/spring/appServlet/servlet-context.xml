@@ -54,7 +54,7 @@
 				<beans:value>classpath:config/sql-tag.xml</beans:value>
 			</beans:list>
 		</beans:property>
-		<beans:property name="typeAliasesPackage" value="com.sumbab.project.model" />
+		<beans:property name="typeAliasesPackage" value="com.sumbab.sumbab.model" />
 		</beans:bean>
 	
 	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
