@@ -3,11 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<<<<<<< HEAD
-=======
+
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 
->>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
+
 <%
 	pageContext.setAttribute("br", "<br/>");
 	pageContext.setAttribute("cn", "\n");
@@ -17,18 +16,12 @@
 <head>
 <meta charset="UTF-8">
 <title>상세화면페이지</title>
-<<<<<<< HEAD
-=======
 
->>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 <!-- 하단 제이쿼리를 위해.. -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <%@ include file="/WEB-INF/views/shareHead.jsp"%>
-<<<<<<< HEAD
 
-=======
->>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 
 <style type="text/css">
 .topcorner {
@@ -36,24 +29,19 @@
 	top: 0;
 	right: 0;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
 .bottomright {
 	position: absolute;
 	bottom: 100;
 	right: 0;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
+
+
 table, th, td {
 	border-collapse: collapse;
 	border: 1px solid black;
 }
-<<<<<<< HEAD
 
 th, td {
 	padding: 5px
@@ -66,7 +54,7 @@ th, td {
 th, td {
 	padding: 5px
 }
->>>>>>> 1a9c0458e93ed9285ea3ef7de41977aaf9b63209
+
 body {
 	margin: 0px;
 	padding: 0px;
@@ -247,11 +235,6 @@ body {
 	}
 	</script>
 
-
-
-
-	<!-- 팀장님과 쇼부친결과 근처지역 맛집추천 및 카페 추천 부분은 페이징없이 화면출력도 가게이름과 위치만나오고 가게이름을 누르면 해당 스토어 상세보기로 넘어가도록
-	매우 간결하게 흘러감 -->
 	<div id="nbsCafeList" class="bottomright">
 		<h2>
 			${storelist.name} 주변 카페<br>
@@ -268,25 +251,10 @@ body {
 					<td style="word-break: break-all">&nbsp;${nbsCafe.citycode}&nbsp;
 						${nbsCafe.districtcode}&nbsp;${nbsCafe.address}</td>
 				</tr>
-				<!-- 
-				<tr>
-					<th>메뉴:</th>
-					<td style="word-break: break-all">&nbsp;${nbsCafe.menu}</td>
-				</tr>
-				<tr>
-					<th>영업시간:</th>
-					<td style="word-break: break-all">&nbsp;${nbsCafe.time}</td>
-				</tr>
-				<tr>
-					<th>특이사항:</th>
-					<td style="word-break: break-all">&nbsp;${nbsCafe.etc}</td>
-				</tr>
-				 -->
 			</table>
 		</c:forEach>
 	</div>
 
-	<!-- 주변 맛집 도 위에 주변카페와마찬가지로!!! -->
 	<h1>
 		${storelist.name} 주변 맛집<br>
 	</h1>
@@ -303,20 +271,6 @@ body {
 					<td style="word-break: break-all">&nbsp;${nbsRestaurant.citycode}&nbsp;
 						${nbsRestaurant.districtcode}&nbsp;${nbsRestaurant.address}</td>
 				</tr>
-				<!-- 
-				<tr>
-					<th>메뉴:</th>
-					<td style="word-break: break-all">&nbsp;${nbsRestaurant.menu}</td>
-				</tr>
-				<tr>
-					<th>영업시간:</th>
-					<td style="word-break: break-all">&nbsp;${nbsRestaurant.time}</td>
-				</tr>
-				<tr>
-					<th>특이사항:</th>
-					<td style="word-break: break-all">&nbsp;${nbsRestaurant.etc}</td>
-				</tr>
-				 -->
 			</table>
 		</c:forEach>
 	</div>

@@ -17,7 +17,9 @@ import com.sumbab.project.model.ReviewVo;
 import com.sumbab.project.model.StoreViewDao;
 import com.sumbab.project.model.StoreViewService;
 import com.sumbab.project.model.StoreVo;
+import com.sumbab.project.model.review.ReviewService;
 import com.sumbab.project.model.tag.TagService;
+
 
 @Controller
 public class StoreViewController {
@@ -26,8 +28,11 @@ public class StoreViewController {
 	@Autowired
 	private StoreViewDao myStoreDao;
 	//==========================================================
+	//영주님 소스에서 끌고온것들
 	@Autowired
 	private TagService tagService;
+	@Autowired
+	private ReviewService reviewService;
 
 	public StoreViewController(StoreViewService myTestService, StoreViewDao mytestDao) {
 		super();
@@ -68,8 +73,8 @@ public class StoreViewController {
 		myStoreDao.upReadCount(storeNum);
 		model.addAttribute("ReviewtotalCount", totalCount);
 		if (myStoreDao.getReviewCount(storeNum) != 0) {
-			model.addAttribute("avgStar", myStoreDao.getAvgStar(storeNum));
-			model.addAttribute("avgRevisit", myStoreDao.getAvgRevisit(storeNum));
+			model.addAttribute("avgStar", reviewService.getAvgStar(storeNum));
+			model.addAttribute("avgRevisit", reviewService.getAvgRevisit(storeNum));
 			model.addAttribute("tagList", tagService.selectTagEachReview(storeNum));
 			model.addAttribute("allTags", tagService.selectTagByStore(storeNum));
 
