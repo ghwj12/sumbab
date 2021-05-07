@@ -12,7 +12,7 @@ public class Review {
 	private float star;
 	private String content;
 	private boolean revisit;
-	private String regDate;
+	private String regdate;
 	private String picture;
 	
 	public Review() {}
@@ -83,12 +83,12 @@ public class Review {
 		this.revisit = revisit;
 	}
 
-	public String getRegDate() {
-		return regDate;
+	public String getRegdate() {
+		return regdate;
 	}
 
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 
 	public String getPicture() {

@@ -7,7 +7,7 @@
 
 	<!-- id = ${memberVO.id}로 나중에 변경 -->
 	<insert id="insertReview" parameterType="Review">
-		insert into REVIEW (REVIEW_NUM, STORE_NUM, ID, MENU, STAR, CONTENT, REVISIT, REGDATE, PICTURE)
+		insert into REVIEW (REVIEW_NUM, STORE_NUM, ID, MENU, STAR, CONTENT, REVISIT, regdate, PICTURE)
 		values (REVIEW_SEQ.nextval, #{storeNum}, #{id}, #{menu}, #{star}, #{content}, #{revisit}, sysdate, #{picture})
 	</insert>
 
@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="getReviewList" parameterType="Integer" resultType="Review">
-		select * from REVIEW where STORE_NUM=#{storeNum} order by REGDATE desc
+		select * from REVIEW where STORE_NUM=#{storeNum} order by regdate desc
 	</select>
 	
 	<select id="getAvgRevisit" parameterType="Integer" resultType="float">
@@ -40,7 +40,7 @@
 	</select>
 	
 	<select id="getMyReviewList" parameterType="String" resultType="Review">
-		select * from REVIEW where ID=#{id} order by REGDATE desc
+		select * from REVIEW where ID=#{id} order by regdate desc
 	</select>
 	
 	<select id="getStoreNameforReview" parameterType="String" resultType="store">

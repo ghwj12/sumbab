@@ -30,7 +30,7 @@
 	</tr>
 	<tr>
 		<th>작성일</th>
-		<td>${Review.regDate}</td>
+		<td>${Review.regdate}</td>
 	</tr>
 	<tr>
 		<th>별점</th>

@@ -38,7 +38,7 @@
 			</c:when>
 		</c:choose>
 		</td>
-		<td>${reviewList.regDate.substring(0,10)}</td>
+		<td>${reviewList.regdate.substring(0,10)}</td>
 	</tr>
 	</c:forEach>
 </table>

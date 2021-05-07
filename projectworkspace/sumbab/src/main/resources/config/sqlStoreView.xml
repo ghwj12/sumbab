@@ -65,7 +65,7 @@
 		, STAR
 		, CONTENT
 		,
-		REGDATE
+		regdate
 		,
 		PICTURE
 		FROM REVIEW
@@ -98,7 +98,7 @@
 		, STAR
 		, CONTENT
 		,
-		REGDATE
+		regdate
 		,
 		PICTURE
 		FROM REVIEW

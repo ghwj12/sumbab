@@ -25,7 +25,7 @@
 				<td rowspan="4" width="300" height="300">
 				아이디 : \${member.id}]\<br>
 				이메일 : \${member.email}\<br>
-				가입날짜 : \${member.regDate}\<br></td>
+				가입날짜 : \${member.regdate}\<br></td>
 			</tr>
 			
 			<tr>
