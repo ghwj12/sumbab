@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import store.Store;
+
 @Service
 public class ReviewService {
 	
@@ -51,5 +53,17 @@ public class ReviewService {
 	
 	public float getAvgRevisit(int storeNum) {
 		return reviewDao.getAvgRevisit(storeNum);
+	}
+	
+	public List<Review> getMyReviewList(String id){
+		return reviewDao.getMyReviewList(id);
+	}
+	
+	public List<Store> getStoreName(String id){
+		return reviewDao.getStoreName(id);
+	}
+	
+	public Review getReviewDetail(int reviewNum) {
+		return reviewDao.reviewDetail(reviewNum);
 	}
 }
