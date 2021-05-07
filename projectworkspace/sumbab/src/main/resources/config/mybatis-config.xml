@@ -11,12 +11,12 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias alias="store" type="store.Store"/>
-		<typeAlias alias="restCat" type="store.restCat.RestCat"/>
-		<typeAlias alias="cafeCat" type="store.cafeCat.CafeCat"/>
-		<typeAlias alias="reserve" type="my.reserve.Reserve"/>
-		<typeAlias alias="review" type="store.review.Review"/>
-		<typeAlias alias="tag" type="store.review.tag.Tag"/>
+		<typeAlias alias="store" type="com.sumbab.project.model.store.Store"/>
+		<typeAlias alias="store" type="com.sumbab.project.model.cafeCat.CafeCat"/>
+		<typeAlias alias="store" type="com.sumbab.project.model.restCat.RestCat"/>
+		<typeAlias alias="store" type="com.sumbab.project.model.reserve.Reserve"/>
+		<typeAlias alias="store" type="com.sumbab.project.model.review.Review"/>
+		<typeAlias alias="store" type="com.sumbab.project.model.tag.Tag"/>
 	</typeAliases> 
 	
 </configuration>

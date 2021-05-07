@@ -91,12 +91,4 @@
 	<!-- 어노테이션 패키지 선언할 것! bean 선언하지 않아도 됨 -->
 	<context:component-scan base-package="com.sumbab.project" />
 
-	<beans:bean id="storeDao" class="store.StoreDaoImpl">
-		<beans:constructor-arg ref="sqlSessionTemplate"/>
-	</beans:bean>
-
-	<beans:bean id="storeSvc" class="store.StoreService">
-		<beans:constructor-arg ref="storeDao"/>
-	</beans:bean>
-	
 	</beans:beans>
