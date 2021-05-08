@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>공지 올리기</h2>
-	<form:form commandName="notice" method="POST" action="../writeNotice">
+	<form:form commandName="notice" method="POST" action="writeNotice">
 	<table border="1">
 		<tr>
 			<th>제목</th>

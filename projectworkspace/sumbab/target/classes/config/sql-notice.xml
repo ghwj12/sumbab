@@ -41,7 +41,7 @@
         
         <select id="selectReview" parameterType="Integer" resultType="com.sumbab.sumbab.model.review.Review">
         	select S.name, R.menu, R.star, R.content, R.revisit, R.regdate, R.picture
-				from STORE S, REVIEW R where S.storeNum=R.storeNum and R.review_num=#{reviewNum}
+				from STORE S, REVIEW R where S.store_num=R.store_num and R.review_num=#{reviewNum}
         </select>
         
         
