@@ -26,8 +26,8 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public void update(int reviewNum) {
-		sqlSessionTemplate.update("updateReview", reviewNum);
+	public void update(Review review) {
+		sqlSessionTemplate.update("updateReview", review);
 	}
 
 	@Override

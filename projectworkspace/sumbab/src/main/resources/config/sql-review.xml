@@ -11,7 +11,7 @@
 		values (REVIEW_SEQ.nextval, #{storeNum}, #{id}, #{menu}, #{star}, #{content}, #{revisit}, sysdate, #{picture})
 	</insert>
 
-	<update id="updateReview" parameterType="Integer">
+	<update id="updateReview" parameterType="review">
 		update REVIEW set MENU=#{menu}, STAR=#{star}, CONTENT=#{content}, REVISIT=#{revisit}, PICTURE=#{picture}
 		where REVIEW_NUM = #{reviewNum}
 	</update>

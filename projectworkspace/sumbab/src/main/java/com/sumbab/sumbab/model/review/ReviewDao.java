@@ -9,7 +9,7 @@ import com.sumbab.sumbab.model.store.Store;
 public interface ReviewDao {
 
 	public void insert(Review review);
-	public void update(int reviewNum);
+	public void update(Review review);
 	public void delete(int reviewNum);
 	
 	public int getReviewCount(int storeNum);

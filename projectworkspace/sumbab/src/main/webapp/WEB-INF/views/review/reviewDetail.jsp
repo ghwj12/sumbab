@@ -17,7 +17,7 @@
 		<th>가게명</th>
 		<td>${Review.storeNum}
 		</td>
-		<td rowspan="6">
+		<td rowspan="7">
 			<c:choose>
 			<c:when test="${Review.picture != null }">
 				<img src="<c:url value="/upload_02review/${Review.picture}"/>" width="250px"/>
@@ -31,6 +31,10 @@
 	<tr>
 		<th>작성일</th>
 		<td>${Review.regdate}</td>
+	</tr>
+	<tr>
+		<th>먹은 메뉴</th>
+		<td>${Review.menu}</td>
 	</tr>
 	<tr>
 		<th>별점</th>
@@ -50,7 +54,7 @@
 	</tr>
 </table>
 <br>
-	<input type="button" value="리뷰 수정">
+	<input type="button" value="리뷰 수정" onclick="location.href='/sumbab/review/editReview/${Review.reviewNum}'">
 	<input type="button" value="리뷰 삭제">
 </form>
 </body>

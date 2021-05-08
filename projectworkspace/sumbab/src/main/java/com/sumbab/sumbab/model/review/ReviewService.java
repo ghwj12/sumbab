@@ -41,6 +41,13 @@ public class ReviewService {
 		reviewDao.insert(newReview);
 	}
 	
+	public void editReview(Review review) {
+		reviewDao.update(review);
+	}
+	public void deleteReview(int reviewNum) {
+		reviewDao.delete(reviewNum);
+	}
+	
 	public int getReviewCount(int storeNum) {
 		return reviewDao.getReviewCount(storeNum);
 	}
