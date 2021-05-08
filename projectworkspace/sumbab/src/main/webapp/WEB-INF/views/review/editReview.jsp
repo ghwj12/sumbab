@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,7 @@
 </head>
 <body>
 
-<form action="/sumbab/review/editReview/${Review.reviewNum}" method="post" enctype="multipart/form-data">
+<form:form commandName="review" action="/sumbab/review/editReview/${Review.reviewNum}" method="post" enctype="multipart/form-data">
 <table border="1">
 	<tr>
 		<th>가게명</th>
@@ -109,7 +111,7 @@
 </table>
 <input type="submit" value="수정하기">
 <input type="button" value="취소" onclick="history.back()"/>
-</form>
+</form:form>
 <script src="/sumbab/resources/js/hashtags.js"></script>
 <script>
 $('input:radio[name="star"]:input[value="${Review.star}"]').prop("checked", true);

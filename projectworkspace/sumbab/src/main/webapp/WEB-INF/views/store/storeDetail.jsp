@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form:form method="post" action="" commandName="storeVO" enctype="multipart/form-data">
+<form:form method="get" action="/sumbab/store/editStore/${store.storeNum}" commandName="storeVO" enctype="multipart/form-data">
 	<h2>"${store.name}" : 가게 상세보기</h2>
 	조회수:<b>${store.count}</b>&nbsp;
 	평균별점:<b><fmt:formatNumber value="${avgStar}" type="pattern" pattern="0.00" /></b>&nbsp;
@@ -27,7 +27,7 @@
 			<td>${store.name}</td>
 			<td rowspan="7"><c:choose>
 					<c:when test="${store.picture != null}">
-						<img src="/resources/upload_01store/${store.picture}" />
+						<img src="<c:url value="/upload_01store/${store.picture}"/>" width="300px"/>
 					</c:when>
 					<c:otherwise>
 		등록한 사진이 없습니다.
@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<th>주소</th>
-			<td>${store.citycode}${store.districtcode} ${store.address}</td>
+			<td>${store.citycode} ${store.districtcode} ${store.address}</td>
 		</tr>
 		<tr>
 			<th>전화번호</th>

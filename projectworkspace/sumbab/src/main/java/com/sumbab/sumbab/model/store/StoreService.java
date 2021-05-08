@@ -59,6 +59,29 @@ public class StoreService {
 		storeDao.delete(store);
 	}
 	
+	public void updateStore(Store store) {
+		
+		if(store.getFullAddress().length()>0) {
+			String fullAddress = store.getFullAddress();
+			String extrAddress = store.getExtrAddress();
+			
+			int space = fullAddress.indexOf(" ");
+			int secspace = fullAddress.indexOf(" ",space+1);
+			String citycode = fullAddress.substring(0,space);
+			String districtcode = fullAddress.substring(space+1,secspace);
+			String address = fullAddress.substring(secspace+1)+" "+extrAddress;
+			
+			store.setCitycode(citycode);
+			store.setDistrictcode(districtcode);
+			store.setAddress(address);
+			
+			storeDao.update(store);
+			
+		}else {
+			storeDao.update(store);
+		}
+	}
+	
 /*	public void upReadCount(int storeNum) {
 		storeDao.upReadCount(storeNum);
 	}*/

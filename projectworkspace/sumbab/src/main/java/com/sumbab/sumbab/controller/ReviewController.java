@@ -122,21 +122,16 @@ public class ReviewController {
 	
 	@RequestMapping(value="/review/editReview/{reviewNum}", method=RequestMethod.POST)
 	public String completeEditReview(@PathVariable int reviewNum, 
-			@ModelAttribute Review review, MultipartHttpServletRequest mtpReq) {
+			@ModelAttribute("review") Review review, MultipartHttpServletRequest mtpReq) {
 		
 		MultipartFile mf = mtpReq.getFile("attached");
 		String path = "C:/02review/"; //파일 저장되는 실제 경로
 		String originFileName = mf.getOriginalFilename();
 		String picture="";
 		
-		//사진이 이미 첨부되어 있는데 && 새로 파일을 변경한게 아니면
-		if(review.getPicture().length()>0 && originFileName.isEmpty()){
-			reviewService.editReview(review);
-			
-		}else if(originFileName != null) {//파일첨부가 된거면(전에 파일이 있었든, 없었든)
+		if(!(originFileName.isEmpty())) {//파일첨부가 된거면(전에 파일이 있었든, 없었든)
 			picture = System.currentTimeMillis() + originFileName;
 			review.setPicture(picture);		
-			System.out.println(picture);
 			try {
 				mf.transferTo(new File(path+picture));
 			}catch (IllegalStateException e) {
@@ -145,8 +140,9 @@ public class ReviewController {
 				e.printStackTrace();
 			}
 			reviewService.editReview(review);
+		}else if(originFileName.isEmpty()){
+			reviewService.editReview(review);
 		}
-				
 		return "/review/completeEditReview";
 	}
 	

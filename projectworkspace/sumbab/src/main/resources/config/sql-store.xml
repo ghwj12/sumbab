@@ -18,8 +18,8 @@
 		UPDATE STORE SET
 		classify=#{classify}, name= #{name}, address=#{address},
 		phone=#{phone},
-		menu=#{menu}, time={time}, reserving=#{reserving}, etc=#{etc}, CITYCODE=#{citycode}, DISTRICTCODE=#{districtcode}
-		WHERE pwd=#{pwd}
+		menu=#{menu}, time=#{time}, reserving=#{reserving}, etc=#{etc}, PICTURE=#{picture}, CITYCODE=#{citycode}, DISTRICTCODE=#{districtcode}
+		WHERE STORE_NUM=#{storeNum}
 	</update>
 
 	<delete id="deleteStore" parameterType="store">

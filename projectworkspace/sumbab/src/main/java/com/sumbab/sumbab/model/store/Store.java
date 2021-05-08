@@ -21,6 +21,10 @@ public class Store {
 	private String pwd;
 	private int count;
 	private String picture;
+	
+	//주소 변경용
+	private String fullAddress;
+	private String extrAddress;
 
 	public Store() {}
 
@@ -81,11 +85,11 @@ public class Store {
 		this.phone = phone;
 	}
 
-	public String getcitycode() {
+	public String getCitycode() {
 		return citycode;
 	}
 
-	public void setcitycode(String citycode) {
+	public void setCitycode(String citycode) {
 		this.citycode = citycode;
 	}
 
@@ -159,6 +163,22 @@ public class Store {
 
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+
+	public String getFullAddress() {
+		return fullAddress;
+	}
+
+	public void setFullAddress(String fullAddress) {
+		this.fullAddress = fullAddress;
+	}
+
+	public String getExtrAddress() {
+		return extrAddress;
+	}
+
+	public void setExtrAddress(String extrAddress) {
+		this.extrAddress = extrAddress;
 	}
 	
 }

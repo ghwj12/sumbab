@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h1>가게 등록 및 가게 정보 수정</h1>
+	<h1>가게 등록하기</h1>
 
 
 	<form:form method="post" action="registerStep1-2" commandName="storeDTO" enctype="multipart/form-data">

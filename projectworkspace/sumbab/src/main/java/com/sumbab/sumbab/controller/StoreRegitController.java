@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -170,5 +169,41 @@ public class StoreRegitController {
 			return "/store/deleteStoreProc";
 		}
 	}
-
+	
+	@RequestMapping(value="/editStore/{storeNum}", method=RequestMethod.GET)
+	public String editStore(@PathVariable int storeNum, Model model) {
+		model.addAttribute("store", storeService.storeView(storeNum));
+		
+		return "/store/editStore";
+	}
+	@RequestMapping(value="/editStore/{storeNum}", method=RequestMethod.POST)
+	public String completeEditStore(@PathVariable int storeNum, Model model,
+			@ModelAttribute("store") Store store, MultipartHttpServletRequest mtpReq) {
+			
+			MultipartFile mf = mtpReq.getFile("attached");
+			String path = "C:/01store/"; //파일 저장되는 실제 경로
+			String originFileName = mf.getOriginalFilename();
+			String picture="";
+			
+			if(!(originFileName.isEmpty())) {//파일첨부가 된거면(전에 파일이 있었든, 없었든)
+				System.out.println(originFileName);
+				picture = System.currentTimeMillis() + originFileName;
+				store.setPicture(picture);		
+				try {
+					mf.transferTo(new File(path+picture));
+				}catch (IllegalStateException e) {
+					e.printStackTrace();
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+				storeService.updateStore(store);
+				model.addAttribute("store", storeService.storeView(storeNum));
+				
+			}else if(originFileName.isEmpty()){
+				storeService.updateStore(store);
+			}
+			return "/store/completeEditStore";
+	}
+	
+	
 }
