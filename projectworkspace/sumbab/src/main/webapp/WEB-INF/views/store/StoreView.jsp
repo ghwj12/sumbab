@@ -52,9 +52,15 @@ body {
 </style>
 </head>
 <body>
-	<img src="${storelist.picture}"
-		style="width: 70%; height: 250px; float: center;">
-
+	<c:choose>
+		<c:when test="${storelist.picture != null}">
+			<img src="<c:url value="/upload_01store/${storelist.picture}"/>"
+			style="width: 70%; height: 250px; float: center;" />
+		</c:when>
+		<c:otherwise>
+			<img src="/sumbab/resources/img/defaultimg.png"/>
+		</c:otherwise>
+	</c:choose>
 	<h1>${storelist.name}<br>
 	</h1>
 	조회수:${storelist.count}
