@@ -33,6 +33,11 @@ public class StoreDaoImpl implements StoreDao {
 		sqlSessionTemplate.delete("deleteStore", store);
 	}
 
+	@Override //가게 관리자 : 등록한 가게 모아보기
+	public List<Store> myRegitStoreList(String id) {
+		return sqlSessionTemplate.selectList("myRegitStoreList", id);
+	}
+	
 	@Override // 숨밥 시작하기 : 카테고리 검색-식당
 	public List<Store> selectByRestCat(String category) {
 		List<Store> results = sqlSessionTemplate.selectList("selectByRestCat", category);
@@ -55,4 +60,10 @@ public class StoreDaoImpl implements StoreDao {
 	public void upReadCount(int storeNum) {
 		sqlSessionTemplate.update("upReadCount", storeNum);
 	}
+
+	@Override
+	public String getClassify(int storeNum) {
+		return sqlSessionTemplate.selectOne("getStoreClassify", storeNum);
+	}
+
 }

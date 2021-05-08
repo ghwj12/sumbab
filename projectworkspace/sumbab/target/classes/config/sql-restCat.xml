@@ -25,4 +25,8 @@
 	
 	<!-- category table은 delete 기능이 없다. STORE TABLE에  on delete cascade 설정-->
 	
+	<select id="getRestCat" parameterType="Integer" resultType="restCat">
+		select * from REST_CAT where STORE_NUM = #{storeNum}
+	</select>
+	
 </mapper>

@@ -1,5 +1,7 @@
 package com.sumbab.sumbab.model.store;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +47,19 @@ public class StoreService {
 		return storeDao.selectOne(storeNum);
 	}
 	
-	public void upReadCount(int storeNum) {
-		storeDao.upReadCount(storeNum);
+	public List<Store> getMyRegitStore(String id){
+		return storeDao.myRegitStoreList(id);
 	}
+	
+	public String getClassify(int storeNum) {
+		return storeDao.getClassify(storeNum);
+	}
+	
+	public void deleteStore(Store store) {
+		storeDao.delete(store);
+	}
+	
+/*	public void upReadCount(int storeNum) {
+		storeDao.upReadCount(storeNum);
+	}*/
 }

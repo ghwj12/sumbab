@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RestCatRegitService {
+public class RestCatService {
 
 	private RestCatDaoImpl restCat;
 
-	public RestCatRegitService() {}
+	public RestCatService() {}
 	
 	@Autowired
-	public RestCatRegitService(RestCatDaoImpl restCat) {
+	public RestCatService(RestCatDaoImpl restCat) {
 		this.restCat = restCat;
 	}
 	
@@ -31,5 +31,9 @@ public class RestCatRegitService {
 				req.isType4());
 				
 		restCat.insert(newRestCat);
+	}
+	
+	public RestCat getRestCat(int storeNum) {
+		return restCat.getRestCat(storeNum);
 	}
 }

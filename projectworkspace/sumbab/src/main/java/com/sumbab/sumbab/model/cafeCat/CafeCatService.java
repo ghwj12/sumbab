@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CafeCatRegitService {
+public class CafeCatService {
 
 	private CafeCatDaoImpl cafeCat;
 
-	public CafeCatRegitService() {}
+	public CafeCatService() {}
 	
 	@Autowired
-	public CafeCatRegitService(CafeCatDaoImpl cafeCat) {
+	public CafeCatService(CafeCatDaoImpl cafeCat) {
 		this.cafeCat = cafeCat;
 	}
 	
@@ -30,5 +30,9 @@ public class CafeCatRegitService {
 				req.isSize3());
 				
 		cafeCat.insert(newCafeCat);
+	}
+	
+	public CafeCat getCafeCat(int storeNum) {
+		return cafeCat.getCafeCat(storeNum);
 	}
 }

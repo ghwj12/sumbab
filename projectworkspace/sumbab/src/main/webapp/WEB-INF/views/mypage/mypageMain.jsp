@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<th><a href="">회원 정보</a></th>
-				<td rowspan="4" width="300" height="300">
+				<td rowspan="5" width="300" height="300">
 				아이디 : \${member.id}]\<br>
 				이메일 : \${member.email}\<br>
 				가입날짜 : \${member.regdate}\<br></td>
@@ -33,19 +33,22 @@
 			</tr>
 			<tr>
 				<th>
-				<form:form action="/sumbab/review/myReviewList" method="get">
+				<a href="#" onclick="location.href='/sumbab/store/regitStoreList'">등록한 가게</a><br>
+				가게 관리자만 보이는 메뉴
+				</th>
+			</tr>
+			<tr>
+				<th>
 				<a href="#" onclick="location.href='/sumbab/review/myReviewList'">내가 쓴 리뷰</a>
-				</form:form>
 				</th>
 			</tr>
 			
 			<tr>
 				<th>
-				<form:form action="/sumbab/reserve/reserveList" method="get">
 				<a href="#" onclick="location.href='/sumbab/reserve/reserveList'">예약한 음식점</a>
-				</form:form>
 				</th>
 			</tr>
+			
 				
 		</table>
 		<input type="button" value="비밀번호 변경" onclick="#"><input

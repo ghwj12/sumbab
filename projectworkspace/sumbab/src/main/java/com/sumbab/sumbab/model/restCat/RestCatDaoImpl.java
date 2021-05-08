@@ -24,6 +24,11 @@ public class RestCatDaoImpl implements RestCatDao {
 		sqlSessionTemplate.update("updateRestCat", restCat);
 	}
 
+	@Override
+	public RestCat getRestCat(int storeNum) {
+		return sqlSessionTemplate.selectOne("getRestCat", storeNum);
+	}
+
 	
 
 }
