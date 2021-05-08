@@ -101,22 +101,22 @@ public class ReviewController {
 		String id = "deliciousman";
 		session.setAttribute("id", session.getAttribute(id));
 		model.addAttribute("reviewList", reviewService.getMyReviewList(id));
-		model.addAttribute("storeList", reviewService.getStoreName(id));
+
 		return "/review/myReviewList";
 	}
 	
 	@RequestMapping(value="/review/reviewDetail/{reviewNum}", method = RequestMethod.GET)
 	public String reviewDetail(Model model, @PathVariable int reviewNum) {
-		
 		model.addAttribute("Review", reviewService.getReviewDetail(reviewNum));
-		
+		model.addAttribute("tags", tagService.selectTagByReview(reviewNum));
 		return "/review/reviewDetail";
 	}
 	
 	@RequestMapping(value="/review/editReview/{reviewNum}", method = RequestMethod.GET)
 	public String editReview(Model model, Review review, @PathVariable int reviewNum) {
-		review = reviewService.getReviewDetail(reviewNum);	
+		review = reviewService.getReviewDetail(reviewNum);
 		model.addAttribute("Review", review);
+		model.addAttribute("tags", tagService.selectTagByReview(reviewNum));
 		return "/review/editReview";
 	}
 	
@@ -149,4 +149,17 @@ public class ReviewController {
 				
 		return "/review/completeEditReview";
 	}
+	
+	@RequestMapping(value="/review/deleteReview/{reviewNum}", method = RequestMethod.GET)
+	public String delReviewProc(@PathVariable int reviewNum) {
+		
+		return "/review/deleteReviewProc";
+	}
+	@RequestMapping(value="/review/deleteReview/{reviewNum}", method = RequestMethod.POST)
+	public String completeDelReview(@PathVariable int reviewNum) {
+		reviewService.deleteReview(reviewNum);
+		
+		return "/review/completeDelReview";
+	}
+
 }

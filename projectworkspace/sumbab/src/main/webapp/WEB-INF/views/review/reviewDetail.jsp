@@ -15,7 +15,7 @@
 <table border="1">
 	<tr>
 		<th>가게명</th>
-		<td>${Review.storeNum}
+		<td>${Review.name}
 		</td>
 		<td rowspan="7">
 			<c:choose>
@@ -46,7 +46,11 @@
 	</tr>
 	<tr>
 		<th>태그</th>
-		<td>${Review.star}</td>
+		<td>
+		<c:forEach var="tags" items="${tags}">
+		#${tags.tagName} 
+		</c:forEach>
+		</td>
 	</tr>
 	<tr>
 		<th>재방문 유무</th>
@@ -55,7 +59,9 @@
 </table>
 <br>
 	<input type="button" value="리뷰 수정" onclick="location.href='/sumbab/review/editReview/${Review.reviewNum}'">
-	<input type="button" value="리뷰 삭제">
+	<input type="button" value="리뷰 삭제" onclick="popupForDelReview(${Review.reviewNum});">
 </form>
+
+<script src="<%=request.getContextPath()%>/resources/js/popup.js"> </script>
 </body>
 </html>

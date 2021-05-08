@@ -15,6 +15,9 @@ public class Review {
 	private String regdate;
 	private String picture;
 	
+	//생성자 parameter로는 안쓰고 VO용으로 사용
+	private String name; //store table과 join시, 값을 담을 field.
+	
 	public Review() {}
 
 	public Review(int storeNum, String id, String menu, float star, String content, boolean revisit, String picture) {
@@ -98,6 +101,13 @@ public class Review {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }

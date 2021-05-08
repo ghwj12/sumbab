@@ -21,7 +21,7 @@
 	</select>
 
 	<!--아직 method 미정-->
-	<delete id="deleteReview" parameterType="Integer">
+	<delete id="deleteTag" parameterType="Integer">
 		
 	</delete>
 
@@ -32,7 +32,7 @@
 		where STORE_TAG.STORE_NUM = #{storeNum}
 	</select>
 	
-	<select id="selectTagByReview" parameterType="Integer" resultType="String">
+	<select id="selectTagByReview" parameterType="Integer" resultType="tag">
 		select TAG.TAG_NAME
 		from TAG
 		join REVIEW_TAG on TAG.TAG_ID = REVIEW_TAG.TAG_ID
