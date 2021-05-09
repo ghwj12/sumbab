@@ -8,6 +8,6 @@
 </head>
 <body>
 	해당 신고가 삭제 되어 이전 페이지로 이동합니다.<br><br>
-	<input type="button" value="확인" onclick="javascript:opener.location.href='/project/mypage/reportPage';self.close()">
+	<input type="button" value="확인" onclick="javascript:opener.location.href='/sumbab/mypage/reportPage';self.close()">
 </body>
 </html>

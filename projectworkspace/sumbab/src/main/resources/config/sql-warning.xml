@@ -5,11 +5,11 @@
 <mapper namespace="warningDao">
 
         
-        <select id="allWarning" resultType="warningVo">
+        <select id="allWarning" resultType="warning">
         	select * from WARNING order by regdate desc
         </select> 
         
-        <select id="selectWarning" parameterType="Integer" resultType="warningVo">
+        <select id="selectWarning" parameterType="Integer" resultType="warning">
         	select W.reporter, W.regdate, W.reason, R.id, R.content, R.review_num from WARNING W, REVIEW R
 				where W.review_num=R.review_num and W.warning_num=#{warningNum}
         </select>
@@ -22,7 +22,7 @@
         	delete from WARNING where warning_num=#{warningNum}
         </delete>
         
-        <insert id="insertWarning" parameterType="warningVo">
+        <insert id="insertWarning" parameterType="warning">
         	insert into WARNING (warning_num, review_num, reason, reporter, regdate)
         		values(warning_seq.nextval, #{reviewNum}, #{reason}, #{reporter}, sysdate)
         </insert>

@@ -121,17 +121,7 @@
 		SELECT store_num, name, classify, citycode, districtcode, address FROM STORE
 	</select>
 
-	<!-- ======================================================================================================================================== -->
-
-
-	<insert id="insertWarning"
-		parameterType="com.sumbab.sumbab.model.warning.WarningDto">
-		insert into WARNING (warning_num, review_num, reason,
-		reporter, regdate)
-		values(warning_seq.nextval, #{reviewNum}, #{reason},
-		#{reporter},
-		sysdate)
-	</insert>
+	
 	<!-- ========================================================================================================= -->
 	<!-- 조회수 증가 -->
 	<update id="upReadCount" parameterType="Integer">

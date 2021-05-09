@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sumbab.sumbab.model.classify.ChangeClassifyDto;
 import com.sumbab.sumbab.model.notice.Notice;
-import com.sumbab.sumbab.model.warning.WarningDto;
+import com.sumbab.sumbab.model.notice.NoticeService;
+import com.sumbab.sumbab.model.warning.Warning;
 import com.sumbab.sumbab.model.warning.WarningService;
 
 
@@ -22,6 +23,8 @@ public class WarningController {
 	
 	@Autowired
 	private WarningService warningService;
+	@Autowired
+	private NoticeService noticeService;
 
 	@RequestMapping("/mypage/reportPage")
 	public String reportPage(Model model) {
@@ -38,12 +41,12 @@ public class WarningController {
 		return "mypage/reportDetail";
 	}
 	
-	//�Ű�ó�� Ajax ���
+	//신고처리 Ajax 사용
 	@ResponseBody
 	@RequestMapping(value="/mypage/changeClassify", method=RequestMethod.POST)
 	public int changeClassify(@RequestBody ChangeClassifyDto classifyDto, Model model) {
 		warningService.changeClassify(classifyDto);
-		return 1; //Ajax���� ��ȯ���� ������ success �κ��� �������� �����Ƿ� ���Ŀ��� �°� �ƹ��ų� return
+		return 1; //Ajax에서 반환값이 없으면 success 부분이 동작하지 않으므로 형식에만 맞게 아무거나 return
 	}
 	
 	@RequestMapping(value="/mypage/reportDetail/{warningNum}", method=RequestMethod.POST)
@@ -51,6 +54,13 @@ public class WarningController {
 		model.addAttribute("receiveNotice", notice);
 		model.addAttribute("notice", new Notice());
 		return "mypage/writeNotice";
+	}
+	
+	//신고 내역에서 공지 올리기로 넘어가서 공지 올릴 때
+	@RequestMapping(value="/mypage/reportDetail/writeNotice", method=RequestMethod.POST)
+	public String write(Notice notice) {
+		noticeService.write(notice);
+		return "redirect:/mypage/noticePage";
 	}
 	
 	@RequestMapping(value="/mypage/deleteWarningProcess/{warningNum}", method=RequestMethod.GET)
@@ -65,26 +75,25 @@ public class WarningController {
 		return "mypage/deleteWarning";
 	}
 	
-
-	
+	//여기서부터는 회원이 신고할 때 동작
 	@RequestMapping(value="store/StoreView/Warning/warningProcess/{reviewNum}", method=RequestMethod.GET)
 	public String warningProcess(Model model) {		
-		int classify =	1; 							//session�� �ִ� classify ���
+		int classify =	1; 							//session에 있는 classify 사용
 		if(classify != 4) {
-			model.addAttribute("warning", new WarningDto());
+			model.addAttribute("warning", new Warning());
 		}
 		return "Warning/warningProcess";
 	}
 	
 	@RequestMapping(value="store/StoreView/Warning/warningProcess/{reviewNum}", method=RequestMethod.POST)
-	public String insert(WarningDto warning) {		
-		int reviewNum = 11;							//@PathVariable ���
-		String id = "suumbabR";						//session�� �ִ� id ���
+	public String insert(Warning warning) {		
+		int reviewNum = 11;							//@PathVariable 사용
+		String id = "suumbabR";						//session에 있는 id 사용
 		warningService.insert(warning, reviewNum, id);
 		return "Warning/warningAccept";
 	}
 	
-	//���⼭���ʹ� ���� ���� ����
+	//여기서부터는 정지 계정 관리
 	@RequestMapping("/mypage/classifyAdmin")
 	public String classifyAdmin(Model model) {
 		model.addAttribute("memberList", warningService.selectMember());
