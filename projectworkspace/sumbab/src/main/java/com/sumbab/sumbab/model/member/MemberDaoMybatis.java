@@ -25,4 +25,10 @@ public class MemberDaoMybatis implements MemberDao {
 
 	}
 
+	@Override
+	public void memberDelete(MemberVO memberVO) {
+		sqlSessionTemplate.delete("member.memberDelete", memberVO);
+		
+	}
+
 }

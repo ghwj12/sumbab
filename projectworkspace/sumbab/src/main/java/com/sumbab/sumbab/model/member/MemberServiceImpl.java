@@ -22,4 +22,10 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public void memberDelete(MemberVO memberVO) {
+		memberDao.memberDelete(memberVO);
+		
+	}
+
 }
