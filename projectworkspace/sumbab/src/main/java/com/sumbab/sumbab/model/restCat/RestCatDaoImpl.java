@@ -25,8 +25,8 @@ public class RestCatDaoImpl implements RestCatDao {
 	}
 	
 	@Override
-	public void update(RestCat restCat) {
-		sqlSessionTemplate.update("updateRestCat", restCat);
+	public int update(RestCat restCat) {
+		return sqlSessionTemplate.update("updateRestCat", restCat);
 	}
 
 	@Override

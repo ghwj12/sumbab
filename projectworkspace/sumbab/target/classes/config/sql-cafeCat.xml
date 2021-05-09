@@ -18,10 +18,10 @@
 	</insert>
 	
 	<update id="updateCafeCat" parameterType="cafeCat">
-		UPDATE CAFE_CAT SET SITUATION1=${situation1},SITUATION1=${situation2},SITUATION1=${situation3},
+		update CAFE_CAT set SITUATION1=#{situation1},SITUATION2=#{situation2},SITUATION3=#{situation3},
 				TIMESLOT=#{timeslot},MOOD1=#{mood1},MOOD2=#{mood2},MOOD3=#{mood3},
-				SIZE1=${size1},SIZE2=${size2},SIZE3=${size3}
-		WHERE STORE_NUM=${storeNum}
+				SIZE1=#{size1},SIZE2=#{size2},SIZE3=#{size3}
+		where STORE_NUM=#{storeNum}
 	</update>
 	
 	<select id="selectByCafeCat" parameterType="String" resultType="store">

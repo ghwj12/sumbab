@@ -40,7 +40,7 @@ public class RestCatService {
 		return restCatDao.getRestCat(storeNum);
 	}
 	
-	public void updateRestCat(RestCat restCat) {
-		restCatDao.update(restCat);
+	public int updateRestCat(RestCat restCat) {
+		return restCatDao.update(restCat);
 	}
 }

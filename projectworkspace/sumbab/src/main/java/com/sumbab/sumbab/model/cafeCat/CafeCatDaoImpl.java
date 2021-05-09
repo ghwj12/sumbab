@@ -25,8 +25,8 @@ public class CafeCatDaoImpl implements CafeCatDao {
 	}
 
 	@Override
-	public void update(CafeCat cafeCat) {
-		sqlSessionTemplate.update("updateCafeCat", cafeCat);
+	public int update(CafeCat cafeCat) {
+		return sqlSessionTemplate.update("updateCafeCat", cafeCat);
 	}
 
 	@Override

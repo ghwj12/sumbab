@@ -82,7 +82,7 @@
 	</c:when>
 <%--cafe category ============================= --%>
 	<c:otherwise>
-		<form:form action="/sumbab/editCat/${storeVO.storeNum}" method="post" commandName="cafeCatVO">
+		<form:form action="/sumbab/store/editCat/${storeVO.storeNum}" method="post" commandName="cafeCatVO">
 		<div>
 			<p>어떤 상황일 때 가면 좋은가요? (중복 선택 가능)</p>
 		</div>

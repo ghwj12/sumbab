@@ -40,7 +40,7 @@ public class CafeCatService {
 		return cafeCatDao.getCafeCat(storeNum);
 	}
 	
-	public void updateCafeCat(CafeCat cafeCat) {
-		cafeCatDao.update(cafeCat);
+	public int updateCafeCat(CafeCat cafeCat) {
+		return cafeCatDao.update(cafeCat);
 	}
 }

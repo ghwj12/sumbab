@@ -220,13 +220,14 @@ public class StoreRegitController {
 			@ModelAttribute RestCat restCat, @PathVariable int storeNum, Model model) {
 		
 		if(storeService.getClassify(storeNum).equals("음식점")) {
-			if(restCat.getName()==null) {
+			
+			if(restCatService.updateRestCat(restCat)==0) {
 				restCatService.insertAfter(restCat);
 			}else {
 				restCatService.updateRestCat(restCat);
 			}
 		}else if(storeService.getClassify(storeNum).equals("카페")) {
-			if(cafeCat.getName()==null){
+			if(cafeCatService.updateCafeCat(cafeCat)==0){
 				cafeCatService.insertAfter(cafeCat);
 				}else {
 					cafeCatService.updateCafeCat(cafeCat);
