@@ -34,7 +34,7 @@
 	</script>
 	<body>
 		<section id="container">
-			<form action="/member/memberDelete" method="post">
+			<form action="/memberDelete" method="post">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userId">아이디</label>
 					<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" />

@@ -79,7 +79,7 @@ public class MemberController {
 	}
 	
 	//회원탈퇴 post
-	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
 	public String memberDeleteView(MemberVO memberVO, HttpSession session, RedirectAttributes rttr) {
 		
 		MemberVO member = (MemberVO) session.getAttribute("member");
