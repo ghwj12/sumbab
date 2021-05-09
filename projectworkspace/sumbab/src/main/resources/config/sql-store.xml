@@ -28,7 +28,7 @@
 	</delete>
 	
 	<select id="myRegitStoreList" parameterType="String" resultType="store">
-		select * from STORE where ID = #{id}
+		select * from STORE where ID = #{id} order by STORE_NUM desc
 	</select>
 	
 	<select id="getStoreClassify" parameterType="Integer" resultType="String">

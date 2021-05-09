@@ -12,7 +12,7 @@
 	<h1>가게 등록하기</h1>
 
 
-	<form:form method="post" action="registerStep1-2" commandName="storeDTO" enctype="multipart/form-data">
+	<form:form method="post" action="registerStep1" commandName="storeDTO" enctype="multipart/form-data">
 		<input type="radio" name="classify" value="음식점">음식점 등록
 		<input type="radio" name="classify" value="카페">카페 등록
 		<table>

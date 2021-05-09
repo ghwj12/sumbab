@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class RestCatService {
 
-	private RestCatDaoImpl restCat;
+	private RestCatDaoImpl restCatDao;
 
 	public RestCatService() {}
 	
 	@Autowired
-	public RestCatService(RestCatDaoImpl restCat) {
-		this.restCat = restCat;
+	public RestCatService(RestCatDaoImpl restCatDao) {
+		this.restCatDao = restCatDao;
 	}
 	
 	public void resgist(RestCatRegistReq req) {
@@ -30,10 +30,17 @@ public class RestCatService {
 				req.isType3(),
 				req.isType4());
 				
-		restCat.insert(newRestCat);
+		restCatDao.insert(newRestCat);
+	}
+	public void insertAfter(RestCat restCat) {
+		restCatDao.insertAfter(restCat);
 	}
 	
 	public RestCat getRestCat(int storeNum) {
-		return restCat.getRestCat(storeNum);
+		return restCatDao.getRestCat(storeNum);
+	}
+	
+	public void updateRestCat(RestCat restCat) {
+		restCatDao.update(restCat);
 	}
 }

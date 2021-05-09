@@ -18,7 +18,9 @@ public class RestCat {
 	private boolean type3;
 	private boolean type4;
 	
-	public RestCat() {}
+	private String name;//join용
+	
+	public RestCat() {super();}
 
 	public RestCat(boolean situation1, boolean situation2, boolean situation3, boolean timeslot1, boolean timeslot2,
 			boolean timeslot3, boolean timeslot4, boolean type1, boolean type2, boolean type3, boolean type4) {
@@ -132,5 +134,12 @@ public class RestCat {
 		this.type4 = type4;
 	}
 
-	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

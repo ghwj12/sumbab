@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class CafeCatService {
 
-	private CafeCatDaoImpl cafeCat;
+	private CafeCatDaoImpl cafeCatDao;
 
 	public CafeCatService() {}
 	
 	@Autowired
-	public CafeCatService(CafeCatDaoImpl cafeCat) {
-		this.cafeCat = cafeCat;
+	public CafeCatService(CafeCatDaoImpl cafeCatDao) {
+		this.cafeCatDao = cafeCatDao;
 	}
 	
 	public void resgist(CafeCatRegistReq req) {
@@ -29,10 +29,18 @@ public class CafeCatService {
 				req.isSize2(),
 				req.isSize3());
 				
-		cafeCat.insert(newCafeCat);
+		cafeCatDao.insert(newCafeCat);
+	}
+	
+	public void insertAfter(CafeCat cafeCat) {
+		cafeCatDao.insertAfter(cafeCat);
 	}
 	
 	public CafeCat getCafeCat(int storeNum) {
-		return cafeCat.getCafeCat(storeNum);
+		return cafeCatDao.getCafeCat(storeNum);
+	}
+	
+	public void updateCafeCat(CafeCat cafeCat) {
+		cafeCatDao.update(cafeCat);
 	}
 }

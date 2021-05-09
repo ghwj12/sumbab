@@ -43,7 +43,7 @@
 		select REVIEW.*, STORE.NAME
 		from REVIEW, STORE
 		where STORE.STORE_NUM = REVIEW.STORE_NUM
-		and REVIEW.ID = #{id}
+		and REVIEW.ID = #{id} order by REVIEW.REVIEW_NUM desc
 	</select>
 	
 	<select id="getStoreNameforReview" parameterType="String" resultType="store">

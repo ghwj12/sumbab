@@ -11,11 +11,17 @@
 		VALUES (STORE_SEQ.currval,#{situation1},#{situation2},#{situation3},#{timeslot1},#{timeslot2},#{timeslot3},#{timeslot4},#{type1},#{type2},#{type3},#{type4})
 	</insert>
 	
+	<!-- 가게 등록만 하고 카테고리 설정을 나중에 하는 경우 -->
+	<insert id="insertRestCat2" parameterType="restCat">
+		insert into REST_CAT (STORE_NUM, SITUATION1, SITUATION2, SITUATION3, TIMESLOT1, TIMESLOT2, TIMESLOT3, TIMESLOT4, TYPE1, TYPE2, TYPE3, TYPE4)
+		VALUES (#{storeNum},#{situation1},#{situation2},#{situation3},#{timeslot1},#{timeslot2},#{timeslot3},#{timeslot4},#{type1},#{type2},#{type3},#{type4})
+	</insert>
+	
 	<update id="updateRestCat" parameterType="restCat">
-		UPDATE STORE SET SITUATION1=#{situation1},SITUATION1=#{situation2},SITUATION1=#{situation3},
+		update REST_CAT set SITUATION1=#{situation1},SITUATION2=#{situation2},SITUATION3=#{situation3},
 				TIMESLOT1=#{timeslot1},TIMESLOT2=#{timeslot2},TIMESLOT3=#{timeslot3},TIMESLOT4=#{timeslot4},
-				TYPE1=#{type1},TYPE2=#{type2},TYPE3=#{type3},TYPE4=#{type4}
-		WHERE STORE_NUM=${storeNum}
+				TYPE1=#{type1},TYPE2=#{type2},TYPE3=#{type3}, TYPE4=#{type4}
+				where STORE_NUM =#{storeNum}
 	</update>
 	
 	<select id="selectByRestCat" parameterType="String" resultType="store">
@@ -26,7 +32,10 @@
 	<!-- category table은 delete 기능이 없다. STORE TABLE에  on delete cascade 설정-->
 	
 	<select id="getRestCat" parameterType="Integer" resultType="restCat">
-		select * from REST_CAT where STORE_NUM = #{storeNum}
+		select REST_CAT.*, STORE.NAME
+		from REST_CAT, STORE
+		where STORE.STORE_NUM = REST_CAT.STORE_NUM
+		and REST_CAT.STORE_NUM = #{storeNum}
 	</select>
 	
 </mapper>

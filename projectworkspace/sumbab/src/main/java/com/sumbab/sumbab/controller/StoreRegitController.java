@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.sumbab.sumbab.model.cafeCat.CafeCat;
 import com.sumbab.sumbab.model.cafeCat.CafeCatRegistReq;
 import com.sumbab.sumbab.model.cafeCat.CafeCatService;
+import com.sumbab.sumbab.model.restCat.RestCat;
 import com.sumbab.sumbab.model.restCat.RestCatRegistReq;
 import com.sumbab.sumbab.model.restCat.RestCatService;
 import com.sumbab.sumbab.model.review.ReviewService;
@@ -45,7 +47,7 @@ public class StoreRegitController {
 		this.storeService = storeService;
 	}
 
-	@RequestMapping(value = "/registerStep1-2", method = RequestMethod.POST)
+	@RequestMapping(value = "/registerStep1", method = RequestMethod.POST)
 	public String regitStore2(@ModelAttribute("storeDTO") Store store, StoreRegisterRequest regReq, String fullAddress,
 			String extrAddress, MultipartHttpServletRequest mtpReq) {
 
@@ -76,11 +78,6 @@ public class StoreRegitController {
 		}
 	}
 
-	@RequestMapping(value = "/registerStep1-2", method = RequestMethod.GET) // get으로 접근하면 regit1로 돌려보내기
-	public String regitStore2() {
-		return "redirect:/store/registerStep1";
-	}
-
 	@Autowired
 	private RestCatService restCatService;
 	@Autowired
@@ -107,13 +104,13 @@ public class StoreRegitController {
 		return "store/completeRegister";
 	}
 	
-	@RequestMapping(value = "/regitStoreList", method = RequestMethod.GET)
+	@RequestMapping(value = "/myStoreList", method = RequestMethod.GET)
 	public String showMyRegitStoreList(Model model, HttpSession session) {
 		String id = "deliciousman"; //세션에서 가져올 값
 		
 		session.setAttribute("id", session.getAttribute(id));
 		model.addAttribute("myStoreList", storeService.getMyRegitStore(id));
-		return "store/regitStoreList";
+		return "store/myStoreList";
 	}
 	
 	@Autowired
@@ -205,5 +202,36 @@ public class StoreRegitController {
 			return "/store/completeEditStore";
 	}
 	
+	@RequestMapping(value="/editCat/{storeNum}", method=RequestMethod.GET)
+	public String editCategory(@PathVariable int storeNum, Model model) {
+		
+		model.addAttribute("storeVO", storeService.storeView(storeNum));
+		if(storeService.getClassify(storeNum).equals("음식점")) {
+			
+			model.addAttribute("restCatVO", restCatService.getRestCat(storeNum));
+		}else {
+			model.addAttribute("cafeCatVO", cafeCatService.getCafeCat(storeNum));
+		}
+		return "/store/editCat";
+	}
 	
+	@RequestMapping(value="/editCat/{storeNum}", method=RequestMethod.POST)
+	public String completedEditCategory(@ModelAttribute CafeCat cafeCat,
+			@ModelAttribute RestCat restCat, @PathVariable int storeNum, Model model) {
+		
+		if(storeService.getClassify(storeNum).equals("음식점")) {
+			if(restCat.getName()==null) {
+				restCatService.insertAfter(restCat);
+			}else {
+				restCatService.updateRestCat(restCat);
+			}
+		}else if(storeService.getClassify(storeNum).equals("카페")) {
+			if(cafeCat.getName()==null){
+				cafeCatService.insertAfter(cafeCat);
+				}else {
+					cafeCatService.updateCafeCat(cafeCat);
+				}
+			}
+		return "/store/completedEditCat";
+	}	
 }

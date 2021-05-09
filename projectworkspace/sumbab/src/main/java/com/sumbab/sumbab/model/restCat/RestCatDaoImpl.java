@@ -20,6 +20,11 @@ public class RestCatDaoImpl implements RestCatDao {
 	}
 
 	@Override
+	public void insertAfter(RestCat restCat) {
+		sqlSessionTemplate.insert("insertRestCat2", restCat);
+	}
+	
+	@Override
 	public void update(RestCat restCat) {
 		sqlSessionTemplate.update("updateRestCat", restCat);
 	}
@@ -28,6 +33,7 @@ public class RestCatDaoImpl implements RestCatDao {
 	public RestCat getRestCat(int storeNum) {
 		return sqlSessionTemplate.selectOne("getRestCat", storeNum);
 	}
+
 
 	
 

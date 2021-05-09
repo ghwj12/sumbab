@@ -17,7 +17,9 @@ public class CafeCat {
 	private boolean size2;
 	private boolean size3;
 	
-	public CafeCat() {}
+	private String name;//join용
+	
+	public CafeCat() {super();}
 
 	public CafeCat(boolean situation1, boolean situation2, boolean situation3, boolean timeslot, boolean mood1,
 			boolean mood2, boolean mood3, boolean size1, boolean size2, boolean size3) {
@@ -121,4 +123,13 @@ public class CafeCat {
 	public void setSize3(boolean size3) {
 		this.size3 = size3;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

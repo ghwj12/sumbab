@@ -18,6 +18,11 @@ public class CafeCatDaoImpl implements CafeCatDao {
 	public void insert(CafeCat cafeCat) {
 		sqlSessionTemplate.insert("insertCafeCat", cafeCat);
 	}
+	
+	@Override
+	public void insertAfter(CafeCat cafeCat) {
+		sqlSessionTemplate.insert("insertCafeCat2", cafeCat);
+	}
 
 	@Override
 	public void update(CafeCat cafeCat) {
@@ -28,5 +33,6 @@ public class CafeCatDaoImpl implements CafeCatDao {
 	public CafeCat getCafeCat(int storeNum) {
 		return sqlSessionTemplate.selectOne("getCafeCat", storeNum);
 	}
+
 
 }

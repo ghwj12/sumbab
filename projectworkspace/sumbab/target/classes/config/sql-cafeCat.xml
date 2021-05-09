@@ -11,8 +11,14 @@
 		VALUES (STORE_SEQ.currval,#{situation1},#{situation2},#{situation3},#{timeslot},#{mood1},#{mood2},#{mood3},#{size1},#{size2},#{size3})
 	</insert>
 	
+	<!-- 가게 등록을 하고 카테고리 설정을 나중에 할 경우 -->
+	<insert id="insertCafeCat2" parameterType="cafeCat">
+		insert into CAFE_CAT (STORE_NUM, SITUATION1, SITUATION2, SITUATION3, TIMESLOT, MOOD1, MOOD2, MOOD3,SIZE1, SIZE2, SIZE3)
+		VALUES (#{storeNum},#{situation1},#{situation2},#{situation3},#{timeslot},#{mood1},#{mood2},#{mood3},#{size1},#{size2},#{size3})
+	</insert>
+	
 	<update id="updateCafeCat" parameterType="cafeCat">
-		UPDATE STORE SET SITUATION1=${situation1},SITUATION1=${situation2},SITUATION1=${situation3},
+		UPDATE CAFE_CAT SET SITUATION1=${situation1},SITUATION1=${situation2},SITUATION1=${situation3},
 				TIMESLOT=#{timeslot},MOOD1=#{mood1},MOOD2=#{mood2},MOOD3=#{mood3},
 				SIZE1=${size1},SIZE2=${size2},SIZE3=${size3}
 		WHERE STORE_NUM=${storeNum}
@@ -26,7 +32,10 @@
 	<!-- category table은 delete 기능이 없다. STORE TABLE에  on delete cascade 설정-->
 	
 	<select id="getCafeCat" parameterType="Integer" resultType="cafeCat">
-		select * from CAFE_CAT where STORE_NUM = #{storeNum}
+		select CAFE_CAT.*, STORE.NAME
+		from CAFE_CAT, STORE
+		where STORE.STORE_NUM = CAFE_CAT.STORE_NUM
+		and CAFE_CAT.STORE_NUM = #{storeNum}
 	</select>
 	
 </mapper>

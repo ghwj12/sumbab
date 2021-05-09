@@ -10,7 +10,9 @@
 </head>
 <body>
 	<h1>등록한 가게</h1>
-	가게명을 클릭하시면 수정/삭제 하실 수 있습니다.
+	가게명을 클릭하시면 수정/삭제 하실 수 있습니다.<br>
+	<input type="button" value="마이페이지로" onclick="location.href='/sumbab/mypage/mypageMain'">
+	
 	<table border="1">
 		<tr>
 			<th>No.</th><th>가게명</th><th>주소</th>

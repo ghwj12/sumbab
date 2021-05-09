@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>가게 수정 완료</title>
+<title>카테고리 수정 완료</title>
 </head>
 <body>
-가게 정보가 수정되었습니다.<br>
-카테고리도 수정 하시겠습니까?<br>
-<input type="button" value="카테고리 수정" onclick="location.href='/sumbab/store/editCat/${store.storeNum}'">
+등록한 가게의 카테고리가 변경되었습니다.
+<input type="button" value="가게 리스트로 돌아가기" onclick="location.href='/sumbab/store/myStoreList'">
 <input type="button" value="마이 페이지로" onclick="location.href='/sumbab/mypage/mypageMain'">
 </body>
 </html>

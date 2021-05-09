@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<th>
-				<a href="#" onclick="location.href='/sumbab/store/regitStoreList'">등록한 가게</a><br>
+				<a href="#" onclick="location.href='/sumbab/store/myStoreList'">등록한 가게</a><br>
 				가게 관리자만 보이는 메뉴
 				</th>
 			</tr>

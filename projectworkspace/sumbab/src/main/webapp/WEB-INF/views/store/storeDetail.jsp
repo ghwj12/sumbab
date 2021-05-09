@@ -44,7 +44,7 @@
 		</tr>
 		<tr>
 			<th>메뉴</th>
-			<td>${store.menu}</td>
+			<td>${fn:replace(store.menu, cn, br)}</td>
 		</tr>
 		<tr>
 			<th>영업시간</th>
@@ -78,7 +78,7 @@
 	<h2>"${store.name}"의설정 카테고리</h2>
 <c:choose>
 	<c:when test="${store.classify eq '음식점'}">
-<form:form method="post" action="" commandName="restCatVO" enctype="multipart/form-data">
+<form:form method="get" action="/sumbab/store/editCat/${store.storeNum}" commandName="restCatVO" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
 			<th>어떤 상황일 때 가면 좋은가요?</th>
@@ -134,8 +134,10 @@
 	<input type="submit" value="카테고리 수정하기">
 </form:form>
 	</c:when>
+	
+	<%--=========================카페일때 카테고리 ==========================--%>
 	<c:otherwise>
-	<form:form method="post" action="" commandName="cafeCatVO" enctype="multipart/form-data">
+	<form:form method="get" action="/sumbab/store/editCat/${store.storeNum}" commandName="cafeCatVO" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
 			<th>어떤 상황일 때 가면 좋은가요?</th>
