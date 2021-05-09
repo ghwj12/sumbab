@@ -79,6 +79,10 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return result;
 	}
-	
-	
+	//정민
+	@Override
+	public void memberDelete(MemberVo memberVO) {
+		sqlSessionTemplate.delete("memberDelete", memberVO);
+		
+	}
 }

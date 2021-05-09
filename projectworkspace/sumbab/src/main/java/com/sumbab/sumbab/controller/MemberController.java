@@ -2,17 +2,16 @@ package com.sumbab.sumbab.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sumbab.sumbab.model.member.MemberService;
 import com.sumbab.sumbab.model.member.MemberVO;
+
 
 @Controller
 public class MemberController {
@@ -72,37 +71,6 @@ public class MemberController {
 //		
 //	}
 //	
-	//회원탈퇴 get
-	@RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
-	public String memberDeleteView() {
-		return "member/memberDeleteView";
-	}
-	
-	//회원탈퇴 post
-	@RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
-	public String memberDeleteView(MemberVO memberVO, HttpSession session, RedirectAttributes rttr) {
-		
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		
-		String sessionPwd = member.getPwd();
-		
-		String voPwd = memberVO.getPwd();
-		
-		System.out.println(sessionPwd);
-		System.out.println(voPwd);
-		System.out.println(member);
-		
-		if(!(sessionPwd.equals(voPwd))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/membmer/memberDeleteView";
-		}
-		memberService.memberDelete(memberVO);
-		session.invalidate();
-		return "main";
-	}
-	
-	
-	
 	
 	
 }

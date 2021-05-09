@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -287,8 +288,37 @@ public class SbController {
 
 
 
-	
+		//회원탈퇴 get 정민
+		@RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
+		public String memberDeleteView(HttpSession session) {
+			
 
+			return "member/memberDeleteView";
+		}
+		 //정민
+		@RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
+		public String memberDeleteView(MemberVo memberVO, HttpSession session, RedirectAttributes rttr) {
+			
+			MemberVo member = (MemberVo) session.getAttribute("vo");
+			
+			String sessionPwd = member.getPwd();
+			
+			String voPwd = memberVO.getPwd();
+			
+			System.out.println(sessionPwd+ "세션연결이 되었군...");
+			System.out.println(voPwd + "근데 외그럴까나..");
+			System.out.println(member);
+			
+			if(!(sessionPwd.equals(voPwd))) {
+				rttr.addFlashAttribute("msg", false);
+				return "redirect:/membmer/memberDeleteView";
+			}
+			loginService.memberDelete(memberVO);
+			session.invalidate();
+			return "list";
+		}
+
+		
 
 }
 

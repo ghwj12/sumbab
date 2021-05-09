@@ -110,5 +110,10 @@ public class LoginServiceImpl implements LoginService {
 		 return result;
 	}
 	
-	
+	//정민
+	@Override
+	public void memberDelete(MemberVo memberVO) {
+		memberDao.memberDelete(memberVO);
+		
+	}
 }

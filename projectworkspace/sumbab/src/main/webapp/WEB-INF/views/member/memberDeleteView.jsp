@@ -21,9 +21,9 @@
 			})
 		
 			$("#submit").on("click", function(){
-				if($("#userPass").val()==""){
+				if($("#pwd").val()==""){
 					alert("비밀번호를 입력해주세요.");
-					$("#userPass").focus();
+					$("#pwd").focus();
 					return false;
 				}	
 			});
@@ -34,14 +34,14 @@
 	</script>
 	<body>
 		<section id="container">
-			<form action="/memberDelete" method="post">
+			<form action="/sumbab/memberDelete" method="post">
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userId">아이디</label>
-					<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" />
+					<label class="control-label" for="id">아이디</label>
+					<input class="form-control" type="text" id="id" name="id" />
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userPass">패스워드</label>
-					<input class="form-control" type="password" id="userPass" name="userPass" />
+					<label class="control-label" for="pwd">패스워드</label>
+					<input class="form-control" type="password" id="pwd" name="pwd" />
 				</div>
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="submit" id="submit">회원탈퇴</button>

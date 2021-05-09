@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public class MemberDaoMybatis implements MemberDao {
 
@@ -25,10 +27,6 @@ public class MemberDaoMybatis implements MemberDao {
 
 	}
 
-	@Override
-	public void memberDelete(MemberVO memberVO) {
-		sqlSessionTemplate.delete("member.memberDelete", memberVO);
-		
-	}
+	
 
 }

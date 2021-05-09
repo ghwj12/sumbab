@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -22,10 +23,6 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
-	@Override
-	public void memberDelete(MemberVO memberVO) {
-		memberDao.memberDelete(memberVO);
-		
-	}
+	
 
 }

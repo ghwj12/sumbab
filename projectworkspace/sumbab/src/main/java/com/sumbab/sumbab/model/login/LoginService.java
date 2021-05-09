@@ -28,6 +28,9 @@ public interface LoginService {
 	public boolean kaLoginSelect(Map<String, Object> map);
 
 	public MemberVo kaLoginSelect2(Map<String, Object> map,HttpSession session);
+	//회원탈퇴 부분입니다.추가했어요 승현님 //정민
+	public void memberDelete(MemberVo memberVO);
+
 	
 	
 }

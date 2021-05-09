@@ -14,5 +14,7 @@ public interface MemberDao {
 	public abstract void kaLoginInsert(Map<String, Object> map);
 	public abstract boolean kaLoginSelect(Map<String, Object> map);
 	public abstract MemberVo kaLoginSelect2(Map<String, Object> map);
+	//정민
+	public void memberDelete(MemberVo memberVO);
 	
 }
