@@ -33,6 +33,8 @@
 <c:otherwise>
 <div>
 <input type="submit" value="로그아웃" formaction="/sumbab/sb/logout" >
+<input type="submit" value="회원탈퇴" formaction="/sumbab/memberDeleteView" >
+
 </div>
 </c:otherwise>
 
