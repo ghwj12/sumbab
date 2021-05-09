@@ -88,13 +88,17 @@ public class MemberController {
 		
 		String voPwd = memberVO.getPwd();
 		
+		System.out.println(sessionPwd);
+		System.out.println(voPwd);
+		System.out.println(member);
+		
 		if(!(sessionPwd.equals(voPwd))) {
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/membmer/memberDeleteView";
 		}
 		memberService.memberDelete(memberVO);
 		session.invalidate();
-		return "redirect:/";
+		return "main";
 	}
 	
 	

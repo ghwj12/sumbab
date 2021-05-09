@@ -37,7 +37,7 @@
 			<form action="/member/memberDelete" method="post">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userId">아이디</label>
-					<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly"/>
+					<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" />
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userPass">패스워드</label>
@@ -45,7 +45,7 @@
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userName">성명</label>
-					<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}" readonly="readonly"/>
+					<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}"/>
 				</div>
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="submit" id="submit">회원탈퇴</button>
