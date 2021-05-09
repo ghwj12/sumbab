@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>공지 올리기</h2>
-	<form:form commandName="notice" method="POST">
+	<form:form commandName="notice" method="POST" action="writeNotice">
 	<table border="1">
 		<tr>
 			<th>제목</th>
@@ -18,13 +18,21 @@
 		</tr>
 		<tr>
 			<th>볼 권한이 있는 아이디</th>
-			<td><form:input path="authority" /></td>
+			<td>
+			<c:choose>
+				<c:when test="${!empty receiveNotice}">${receiveNotice.authorityByRD}
+					<form:hidden path="authority" value="${receiveNotice.authorityByRD}" />
+				</c:when>
+				<c:otherwise><form:input path="authority" /></c:otherwise>
+			</c:choose>
+			</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td><form:textarea path="content" /></td>
 		</tr>
 	</table>
+	<c:if test="${receiveNotice.classifyNum == 4}"><form:hidden path="reviewNum" value="${receiveNotice.reviewNumByRD}" /></c:if>
 	<input type="submit" value="올리기">
 	</form:form>
 </body>

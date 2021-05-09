@@ -13,6 +13,7 @@
 	</listener>
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
+		<session-timeout>720</session-timeout> 
 	</session-config>
 	<servlet>
 		<servlet-name>appServlet</servlet-name>

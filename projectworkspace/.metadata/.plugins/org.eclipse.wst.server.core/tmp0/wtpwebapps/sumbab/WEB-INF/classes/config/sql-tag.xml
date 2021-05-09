@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tagDao">
+
+
+	<!-- id = ${memberVO.id}로 나중에 변경 -->
+	<insert id="insertTag" parameterType="String">
+		insert into TAG (TAG_ID, TAG_NAME, COUNT)
+		values (TAG_SEQ.nextval, #{tagName}, 0)
+	</insert>
+
+	<update id="upTagCount" parameterType="String">
+		update TAG set COUNT= COUNT+1
+		where TAG_NAME=#{tagName}
+	</update>
+	
+	<select id="checkExistTag" parameterType="String" resultType="Integer">
+		select count(*) from TAG where TAG_NAME=#{tagName}
+	</select>
+
+	<!--아직 method 미정-->
+	<delete id="deleteTag" parameterType="Integer">
+		
+	</delete>
+
+	<select id="selectTagByStore" parameterType="Integer" resultType="tag">
+		select distinct TAG.*
+		from TAG
+		join STORE_TAG on TAG.TAG_ID = STORE_TAG.TAG_ID
+		where STORE_TAG.STORE_NUM = #{storeNum}
+	</select>
+	
+	<select id="selectTagByReview" parameterType="Integer" resultType="tag">
+		select TAG.TAG_NAME
+		from TAG
+		join REVIEW_TAG on TAG.TAG_ID = REVIEW_TAG.TAG_ID
+		where REVIEW_TAG.REVIEW_NUM = #{reviewNum}
+	</select>
+	
+	<select id="selectReviewNumList" parameterType="Integer" resultType="Integer">
+		select REVIEW_TAG.REVIEW_NUM
+		from REVIEW_TAG
+		join REVIEW on REVIEW.REVIEW_NUM = REVIEW_TAG.REVIEW_NUM
+		where REVIEW.STORE_NUM = #{storeNum}
+	</select>
+	
+	<!-- 중복된 tag 입력했을 경우, tagid를 찾아야 한다. -->
+	<select id="getTagIDbyName" parameterType="String" resultType="Integer">
+		select TAG_ID from TAG where TAG_NAME=#{tagName}
+	</select>
+	
+	<!-- ===========중간테이블 update query : insertReview와 insertTag가 끝난 뒤에 실행한다============ -->
+	<!-- REVIEW_TAG insert -->
+	<insert id="insertReview_Tag">
+		insert into REVIEW_TAG (REVIEW_NUM, TAG_ID)
+		values ((select MAX(REVIEW_NUM) from REVIEW), TAG_SEQ.currval)
+	</insert>
+	
+	<!-- STORE_TAG insert -->
+	<insert id="insertStore_Tag" parameterType="Integer">
+		insert into STORE_TAG (STORE_NUM, TAG_ID)
+		values (#{storeNum}, TAG_SEQ.currval)
+	</insert>
+	
+	<!-- ======기존에 있던 태그를 입력했을 때====== -->
+	<!-- REVIEW_TAG insert -->
+	<insert id="insertReview_Tags" parameterType="Integer">
+		insert into REVIEW_TAG (REVIEW_NUM, TAG_ID)
+		values ((select MAX(REVIEW_NUM) from REVIEW), #{tagId})
+	</insert>
+	
+	<!-- ======기존에 있던 태그를 입력했을 때====== -->
+	<!-- STORE_TAG insert -->
+	<insert id="insertStore_Tags" parameterType="hashmap">
+		insert into STORE_TAG (STORE_NUM, TAG_ID)
+		values (#{storeNum}, #{tagId})
+	</insert>
+</mapper>

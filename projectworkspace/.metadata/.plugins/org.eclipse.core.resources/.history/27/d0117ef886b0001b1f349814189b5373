@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- mybatis 작동 규칙 정의 -->
+	<settings>
+		<setting name="cacheEnabled" value="false"/>
+		<setting name="useGeneratedKeys" value="false"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	 
+	<typeAliases>
+		<typeAlias alias = "store" type="com.sumbab.sumbab.model.store.Store"/>
+		<typeAlias alias = "restCat" type="com.sumbab.sumbab.model.restCat.RestCat"/>
+		<typeAlias alias = "cafeCat" type="com.sumbab.sumbab.model.cafeCat.CafeCat"/>
+		<typeAlias alias = "member" type="com.sumbab.sumbab.model.member.MemberVO"/>
+		<typeAlias alias = "notice" type="com.sumbab.sumbab.model.notice.Notice"/>
+		<typeAlias alias = "review" type="com.sumbab.sumbab.model.review.Review"/>
+		<typeAlias alias = "tag" type="com.sumbab.sumbab.model.tag.Tag"/>
+		<typeAlias alias = "classifyDto" type="com.sumbab.sumbab.model.classify.ChangeClassifyDto"/>
+		<typeAlias alias = "memberClassify" type="com.sumbab.sumbab.model.classify.MemberClassify"/>
+		<typeAlias alias = "selectedCategory" type="com.sumbab.sumbab.model.category.SelectedCategory"/>
+		<typeAlias alias = "pick" type="com.sumbab.sumbab.model.pick.Pick"/>
+		<typeAlias alias = "warningVo" type="com.sumbab.sumbab.model.warning.WarningVo"/>
+		<typeAlias alias = "warningDto" type="com.sumbab.sumbab.model.warning.WarningDto"/>
+		<typeAlias alias = "memberVo" type="com.sumbab.sumbab.model.warning.WarningDto"/>
+	</typeAliases>
+	
+</configuration>

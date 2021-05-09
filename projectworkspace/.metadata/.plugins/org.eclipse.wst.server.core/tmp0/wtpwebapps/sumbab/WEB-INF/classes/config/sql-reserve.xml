@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reserve">
+
+	<!-- ID = ${memberVO.id} / STORE_NUM = ${storeVO.storeNum}으로 나중에 변경 -->
+	<insert id="insertReserve" parameterType="reserve">
+		insert into RESERVE (STORE_NUM, ID, RESERVE_NAME, RES_DATE, PHONE, RESERVE_SEQ)
+		values (#{storeNum}, #{id}, #{reserveName}, TO_DATE(#{resDate}, 'YYYY-MM-DD HH24:MI'), #{phone}, RESERVE_SEQ.nextval)
+	</insert>
+
+
+	<!-- 미래예약 조회 -->
+	<select id="listFuture" parameterType="String" resultType="reserve">
+		<!-- 미래 내역 가져오기 -->
+		select * from RESERVE where ID=#{memberID} and RES_DATE >= (select SYSDATE from dual) order by RES_DATE desc
+	</select>
+	
+	<!-- 과거예약 조회 -->
+	<select id="listPast" parameterType="String" resultType="reserve">
+		<!-- 미래 내역 가져오기 -->
+		select * from RESERVE where ID=#{memberID} and (select SYSDATE from dual) > RES_DATE order by RES_DATE desc
+	</select>
+	
+	
+	<!-- 예약 취소(삭제) : my page에서 예약내역 보기==>
+	해당 페이지 세션에 있는 reserveVO와 memberVO에서 값 가져오기-->
+	<delete id="deleteReserve" parameterType="Integer">
+		delete from RESERVE where RESERVE_SEQ=#{reserveSeq}
+		
+	</delete>
+	
+	<select id="getStoreName" parameterType="String" resultType="store">
+		select * from STORE where STORE_NUM IN
+		(select STORE_NUM from RESERVE where ID=#{memberID})
+	</select>
+	
+	<select id="getID" parameterType="store" resultType="String">
+		select ID from RESERVE where 
+	</select>
+
+</mapper>
+
+<!-- select * from RESERVE where ID=#{memberID} order by RES_DATE desc -->

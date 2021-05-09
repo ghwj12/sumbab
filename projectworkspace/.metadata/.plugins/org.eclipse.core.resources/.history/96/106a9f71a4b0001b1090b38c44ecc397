@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<insert id="join" parameterType="VO">
+		insert into member
+		(id,pwd,email,classify,regdate)
+		values(
+		#{id},
+		#{pwd},
+		#{email},
+		#{classify},
+		SYSDATE
+		)	
+	
+	</insert>
+	
+	<select  id="idCheck" parameterType="String" resultType="int">
+	SELECT count(*) FROM member WHERE id = #{id}
+	</select>
+
+	<update id="modify">
+	UPDATE member SET pwd = #{pwd} WHERE id = #{id}
+	</update>
+
+</mapper>

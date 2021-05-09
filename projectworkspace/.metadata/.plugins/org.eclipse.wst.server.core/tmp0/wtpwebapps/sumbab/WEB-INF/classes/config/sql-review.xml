@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reviewDao">
+
+
+	<!-- id = ${memberVO.id}로 나중에 변경 -->
+	<insert id="insertReview" parameterType="Review">
+		insert into REVIEW (REVIEW_NUM, STORE_NUM, ID, MENU, STAR, CONTENT, REVISIT, regdate, PICTURE)
+		values (REVIEW_SEQ.nextval, #{storeNum}, #{id}, #{menu}, #{star}, #{content}, #{revisit}, sysdate, #{picture})
+	</insert>
+
+	<update id="updateReview" parameterType="review">
+		update REVIEW set MENU=#{menu}, STAR=#{star}, CONTENT=#{content}, REVISIT=#{revisit}, PICTURE=#{picture}
+		where REVIEW_NUM = #{reviewNum}
+	</update>
+
+	<delete id="deleteReview" parameterType="Integer">
+		delete from REVIEW where REVIEW_NUM=#{reviewNum}
+	</delete>
+
+	<select id="getReviewCount" parameterType="Integer" resultType="Integer">
+		select count(*) from REVIEW where STORE_NUM=#{storeNum}
+	</select>
+	
+	<select id="getAvgStar" parameterType="Integer" resultType="Float">
+		select avg(STAR) from REVIEW where STORE_NUM=#{storeNum}
+	</select>
+	
+	<select id="getReviewList" parameterType="Integer" resultType="Review">
+		select * from REVIEW where STORE_NUM=#{storeNum} order by regdate desc
+	</select>
+	
+	<select id="getAvgRevisit" parameterType="Integer" resultType="float">
+		select
+		((select count(*) from REVIEW where STORE_NUM=#{storeNum} and REVISIT='1')/ 
+		(select count(*) from REVIEW where STORE_NUM=#{storeNum}))
+		from dual
+	</select>
+	
+	<select id="getMyReviewList" parameterType="String" resultType="Review">
+		select REVIEW.*, STORE.NAME
+		from REVIEW, STORE
+		where STORE.STORE_NUM = REVIEW.STORE_NUM
+		and REVIEW.ID = #{id}
+	</select>
+	
+	<select id="getStoreNameforReview" parameterType="String" resultType="store">
+		select distinct STORE.* from STORE
+		join REVIEW on STORE.STORE_NUM = REVIEW.STORE_NUM
+		where REVIEW.STORE_NUM in (select STORE_NUM from REVIEW where ID=#{id})
+	</select>
+	
+	<select id="reviewDetail" parameterType="Integer" resultType="Review">
+		select REVIEW.*, STORE.NAME
+		from REVIEW, STORE
+		where STORE.STORE_NUM = REVIEW.STORE_NUM
+		and REVIEW_NUM=#{reviewNum}
+	</select>
+	
+</mapper>

@@ -24,6 +24,7 @@
 		<typeAlias alias = "pick" type="com.sumbab.sumbab.model.pick.Pick"/>
 		<typeAlias alias = "warningVo" type="com.sumbab.sumbab.model.warning.WarningVo"/>
 		<typeAlias alias = "warningDto" type="com.sumbab.sumbab.model.warning.WarningDto"/>
+		<typeAlias alias = "memberVo" type="com.sumbab.sumbab.model.login.MemberVo"/>
 	</typeAliases>
 	
 </configuration>

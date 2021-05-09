@@ -1,8 +1,0 @@
-package com.sumbab.project.model;
-
-import org.apache.ibatis.type.Alias;
-
-@Alias("warningVo")
-public class WarningVo {
-
-}

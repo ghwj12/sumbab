@@ -52,6 +52,7 @@
 				<beans:value>classpath:config/sql-search.xml</beans:value>
 				<beans:value>classpath:config/sql-review.xml</beans:value>
 				<beans:value>classpath:config/sql-tag.xml</beans:value>
+				<beans:value>classpath:config/sql-login.xml</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="typeAliasesPackage" value="com.sumbab.sumbab.model" />
@@ -68,7 +69,7 @@
 		destroy-method="close">
 		<beans:property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<beans:property name="user" value="sumbab" />
+		<beans:property name="user" value="project" />
 		<beans:property name="password" value="1234" />
 		<beans:property name="maxPoolSize" value="100" />
 		<beans:property name="maxIdleTime" value="600" />

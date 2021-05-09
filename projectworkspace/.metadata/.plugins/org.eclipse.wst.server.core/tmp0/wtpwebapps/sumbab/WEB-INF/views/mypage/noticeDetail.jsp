@@ -34,10 +34,12 @@
 			</td>
 		</tr>
 	</table>
+	<p>
 	<c:if test="${classify == 3}">
-		<input type="button" value="공지 수정" onclick="location.href='/project/mypage/editNotice/${noticeVo.noticeNum}'"/>
+		<input type="button" value="공지 수정" onclick="location.href='/sumbab/mypage/editNotice/${noticeVo.noticeNum}'"/>
 		<input type="button" value="공지 삭제" onclick="openDelete()"/>
 	</c:if>
+	</p>
 	<script type="text/javascript">
 		function openReview(){
 			var popWidth = 600;
@@ -61,8 +63,8 @@
 			var winY = window.screenTop;
 			var popX = winX + (winWidth - popWidth)/2;
 			var popY = winY + (winHeight - popHeight)/2;
-			url="../deleteProcess/"+${noticeVo.noticeNum};
-			var openWin = window.open(url, "deleteProcess", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
+			url="../deleteNoticeProcess/"+${noticeVo.noticeNum};
+			var openWin = window.open(url, "deleteNoticeProcess", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 		}
 	</script>
 </body>

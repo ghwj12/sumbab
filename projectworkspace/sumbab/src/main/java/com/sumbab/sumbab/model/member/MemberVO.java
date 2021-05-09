@@ -2,6 +2,8 @@ package com.sumbab.sumbab.model.member;
 
 import java.sql.Date;
 
+import org.apache.ibatis.type.Alias;
+@Alias("VO")
 public class MemberVO {
 
 	private String id;
