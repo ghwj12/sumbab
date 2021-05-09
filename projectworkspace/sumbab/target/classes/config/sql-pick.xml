@@ -6,11 +6,11 @@
 
         
         <select id="bringPick" parameterType="String" resultType="Integer">
-        	select storeNum from PICK where id=#{id}
+        	select store_num from PICK where id=#{id}
         </select>
         
         <insert id="addPick" parameterType="pick">
-        	insert into PICK (id, storeNum) values(#{id}, #{storeNum})
+        	insert into PICK (id, store_num) values(#{id}, #{storeNum})
         </insert>
         
      

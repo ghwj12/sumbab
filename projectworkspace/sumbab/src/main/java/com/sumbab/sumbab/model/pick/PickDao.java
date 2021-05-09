@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface PickDao {
 	
-	//보�??��?��  ?��?�� �?게번?�� �??��?���?
+	//보관함에  있는 가게번호 가져오기
 	public List<Integer> bringPick(String id);
 	
-	//보�??��?�� �?게번?�� 추�?
+	//보관함에 가게번호 추가
 	public void addPick(Pick pick);
 
 }
