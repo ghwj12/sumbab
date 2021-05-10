@@ -25,7 +25,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/memberjoin", method=RequestMethod.GET)
 	public String memberJoinPro() {
-		return "memberjoin";
+		return "member/memberjoin";
 	}
 	
 	@RequestMapping(value="/memberjoin", method=RequestMethod.POST)
