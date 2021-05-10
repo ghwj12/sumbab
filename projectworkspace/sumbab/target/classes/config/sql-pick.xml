@@ -26,7 +26,7 @@
 
 		</update>
 		
-		<select id="myPickSelect" parameterType="" resultType="">
+<!-- 		<select id="myPickSelect" parameterType="" resultType="">
 			select * from STORE
 			where store_num in
 			<foreach collection="list" item="items"  open="(" separator="," close=")">
@@ -34,7 +34,7 @@
 			
 			</foreach>
 
-		</select>
+		</select> -->
 		
 		
         

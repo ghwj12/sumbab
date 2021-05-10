@@ -6,11 +6,8 @@
 
 	<!-- id = ${member.id}로 나중에 변경 -->
 	<insert id="insertStore" parameterType="store">
-		INSERT INTO STORE (STORE_NUM,
-		id, classify, name, CITYCODE, DISTRICTCODE, address, phone, menu, time, reserving, etc, pwd, count, picture)
-		VALUES (STORE_SEQ.nextval, 'deliciousman', #{classify},
-		#{name}, #{citycode}, #{districtcode} #{address}, #{phone},
-		#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, #{picture})
+		INSERT INTO STORE (STORE_NUM, ID, CLASSIFY, NAME, CITYCODE, DISTRICTCODE, ADDRESS, PHONE, MENU, time, reserving, etc, PWD, count, picture)
+		VALUES (STORE_SEQ.nextval, 'deliciousman', #{classify}, #{name}, #{citycode},#{districtcode}, #{address}, #{phone}, #{menu},#{time},#{reserving},#{etc},#{pwd},0,#{picture})
 	</insert>
 
 	<update id="updateStore" parameterType="store">
