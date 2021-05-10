@@ -94,6 +94,7 @@ public class StoreRegitController {
 	@RequestMapping(value = "/completeRegisterR", method = RequestMethod.POST) // 카테고리 작성 후 마지막 complete 페이지 요청
 	public String regitComplete(RestCatRegistReq resCatRegitReq) {
 		restCatService.resgist(resCatRegitReq);
+		
 		return "store/completeRegister";
 	}
 

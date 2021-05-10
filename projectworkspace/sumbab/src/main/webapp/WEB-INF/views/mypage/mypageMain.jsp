@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>\${memeber.id}\님의 마이페이지</title>
+<title>${memeber.id}님의 마이페이지</title>
 </head>
 <body>
 <!-- 마이페이지 첫 화면은 "회원 정보" 보여주기-->
@@ -23,9 +23,9 @@
 			<tr>
 				<th><a href="">회원 정보</a></th>
 				<td rowspan="5" width="300" height="300">
-				아이디 : \${member.id}]\<br>
-				이메일 : \${member.email}\<br>
-				가입날짜 : \${member.regdate}\<br></td>
+				아이디 : ${member.id}<br>
+				이메일 : ${member.email}<br>
+				가입날짜 : ${member.regdate}<br></td>
 			</tr>
 			
 			<tr>

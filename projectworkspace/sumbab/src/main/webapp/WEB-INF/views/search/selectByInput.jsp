@@ -27,7 +27,14 @@
 		<c:if test="${i%j == 0 }">
 		<tr>
 			</c:if>
-			<td>사진<br>
+			<td>
+				<c:choose>
+				<c:when test="${storeVO.picture !=null }">
+					<img src="<c:url value='/upload_01store/${storeVO.picture}'/>" width="200px"/><br>
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+				</c:choose>
 			<a href="<c:url value="/store/StoreView/${storeVO.storeNum}"/>">
 			<h3>${storeVO.name}</h3></a>
 			${storeVO.citycode} ${storeVO.districtcode}<br>
