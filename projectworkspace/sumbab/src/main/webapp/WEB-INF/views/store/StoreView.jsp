@@ -169,7 +169,7 @@ body {
 				<tr>
 					<th>리뷰내용:</th>
 					<td width="500" style="word-break: break-all">
-					<img src= "/upload_02review/${Reviewlist.picture}">
+				<img src= "/upload_02review/${Reviewlist.picture}"> 
 						${Reviewlist.content}</td>
 				</tr>
 			</table>
