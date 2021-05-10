@@ -168,8 +168,8 @@ body {
 				</tr>
 				<tr>
 					<th>리뷰내용:</th>
-					<td width="500" style="word-break: break-all"><img
-						src="‪C:\storeimages\defaultimiage.PNG"><br>
+					<td width="500" style="word-break: break-all">
+					<img src= "/upload_02review/${Reviewlist.picture}">
 						${Reviewlist.content}</td>
 				</tr>
 			</table>
@@ -207,7 +207,7 @@ body {
 				var datas = ["작성자", "별점", "작성일", "리뷰내용"];
 				var table = $("<table>", {"class":"reviewInfo"});
 				$(data).each(function(i, elem){
-					let img = $("<img>").attr("src", elem.picture != null ? elem.picture : "C:\storeimages\defaultimiage.PNG");
+					let img = $("<img>").attr("src", "/upload_02review/" + elem.picture));
 					table
 						.append($("<tr>").append($("<th>").text("작성자")).append($("<td>").html(elem.id + "<br />")
 								.append($("<input>", {type:"button", value:"신고하기"}).addClass("warning"))
