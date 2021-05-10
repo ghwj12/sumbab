@@ -13,5 +13,30 @@
         	insert into PICK (id, store_num) values(#{id}, #{storeNum})
         </insert>
         
+        
+        
+		<select id="myPickSelect" parameterType="memberVo" resultType="memberVo">
+			select STORE_NUM from PICK
+			where id = #{vo.id}
+
+		</select>
+
+		<update id="myPickCount" parameterType="int">
+			update STORE set COUNT = COUNT + 1 where store_num = #{STORE_NUM}
+
+		</update>
+		
+		<select id="myPickSelect" parameterType="" resultType="">
+			select * from STORE
+			where store_num in
+			<foreach collection="list" item="items"  open="(" separator="," close=")">
+			#{STORE_NUM}
+			
+			</foreach>
+
+		</select>
+		
+		
+        
      
 </mapper>

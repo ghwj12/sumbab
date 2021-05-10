@@ -13,8 +13,8 @@
 	<typeAliases>
 		<typeAlias alias = "store" type="com.sumbab.sumbab.model.store.Store"/>
 		<typeAlias alias = "restCat" type="com.sumbab.sumbab.model.restCat.RestCat"/>
+		<typeAlias alias = "member" type="com.sumbab.sumbab.model.login.MemberVo"/>
 		<typeAlias alias = "cafeCat" type="com.sumbab.sumbab.model.cafeCat.CafeCat"/>
-		<typeAlias alias = "member" type="com.sumbab.sumbab.model.member.MemberVO"/>
 		<typeAlias alias = "notice" type="com.sumbab.sumbab.model.notice.Notice"/>
 		<typeAlias alias = "review" type="com.sumbab.sumbab.model.review.Review"/>
 		<typeAlias alias = "tag" type="com.sumbab.sumbab.model.tag.Tag"/>
@@ -22,8 +22,7 @@
 		<typeAlias alias = "memberClassify" type="com.sumbab.sumbab.model.classify.MemberClassify"/>
 		<typeAlias alias = "selectedCategory" type="com.sumbab.sumbab.model.category.SelectedCategory"/>
 		<typeAlias alias = "pick" type="com.sumbab.sumbab.model.pick.Pick"/>
-		<typeAlias alias = "warningVo" type="com.sumbab.sumbab.model.warning.WarningVo"/>
-		<typeAlias alias = "warningDto" type="com.sumbab.sumbab.model.warning.WarningDto"/>
+		<typeAlias alias = "warning" type="com.sumbab.sumbab.model.warning.Warning"/>
 		<typeAlias alias = "memberVo" type="com.sumbab.sumbab.model.login.MemberVo"/>
 	</typeAliases>
 	

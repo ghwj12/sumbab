@@ -7,7 +7,7 @@
 <title>메인 페이지에 합치기</title>
 </head>
 <body>
-	<input type="button" value="식당 추천 받기" onclick="location.href='/project/recommendPage/mergeRecommend/음식점'"/>
-	<input type="button" value="카페 추천 받기" onclick="location.href='/project/recommendPage/mergeRecommend/카페'"/>
+	<input type="button" value="식당 추천 받기" onclick="location.href='/sumbab/recommendPage/mergeRecommend/음식점'"/>
+	<input type="button" value="카페 추천 받기" onclick="location.href='/sumbab/recommendPage/mergeRecommend/카페'"/>
 </body>
 </html>

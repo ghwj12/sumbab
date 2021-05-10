@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
 <%
@@ -55,17 +55,19 @@ body {
 	<c:choose>
 		<c:when test="${storelist.picture != null}">
 			<img src="<c:url value="/upload_01store/${storelist.picture}"/>"
-			style="width: 70%; height: 250px; float: center;" />
+				style="width: 70%; height: 250px; float: center;" />
 		</c:when>
 		<c:otherwise>
-			<img src="/sumbab/resources/img/defaultimg.png"/>
+			<img src="/sumbab/resources/img/defaultimg.png" />
 		</c:otherwise>
 	</c:choose>
 	<h1>${storelist.name}<br>
 	</h1>
-	조회수:${storelist.count}
-	평균별점: <b><fmt:formatNumber value="${avgStar}" type="pattern" pattern="0.00" /></b> &nbsp; 
-	재방문의사: <b><fmt:formatNumber value="${avgRevisit}" type="pattern" pattern="0.0%" /></b>
+	조회수:${storelist.count} 평균별점:
+	<b><fmt:formatNumber value="${avgStar}" type="pattern"
+			pattern="0.00" /></b> &nbsp; 재방문의사:
+	<b><fmt:formatNumber value="${avgRevisit}" type="pattern"
+			pattern="0.0%" /></b>
 	<br>
 
 	<table id="storeInfo">
@@ -90,21 +92,20 @@ body {
 			<th>특이사항:</th>
 			<td style="word-break: break-all">&nbsp;${storelist.etc}</td>
 		</tr>
-		
+
 		<tr>
 			<th>연관태그:</th>
-			<td style="word-break: break-all">&nbsp;
-				<c:choose>
-				<c:when test="${fn:length(allTags) == 0}">
+			<td style="word-break: break-all">&nbsp; <c:choose>
+					<c:when test="${fn:length(allTags) == 0}">
 					아직 작성된 태그가 없어요!
 				</c:when>
-				<c:otherwise>
-					<c:forEach var="hashtag" items="${allTags}">
-						<c:if test="${hashtag.count > 0 }">
-						<a href="/sumbab/selectByTag/${hashtag.tagName}">#${hashtag.tagName}</a>
-						</c:if>
-					</c:forEach>
-				</c:otherwise>
+					<c:otherwise>
+						<c:forEach var="hashtag" items="${allTags}">
+							<c:if test="${hashtag.count > 0 }">
+								<a href="/sumbab/selectByTag/${hashtag.tagName}">#${hashtag.tagName}</a>
+							</c:if>
+						</c:forEach>
+					</c:otherwise>
 				</c:choose>
 			</td>
 		</tr>
@@ -125,33 +126,36 @@ body {
 		var openWin = window.open(url, "openPick", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 	}
 	</script>
-	
-	
-	<input type="button" onclick= "openPick(${storelist.storeNum})" value="보관함에담기">
+
+
+	<input type="button" onclick="openPick(${storelist.storeNum})"
+		value="보관함에담기">
 	<c:set var="reserving" value="${storelist.reserving}" />
 	<c:choose>
-	<%--reserving 값에 따라 예약하기/예약불가 버튼 출력--%>
-	<c:when test="${reserving != null}">
-		<input type="button" value="예약하기" onclick="location.href='/sumbab/reserve/reserveForm/${storelist.storeNum}'" >
-	</c:when>
-	<c:otherwise>
-		<input type="button" value="예약불가">
-	</c:otherwise>
+		<%--reserving 값에 따라 예약하기/예약불가 버튼 출력--%>
+		<c:when test="${reserving != null}">
+			<input type="button" value="예약하기"
+				onclick="location.href='/sumbab/reserve/reserveForm/${storelist.storeNum}'">
+		</c:when>
+		<c:otherwise>
+			<input type="button" value="예약불가">
+		</c:otherwise>
 	</c:choose>
 	<!-- ================================================================================================================================================== -->
 	<div id="reviewTitle">
-	<h2>리뷰 | ${ReviewtotalCount}</h2>
-		<input type="button" value="리뷰 작성" onclick="location.href='/sumbab/review/writeReview/${storelist.storeNum}'">
+		<h2>리뷰 | ${ReviewtotalCount}</h2>
+		<input type="button" value="리뷰 작성"
+			onclick="location.href='/sumbab/review/writeReview/${storelist.storeNum}'">
 	</div>
-	
+
 	<div id="reviewList">
 		<c:forEach items="${Reviewlist}" var="Reviewlist">
 			<table class="reviewInfo">
 				<tr>
 					<th>작성자:</th>
 					<td width="500" style="word-break: break-all">&nbsp;${Reviewlist.id}<br>
-						<input type="button" value="신고하기" class="warning" />
-						<input type="hidden" name="reviewNum" value="${Reviewlist.reviewNum}" /> 
+						<input type="button" value="신고하기" class="warning" /> <input
+						type="hidden" name="reviewNum" value="${Reviewlist.reviewNum}" />
 					</td>
 				</tr>
 				<tr>
@@ -164,20 +168,17 @@ body {
 				</tr>
 				<tr>
 					<th>리뷰내용:</th>
-					<td width="500" style="word-break: break-all"><img
-						src="‪C:\storeimages\defaultimiage.PNG"><br>
+					<td width="500" style="word-break: break-all">
+					<img src= "/upload_02review/${Reviewlist.picture}">
 						${Reviewlist.content}</td>
 				</tr>
 			</table>
 		</c:forEach>
 	</div>
-
 	<c:forEach var="cnt" begin="1" end="${totalCount}" step="1">
 		<a href="javascript:goPaging(${storeNum}, ${cnt });">${cnt }</a>
 	</c:forEach>
-
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-
 	<script>
 	$(document).on("click", ".warning", function(e){
 		var reviewNum = $(this).next(":hidden").val();
@@ -202,11 +203,11 @@ body {
 			dataType:"json",
 			success:function(data){
 				console.log(data);
-				var keys = ["reviewNum","id", "star", "regdate", "content"];
+				var keys = ["reviewNum","id", "star", "regdate", "content", "picture"];
 				var datas = ["작성자", "별점", "작성일", "리뷰내용"];
 				var table = $("<table>", {"class":"reviewInfo"});
 				$(data).each(function(i, elem){
-					let img = $("<img>").attr("src", elem.picture != null ? elem.picture : "C:\storeimages\defaultimiage.PNG");
+					let img = $("<img>").attr("src", "/upload_02review/" + elem.picture));
 					table
 						.append($("<tr>").append($("<th>").text("작성자")).append($("<td>").html(elem.id + "<br />")
 								.append($("<input>", {type:"button", value:"신고하기"}).addClass("warning"))

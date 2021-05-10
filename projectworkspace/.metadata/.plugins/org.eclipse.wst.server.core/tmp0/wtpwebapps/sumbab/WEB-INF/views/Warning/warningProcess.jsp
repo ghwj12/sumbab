@@ -12,7 +12,7 @@
 	<c:if test="${empty warning}">
 		회원님의 신고 기능이 정지 되었습니다.<br>
 		공지글을 확인해 주세요.<br><br>
-		<input type="button" value="공지 페이지로 이동" onclick="javascript:opener.location.href='/project/mypage/noticePage';self.close()">
+		<input type="button" value="공지 페이지로 이동" onclick="javascript:opener.location.href='/sumbab/mypage/noticePage';self.close()">
 		<input type="button" value="확인" onclick="javascript:self.close()">
 	</c:if>
 	<c:if test="${!empty warning}">

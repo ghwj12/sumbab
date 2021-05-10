@@ -29,4 +29,25 @@ public class PickService {
 		return pickDao.bringPick(id);
 	}
 	
+	
+	
+	
+	
+	
+	public Pick pickList(String id) {
+	   
+		Pick result = pickDao.pickList(id);
+		
+		
+		return result;
+	}
+	
+	public StoreVo pickRead(int store_num) {
+		pickDao.pickCount(store_num);
+		
+		
+		return pickDao.pickSelect(store_num);
+	}
+	
+	
 }

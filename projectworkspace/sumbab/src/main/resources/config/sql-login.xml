@@ -68,19 +68,6 @@
 
 
 
-
-	<select id="myPickSelect" parameterType="memberVO"
-		resultType="memberVo">
-		select STORE_NUM from PICK
-		where id = #{vo.id}
-
-	</select>
-
-	<update id="myPickCount" parameterType="int">
-		update STORE set COUNT = COUNT + 1 where store_num = #{STORE_NUM}
-
-	</update>
-
 	<delete id="memberDelete" parameterType="memberVo">
 		DELETE FROM MEMBER
 		WHERE

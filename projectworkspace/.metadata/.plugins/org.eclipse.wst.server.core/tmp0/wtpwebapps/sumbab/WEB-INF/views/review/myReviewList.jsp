@@ -11,6 +11,9 @@
 </head>
 <body>
 <h2>내가 작성한 리뷰 보기</h2>
+컨텐츠를 클릭하시면 수정/삭제 하실 수 있습니다.<br>
+<input type="button" value="마이페이지로" onclick="location.href='/sumbab/mypage/mypageMain'">
+
 <table border="1">
 	<tr>
 		<th>No.</th><th>가게 이름</th><th>별점</th><th>컨텐츠</th><th>작성일</th>

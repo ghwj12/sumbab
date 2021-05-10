@@ -1,4 +1,4 @@
-package login;
+package com.sumbab.sumbab.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,14 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.sumbab.sumbab.model.login.LoginService;
+import com.sumbab.sumbab.model.login.MemberVo;
 
 @Controller
-public class SbController {
+public class LoginController {
 	
 	@Autowired
-	private LoginService memberService;
+	private LoginService loginService;
 	
 	
 //	public void setMemberService(MemberService memberService) {
@@ -40,7 +43,7 @@ public class SbController {
 		String kakaoUrl = KakaoController.getAuthorizationUrl(session);
 		model.addAttribute("kakao_url", kakaoUrl);
 		
-		return "/sb/login";
+		return "/login/login";
 	}
 	//로그인 요청 처리 `
 	@RequestMapping(value = "/sb/login", method = RequestMethod.POST)
@@ -49,7 +52,7 @@ public class SbController {
 			HttpSession session,
 			HttpServletResponse response) {
 		
-		boolean result = memberService.login(vo, session);
+		boolean result = loginService.login(vo, session);
 	
 		if(result == true) {
 			
@@ -76,13 +79,13 @@ public class SbController {
 //			response.addCookie(cookies);
 //			
 			
-			return "/sb/main";
+			return "/login/main";
 		
 		}else {
 			
 		
 		
-		return "redirect:/sb/login";
+		return "redirect:/login/login";
 		}
 	}
 
@@ -92,12 +95,12 @@ public class SbController {
 		
 		MemberVo vo = (MemberVo) session.getAttribute("vo");
 		if(vo != null) {
-			memberService.logout(session);
+			loginService.logout(session);
 			
-			return "/sb/logout";
+			return "/login/logout";
 		}
 		
-		return "/sb/logout";
+		return "/login/logout";
 		
 	}
 
@@ -106,7 +109,7 @@ public class SbController {
 	//계정 찾기 폼 요청 
 		@RequestMapping(value="/sb/memberFind", method=RequestMethod.GET)
 		public String memberFindGet(@ModelAttribute("memberVo") MemberVo vo) {
-			return "/sb/memberFind";
+			return "/login/memberFind";
 		}
 	
 		
@@ -114,19 +117,19 @@ public class SbController {
 	@RequestMapping(value="/sb/idFindResult", method=RequestMethod.POST)
 	public String idFindPost(@ModelAttribute("memberVo") MemberVo vo, Model model) {
 		
-		 MemberVo result = memberService.idFind(vo);
+		 MemberVo result = loginService.idFind(vo);
 		
 		
 		 if(result != null) {
 			String id = result.getId();
 			model.addAttribute("idFind", id);
 			
-			return "/sb/idFindResult";
+			return "/login/idFindResult";
 		
 		 }else {
 			
 				
-			return "redirect:/sb/memberFind";
+			return "redirect:/login/memberFind";
 		 }
 	
 			
@@ -136,18 +139,18 @@ public class SbController {
 	@RequestMapping(value="/sb/pwdFindResult",method=RequestMethod.POST)
 	public String pwdFindPost(@ModelAttribute("memberVo") MemberVo vo, Model model) {
 		
-		MemberVo result = memberService.pwdFind(vo);
+		MemberVo result = loginService.pwdFind(vo);
 	
 		if(result != null) {
 			String pwd = result.getPwd();
 			model.addAttribute("pwdFind", pwd);
 		
-			return "/sb/pwdFindResult";
+			return "/login/pwdFindResult";
 			
 		}else {
 			
 			
-			return "redirect:/sb/memberFind";
+			return "redirect:/login/memberFind";
 		}
 		
 		
@@ -214,27 +217,27 @@ public class SbController {
 		session.setAttribute("kname", kname); 
 		
 
-		mav.setViewName("/sb/main"); 
+		mav.setViewName("/login/main"); 
 		
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("kemail", session.getAttribute("kemail"));
 		map.put("kname", session.getAttribute("kname"));
-		boolean result = memberService.kaLoginSelect(map);
+		boolean result = loginService.kaLoginSelect(map);
 		
 		//값이 있다 true
 		if(result) {
 			
 		
 			//db값 세션으로 생성("Vo")
-			memberService.kaLoginSelect2(map, session);
+			loginService.kaLoginSelect2(map, session);
 			
 		//값이 없다 false	
 		}else {
 			
-			memberService.kaLoginInsert(map);
-			memberService.kaLoginSelect2(map, session);
+			loginService.kaLoginInsert(map);
+			loginService.kaLoginSelect2(map, session);
 		
 		}
 		
@@ -251,7 +254,7 @@ public class SbController {
 		mav.addObject("kakao_url", kakaoUrl);
 		
 		//새로고침시 메인 페이지로 바꾸기???
-		mav.setViewName("/sb/login"); 
+		mav.setViewName("/login/login"); 
 		return mav;
 	}
 		
@@ -275,20 +278,49 @@ public class SbController {
 	            
 				
 
-				memberService.kalogout(session);
+				loginService.kalogout(session);
 				
 			
-				return "/sb/kalogout";
+				return "/login/kalogout";
 			}
 			
-			return "/sb/kalogout";
+			return "/login/kalogout";
 			
 		}
 
 
 
-	
+		//회원탈퇴 get 정민
+		@RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
+		public String memberDeleteView(HttpSession session) {
+			
 
+			return "member/memberDeleteView";
+		}
+		 //정민
+		@RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
+		public String memberDeleteView(MemberVo memberVO, HttpSession session, RedirectAttributes rttr) {
+			
+			MemberVo member = (MemberVo) session.getAttribute("vo");
+			
+			String sessionPwd = member.getPwd();
+			
+			String voPwd = memberVO.getPwd();
+			
+			System.out.println(sessionPwd+ "세션연결이 되었군...");
+			System.out.println(voPwd + "근데 외그럴까나..");
+			System.out.println(member);
+			
+			if(!(sessionPwd.equals(voPwd))) {
+				rttr.addFlashAttribute("msg", false);
+				return "redirect:/membmer/memberDeleteView";
+			}
+			loginService.memberDelete(memberVO);
+			session.invalidate();
+			return "list";
+		}
+
+		
 
 }
 

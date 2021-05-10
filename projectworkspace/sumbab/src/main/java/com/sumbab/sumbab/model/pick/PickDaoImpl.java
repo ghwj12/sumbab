@@ -22,4 +22,32 @@ public class PickDaoImpl implements PickDao{
 		sqlSessionTemplate.insert("addPick", pick);
 	}
 
+	
+	@Override
+	public Pick pickList(String id) {
+		
+		Pick result =  (Pick) sqlSessionTemplate.selectList("mapper.myPickSelect", id);
+		
+		return result;
+	}
+	
+	@Override
+	public int pickCount(int store_num) {
+		
+		
+		int result = sqlSessionTemplate.update("mapper.myPickCount", store_num);
+		return result;
+		
+	
+	}@Override
+	public StoreVo pickSelect(int store_num) {
+		
+		StoreVo result = sqlSessionTemplate.selectOne("mapper.myPickSelect", store_num);
+		
+		return result;
+	}
+
+	
+	
+	
 }

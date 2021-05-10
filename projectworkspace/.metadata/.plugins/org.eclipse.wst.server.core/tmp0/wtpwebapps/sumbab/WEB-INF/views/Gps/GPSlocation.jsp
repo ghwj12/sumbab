@@ -11,9 +11,9 @@
 	position: absolute;
 	left: 0;
 	bottom: 40px;
-	width: 288px;
+	width: 188px;
 	height: 132px;
-	margin-left: -144px;
+	margin-left: -85px;
 	text-align: left;
 	overflow: hidden;
 	font-size: 12px;
@@ -72,11 +72,12 @@
 
 .info .desc {
 	position: relative;
-	margin: 13px 0 0 90px;
-	height: 75px;
+
 }
 
 .desc .ellipsis {
+	font-size: 12px;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -159,9 +160,9 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 
 				// 마커와 인포윈도우를 표시합니다
 				displayMarker(locPosition, message);
-				DrawHumanMarker(lat, lon);
 				DrawCircle(lat, lon)
-
+				DrawHumanMarker(lat, lon);
+			
 			});
 
 		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -208,9 +209,9 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 			//전달받고 그다음 스크립트단으로 넣을려고했는데 그냥 스크립트단에서 바로 forEach태그를 때려도 스크립트단에 전달이 된더라!
 			//그것을 담을 var addressArray[]를 먼저 생성하고 .push()함수를 통해 값을 넣어준다.
 			var storeNumArray = [];
-			
+
 			var classifyArray = [];
-			
+
 			var cityArray = [];
 
 			var districtArray = [];
@@ -218,20 +219,24 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 			var addressArray = [];
 
 			var nameArray = [];
+			
+			var pictureArray = [];
 
 			<c:forEach items="${GPS}" var="GPS">
-			
-			storeNumArray.push("${GPS.storeNum}")
-			
-			classifyArray.push("${GPS.classify}")
 
-			cityArray.push("${GPS.citycode}")
+			storeNumArray.push("${GPS.storeNum}");
 
-			districtArray.push("${GPS.districtcode}")
+			classifyArray.push("${GPS.classify}");
+
+			cityArray.push("${GPS.citycode}");
+
+			districtArray.push("${GPS.districtcode}");
 
 			addressArray.push("${GPS.address}");
 
 			nameArray.push("${GPS.name}");
+			
+			pictureArray.push("${GPS.picture}");
 
 			</c:forEach>
 			//=========================================================================================================================
@@ -263,27 +268,6 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 										marker.setMap(map);
 
 										//=====================================================================================================================================
-										var content = '<div class="wrap">'
-												+ '    <div class="info">'
-												+ '        <div class="title">'
-												+ nameArray[i]
-												+ '            <div class="close" onclick="closeOverlay()" title="닫기"></div>'
-												+ '        </div>'
-												+ '        <div class="body">'
-												+ '            <div class="desc">'
-												+ '                <div class="ellipsis">'
-												+ classifyArray[i]
-												+ '					<br>'				
-												+ cityArray[i]
-												+ districtArray[i]
-												+ addressArray[i]
-												+ '				 </div>'
-											    + '				<div><a href="http://localhost:8090/sumbab/store/StoreView/' 
-											    +storeNumArray[i]+ '" target="_blank" class="link">가게상세보기페이지로이동하기</a></div>' 
-												+ '           </div>'
-												+ '        </div>'
-												+ '    </div>' 
-												+ '</div>';
 
 										console.log(content);
 										console.log(nameArray[i]);
@@ -293,24 +277,82 @@ https://epthffh.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-JSTL-%EC%82%AC%E
 													position : coords,
 													content : content
 												});
-										daum.maps.event.addListener(marker,
+
+										var content = document
+												.createElement('div');
+										content.className = 'customOverlay';
+										content.innerHTML = '<div class="wrap">'
+											+ '    <div class="info">'
+											+ '        <div class="title">'
+											+ nameArray[i]
+											+ '            <div class="" onclick="closeOverlay()" title=""></div>'
+											+ '        </div>'
+											+ '        <div class="body">'
+											+ '            <div class="desc">'
+											+ '                <div class="ellipsis">'
+											+ classifyArray[i]
+											+ '					<br>'
+											+ cityArray[i]
+											+ districtArray[i]
+											+ '					<br>'
+											+ addressArray[i]
+											+ '				 </div>'
+											+ '				<div><a href="http://localhost:8090/sumbab/store/StoreView/' 
+									    +storeNumArray[i]+ '" target="_blank" class="link">가게상세보기페이지로이동하기</a></div>'
+											+ '           </div>'
+											+ '        </div>'
+											+ '    </div>' 
+											+ '</div>';
+										//========================================================================================================================================
+										var closeBtn = document
+												.createElement('button');
+										closeBtn.innerHTML ='<div class="wrap">'
+											+ '    <div class="info">'
+											+ '        <div class="title">'
+											+ nameArray[i]
+											+ '            <div class="" onclick="closeOverlay()" title=""></div>'
+											+ '        </div>'
+											+ '        <div class="body">'
+											+ '            <div class="desc">'
+											+ '                <div class="ellipsis">'
+											+ classifyArray[i]
+											+ '					<br>'
+											+ cityArray[i]
+											+ districtArray[i]
+											+ '					<br>'
+											+ addressArray[i]
+											+ '				 </div>'
+											+ '				<div><a href="http://localhost:8090/sumbab/store/StoreView/' 
+									    +storeNumArray[i]+ '" target="_blank" class="link">가게상세보기페이지로이동하기</a></div>'
+											+ '           </div>'
+											+ '        </div>'
+											+ '    </div>' 
+											+ '</div>';
+										closeBtn.onclick = function() {
+											customOverlay.setMap(null);
+										};
+										content.appendChild(closeBtn);
+
+										customOverlay.setContent(content);
+
+										kakao.maps.event.addListener(marker,
 												'click', function() {
 													customOverlay.setMap(map);
 												});
 
-										
 									}
 								});
+
 			}
 		}
 
 		//마커를 사람아이콘으로 꾸며봤습니다
 		function DrawHumanMarker(lat, lon) {
 			console.log("DrawHumanMarker ");
-			var imageSrc = 'https://ifh.cc/g/slv1L0.png', imageSize = new daum.maps.Size(
-					32, 38), // 마커이미지의 크기입니다
+			var imageSrc = 'https://ifh.cc/g/ltBYAF.png', imageSize = new daum.maps.Size(
+					60, 60), // 마커이미지의 크기입니다
 			imageOption = {
-				offset : new daum.maps.Point(20, 40)
+				offset : new daum.maps.Point(20, 50)
 			}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 			var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize,

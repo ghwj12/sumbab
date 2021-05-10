@@ -103,4 +103,11 @@ public class PickController {
 		return"메인페이지";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 }
