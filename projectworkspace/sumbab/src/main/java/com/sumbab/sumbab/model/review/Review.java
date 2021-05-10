@@ -14,13 +14,15 @@ public class Review {
 	private boolean revisit;
 	private String regdate;
 	private String picture;
+	private Byte[] blobimg;
 	
 	//생성자 parameter로는 안쓰고 VO용으로 사용
 	private String name; //store table과 join시, 값을 담을 field.
 	
 	public Review() {}
 
-	public Review(int storeNum, String id, String menu, float star, String content, boolean revisit, String picture) {
+	public Review(int storeNum, String id, String menu, float star, String content,
+				boolean revisit, String picture, Byte[] blobimg) {
 		this.storeNum = storeNum;
 		this.id = id;
 		this.menu = menu;
@@ -28,6 +30,7 @@ public class Review {
 		this.content = content;
 		this.revisit = revisit;
 		this.picture = picture;
+		this.blobimg = blobimg;
 	}
 
 	public int getReviewNum() {
@@ -102,6 +105,15 @@ public class Review {
 		this.picture = picture;
 	}
 
+	public Byte[] getBlobimg() {
+		return blobimg;
+	}
+
+	public void setBlobimg(Byte[] blobimg) {
+		this.blobimg = blobimg;
+	}
+	
+	
 	public String getName() {
 		return name;
 	}

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sumbab.sumbab.model.store.Store;
 
@@ -22,7 +23,7 @@ public class ReviewService {
 		this.reviewDao = reviewDao;
 	}
 	
-	public void regit(ReviewRegitReq req, HttpSession session, int storeNum, String picture) {
+	public void regit(Byte[] blobimg, ReviewRegitReq req, HttpSession session, int storeNum, String picture) {
 		
 		//세션 memberVO.id 값 임시 지정
 		String id = "deliciousman";
@@ -35,9 +36,9 @@ public class ReviewService {
 				req.getStar(),
 				req.getContent(),
 				req.isRevisit(),
-				picture
+				picture,
+				blobimg
 				);
-		System.out.println(newReview.getPicture());
 		reviewDao.insert(newReview);
 	}
 	
