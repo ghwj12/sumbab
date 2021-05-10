@@ -52,6 +52,7 @@
 				<beans:value>classpath:config/sql-review.xml</beans:value>
 				<beans:value>classpath:config/sql-tag.xml</beans:value>
 				<beans:value>classpath:config/sql-login.xml</beans:value>
+				<beans:value>classpath:config/sql-editor.xml</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="typeAliasesPackage" value="com.sumbab.sumbab.model" />

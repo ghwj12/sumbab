@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="editorDao">
+
+	<insert id="createList" parameterType="editor">
+		insert into EDITOR (EDITOR_NUM, TITLE, NUM_LIST)
+		values (EDITOR_SEQ.nextval, #{title}, ${numList})
+	</insert>
+
+	<select id="getAllStore" resultType="store">
+		select * from STORE order by STORE_NUM desc
+	</select>
+	
+</mapper>
