@@ -207,7 +207,7 @@ body {
 				var datas = ["작성자", "별점", "작성일", "리뷰내용"];
 				var table = $("<table>", {"class":"reviewInfo"});
 				$(data).each(function(i, elem){
-					let img = $("<img>").attr("src", "/upload_02review/" + elem.picture));
+					let img = $("<img>").attr("src", "/upload_02review/" + elem.picture);
 					table
 						.append($("<tr>").append($("<th>").text("작성자")).append($("<td>").html(elem.id + "<br />")
 								.append($("<input>", {type:"button", value:"신고하기"}).addClass("warning"))
