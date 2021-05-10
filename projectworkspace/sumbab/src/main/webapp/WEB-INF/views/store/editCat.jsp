@@ -77,7 +77,7 @@
 		기타<br>
 		<br>
 		<input type="submit" value="수정하기">
-		<input type="button" value="취소" onclick="history.back(-1)">
+		<input type="button" value="취소" onclick="location.href='/sumbab/store/myStoreList'">
 	</form:form>
 	</c:when>
 <%--cafe category ============================= --%>
@@ -130,7 +130,8 @@
 		<c:if test="${cafeCatVO.size3 eq true}"> checked="checked"</c:if>>
 		루프탑<br>
 		<br>
-		<input type="submit" value="등록하기">
+		<input type="submit" value="수정하기">
+		<input type="button" value="취소" onclick="location.href='/sumbab/store/myStoreList'">
 	</form:form>
 	</c:otherwise>
 </c:choose>

@@ -7,18 +7,16 @@
 	<!-- id = ${member.id}로 나중에 변경 -->
 	<insert id="insertStore" parameterType="store">
 		INSERT INTO STORE (STORE_NUM,
-		id, classify, name, address, phone, menu, time, reserving, etc, pwd,
-		count, picture, CITYCODE, DISTRICTCODE)
+		id, classify, name, CITYCODE, DISTRICTCODE, address, phone, menu, time, reserving, etc, pwd, count, picture)
 		VALUES (STORE_SEQ.nextval, 'deliciousman', #{classify},
-		#{name}, #{address}, #{phone},
-			#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, #{picture}, #{citycode}, #{districtcode})
+		#{name}, #{citycode}, #{districtcode} #{address}, #{phone},
+		#{menu}, #{time},#{reserving},#{etc},#{pwd}, 0, #{picture})
 	</insert>
 
 	<update id="updateStore" parameterType="store">
 		UPDATE STORE SET
-		classify=#{classify}, name= #{name}, address=#{address},
-		phone=#{phone},
-		menu=#{menu}, time=#{time}, reserving=#{reserving}, etc=#{etc}, PICTURE=#{picture}, CITYCODE=#{citycode}, DISTRICTCODE=#{districtcode}
+		classify=#{classify}, name= #{name}, CITYCODE=#{citycode}, DISTRICTCODE=#{districtcode}, address=#{address},
+		phone=#{phone}, menu=#{menu}, time=#{time}, reserving=#{reserving}, etc=#{etc}, PICTURE=#{picture}
 		WHERE STORE_NUM=#{storeNum}
 	</update>
 
