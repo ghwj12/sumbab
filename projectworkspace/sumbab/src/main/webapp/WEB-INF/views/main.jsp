@@ -50,6 +50,7 @@ color
     }   
 </script>
 
+
 	<h6>
 		메인페이지 <a href="공지 맞으신분 연결좀 해주셔요 컨트롤러 url도 수정하시고요" onClick="Warning_check();">공지</a>&nbsp; 
 				<a href="보관함 맞으신분 연결좀 해주셔요 컨트롤러 url도 수정하시고요" onClick="mypage_check();">보관함</a>&nbsp; 
