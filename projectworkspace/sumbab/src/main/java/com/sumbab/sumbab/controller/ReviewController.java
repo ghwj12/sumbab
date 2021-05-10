@@ -34,8 +34,7 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="/review/writeReview/{storeNum}", method=RequestMethod.GET)
-	public String writeReview(@PathVariable int storeNum, Model model, 
-			@ModelAttribute("storelist")Store store) {
+	public String writeReview(@PathVariable int storeNum, Model model, @ModelAttribute("storelist")Store store) {
 		
 		model.addAttribute("reviewDTO", new Review());
 		model.addAttribute("storelist", storeService.storeView(storeNum));//selectOne
@@ -60,15 +59,33 @@ public class ReviewController {
 	@RequestMapping(value="/review/completeWrReview", method=RequestMethod.POST)
 	public String completeWriteReview(@ModelAttribute("reviewDTO")Review review, ReviewRegitReq reqR,
 			@ModelAttribute("tag")ArrayList<String> tag, Model model, 
-			@ModelAttribute("storeNum")int storeNum, HttpSession session, String picture) {
+			@ModelAttribute("storeNum")int storeNum, HttpSession session,
+			MultipartHttpServletRequest mtpReq) {
 		
-		picture = review.getBlobimg().toString();
-		System.out.println("픽쳐 이름"+picture);
-		Byte[] blobimg = review.getBlobimg();
+		//사진첨부 관련 method
+		MultipartFile mf = mtpReq.getFile("attached");
 		
-			reviewService.regit(blobimg, reqR, session, storeNum, picture);
+		String path = "C:/02review/"; //파일 저장되는 실제 경로
+		String originFileName = mf.getOriginalFilename();
+		String picture = "";
+		
+		//파일 이름 겹치지 않게 등록한 시간을 string으로 입력
+		if(originFileName == "") {
+			picture = ""; // attached 없으면 파일등록 x
+		}else {
+			picture = System.currentTimeMillis() + originFileName;
 			
-
+			try {
+				mf.transferTo(new File(path+picture));
+			}catch (IllegalStateException e) {
+				e.printStackTrace();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		reviewService.regit(reqR, session, storeNum, picture);
+		
+		
 		for (int i = 0; i < tag.size(); i++) {
 			tagService.regist(tag.get(i));
 			tagService.insertReview_Tag(tag.get(i));

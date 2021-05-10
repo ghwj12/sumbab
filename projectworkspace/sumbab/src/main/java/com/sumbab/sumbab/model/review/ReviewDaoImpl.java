@@ -69,5 +69,4 @@ public class ReviewDaoImpl implements ReviewDao {
 	public Review reviewDetail(int reviewNum) {
 		return sqlSessionTemplate.selectOne("reviewDetail", reviewNum);
 	}
-
 }
