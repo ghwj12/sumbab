@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import org.apache.ibatis.type.Alias;
 
 @Alias(value = "Vo")
-public class MemberVO {
+public class MemberJVO {
 	
 	private String id;
 	private String pwd;
@@ -15,14 +15,14 @@ public class MemberVO {
 	private String classify;
 	private Timestamp date;
 
-	public MemberVO() {
+	public MemberJVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	
 
-	public MemberVO(String id, String pwd, String email, String classify, Timestamp date) {
+	public MemberJVO(String id, String pwd, String email, String classify, Timestamp date) {
 	
 		this.id = id;
 		this.pwd = pwd;

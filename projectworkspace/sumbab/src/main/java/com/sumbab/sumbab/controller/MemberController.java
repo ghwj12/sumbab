@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sumbab.sumbab.model.member.MemberService;
-import com.sumbab.sumbab.model.member.MemberVO;
+import com.sumbab.sumbab.model.member.MemberJVO;
 
 
 @Controller
@@ -29,7 +29,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/memberjoin", method=RequestMethod.POST)
-	public ModelAndView memberJoinPro(MemberVO memberVO) {
+	public ModelAndView memberJoinPro(MemberJVO memberVO) {
 		ModelAndView mav = new ModelAndView();
 		memberService.memberJoinProcess(memberVO);
 		mav.setViewName("memberjoin");

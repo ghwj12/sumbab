@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImpl implements MemberService {
 
 	@Inject
-	private MemberDao memberDao;
+	private MemberJDao memberDao;
 
 	@Override
-	public void memberJoinProcess(MemberVO memberVO) {
+	public void memberJoinProcess(MemberJVO memberVO) {
 		memberDao.memberJoinMethod(memberVO);
 	}
 

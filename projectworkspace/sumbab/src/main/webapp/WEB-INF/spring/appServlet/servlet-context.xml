@@ -43,6 +43,7 @@
 				<beans:value>classpath:config/sql-notice.xml</beans:value>
 				<beans:value>classpath:config/sql-warning.xml</beans:value>
 				<beans:value>classpath:config/sql-recommend.xml</beans:value>
+				<beans:value>classpath:config/sql-member.xml</beans:value>
 				<beans:value>classpath:config/sql-StoreView.xml</beans:value>
 				<beans:value>classpath:config/sql-store.xml</beans:value>
 				<beans:value>classpath:config/sql-restCat.xml</beans:value>

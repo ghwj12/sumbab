@@ -4,7 +4,7 @@
 
 <mapper namespace="member">
 	<insert id="join"
-		parameterType="vo">
+		parameterType="com.sumbab.sumbab.model.member.MemberJVO">
 		insert into member
 		(id,pwd,email,classify,regdate)
 		values(

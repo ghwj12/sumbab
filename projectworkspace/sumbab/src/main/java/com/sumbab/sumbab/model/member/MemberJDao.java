@@ -2,9 +2,9 @@ package com.sumbab.sumbab.model.member;
 
 
 
-public interface MemberDao {
+public interface MemberJDao {
 
-	public void memberJoinMethod(MemberVO memberVO);
+	public void memberJoinMethod(MemberJVO memberVO);
 
 	public int idCheck(String id);
 	

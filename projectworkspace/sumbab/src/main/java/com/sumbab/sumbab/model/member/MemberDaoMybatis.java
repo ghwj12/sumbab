@@ -8,13 +8,13 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class MemberDaoMybatis implements MemberDao {
+public class MemberDaoMybatis implements MemberJDao {
 
 	@Inject
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
-	public void memberJoinMethod(MemberVO memberVO) {
+	public void memberJoinMethod(MemberJVO memberVO) {
 		sqlSessionTemplate.insert("member.join", memberVO);
 	}
 
