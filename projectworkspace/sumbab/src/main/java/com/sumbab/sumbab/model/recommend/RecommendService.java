@@ -18,7 +18,7 @@ public class RecommendService {
 	private RecommendDaoImpl recommendDao;
 	
 	public List<Store> categoryRecommend(String classify, SelectedCategory selectedCategory) {
-		if(classify.equals("?��?��?��")) {
+		if(classify.equals("음식점")) {
 			String category = selectedCategory.getCategory1() + selectedCategory.getCategory2();
 			return recommendDao.selectRest(category);
 		}else {
