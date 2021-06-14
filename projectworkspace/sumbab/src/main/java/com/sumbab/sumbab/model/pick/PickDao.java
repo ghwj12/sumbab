@@ -12,10 +12,14 @@ public interface PickDao {
 	
 	
 	
-	public abstract Pick pickList(String id);
+	public abstract List<JoinPickVo> joinPickList(String id);
 	
 	public abstract int pickCount(int store_num);
 	
 	public abstract StoreVo pickSelect(int store_num); 
-
+	
+	public abstract StoreVo StSelect(List result);
+	
+	public void delPick(Pick vo);
+	
 }

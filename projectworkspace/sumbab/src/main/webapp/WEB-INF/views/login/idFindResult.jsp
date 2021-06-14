@@ -18,7 +18,7 @@
 	</table>
 	<div>
 		<a href="javascript:popupSubmit();">로그인</a>
-		<a href="<c:url value="/views/sb/memberFind"/>">비번 찾기</a>
+		<a href="<c:url value="/views/login/memberFind"/>">비번 찾기</a>
 	</div>
 	</form>
 	<script type="text/javascript">

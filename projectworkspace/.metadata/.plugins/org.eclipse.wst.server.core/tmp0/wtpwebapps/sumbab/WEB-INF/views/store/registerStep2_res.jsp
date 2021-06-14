@@ -41,7 +41,7 @@
 		<input type="checkbox" id="type1" name="type1" >한식<br>
 		<input type="checkbox" id="type2" name="type2" >중식<br>
 		<input type="checkbox" id="type3" name="type3" >양식<br>
-		<input type="checkbox" id="type4" name="type3" >기타<br>
+		<input type="checkbox" id="type4" name="type4" >기타<br>
 		<br>
 		<input type="submit" value="등록하기">
 	</form:form>

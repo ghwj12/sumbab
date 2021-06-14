@@ -8,6 +8,8 @@
 		<setting name="cacheEnabled" value="false"/>
 		<setting name="useGeneratedKeys" value="false"/>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	
+		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
 	 
 	<typeAliases>
@@ -24,6 +26,10 @@
 		<typeAlias alias = "pick" type="com.sumbab.sumbab.model.pick.Pick"/>
 		<typeAlias alias = "warning" type="com.sumbab.sumbab.model.warning.Warning"/>
 		<typeAlias alias = "memberVo" type="com.sumbab.sumbab.model.login.MemberVo"/>
+		<typeAlias alias = "joinPickVo" type="com.sumbab.sumbab.model.pick.JoinPickVo"/>
+		<typeAlias alias = "storeVo" type="com.sumbab.sumbab.model.pick.StoreVo"/>
+		
 	</typeAliases>
-	
+
+
 </configuration>

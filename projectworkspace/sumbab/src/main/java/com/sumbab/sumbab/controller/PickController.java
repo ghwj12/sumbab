@@ -3,18 +3,29 @@ package com.sumbab.sumbab.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sumbab.sumbab.model.login.MemberVo;
+import com.sumbab.sumbab.model.pick.JoinPickVo;
+import com.sumbab.sumbab.model.pick.Pick;
 import com.sumbab.sumbab.model.pick.PickService;
+import com.sumbab.sumbab.model.pick.StoreVo;
 
 
 
@@ -103,6 +114,91 @@ public class PickController {
 		return"메인페이지";
 	}
 	
+	
+
+	//보관함 기능 리스트보기 
+		@RequestMapping(value = "/sb/myPick",method = RequestMethod.GET)
+		public String myPickGet(Pick vo, HttpSession session, Model model,JoinPickVo jpv)throws Exception {
+			
+		
+			
+			MemberVo sessionId = (MemberVo) session.getAttribute("vo");
+			System.out.println("pick:" + sessionId);
+			String id = sessionId.getId();
+			System.out.println("sessionId :" + id);
+			
+			 
+			  
+			  
+			List<JoinPickVo> result = pickService.pickList(id);
+			
+			
+			
+			model.addAttribute("joinPickList", result);
+			
+			return "/Pick/pickMain";
+			
+			
+			
+//			Pick sid = (Pick) session.getAttribute("vo");
+//			String id = sid.getId();
+//			
+//			StoreVo result = pickService.pickList(id);
+//			 
+//			model.addAttribute("pickList", result);
+//			
+//			
+//			return "/pick/myPick";
+			
+		}
+		
+		//보관함 리스트 선택  상세보기
+			@RequestMapping(value = "/sb/myPick/{storeNum}",method = RequestMethod.GET)
+			public String myPickDetGet(Pick vo,
+					HttpSession session,
+					Model model,
+					@PathVariable int store_num) {
+			
+				//조회수 올리고 정보 반환 
+				StoreVo result = pickService.pickRead(store_num); 
+				
+				model.addAttribute("storeVo", result);
+				
+				
+				return "/pick/pickMain";
+				
+			}
+
+		//보관함 삭제 기능 
+			@ResponseBody
+			@RequestMapping(value="/sb/delPick", method = RequestMethod.POST)
+			public int myPickDel(
+					HttpSession session,
+					@RequestParam(value="chbox[]") List<String> chArr, Pick vo) throws Exception {
+				
+				MemberVo memVo = (MemberVo) session.getAttribute("vo");
+				String userId = memVo.getId();
+				
+				int result = 0;
+				
+				if(memVo != null) {
+					vo.setId(userId);
+				
+				
+				for(String i : chArr) {
+					int storeNum = Integer.parseInt(i);
+					vo.setStoreNum(storeNum);
+					pickService.delPick(vo);
+				
+					
+				}
+				
+				result = 1;
+			}	
+				
+			return result;
+				
+			}
 	
 	
 	

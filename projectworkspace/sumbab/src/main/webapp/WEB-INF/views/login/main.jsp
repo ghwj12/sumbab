@@ -3,14 +3,19 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie-edge">
 <title>main</title>
 </head>
 <body>
-<form method="get">
+<form method="get" accept-charset="UTF-8">
 
 <table>
 	<tr>
@@ -34,6 +39,7 @@
 <div>
 <input type="submit" value="로그아웃" formaction="/sumbab/sb/logout" >
 <input type="submit" value="회원탈퇴" formaction="/sumbab/memberDeleteView" >
+<a href="/sumbab/sb/myPick">찜 보관함</a>
 
 </div>
 </c:otherwise>

@@ -33,16 +33,24 @@ public class PickService {
 	
 	
 	
+	public List<JoinPickVo> pickList(String id) {
+		   
+		
+		
 	
-	public Pick pickList(String id) {
-	   
-		Pick result = pickDao.pickList(id);
+		
+//		List result = (List) pickDao.pickList(id);
+//		 
+//		StoreVo result2 = pickDao.StSelect(result);
 		
 		
-		return result;
+		
+		return pickDao.joinPickList(id); 
 	}
+
 	
 	public StoreVo pickRead(int store_num) {
+		
 		pickDao.pickCount(store_num);
 		
 		
@@ -50,4 +58,8 @@ public class PickService {
 	}
 	
 	
+	public void delPick(Pick vo) {
+		pickDao.delPick(vo);
+	}
+		
 }

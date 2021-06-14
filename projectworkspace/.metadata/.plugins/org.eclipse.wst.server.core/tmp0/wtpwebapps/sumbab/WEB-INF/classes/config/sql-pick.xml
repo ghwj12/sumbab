@@ -4,6 +4,13 @@
 
 <mapper namespace="pickDao">
 
+
+
+		
+		
+		
+
+		
         
         <select id="bringPick" parameterType="String" resultType="Integer">
         	select store_num from PICK where id=#{id}
@@ -15,18 +22,23 @@
         
         
         
-		<select id="myPickSelect" parameterType="memberVo" resultType="memberVo">
-			select STORE_NUM from PICK
-			where id = #{vo.id}
-
+	   
+		<select id="myPickSelect" parameterType="String" resultType="joinPickVo">
+			select A.ID, A.STORE_NUM, B.CLASSIFY, B.NAME, B.CITYCODE, B.DISTRICTCODE,
+			B.ADDRESS, B.PHONE, B.MENU, B.TIME, B.RESERVING, B.ETC, B.PWD, B.COUNT, B.PICTURE
+			from PICK A, STORE B
+			where A.STORE_NUM = B.STORE_NUM
+			and A.ID = #{id}
 		</select>
+		<!-- select STORE_NUM from PICK
+			where id = #{vo.id}  -->
 
 		<update id="myPickCount" parameterType="int">
 			update STORE set COUNT = COUNT + 1 where store_num = #{STORE_NUM}
 
 		</update>
 		
-		<select id="myPickSelect" parameterType="" resultType="">
+		<select id="myPickSelect2" parameterType="pick" resultType="storeVo">
 			select * from STORE
 			where store_num in
 			<foreach collection="list" item="items"  open="(" separator="," close=")">
@@ -36,6 +48,17 @@
 
 		</select>
 		
+		<select id="storeSelect" parameterType="storeVo" resultType="storeVo">
+			select * from STORE
+			where store_num
+		</select>
+		
+		<select id="delPick" >
+		delete from PICK 
+		where store_num = #{storeNum}
+		and id = #{id} 
+		</select>
+     	
 		
         
      
